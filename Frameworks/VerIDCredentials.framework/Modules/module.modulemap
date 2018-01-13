@@ -1,0 +1,6 @@
+framework module VerIDCredentials {
+  header "VerIDCredentials-Swift.h"
+
+  export *
+  module VerIDCredentials { export * }
+}
