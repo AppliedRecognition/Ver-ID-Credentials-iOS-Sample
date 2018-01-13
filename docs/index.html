@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html"> Docs</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html"> Reference</a>
+        <img id="carat" src="img/carat.png" />
+          Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/BarcodeFeature.html">BarcodeFeature</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/BarcodeFeature.html#/s:16VerIDCredentials14BarcodeFeatureC3SexO">– Sex</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Card.html">Card</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/CardFeature.html">CardFeature</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/CardFormat.html">CardFormat</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes.html#/c:@M@VerIDCredentials@objc(cs)DoubleSidedPhotoCardWithPDF417Barcode">DoubleSidedPhotoCardWithPDF417Barcode</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/FacePhotoFeature.html">FacePhotoFeature</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/IDBundle.html">IDBundle</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/IDCaptureSession.html">IDCaptureSession</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/IDCaptureSessionResult.html">IDCaptureSessionResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/IDCaptureSessionSettings.html">IDCaptureSessionSettings</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ISOID1CardWithPDF417Barcode.html">ISOID1CardWithPDF417Barcode</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ISOID1PhotoCard.html">ISOID1PhotoCard</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes.html#/c:@M@VerIDCredentials@objc(cs)SingleSidedPhotoCard">SingleSidedPhotoCard</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums.html#/c:@M@VerIDCredentials@E@BarcodeEncoding">BarcodeEncoding</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums.html#/c:@M@VerIDCredentials@E@BarcodeFormat">BarcodeFormat</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/ISOCardFormat.html">ISOCardFormat</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/IDCaptureSessionDelegate.html">IDCaptureSessionDelegate</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <h1 id='ver-id-credentials-sdk' class='heading'>Ver-ID Credentials SDK</h1>
+<h2 id='introduction' class='heading'>Introduction</h2>
+
+<p>Ver-ID gives your application the ability to capture and parse government-issued ID cards.</p>
+<h2 id='adding-ver-id-credentials-sdk-to-your-ios-project' class='heading'>Adding Ver-ID Credentials SDK to Your iOS Project</h2>
+
+<ol>
+<li><a href="https://dev.ver-id.com/admin/register">Request an API secret</a> for your app.</li>
+<li><p>In Xcode open your project&rsquo;s <strong>Info.plist</strong> file and add the following entry,  substituting <code>[your API secret]</code> for the API secret received in step 1.</p>
+<pre class="highlight xml"><code><span class="nt">&lt;key&gt;</span>com.appliedrec.verid.apiSecret<span class="nt">&lt;/key&gt;</span>
+<span class="nt">&lt;string&gt;</span>[your API secret]<span class="nt">&lt;/string&gt;</span>
+</code></pre></li>
+<li><p>Download the latest <a href="https://github.com/AppliedRecognition/Ver-ID-Credentials-iOS-Sample/tree/master/Frameworks/VerIDCredentials.framework"><strong>VerIDCredentials framework</strong></a> and <a href="https://github.com/AppliedRecognition/Ver-ID-Credentials-iOS-Sample/tree/master/Frameworks/VerID.framework"><strong>VerID framework</strong></a>.</p></li>
+<li><p>Open your Xcode project and select the <em>**.xcodeproj</em>* file in the Project navigator.</p></li>
+<li><p>Select your target and click on the <strong>General</strong> tab.</p></li>
+<li><p>Under <strong>Deployment Info</strong> check that <strong>Deployment Target</strong> is set to <strong>11.0</strong> or higher. If you need to target older iOS versions please contact us.</p></li>
+<li><p>Next click the <strong>+</strong> button in the <strong>Embedded Binaries</strong> section and in the dialog click the <strong>Add Other &hellip;</strong> button.</p></li>
+<li><p>Navigate to the SDK folder and select <strong>VerIDCredentials.framework</strong>. After clicking OK make sure you tick the box <strong>Copy items if needed</strong>.</p></li>
+<li><p>Repeat steps 5 and 6 with <strong>VerID.framework</strong>.</p></li>
+<li><p>Ver-ID Credentials currently does not support bitcode. Switch to the <strong>Build Settings</strong> tab, scroll down to <strong>Build Options</strong> and set <strong>Enable Bitcode</strong> to <strong>No</strong>.</p></li>
+<li><p>Ensure your app sets the <strong>NSCameraUsageDescription</strong> key in its <strong>Info.plist</strong> file.</p></li>
+<li><p>Import Ver-ID Credentials:</p>
+
+<ul>
+<li>In Swift add <code>import VerIDCredentials</code> statement in your code that uses Ver-ID ID Capture.</li>
+<li>In Objective-C add <code>#import &lt;VerIDCredentials/VerIDCredentials-Swift.h&gt;</code></li>
+</ul></li>
+</ol>
+<h2 id='using-ver-id-credentials-sdk' class='heading'>Using Ver-ID Credentials SDK</h2>
+
+<ol>
+<li>Create an instance of <code><a href="Classes/IDCaptureSession.html">IDCaptureSession</a></code> in your application.</li>
+<li>Implement the <code><a href="Protocols/IDCaptureSessionDelegate.html">IDCaptureSessionDelegate</a></code> protocol in your class.</li>
+<li>Assign your class as delegate of the <code><a href="Classes/IDCaptureSession.html">IDCaptureSession</a></code> instance.</li>
+<li>Start the capture session.</li>
+<li>Receive the result of the session in your delegate class.</li>
+</ol>
+<h3 id='swift-example' class='heading'>Swift example</h3>
+
+<p>MyViewController.swift</p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">UIKit</span>
+<span class="kd">import</span> <span class="kt">VerIDCredentials</span>
+
+<span class="kd">class</span> <span class="kt">MyViewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="kt">IDCaptureSessionDelegate</span> <span class="p">{</span>
+
+    <span class="kd">func</span> <span class="nf">startCapture</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Settings with a blank ISO ID-1 card. The app will ask the user to select a region.</span>
+        <span class="k">let</span> <span class="nv">settings</span> <span class="o">=</span> <span class="kt">IDCaptureSessionSettings</span><span class="p">(</span><span class="nv">idBundle</span><span class="p">:</span> <span class="kt">IDBundle</span><span class="p">(</span><span class="nv">cards</span><span class="p">:</span> <span class="p">[</span><span class="kt">Card</span><span class="p">(</span><span class="nv">format</span><span class="p">:</span> <span class="o">.</span><span class="n">id1</span><span class="p">)]))</span>
+        <span class="k">let</span> <span class="nv">session</span> <span class="o">=</span> <span class="kt">IDCaptureSession</span><span class="p">(</span><span class="nv">settings</span><span class="p">:</span> <span class="n">settings</span><span class="p">)</span>
+        <span class="n">session</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
+        <span class="n">session</span><span class="o">.</span><span class="nf">start</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="c1">// MARK: - Ver-ID Credentials Session Delegate</span>
+
+    <span class="kd">func</span> <span class="nf">idCaptureSession</span><span class="p">(</span><span class="n">_</span> <span class="nv">session</span><span class="p">:</span> <span class="kt">IDCaptureSession</span><span class="p">,</span> <span class="n">didFinishWithResult</span> <span class="nv">result</span><span class="p">:</span> <span class="kt">IDCaptureSessionResult</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="o">.</span><span class="n">finished</span><span class="p">,</span> <span class="k">let</span> <span class="nv">detectedIdBundle</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">idBundle</span> <span class="p">{</span>
+            <span class="c1">// The session finished with a captured ID card</span>
+            <span class="k">if</span> <span class="k">let</span> <span class="nv">face</span> <span class="o">=</span> <span class="n">detectedIdBundle</span><span class="o">.</span><span class="n">faces</span><span class="o">.</span><span class="n">first</span><span class="p">?</span><span class="o">.</span><span class="n">value</span> <span class="p">{</span>
+                <span class="c1">// Detected a face on the card</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<h3 id='objective-c-example' class='heading'>Objective C example</h3>
+
+<p>MyViewController.h</p>
+<pre class="highlight objective_c"><code><span class="cp">#import &lt;UIKit/UIKit.h&gt;
+#import &lt;VerIDCredentials/VerIDCredentials-Swift.h&gt;
+</span><span class="k">@interface</span> <span class="nc">MyViewController</span> <span class="p">:</span> <span class="nc">UIViewController</span><span class="o">&lt;</span><span class="n">IDCaptureSessionDelegate</span><span class="o">&gt;</span>
+
+<span class="k">@end</span>
+</code></pre>
+
+<p>MyViewController.m</p>
+<pre class="highlight objective_c"><code><span class="cp">#import "MyViewController.h"
+</span>
+<span class="k">@interface</span> <span class="nc">MyViewController</span> <span class="p">()</span>
+
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="nc">MyViewController</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">startCapture</span> <span class="p">{</span>
+    <span class="c1">// Settings with a blank ISO ID-1 card. The app will ask the user to select a region.
+</span>    <span class="n">IDCaptureSessionSettings</span> <span class="o">*</span><span class="n">settings</span> <span class="o">=</span> <span class="p">[[</span><span class="n">IDCaptureSessionSettings</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithIdBundle</span><span class="p">:</span> <span class="p">[[</span><span class="n">IDBundle</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithCards</span><span class="p">:</span> <span class="p">@[[[</span><span class="n">Card</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithFormat</span><span class="p">:</span> <span class="n">ISOCardFormatId1</span><span class="p">]]]]</span>
+    <span class="n">IDCaptureSession</span> <span class="o">*</span><span class="n">session</span> <span class="o">=</span> <span class="p">[[</span><span class="n">IDCaptureSession</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithSettings</span><span class="p">:</span> <span class="n">settings</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">session</span> <span class="nf">setDelegate</span><span class="p">:</span><span class="n">self</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">session</span> <span class="nf">start</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="c1">// MARK: - ID Capture Delegate
+</span>
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">idCaptureSession</span><span class="o">:</span><span class="p">(</span><span class="n">IDCaptureSession</span> <span class="o">*</span><span class="p">)</span><span class="n">session</span> <span class="n">didFinishWithResult</span><span class="o">:</span><span class="p">(</span><span class="n">IDCaptureSessionResult</span> <span class="o">*</span><span class="p">)</span><span class="n">result</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">status</span> <span class="o">==</span> <span class="n">IDCaptureSessionResultStatusFinished</span> <span class="o">&amp;&amp;</span> <span class="n">result</span><span class="p">.</span><span class="n">idBundle</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// The session finished with a captured ID card
+</span>    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+</code></pre>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>Applied Recognition, Inc.</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

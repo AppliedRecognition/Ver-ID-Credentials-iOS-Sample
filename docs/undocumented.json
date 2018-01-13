@@ -1,0 +1,208 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/BarcodeFeature.swift",
+      "line": 14,
+      "symbol": "BarcodeFeature.copy(with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/BarcodeFeature.swift",
+      "line": 64,
+      "symbol": "BarcodeFeature.init(from:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/BarcodeFeature.swift",
+      "line": 81,
+      "symbol": "BarcodeFeature.encode(to:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/BarcodeFeature.swift",
+      "line": 100,
+      "symbol": "BarcodeFeature.Sex.female",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/BarcodeFeature.swift",
+      "line": 101,
+      "symbol": "BarcodeFeature.Sex.male",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/BarcodeFeature.swift",
+      "line": 156,
+      "symbol": "BarcodeFeature.type",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/BarcodeFeature.swift",
+      "line": 431,
+      "symbol": "BarcodeFormat.PDF417",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/BarcodeFeature.swift",
+      "line": 436,
+      "symbol": "BarcodeEncoding.AAMVA",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/BarcodeFeature.swift",
+      "line": 436,
+      "symbol": "BarcodeEncoding.BC",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/BarcodeFeature.swift",
+      "line": 436,
+      "symbol": "BarcodeEncoding.plain",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/Card.swift",
+      "line": 15,
+      "symbol": "Card.copy(with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/Card.swift",
+      "line": 124,
+      "symbol": "ISOID1PhotoCard.init(from:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/Card.swift",
+      "line": 140,
+      "symbol": "ISOID1CardWithPDF417Barcode.init(from:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/Card.swift",
+      "line": 256,
+      "symbol": "CardFeature.copy(with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/Card.swift",
+      "line": 299,
+      "symbol": "FacePhotoFeature.copy(with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/Card.swift",
+      "line": 329,
+      "symbol": "FacePhotoFeature.init(from:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/Card.swift",
+      "line": 337,
+      "symbol": "FacePhotoFeature.encode(to:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/IDBundle.swift",
+      "line": 14,
+      "symbol": "IDBundle.copy(with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/IDBundle.swift",
+      "line": 54,
+      "symbol": "IDBundle.features()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/IDBundle.swift",
+      "line": 98,
+      "symbol": "SingleSidedPhotoCard.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/IDBundle.swift",
+      "line": 102,
+      "symbol": "SingleSidedPhotoCard.init(from:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/IDBundle.swift",
+      "line": 110,
+      "symbol": "DoubleSidedPhotoCardWithPDF417Barcode.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/IDBundle.swift",
+      "line": 114,
+      "symbol": "DoubleSidedPhotoCardWithPDF417Barcode.init(from:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/IDCaptureSessionResult.swift",
+      "line": 21,
+      "symbol": "IDCaptureSessionStatus",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/IDCaptureSessionSettings.swift",
+      "line": 39,
+      "symbol": "Region",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/DetectionOperations.swift",
+      "line": 13,
+      "symbol": "PerspectiveCorrectionParamsOperation",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/VerID+CMSampleBuffer.swift",
+      "line": 15,
+      "symbol": "CVImageBuffer.cgImage(withOrientation:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/VerID+CMSampleBuffer.swift",
+      "line": 80,
+      "symbol": "CMSampleBuffer.cgImage(withOrientation:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/VerIDIDCaptureError.swift",
+      "line": 11,
+      "symbol": "VerIDIDCaptureError",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture"
+}
