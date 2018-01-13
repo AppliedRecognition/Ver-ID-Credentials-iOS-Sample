@@ -35,6 +35,7 @@ Ver-ID gives your application the ability to capture and parse government-issued
 5. Receive the result of the session in your delegate class.
 
 ### Swift example
+
 MyViewController.swift
 	
 ~~~swift
@@ -63,7 +64,9 @@ class MyViewController: UIViewController, IDCaptureSessionDelegate {
 	}
 }
 ~~~
+
 ###Objective C example
+
 MyViewController.h
 
 ~~~objc
