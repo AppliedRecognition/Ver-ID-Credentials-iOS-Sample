@@ -65,7 +65,7 @@ class MyViewController: UIViewController, IDCaptureSessionDelegate {
 }
 ~~~
 
-###Objective C example
+### Objective C example
 
 MyViewController.h
 
