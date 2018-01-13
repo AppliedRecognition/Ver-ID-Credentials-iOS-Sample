@@ -6,7 +6,14 @@ Ver-ID gives your application the ability to capture and parse government-issued
 
 ## Adding Ver-ID Credentials SDK to Your iOS Project
 
-1. Download the latest [**VerIDCredentials framework**]() and [**VerID framework**]().
+1. [Request an API secret](https://dev.ver-id.com/admin/register) for your app.
+1. In Xcode open your project's **Info.plist** file and add the following entry,  substituting `[your API secret]` for the API secret received in step 1.
+
+	~~~xml
+	<key>com.appliedrec.verid.apiSecret</key>
+	<string>[your API secret]</string>
+	~~~
+1. Download the latest [**VerIDCredentials framework**](https://github.com/AppliedRecognition/Ver-ID-Credentials-iOS-Sample/tree/master/Frameworks/VerIDCredentials.framework) and [**VerID framework**](https://github.com/AppliedRecognition/Ver-ID-Credentials-iOS-Sample/tree/master/Frameworks/VerID.framework).
 2. Open your Xcode project and select the ***.xcodeproj** file in the Project navigator.
 3. Select your target and click on the **General** tab.
 4. Under **Deployment Info** check that **Deployment Target** is set to **11.0** or higher. If you need to target older iOS versions please contact us.
