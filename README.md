@@ -102,3 +102,6 @@ MyViewController.m
 
 @end
 ~~~
+
+## Documentation
+For full API reference visit the project's [Github page](https://appliedrecognition.github.io/Ver-ID-Credentials-iOS-Sample/).
