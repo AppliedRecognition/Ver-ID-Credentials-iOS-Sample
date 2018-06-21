@@ -11,7 +11,6 @@
 
 #import <Foundation/Foundation.h>
 #import <Photos/Photos.h>
-#import <CommonCrypto/CommonCrypto.h>
 #import <CoreImage/CoreImage.h>
 
 #import "DetRecLibHeader.h"
@@ -31,51 +30,31 @@ typedef NS_ENUM(NSInteger, FaceAuthenticationSecurityLevel) {
 @interface FaceAuthentication : DetRecLib
 
 /**
- * Initializes the DetRecLib library for Ver-ID by preparing the database and loading/configuring
- * the context.
- *
- * *** You must call this method from this class to load appropriate settings for authentication ***
- *
- * @throws FileNotFoundException
- *             if the resource files cannot be found
- * @throws IOException
- *             if the resource files cannot be read or there are stream issues
- * @throws SQLiteException
- *             if there are problems with the JNI sqlite database
- * @throws OutOfMemoryError
- *             if cannot allocate memory
- * @throws Exception
- *             all other issues
- * @throws Error
- *             all other un-checked issues
+ Initializes the DetRecLib library for Ver-ID by preparing the database and loading/configuring
+ the context.
+
+ @param apiSecret API secret for the consumer app
+ @param modelPath Path to the models directory
+ @param error Pointer to error that will be non-null if the call fails
  */
-+ (void) initializeContext:(NSString *)apiSecret
-                     error:(NSError **)error;
++ (void) initializeContextWithAPISecret:(NSString *)apiSecret
+                              modelPath:(NSString *)modelPath
+                                  error:(NSError **)error;
 
 /**
- * Initializes the DetRecLib library for Ver-ID by preparing the database and loading/configuring
- * the context. If parameter passed is true, then database is cleared; otherwise
- * it remains untouched (or created if needed).
- *
- * *** You must call this method from this class to load appropriate settings for authentication ***
- *
- * @param clear_database
- *            if true, then database is cleared; otherwise it remains untouched
- *            (or created if needed)
- * @throws FileNotFoundException
- *             if the resource files cannot be found
- * @throws IOException
- *             if the resource files cannot be read or there are stream issues
- * @throws SQLiteException
- *             if there are problems with the JNI sqlite database
- * @throws OutOfMemoryError
- *             if cannot allocate memory
- * @throws Exception
- *             all other issues
- * @throws Error
- *             all other un-checked issues
+ Initializes the DetRecLib library for Ver-ID by preparing the database and loading/configuring
+ the context. If the clearDatabase parameter passed is true, then database is cleared; otherwise
+ it remains untouched (or created if needed).
+
+ @param apiSecret API secret for the consumer app
+ @param modelPath Path to the models directory
+ @param clearDatabase true to create a new database or false to keep one if it exists
+ @param error Pointer to error that will be non-null if the call fails
  */
-+ (void) initializeContextWithClearDatabase:(BOOL)clear_database;
++ (void) initializeContextWithAPISecret:(NSString *)apiSecret
+                              modelPath:(NSString *)modelPath
+                          clearDatabase:(BOOL)clearDatabase
+                                  error:(NSError **)error;
 
 /**
  * Start enrollment process for a new or existing subject. All face
@@ -116,6 +95,74 @@ typedef NS_ENUM(NSInteger, FaceAuthenticationSecurityLevel) {
  */
 + (NSArray<NSNumber *> *) getTemplateForFace:(FBFace *)face
                                        error:(NSError **)error;
+
+/**
+ * Get a data object of bytes representing the serialized recognition template/signature
+ * for the face object. If the face does not exist or does not have a template
+ * because it may be unsuitable for recognition, an error is returned.
+ *
+ * @param face
+ *            FBFace object previously obtained from detection call.
+ *            This object must not have been previously destroyed, otherwise
+ *            exception will be thrown.
+ *            Also, this face has to be suitable for recognition, otherwise
+ *            exception will be thrown.
+ * @param error
+ *             an address to NSError pointer. Will save error here
+ *             if method returns nil, unless error pointer is nil.
+ * @return data object of bytes representing the binary face template.
+ *         If nil, error occured.
+ */
++ (NSData *) getBinaryTemplateForFace:(FBFace *)face
+                                       error:(NSError **)error;
+
+/**
+ * Create a new face object from the serialized recognition template/signature.
+ * This always creates a new face, regardless if a duplicate template exists.
+ * If you want to first check that face does not exist or fetch an existing
+ * face, call getFBFacesFromBinaryTemplate.
+ *
+ * If the serialized template is incorrect or contains errors that cannot be
+ * converted to a valid face object, an error is returned.
+ *
+ * @param binaryTemplate
+ *            Binary template as NSData that was returned from a previous
+ *            call to getBinaryTemplateForFace. It may have been
+ *            forwarded to a server for template centralization, but
+ *            must be converted exactly as the original data for it to
+ *            be valid.
+ *            If data object contains errors, an exception will be thrown.
+ * @param error
+ *             an address to NSError pointer. Will save error here
+ *             if method returns nil, unless error pointer is nil.
+ * @return an FBFace object representing the face template.
+ *         If nil, error occured.
+ */
++ (FBFace *) createFBFaceFromBinaryTemplate:(NSData *)binaryTemplate
+                                      error:(NSError **)error;
+
+/**
+ * Fetches possible exising face objects matching the serialized recognition
+ * template/signature. If no matching templates exist, returns an empty
+ * array. Otherwise, one or more (since we don't enforce uniqueness) matching
+ * faces are returned in array.
+ *
+ * If there are problems, most likely with database, an error is returned.
+ *
+ * @param binaryTemplate
+ *            Binary template as NSData that was returned from a previous
+ *            call to getBinaryTemplateForFace. It may have been
+ *            forwarded to a server for template centralization. This
+ *            call uses a hash for lookup and does not enforce integrity
+ *            of the template - whether it's a valid template.
+ * @param error
+ *             an address to NSError pointer. Will save error here
+ *             if method returns nil, unless error pointer is nil.
+ * @return an array of FBFace objects matching the face template.
+ *         If nil, error occured.
+ */
++ (NSArray<FBFace *> *) getFBFacesFromBinaryTemplate:(NSData *)binaryTemplate
+                                               error:(NSError **)error;
 
 /**
  * Add a face to the enrollment templates for a given subject. Approximate
@@ -593,6 +640,14 @@ typedef NS_ENUM(NSInteger, FaceAuthenticationSecurityLevel) {
                                                    forAntiSpoofing:(BOOL)antiSpoofing                                                                                                                            withRejectedFaces:(NSMutableArray<FBFace *> *)rejectedFaces
                                                              error:(NSError **)error;
 
++ (NSArray<FBFace *> *) detectFaceInImageBufferUsingBackgroundProcessing:(unsigned char *)buffer
+                                                               withWidth:(int)width
+                                                                  height:(int)height
+                                                         forAntiSpoofing:(BOOL)antiSpoofing
+                                                       withRejectedFaces:(NSMutableArray<FBFace *> *)rejectedFaces
+                                                                   error:(NSError **)error;
+
+
 /**
  * Detect faces in an image and return the largest that is being processed in the backround
  * for template extraction (if found). All
@@ -681,6 +736,11 @@ typedef NS_ENUM(NSInteger, FaceAuthenticationSecurityLevel) {
                        withRejectedFaces:(NSMutableArray<FBFace *> *)rejectedFaces
                                    error:(NSError **)error;
 
++ (NSArray<FBFace *> *) trackFaceUsingImageBuffer:(unsigned char *)buffer
+                                         withWidth:(int)width
+                                            height:(int)height
+                                 withRejectedFaces:(NSMutableArray<FBFace *> *)rejectedFaces
+                                             error:(NSError **)error;
 /**
  * Detect faces in an image and return the largest face suitable for recognition (if found). All
  * other faces which are rejected are returned in the rejectedFaces array.
@@ -712,6 +772,12 @@ typedef NS_ENUM(NSInteger, FaceAuthenticationSecurityLevel) {
                         withRejectedFaces:(NSMutableArray<FBFace *> *)rejectedFaces
                                     error:(NSError **)error;
 
++ (NSArray<FBFace *> *) detectFaceUsingImageBuffer:(unsigned char *)buffer
+                                         withWidth:(int)width
+                                            height:(int)height
+                                   forAntiSpoofing:(BOOL)antiSpoofing
+                                 withRejectedFaces:(NSMutableArray<FBFace *> *)rejectedFaces
+                                             error:(NSError **)error;
 /**
  * Detect faces in an image in a reduced fashion to speed up detection for anti-spoofing purposes.
  * If a face is found that is at least trackable (has the landmark coordinates and pose estimates),
@@ -918,6 +984,20 @@ typedef NS_ENUM(NSInteger, FaceAuthenticationSecurityLevel) {
 + (NSArray<NSString *> *) getEnrolledSubjects:(NSError **)error;
 
 /**
+ * Returns array of all face registered for a given subject.
+ *
+ * @param subjectId
+ *            a unique identifier string for subject.
+ * @param error
+ *             an address to NSError pointer. Will save error here
+ *             if method returns false, unless error pointer is nil.
+ * @return an array of FBFace objects for each registered face for subject id in DB.
+ *         If nil, an error occured.
+ */
++ (NSArray<FBFace *> *) getRegisteredFacesForSubject:(NSString *)subjectId
+                                               error:(NSError **)error;
+
+/**
  * Delete all subject ids passed in the array.
  * If subject id is not found, an error will be thrown.
  *
@@ -1030,21 +1110,19 @@ typedef NS_ENUM(NSInteger, FaceAuthenticationSecurityLevel) {
                      withBaseName:(NSString *)baseName
                             error:(NSError **)error;
 
-+ (NSString *) hmacSha256:(NSString *)message secret:(NSString *)secret;
-
 /**
  *  Indicates whether the client app has authenticated for the use of the Ver-ID API.
  *
  *  @return YES if the client has authenticated.
  */
-+ (BOOL) isClientAuthenticated;
+//+ (BOOL) isClientAuthenticated;
 
 /**
  *  Indicates whether the client app has to authenticate to use the Ver-ID API.
  *
  *  @return YES if the client is required to authenticate.
  */
-+ (BOOL) isClientRequiredToAuthenticate;
+//+ (BOOL) isClientRequiredToAuthenticate;
 
 /**
  *  Authenticate the client to use the Ver-ID API.
@@ -1053,8 +1131,8 @@ typedef NS_ENUM(NSInteger, FaceAuthenticationSecurityLevel) {
  *  @param secret API secret to use for authentication.
  *  @param block  Callback block to execute when the authentication finishes.
  */
-+ (void) authenticateClientWithAPISecret:(NSString *)secret
-                             callback:(void (^)(NSError *error))block;
+//+ (void) authenticateClientWithAPISecret:(NSString *)secret
+//                             callback:(void (^)(NSError *error))block;
 
 @end
 

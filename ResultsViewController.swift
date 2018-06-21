@@ -48,7 +48,7 @@ class ResultsViewController: UIViewController {
             UIGraphicsEndImageContext()
         }
         
-        if let cardFaceTemplate = self.card?.features.flatMap({ $0 as? FacePhotoFeature }).first?.template, let liveFaceTemplate = self.liveFace?.template?.map({ NSNumber(value: $0) }), let score = try? VerID.shared.compareFaceTemplate(cardFaceTemplate, to: liveFaceTemplate) {
+        if let cardFaceTemplate = self.card?.features.compactMap({ $0 as? FacePhotoFeature }).first?.faceTemplate, let liveFaceTemplate = self.liveFace?.faceTemplate, let score = try? VerID.shared.compareFaceTemplates(cardFaceTemplate, liveFaceTemplate) {
             self.similarityDialLayer?.score = CGFloat(score.floatValue)
             self.simiarityScoreLabel.text = String(format: "Similarity score: %.01f/10", score.floatValue * 10)
         }

@@ -130,7 +130,7 @@ class ViewController: UIViewController, IDCaptureSessionDelegate, VerIDSessionDe
     }
     
     func session(_ session: VerIDSession, didFinishWithResult result: VerIDSessionResult) {
-        guard result.positive else {
+        guard result.isPositive else {
             return
         }
         guard let (face, imageURL) = result.faceImages(withBearing: .straight).first else {

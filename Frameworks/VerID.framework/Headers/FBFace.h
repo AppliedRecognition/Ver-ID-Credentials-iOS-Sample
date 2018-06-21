@@ -40,9 +40,9 @@ typedef struct FaceAuthenticationResults FaceAuthenticationResults;
 @interface FBFace : NSObject
 
 /**
- * Get possible suggestion for face. If null, then face does not have a suggestion.
+ * Get possible suggestion for face. If null or empty, then face does not have a suggestion.
  *
- * @return suggestion for face, null if no suggestion
+ * @return suggestion for face, null or empty if no suggestion
  */
 - (NSString *) getSuggestion;
 

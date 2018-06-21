@@ -23,6 +23,8 @@ FOUNDATION_EXPORT const unsigned char VerIDVersionString[];
 #import "FBFace.h"
 #import "FaceDetection.h"
 #import "FaceRecognition.h"
-//#import "DlibxWrapper.h"
+#import "zip.h"
+#import "unzip.h"
+#import "VerIDCrypto.h"
 
 #endif

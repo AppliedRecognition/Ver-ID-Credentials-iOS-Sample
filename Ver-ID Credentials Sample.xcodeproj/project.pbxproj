@@ -20,6 +20,7 @@
 		3B5AEDE1200A180200FBD7EC /* VerID.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5AEDDD200A17EB00FBD7EC /* VerID.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3B5AEDE2200A180200FBD7EC /* VerIDCredentials.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5AEDDC200A17EB00FBD7EC /* VerIDCredentials.framework */; };
 		3B5AEDE3200A180200FBD7EC /* VerIDCredentials.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5AEDDC200A17EB00FBD7EC /* VerIDCredentials.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3BEF32CA20DC4C070004B3DB /* VerIDModels in Resources */ = {isa = PBXBuildFile; fileRef = 3BEF32C920DC4C060004B3DB /* VerIDModels */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,6 +52,7 @@
 		3B5AEDC9200A131A00FBD7EC /* IdCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdCardViewController.swift; sourceTree = "<group>"; };
 		3B5AEDDC200A17EB00FBD7EC /* VerIDCredentials.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VerIDCredentials.framework; sourceTree = "<group>"; };
 		3B5AEDDD200A17EB00FBD7EC /* VerID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VerID.framework; sourceTree = "<group>"; };
+		3BEF32C920DC4C060004B3DB /* VerIDModels */ = {isa = PBXFileReference; lastKnownFileType = folder; name = VerIDModels; path = "../../Ver-ID/Ver-ID Sample/VerIDModels"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 		3B5AEDA4200A129B00FBD7EC = {
 			isa = PBXGroup;
 			children = (
+				3BEF32C920DC4C060004B3DB /* VerIDModels */,
 				3B5AEDD0200A134D00FBD7EC /* Frameworks */,
 				3B5AEDAF200A129B00FBD7EC /* Ver-ID Credentials Sample */,
 				3B5AEDAE200A129B00FBD7EC /* Products */,
@@ -137,7 +140,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Applied Recognition Inc.";
 				TargetAttributes = {
 					3B5AEDAC200A129B00FBD7EC = {
@@ -172,6 +175,7 @@
 				3B5AEDBB200A129B00FBD7EC /* LaunchScreen.storyboard in Resources */,
 				3B5AEDCC200A131A00FBD7EC /* Main.storyboard in Resources */,
 				3B5AEDB8200A129B00FBD7EC /* Assets.xcassets in Resources */,
+				3BEF32CA20DC4C070004B3DB /* VerIDModels in Resources */,
 				3B5AEDB6200A129B00FBD7EC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -217,6 +221,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -227,6 +232,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -234,6 +240,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -274,6 +281,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -284,6 +292,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -291,6 +300,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

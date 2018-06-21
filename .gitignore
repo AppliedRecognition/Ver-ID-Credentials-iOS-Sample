@@ -21,3 +21,5 @@ DerivedData/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
+Workspace app/AppDelegate.swift
+Workspace app/Info.plist
