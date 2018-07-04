@@ -46,7 +46,7 @@ class MyViewController: UIViewController, IDCaptureSessionDelegate {
 	
 	func startCapture() {
         // Settings with a blank ISO ID-1 card. The app will ask the user to select a region.
-        let settings = IDCaptureSessionSettings(idBundle: IDBundle(cards: [Card(format: .id1)]))
+        let settings = IDCaptureSessionSettings(document: IDDocument(pages: [Page(format: .id1)]))
         let session = IDCaptureSession(settings: settings)
         session.delegate = self
         session.start()
@@ -55,9 +55,9 @@ class MyViewController: UIViewController, IDCaptureSessionDelegate {
 	// MARK: - Ver-ID Credentials Session Delegate
 	
 	func idCaptureSession(_ session: IDCaptureSession, didFinishWithResult result: IDCaptureSessionResult) {
-		if result.status == .finished, let detectedIdBundle = result.idBundle {
+		if result.status == .finished, let detectedIdDocument = result.document {
 			// The session finished with a captured ID card
-			if let face = detectedIdBundle.faces.first?.value {
+			if let face = detectedIdDocument.faces.first?.value {
 				// Detected a face on the card
 			}
 		}
@@ -89,7 +89,7 @@ MyViewController.m
 
 - (void) startCapture {
     // Settings with a blank ISO ID-1 card. The app will ask the user to select a region.
-    IDCaptureSessionSettings *settings = [[IDCaptureSessionSettings alloc] initWithIdBundle: [[IDBundle alloc] initWithCards: @[[[Card alloc] initWithFormat: ISOCardFormatId1]]]]
+    IDCaptureSessionSettings *settings = [[IDCaptureSessionSettings alloc] initWithDocument: [[IDDocument alloc] initWithPages: @[[[Page alloc] initWithFormat: ISOCardFormatId1]]]]
     IDCaptureSession *session = [[IDCaptureSession alloc] initWithSettings: settings];
     [session setDelegate:self];
     [session start];
@@ -98,7 +98,7 @@ MyViewController.m
 // MARK: - ID Capture Delegate
 
 - (void) idCaptureSession:(IDCaptureSession *)session didFinishWithResult:(IDCaptureSessionResult *)result {
-    if (result.status == IDCaptureSessionResultStatusFinished && result.idBundle != NULL) {
+    if (result.status == IDCaptureSessionResultStatusFinished && result.document != NULL) {
 	    // The session finished with a captured ID card
     }
 }
