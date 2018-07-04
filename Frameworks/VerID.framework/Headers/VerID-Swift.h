@@ -198,6 +198,7 @@ SWIFT_CLASS("_TtC5VerID11EulerAngleF")
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
 
+@class NSNumber;
 
 SWIFT_CLASS("_TtC5VerID12FaceTemplate")
 @interface FaceTemplate : NSObject
@@ -207,6 +208,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) NSInteger maxSupport
 @property (nonatomic, readonly) NSInteger version;
 - (nonnull instancetype)initWithData:(NSData * _Nonnull)data version:(NSInteger)version OBJC_DESIGNATED_INITIALIZER;
 @property (nonatomic, readonly) NSInteger hashValue;
+@property (nonatomic) NSInteger size;
+@property (nonatomic, copy) NSArray<NSNumber *> * _Nullable comparisonTemplate;
 - (BOOL)isEqual:(id _Nullable)object SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
@@ -219,7 +222,6 @@ typedef SWIFT_ENUM(NSInteger, FaceTemplateError) {
 };
 static NSString * _Nonnull const FaceTemplateErrorDomain = @"VerID.FaceTemplateError";
 
-@class NSNumber;
 
 SWIFT_CLASS("_TtC5VerID8FaceUtil")
 @interface FaceUtil : NSObject
@@ -633,7 +635,7 @@ SWIFT_CLASS("_TtC5VerID34VerIDAuthenticationSessionSettings")
 /// ID of the user to authenticate
 @property (nonatomic, readonly, copy) NSString * _Nonnull userId;
 /// Liveness detection level to employ in the session. Default is <code>.regular</code>
-@property (nonatomic, readonly) enum VerIDLivenessDetection livenessDetection;
+@property (nonatomic) enum VerIDLivenessDetection livenessDetection;
 /// Constructor
 /// \param userId ID of the user to authenticate
 ///
@@ -747,7 +749,7 @@ SWIFT_CLASS("_TtC5VerID24VerIDRegistrationSession")
 SWIFT_CLASS("_TtC5VerID32VerIDRegistrationSessionSettings")
 @interface VerIDRegistrationSessionSettings : VerIDSessionSettings
 /// Liveness detection level to be used at authentication. Default is [.regular].
-@property (nonatomic, readonly) enum VerIDLivenessDetection livenessDetection;
+@property (nonatomic) enum VerIDLivenessDetection livenessDetection;
 /// ID of the user to register
 @property (nonatomic, readonly, copy) NSString * _Nonnull userId;
 /// False to delete the user before registering faces

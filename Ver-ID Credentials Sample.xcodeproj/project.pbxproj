@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B2D249620ECF656009C3D0D /* VerIDModels in Resources */ = {isa = PBXBuildFile; fileRef = 3B2D249520ECF656009C3D0D /* VerIDModels */; };
 		3B5AEDB1200A129B00FBD7EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AEDB0200A129B00FBD7EC /* AppDelegate.swift */; };
 		3B5AEDB3200A129B00FBD7EC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AEDB2200A129B00FBD7EC /* ViewController.swift */; };
 		3B5AEDB6200A129B00FBD7EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B5AEDB4200A129B00FBD7EC /* Main.storyboard */; };
@@ -20,7 +21,6 @@
 		3B5AEDE1200A180200FBD7EC /* VerID.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5AEDDD200A17EB00FBD7EC /* VerID.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3B5AEDE2200A180200FBD7EC /* VerIDCredentials.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5AEDDC200A17EB00FBD7EC /* VerIDCredentials.framework */; };
 		3B5AEDE3200A180200FBD7EC /* VerIDCredentials.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5AEDDC200A17EB00FBD7EC /* VerIDCredentials.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3BEF32CA20DC4C070004B3DB /* VerIDModels in Resources */ = {isa = PBXBuildFile; fileRef = 3BEF32C920DC4C060004B3DB /* VerIDModels */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,6 +39,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3B2D249520ECF656009C3D0D /* VerIDModels */ = {isa = PBXFileReference; lastKnownFileType = folder; path = VerIDModels; sourceTree = "<group>"; };
 		3B5AEDAD200A129B00FBD7EC /* Ver-ID Credentials Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ver-ID Credentials Sample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B5AEDB0200A129B00FBD7EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B5AEDB2200A129B00FBD7EC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -52,7 +53,6 @@
 		3B5AEDC9200A131A00FBD7EC /* IdCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdCardViewController.swift; sourceTree = "<group>"; };
 		3B5AEDDC200A17EB00FBD7EC /* VerIDCredentials.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VerIDCredentials.framework; sourceTree = "<group>"; };
 		3B5AEDDD200A17EB00FBD7EC /* VerID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VerID.framework; sourceTree = "<group>"; };
-		3BEF32C920DC4C060004B3DB /* VerIDModels */ = {isa = PBXFileReference; lastKnownFileType = folder; name = VerIDModels; path = "../../Ver-ID/Ver-ID Sample/VerIDModels"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +71,7 @@
 		3B5AEDA4200A129B00FBD7EC = {
 			isa = PBXGroup;
 			children = (
-				3BEF32C920DC4C060004B3DB /* VerIDModels */,
+				3B2D249520ECF656009C3D0D /* VerIDModels */,
 				3B5AEDD0200A134D00FBD7EC /* Frameworks */,
 				3B5AEDAF200A129B00FBD7EC /* Ver-ID Credentials Sample */,
 				3B5AEDAE200A129B00FBD7EC /* Products */,
@@ -175,7 +175,7 @@
 				3B5AEDBB200A129B00FBD7EC /* LaunchScreen.storyboard in Resources */,
 				3B5AEDCC200A131A00FBD7EC /* Main.storyboard in Resources */,
 				3B5AEDB8200A129B00FBD7EC /* Assets.xcassets in Resources */,
-				3BEF32CA20DC4C070004B3DB /* VerIDModels in Resources */,
+				3B2D249620ECF656009C3D0D /* VerIDModels in Resources */,
 				3B5AEDB6200A129B00FBD7EC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

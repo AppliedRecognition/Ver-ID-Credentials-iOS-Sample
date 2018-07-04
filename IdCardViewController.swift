@@ -14,7 +14,7 @@ import VerIDCredentials
 /// View controller that shows a detected ID card and its properties
 class IdCardViewController: UIViewController, UITableViewDataSource {
     
-    var idBundle: IDBundle?
+    var document: IDDocument?
     var properties: [[String:String]] = []
     
     @IBOutlet var tableView: UITableView!
@@ -23,15 +23,15 @@ class IdCardViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.dataSource = self
-        if let url = self.idBundle?.cards.first?.imageURL, let image = UIImage(contentsOfFile: url.path) {
+        if let url = self.document?.pages.first?.imageURL, let image = UIImage(contentsOfFile: url.path) {
             // Show the card image
             self.cardImageView.image = image
-            if let faceBounds = self.idBundle?.frontFacePhoto.bounds, !faceBounds.isNull {
+            if let faceBounds = self.document?.frontFacePhoto.bounds, !faceBounds.isNull {
                 // Overlay the face bounds over the card image
                 self.cardImageView.faceBounds = faceBounds
             }
         }
-        if let barcode = self.idBundle?.barcodes.first?.value.first {
+        if let barcode = self.document?.barcodes.first?.value.first {
             self.properties = barcode.array
         }
     }

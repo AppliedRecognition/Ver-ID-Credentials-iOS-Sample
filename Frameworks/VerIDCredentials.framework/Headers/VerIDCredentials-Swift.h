@@ -194,8 +194,8 @@ typedef SWIFT_ENUM(NSInteger, BarcodeEncoding) {
 
 
 /// Feature on the card
-SWIFT_CLASS("_TtC16VerIDCredentials11CardFeature")
-@interface CardFeature : NSObject <NSCopying>
+SWIFT_CLASS("_TtC16VerIDCredentials9IDFeature")
+@interface IDFeature : NSObject <NSCopying>
 - (id _Nonnull)copyWithZone:(struct _NSZone * _Nullable)zone SWIFT_WARN_UNUSED_RESULT;
 /// Expected or detected bounds of the feature (defaults to <code>CGRect.null</code>)
 @property (nonatomic, readonly) CGRect bounds;
@@ -209,7 +209,7 @@ enum BarcodeFormat : NSInteger;
 
 /// Represents a barcode found on an ID card
 SWIFT_CLASS("_TtC16VerIDCredentials14BarcodeFeature")
-@interface BarcodeFeature : CardFeature
+@interface BarcodeFeature : IDFeature
 - (id _Nonnull)copyWithZone:(struct _NSZone * _Nullable)zone SWIFT_WARN_UNUSED_RESULT;
 /// Format of the barcode
 @property (nonatomic, readonly) enum BarcodeFormat format;
@@ -230,53 +230,53 @@ SWIFT_CLASS("_TtC16VerIDCredentials14BarcodeFeature")
 ///
 - (nonnull instancetype)initWithFormat:(enum BarcodeFormat)format payload:(NSString * _Nonnull)payload OBJC_DESIGNATED_INITIALIZER;
 /// Family name of the cardholder. (Family name is sometimes also called “last name” or “surname.”)
-@property (nonatomic, readonly, copy) NSString * _Nullable surname SWIFT_DEPRECATED_OBJC("Swift property 'BarcodeFeature.surname' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, copy) NSString * _Nullable surname;
 /// First name of the cardholder.
-@property (nonatomic, readonly, copy) NSString * _Nullable name SWIFT_DEPRECATED_OBJC("Swift property 'BarcodeFeature.name' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, copy) NSString * _Nullable name;
 /// Name Suffix (If jurisdiction participates in systems requiring name suffix (PDPS, CDLIS, etc.), the suffix is displayed on the DL/ID and in the MRT).
 /// JR (Junior), SR (Senior), 1ST or I (First), 2ND or II (Second), 3RD or III (Third), 4TH or IV (Fourth), 5TH or V (Fifth), 6TH or VI (Sixth), 7TH or VII (Seventh), 8TH or VIII (Eighth), 9TH or IX (Ninth)
-@property (nonatomic, readonly, copy) NSString * _Nullable nameSuffix SWIFT_DEPRECATED_OBJC("Swift property 'BarcodeFeature.nameSuffix' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, copy) NSString * _Nullable nameSuffix;
 /// Date on which the document was issued.
-@property (nonatomic, readonly, copy) NSDate * _Nullable issueDate SWIFT_DEPRECATED_OBJC("Swift property 'BarcodeFeature.issueDate' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, copy) NSDate * _Nullable issueDate;
 /// Date on which the driving and identification privileges granted by the document are no longer valid.
-@property (nonatomic, readonly, copy) NSDate * _Nullable expiryDate SWIFT_DEPRECATED_OBJC("Swift property 'BarcodeFeature.expiryDate' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, copy) NSDate * _Nullable expiryDate;
 /// Date on which the cardholder was born.
-@property (nonatomic, readonly, copy) NSDate * _Nullable dateOfBirth SWIFT_DEPRECATED_OBJC("Swift property 'BarcodeFeature.dateOfBirth' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, copy) NSDate * _Nullable dateOfBirth;
 /// Color of cardholder’s eyes. (ANSI D-20 codes)
-@property (nonatomic, readonly, copy) NSString * _Nullable eyeColour SWIFT_DEPRECATED_OBJC("Swift property 'BarcodeFeature.eyeColour' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, copy) NSString * _Nullable eyeColour;
 /// Height of cardholder.
 /// Inches (in): number of inches followed by “ in”, ex. 6’1’’ = “073 in”
 /// Centimeters (cm): number of centimeters followed by “ cm”, ex. 181 centimeters=“181 cm”
-@property (nonatomic, readonly, copy) NSString * _Nullable height SWIFT_DEPRECATED_OBJC("Swift property 'BarcodeFeature.height' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, copy) NSString * _Nullable height;
 /// Street portion of the cardholder address.
-@property (nonatomic, readonly, copy) NSString * _Nullable street1 SWIFT_DEPRECATED_OBJC("Swift property 'BarcodeFeature.street1' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, copy) NSString * _Nullable street1;
 /// Second line of street portion of the cardholder address.
-@property (nonatomic, readonly, copy) NSString * _Nullable street2 SWIFT_DEPRECATED_OBJC("Swift property 'BarcodeFeature.street2' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, copy) NSString * _Nullable street2;
 /// City portion of the cardholder address.
-@property (nonatomic, readonly, copy) NSString * _Nullable city SWIFT_DEPRECATED_OBJC("Swift property 'BarcodeFeature.city' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, copy) NSString * _Nullable city;
 /// State portion of the cardholder address.
-@property (nonatomic, readonly, copy) NSString * _Nullable juridistictionCode SWIFT_DEPRECATED_OBJC("Swift property 'BarcodeFeature.juridistictionCode' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, copy) NSString * _Nullable juridistictionCode;
 /// Postal code portion of the cardholder address in the U.S. and Canada. If the trailing portion of the postal code in the U.S. is not known, zeros will be used to fill the trailing set of numbers up to nine (9) digits.
-@property (nonatomic, readonly, copy) NSString * _Nullable postalCode SWIFT_DEPRECATED_OBJC("Swift property 'BarcodeFeature.postalCode' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, copy) NSString * _Nullable postalCode;
 /// Country in which DL/ID is issued. U.S. = USA, Canada = CAN.
-@property (nonatomic, readonly, copy) NSString * _Nullable country SWIFT_DEPRECATED_OBJC("Swift property 'BarcodeFeature.country' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, copy) NSString * _Nullable country;
 /// Weight range of the cardholder (kg).
-@property (nonatomic, readonly, copy) NSString * _Nullable weight SWIFT_DEPRECATED_OBJC("Swift property 'BarcodeFeature.weight' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, copy) NSString * _Nullable weight;
 /// Number that uniquely identifies a particular document issued to the cardholder from others that may have been issued in the past. This number serves multiple purposes of document discrimination, audit information number, and/or inventory control.
-@property (nonatomic, readonly, copy) NSString * _Nullable documentDiscriminator SWIFT_DEPRECATED_OBJC("Swift property 'BarcodeFeature.documentDiscriminator' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, copy) NSString * _Nullable documentDiscriminator;
 /// The number assigned or calculated by the issuing authority.
-@property (nonatomic, readonly, copy) NSString * _Nullable customerIDNumber SWIFT_DEPRECATED_OBJC("Swift property 'BarcodeFeature.customerIDNumber' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
-@property (nonatomic, readonly, copy) NSString * _Nonnull type SWIFT_DEPRECATED_OBJC("Swift property 'BarcodeFeature.type' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, copy) NSString * _Nullable customerIDNumber;
+@property (nonatomic, readonly, copy) NSString * _Nonnull type;
 /// Generates a string representation of the data detected on the ID card
 ///
 /// returns:
 /// Human-readable string
-@property (nonatomic, readonly, copy) NSString * _Nonnull string SWIFT_DEPRECATED_OBJC("Swift property 'BarcodeFeature.string' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, copy) NSString * _Nonnull string;
 /// Generates an array representation of the data detected on the ID card
 ///
 /// returns:
 /// An array of key-value object pairs
-@property (nonatomic, readonly, copy) NSArray<NSDictionary<NSString *, NSString *> *> * _Nonnull array SWIFT_DEPRECATED_OBJC("Swift property 'BarcodeFeature.array' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, copy) NSArray<NSDictionary<NSString *, NSString *> *> * _Nonnull array;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
@@ -308,40 +308,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSData * _Nonn
 + (NSDictionary<NSString *, NSDictionary<NSString *, NSString *> *> * _Nullable)parseData:(NSData * _Nonnull)data error:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_OBJC("Swift method 'BarcodeParser.parseData(_:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
-
-@class CardFormat;
-enum ISOCardFormat : NSInteger;
-
-/// Card with an ISO format
-SWIFT_CLASS("_TtC16VerIDCredentials4Card")
-@interface Card : NSObject <NSCopying>
-- (id _Nonnull)copyWithZone:(struct _NSZone * _Nullable)zone SWIFT_WARN_UNUSED_RESULT;
-/// ISO format of the card
-@property (nonatomic, readonly, strong) CardFormat * _Nonnull format;
-/// Card size in mm
-@property (nonatomic) CGSize size;
-/// Corner radius of the card in mm
-@property (nonatomic) CGFloat cornerRadius;
-/// Aspect ratio of the card (w/h)
-@property (nonatomic) CGFloat aspectRatio;
-/// Features on the card
-@property (nonatomic, readonly, copy) NSArray<CardFeature *> * _Nonnull features;
-/// Path of the card image relative to the app’s documents directory
-@property (nonatomic, copy) NSString * _Nullable imagePath;
-/// URL of the image of the card
-@property (nonatomic, readonly, copy) NSURL * _Nullable imageURL;
-/// Card constructor
-/// \param format ISO format of the card
-///
-/// \param features Features of the card
-///
-- (nonnull instancetype)initWithFormat:(enum ISOCardFormat)format features:(NSArray<CardFeature *> * _Nonnull)features OBJC_DESIGNATED_INITIALIZER;
-/// Indicates whether all features on the card have been detected
-@property (nonatomic, readonly) BOOL detected;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
-@end
-
 
 
 /// Card format
@@ -377,24 +343,25 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) CardFormat *
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
 
+@class Page;
 @class FacePhotoFeature;
 
-/// Represents a piece of identification like an ID card
-SWIFT_CLASS("_TtC16VerIDCredentials8IDBundle")
-@interface IDBundle : NSObject <NSCopying>
+SWIFT_CLASS("_TtC16VerIDCredentials10IDDocument")
+@interface IDDocument : NSObject <NSCopying>
 - (id _Nonnull)copyWithZone:(struct _NSZone * _Nullable)zone SWIFT_WARN_UNUSED_RESULT;
 /// The cards in this identification. Each card represents a page of an ID.
-@property (nonatomic, readonly, copy) NSArray<Card *> * _Nonnull cards;
+@property (nonatomic, readonly, copy) NSArray<Page *> * _Nonnull pages;
 /// Construct an ID bundle
 /// \param cards Cards in this bundle
 ///
-- (nonnull instancetype)initWithCards:(NSArray<Card *> * _Nonnull)cards OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithPages:(NSArray<Page *> * _Nonnull)pages OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithCards:(NSArray<Page *> * _Nonnull)cards OBJC_DESIGNATED_INITIALIZER;
 /// Convenience method to get face photo features in the bundle’s cards
-@property (nonatomic, readonly, copy) NSDictionary<Card *, NSArray<FacePhotoFeature *> *> * _Nonnull faces;
+@property (nonatomic, readonly, copy) NSDictionary<Page *, NSArray<FacePhotoFeature *> *> * _Nonnull faces;
 /// Convenience method to get barcode features in the bundle’s cards
-@property (nonatomic, readonly, copy) NSDictionary<Card *, NSArray<BarcodeFeature *> *> * _Nonnull barcodes;
-/// Convenient way to get the face photo in the first card of the bundle
-@property (nonatomic, readonly, strong) FacePhotoFeature * _Nonnull frontFacePhoto SWIFT_DEPRECATED_OBJC("Swift property 'IDBundle.frontFacePhoto' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, copy) NSDictionary<Page *, NSArray<BarcodeFeature *> *> * _Nonnull barcodes;
+/// Convenient way to get or set the face photo on the first page of the document
+@property (nonatomic, readonly, strong) FacePhotoFeature * _Nonnull frontFacePhoto;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
@@ -402,22 +369,21 @@ SWIFT_CLASS("_TtC16VerIDCredentials8IDBundle")
 
 /// Represents a bundle with one side containing a face photo and another side containing a PDF417 barcode
 SWIFT_CLASS("_TtC16VerIDCredentials37DoubleSidedPhotoCardWithPDF417Barcode")
-@interface DoubleSidedPhotoCardWithPDF417Barcode : IDBundle
+@interface DoubleSidedPhotoCardWithPDF417Barcode : IDDocument
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 + (nonnull instancetype)new;
-- (nonnull instancetype)initWithCards:(NSArray<Card *> * _Nonnull)cards SWIFT_UNAVAILABLE;
+- (nonnull instancetype)initWithPages:(NSArray<Page *> * _Nonnull)pages SWIFT_UNAVAILABLE;
+- (nonnull instancetype)initWithCards:(NSArray<Page *> * _Nonnull)cards SWIFT_UNAVAILABLE;
 @end
 
-@class NSNumber;
 @class FaceTemplate;
 @class VerIDFace;
 
 /// Photograph of a face on a card
 SWIFT_CLASS("_TtC16VerIDCredentials16FacePhotoFeature")
-@interface FacePhotoFeature : CardFeature
+@interface FacePhotoFeature : IDFeature
 - (id _Nonnull)copyWithZone:(struct _NSZone * _Nullable)zone SWIFT_WARN_UNUSED_RESULT;
 /// The face template that can be used for face comparison using Ver-ID
-@property (nonatomic, copy, getter=template, setter=setTemplate:) NSArray<NSNumber *> * _Nullable template_;
 @property (nonatomic, strong) FaceTemplate * _Nullable faceTemplate;
 /// Constructor
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
@@ -426,7 +392,6 @@ SWIFT_CLASS("_TtC16VerIDCredentials16FacePhotoFeature")
 ///
 - (nonnull instancetype)initWithFace:(VerIDFace * _Nonnull)face OBJC_DESIGNATED_INITIALIZER;
 @end
-
 
 @class IDCaptureSessionSettings;
 @protocol IDCaptureSessionDelegate;
@@ -473,7 +438,8 @@ enum IDCaptureSessionStatus : NSInteger;
 SWIFT_CLASS("_TtC16VerIDCredentials22IDCaptureSessionResult")
 @interface IDCaptureSessionResult : NSObject
 /// Detected ID bundle or nil on failure or cancellation
-@property (nonatomic, readonly, strong) IDBundle * _Nullable idBundle;
+@property (nonatomic, readonly, strong) IDDocument * _Nullable idBundle;
+@property (nonatomic, readonly, strong) IDDocument * _Nullable document;
 /// Status of the ID capture session
 @property (nonatomic, readonly) enum IDCaptureSessionStatus status;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
@@ -484,7 +450,9 @@ SWIFT_CLASS("_TtC16VerIDCredentials22IDCaptureSessionResult")
 SWIFT_CLASS("_TtC16VerIDCredentials24IDCaptureSessionSettings")
 @interface IDCaptureSessionSettings : NSObject
 /// ID bundle to detect in the session
-@property (nonatomic, strong) IDBundle * _Nonnull idBundle;
+@property (nonatomic, strong) IDDocument * _Nonnull idBundle;
+/// ID document to detect in the session
+@property (nonatomic, strong) IDDocument * _Nonnull document;
 /// <code>true</code> to show guidance during the session to the user
 @property (nonatomic) BOOL showGuide;
 /// <code>true</code> to show the result of the session to the user before calling the session’s delegate
@@ -492,7 +460,7 @@ SWIFT_CLASS("_TtC16VerIDCredentials24IDCaptureSessionSettings")
 /// <code>true</code> if the faces detected in the session will be used for face recognition. <code>false</code> will return faces without face templates that cannot be used for face comparison.
 @property (nonatomic) BOOL detectFaceForRecognition;
 /// Settings constructor
-/// \param idBundle ID bundle to detect in the session, defaults to <code>SingleSidedPhotoCard</code>
+/// \param document ID document to detect in the session, defaults to <code>SingleSidedPhotoCard</code>
 ///
 /// \param showGuide <code>true</code> to show guidance during the session to the user
 ///
@@ -500,7 +468,7 @@ SWIFT_CLASS("_TtC16VerIDCredentials24IDCaptureSessionSettings")
 ///
 /// \param detectFaceForRecognition <code>true</code> if the faces detected in the session will be used for face recognition. <code>false</code> will return faces without face templates that cannot be used for face comparison.
 ///
-- (nonnull instancetype)initWithIdBundle:(IDBundle * _Nonnull)idBundle showGuide:(BOOL)showGuide showResult:(BOOL)showResult detectFaceForRecognition:(BOOL)detectFaceForRecognition OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithDocument:(IDDocument * _Nonnull)document showGuide:(BOOL)showGuide showResult:(BOOL)showResult detectFaceForRecognition:(BOOL)detectFaceForRecognition OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
@@ -510,6 +478,8 @@ typedef SWIFT_ENUM(NSInteger, IDCaptureSessionStatus) {
   IDCaptureSessionStatusFailed = 1,
   IDCaptureSessionStatusCanceled = 2,
 };
+
+
 
 /// ISO card format
 typedef SWIFT_ENUM(NSInteger, ISOCardFormat) {
@@ -522,19 +492,49 @@ typedef SWIFT_ENUM(NSInteger, ISOCardFormat) {
 };
 
 
+SWIFT_CLASS("_TtC16VerIDCredentials4Page")
+@interface Page : NSObject <NSCopying>
+/// ISO format of the card
+@property (nonatomic, readonly, strong) CardFormat * _Nonnull format;
+/// Card size in mm
+@property (nonatomic) CGSize size;
+/// Corner radius of the card in mm
+@property (nonatomic) CGFloat cornerRadius;
+/// Aspect ratio of the card (w/h)
+@property (nonatomic) CGFloat aspectRatio;
+/// Features on the card
+@property (nonatomic, readonly, copy) NSArray<IDFeature *> * _Nonnull features;
+/// Path of the card image relative to the app’s documents directory
+@property (nonatomic, copy) NSString * _Nullable imagePath;
+/// URL of the image of the card
+@property (nonatomic, readonly, copy) NSURL * _Nullable imageURL;
+/// Indicates whether all features on the card have been detected
+@property (nonatomic, readonly) BOOL detected;
+/// Card constructor
+/// \param format ISO format of the card
+///
+/// \param features Features of the card
+///
+- (nonnull instancetype)initWithFormat:(enum ISOCardFormat)format features:(NSArray<IDFeature *> * _Nonnull)features OBJC_DESIGNATED_INITIALIZER;
+- (id _Nonnull)copyWithZone:(struct _NSZone * _Nullable)zone SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+
 /// ISO ID-1 card with a barcode
 SWIFT_CLASS("_TtC16VerIDCredentials27ISOID1CardWithPDF417Barcode")
-@interface ISOID1CardWithPDF417Barcode : Card
+@interface ISOID1CardWithPDF417Barcode : Page
 /// Constructor
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 + (nonnull instancetype)new;
-- (nonnull instancetype)initWithFormat:(enum ISOCardFormat)format features:(NSArray<CardFeature *> * _Nonnull)features SWIFT_UNAVAILABLE;
+- (nonnull instancetype)initWithFormat:(enum ISOCardFormat)format features:(NSArray<IDFeature *> * _Nonnull)features SWIFT_UNAVAILABLE;
 @end
 
 
 /// ISO ID-1 card with a face photo
 SWIFT_CLASS("_TtC16VerIDCredentials15ISOID1PhotoCard")
-@interface ISOID1PhotoCard : Card
+@interface ISOID1PhotoCard : Page
 /// Constructor
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 + (nonnull instancetype)new;
@@ -542,7 +542,7 @@ SWIFT_CLASS("_TtC16VerIDCredentials15ISOID1PhotoCard")
 /// \param face Detected face
 ///
 - (nonnull instancetype)initWithFace:(VerIDFace * _Nonnull)face;
-- (nonnull instancetype)initWithFormat:(enum ISOCardFormat)format features:(NSArray<CardFeature *> * _Nonnull)features SWIFT_UNAVAILABLE;
+- (nonnull instancetype)initWithFormat:(enum ISOCardFormat)format features:(NSArray<IDFeature *> * _Nonnull)features SWIFT_UNAVAILABLE;
 @end
 
 
@@ -550,6 +550,7 @@ SWIFT_CLASS("_TtC16VerIDCredentials10IdCardInfo")
 @interface IdCardInfo : NSObject
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
+
 
 @class VNRectangleObservation;
 
@@ -571,10 +572,11 @@ typedef SWIFT_ENUM(NSInteger, Region) {
 
 /// Represents a bundle with one side that contains a face photo
 SWIFT_CLASS("_TtC16VerIDCredentials20SingleSidedPhotoCard")
-@interface SingleSidedPhotoCard : IDBundle
+@interface SingleSidedPhotoCard : IDDocument
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 + (nonnull instancetype)new;
-- (nonnull instancetype)initWithCards:(NSArray<Card *> * _Nonnull)cards SWIFT_UNAVAILABLE;
+- (nonnull instancetype)initWithPages:(NSArray<Page *> * _Nonnull)pages SWIFT_UNAVAILABLE;
+- (nonnull instancetype)initWithCards:(NSArray<Page *> * _Nonnull)cards SWIFT_UNAVAILABLE;
 @end
 
 #if __has_attribute(external_source_symbol)

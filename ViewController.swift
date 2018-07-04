@@ -22,7 +22,7 @@ class ViewController: UIViewController, IDCaptureSessionDelegate, VerIDSessionDe
     }()
     var liveFace: VerIDFace?
     var liveFaceImage: UIImage?
-    var idBundle: IDBundle?
+    var document: IDDocument?
     let cardImageFileName = "capturedIdCard.png"
     
     override func viewDidLoad() {
@@ -30,12 +30,12 @@ class ViewController: UIViewController, IDCaptureSessionDelegate, VerIDSessionDe
         guard let cardData = UserDefaults.standard.data(forKey: "idBundle") else {
             return
         }
-        if let card = try? JSONDecoder().decode(IDBundle.self, from: cardData) {
-            self.idBundle = card
+        if let document = try? JSONDecoder().decode(IDDocument.self, from: cardData) {
+            self.document = document
         } else {
             return
         }
-        guard let imageURL = self.idBundle?.cards.first?.imageURL else {
+        guard let imageURL = self.document?.pages.first?.imageURL else {
             return
         }
         do {
@@ -57,7 +57,9 @@ class ViewController: UIViewController, IDCaptureSessionDelegate, VerIDSessionDe
     
     @IBAction func scanIdCard(_ sender: Any?) {
         let settings = IDCaptureSessionSettings()
-        settings.idBundle = IDBundle(cards: [])
+        settings.document = IDDocument(pages: [])
+        // To scan an ID with a photo on the front and a PDF 417 barcode on the back (e.g. US/Canadian driver's licence) uncomment the line below
+        // settings.document = DoubleSidedPhotoCardWithPDF417Barcode()
         settings.showResult = true
         settings.showGuide = true
         settings.detectFaceForRecognition = true
@@ -77,11 +79,11 @@ class ViewController: UIViewController, IDCaptureSessionDelegate, VerIDSessionDe
     
     @IBAction func cardDeleted(_ segue: UIStoryboardSegue) {
         UserDefaults.standard.removeObject(forKey: "idBundle")
-        if let cardImageURL = self.idBundle?.cards.first?.imageURL {
+        if let cardImageURL = self.document?.pages.first?.imageURL {
             try? FileManager.default.removeItem(at: cardImageURL)
         }
         self.cardImageView.image = nil
-        self.idBundle = nil
+        self.document = nil
         self.compareLiveFaceButton.isEnabled = false
         self.introTextView.isHidden = false
         self.cardImageView.isHidden = true
@@ -93,7 +95,7 @@ class ViewController: UIViewController, IDCaptureSessionDelegate, VerIDSessionDe
             guard let cardImageURL = self.cardImageURL else {
                 return
             }
-            guard let sourceCardImageURL = result.idBundle?.cards.first?.imageURL else {
+            guard let sourceCardImageURL = result.document?.pages.first?.imageURL else {
                 return
             }
             guard let imageData = try? Data(contentsOf: sourceCardImageURL) else {
@@ -108,14 +110,14 @@ class ViewController: UIViewController, IDCaptureSessionDelegate, VerIDSessionDe
                 NSLog("Error copying file %@ to %@: %@", sourceCardImageURL.path, cardImageURL.path, error.localizedDescription)
                 return
             }
-            self.idBundle = result.idBundle
-            self.idBundle?.cards.first?.imagePath = self.cardImageFileName
+            self.document = result.document
+            self.document?.pages.first?.imagePath = self.cardImageFileName
             self.cardImageView.image = image
             self.compareLiveFaceButton.isEnabled = true
             self.introTextView.isHidden = true
             self.cardImageView.isHidden = false
             self.scanIdCardButton.setTitle("Rescan ID Card", for: .normal)
-            if let card = self.idBundle {
+            if let card = self.document {
                 do {
                     let cardData = try JSONEncoder().encode(card)
                     UserDefaults.standard.set(cardData, forKey: "idBundle")
@@ -154,11 +156,11 @@ class ViewController: UIViewController, IDCaptureSessionDelegate, VerIDSessionDe
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let controller = segue.destination as? ResultsViewController {
-            controller.card = self.idBundle?.cards.first
+            controller.page = self.document?.pages.first
             controller.liveFaceImage = self.liveFaceImage
             controller.liveFace = self.liveFace
         } else if let controller = segue.destination as? IdCardViewController {
-            controller.idBundle = self.idBundle
+            controller.document = self.document
         }
     }
 }
