@@ -274,18 +274,49 @@ SWIFT_CLASS("_TtC5VerID25StillCameraViewController")
 
 
 
+enum VerIDSecurityLevel : NSInteger;
 
 /// Manage users and their face templates
 SWIFT_CLASS("_TtC5VerID11UserManager")
 @interface UserManager : NSObject
+/// Assign face templates to a user
+/// note:
+/// If a user record with the given identifier does not exist it will be created. If any of the face templates are already assigned to a different user they will be reassigned to the specified user. If any of the face templates is the last remaining template for the user to whom they were previously assigned the user will be deleted. This method replaces the less performant <code>addFaceTemplates(_:to)</code>.
+/// \param faceTemplates Array of face templates to assign to the user
+///
+/// \param user Identifier for the user
+///
+- (BOOL)assignFaceTemplates:(NSArray<FaceTemplate *> * _Nonnull)faceTemplates to:(NSString * _Nonnull)user error:(NSError * _Nullable * _Nullable)error;
+/// Assign face templates to a user
+/// note:
+/// If a user record with the given identifier does not exist it will be created. If any of the face templates are already assigned to a different user they will be reassigned to the specified user. If any of the face templates is the last remaining template for the user to whom they were previously assigned the user will be deleted. This method replaces the less performant <code>addFaceTemplates(_:to)</code>.
+/// \param faceTemplates Array of face templates to assign to the user
+///
+/// \param user Identifier for the user
+///
+/// \param completion Block invoked on completion
+///
+- (void)assignFaceTemplates:(NSArray<FaceTemplate *> * _Nonnull)faceTemplates to:(NSString * _Nonnull)user completion:(void (^ _Nonnull)(NSError * _Nullable))completion;
+/// Delete face templates
+/// note:
+/// If the given face templates are the last remaining face templates for a user the user will be deleted.
+/// \param faceTemplates Array of face templates to delete
+///
+- (BOOL)deleteFaceTemplates:(NSArray<FaceTemplate *> * _Nonnull)faceTemplates error:(NSError * _Nullable * _Nullable)error;
+/// Delete face templates
+/// note:
+/// If the given face templates are the last remaining face templates for a user the user will be deleted.
+/// \param faceTemplates Array of face templates to delete
+///
+- (void)deleteFaceTemplates:(NSArray<FaceTemplate *> * _Nonnull)faceTemplates completion:(void (^ _Nonnull)(NSError * _Nullable))completion;
 /// Add face templates to a user identified by a string
 /// note:
-/// If a user record with the given identifier does not exist it will be created. If any of the face templates are already associated with the user they will not be duplicated.
+/// If a user record with the given identifier does not exist it will be created. If any of the face templates are already associated with another user they will be duplicated. To avoid this use <code>assignFaceTemplates(_:to)</code> instead.
 /// \param faceTemplates Array of face templates to associate with the user
 ///
 /// \param user Identifier for the user
 ///
-- (BOOL)addFaceTemplates:(NSArray<FaceTemplate *> * _Nonnull)faceTemplates to:(NSString * _Nonnull)user error:(NSError * _Nullable * _Nullable)error;
+- (BOOL)addFaceTemplates:(NSArray<FaceTemplate *> * _Nonnull)faceTemplates to:(NSString * _Nonnull)user error:(NSError * _Nullable * _Nullable)error SWIFT_DEPRECATED_MSG("Deprecated in Ver-ID 3.4.0");
 /// Add face templates to a user identified by a string
 /// note:
 /// If a user record with the given identifier does not exist it will be created. If any of the face templates are already associated with the user they will not be duplicated.
@@ -295,7 +326,7 @@ SWIFT_CLASS("_TtC5VerID11UserManager")
 ///
 /// \param completion Block invoked on completion
 ///
-- (void)addFaceTemplates:(NSArray<FaceTemplate *> * _Nonnull)faceTemplates to:(NSString * _Nonnull)user completion:(void (^ _Nonnull)(NSError * _Nullable))completion;
+- (void)addFaceTemplates:(NSArray<FaceTemplate *> * _Nonnull)faceTemplates to:(NSString * _Nonnull)user completion:(void (^ _Nonnull)(NSError * _Nullable))completion SWIFT_DEPRECATED_MSG("Deprecated in Ver-ID 3.4.0");
 /// Retrieve user’s face templates
 /// \param user Identifier for the user for whom to retrieve templates
 ///
@@ -311,18 +342,18 @@ SWIFT_CLASS("_TtC5VerID11UserManager")
 - (void)faceTemplatesFor:(NSString * _Nonnull)user completion:(void (^ _Nonnull)(NSArray<FaceTemplate *> * _Nonnull, NSError * _Nullable))completion;
 /// Remove face templates from a user
 /// note:
-/// Face templates that are not associated with the user will be ignored
+/// Face templates that are not associated with the user will be ignored. This method is replaced by the better-performing <code>deleteFaceTemplates(_)</code>.
 /// \param faceTemplates Face templates to dissassociate from the user
 ///
-/// \param user Identifier for the user from whom to remove the templates
+/// \param user Identifier for the user from whom the face templates will be removed
 ///
 - (BOOL)removeFaceTemplates:(NSArray<FaceTemplate *> * _Nonnull)faceTemplates from:(NSString * _Nonnull)user error:(NSError * _Nullable * _Nullable)error;
 /// Remove face templates from a user
 /// note:
-/// Face templates that are not associated with the user will be ignored
+/// Face templates that are not associated with the user will be ignored. This method is replaced by the better-performing <code>deleteFaceTemplates(_:completion)</code>.
 /// \param faceTemplates Face templates to dissassociate from the user
 ///
-/// \param user Identifier for the user from whom to remove the templates
+/// \param user Identifier for the user from whom the face templates will be removed
 ///
 /// \param completion Block invoked on completion
 ///
@@ -339,12 +370,29 @@ SWIFT_CLASS("_TtC5VerID11UserManager")
 /// Identify users whose face templates match the given face template
 /// \param faceTemplate Face template to which to compare user face templates
 ///
+/// \param securityLevel Security level to use on the authentication
+///
+///
+/// returns:
+/// Identifiers for users whose faces are similar to the supplied face template.
+- (NSArray<NSString *> * _Nullable)identifyUsersIn:(FaceTemplate * _Nonnull)faceTemplate securityLevel:(enum VerIDSecurityLevel)securityLevel error:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
+/// Identify users whose face templates match the given face template
+/// \param faceTemplate Face template to which to compare user face templates
+///
+/// \param securityLevel Security level to use on the authentication
+///
+/// \param completion Block invoked on completion. The block’s string array parameter contains identifiers for users whose faces are similar to the supplied face template.
+///
+- (void)identifyUsersIn:(FaceTemplate * _Nonnull)faceTemplate securityLevel:(enum VerIDSecurityLevel)securityLevel completion:(void (^ _Nonnull)(NSArray<NSString *> * _Nonnull, NSError * _Nullable))completion;
+/// Identify users whose face templates match the given face template
+/// \param faceTemplate Face template to which to compare user face templates
+///
 /// \param similarityThreshold alue between <code>0.0</code> and <code>1.0</code> or <code>nil</code> to use a default value of <code>0.5</code>
 ///
 ///
 /// returns:
 /// Identifiers for users whose face templates’ distance to the given template is greater than the similarity threshold
-- (NSArray<NSString *> * _Nullable)identifyUsersIn:(FaceTemplate * _Nonnull)faceTemplate similarityThreshold:(NSNumber * _Nullable)similarityThreshold error:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
+- (NSArray<NSString *> * _Nullable)identifyUsersIn:(FaceTemplate * _Nonnull)faceTemplate similarityThreshold:(NSNumber * _Nonnull)similarityThreshold error:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("Use identifyUsers(in:securityLevel:) instead");
 /// Identify users whose face templates match the given face template
 /// \param faceTemplate Face template to which to compare user face templates
 ///
@@ -352,7 +400,7 @@ SWIFT_CLASS("_TtC5VerID11UserManager")
 ///
 /// \param completion Block invoked on completion. The block’s string array parameter contains identifiers for users whose face templates’ distance to the given template is greater than the similarity threshold.
 ///
-- (void)identifyUsersIn:(FaceTemplate * _Nonnull)faceTemplate similarityThreshold:(NSNumber * _Nullable)similarityThreshold completion:(void (^ _Nonnull)(NSArray<NSString *> * _Nonnull, NSError * _Nullable))completion;
+- (void)identifyUsersIn:(FaceTemplate * _Nonnull)faceTemplate similarityThreshold:(NSNumber * _Nonnull)similarityThreshold completion:(void (^ _Nonnull)(NSArray<NSString *> * _Nonnull, NSError * _Nullable))completion SWIFT_DEPRECATED_MSG("Deprecated in 3.4.0, use identifyUsers(in:securityLevel:completion:) instead");
 /// Compare a face template to templates of a given user
 /// \param faceTemplate Face template to compare
 ///
@@ -380,6 +428,16 @@ SWIFT_CLASS("_TtC5VerID11UserManager")
 /// \param completion Block invoked on completion
 ///
 - (void)removeUser:(NSString * _Nonnull)id completion:(void (^ _Nonnull)(NSError * _Nullable))completion;
+/// Remove user records and their associated face templates
+/// \param ids User identifiers
+///
+- (BOOL)removeUsers:(NSArray<NSString *> * _Nonnull)ids error:(NSError * _Nullable * _Nullable)error;
+/// Remove user records and their associated face templates
+/// \param ids User identifiers
+///
+/// \param completion Block to invoke on completion
+///
+- (void)removeUsers:(NSArray<NSString *> * _Nonnull)ids completion:(void (^ _Nonnull)(NSError * _Nullable))completion;
 /// Export all face templates
 ///
 /// returns:
@@ -406,7 +464,6 @@ SWIFT_CLASS("_TtC5VerID11UserManager")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-enum VerIDSecurityLevel : NSInteger;
 @class VerIDUser;
 @class VerIDFace;
 
@@ -428,9 +485,11 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) VerID * _Non
 ///
 /// \param resourcesURL URL from which to download Ver-ID resources. Set to <code>nil</code> if you bundle the resources in the VerIDModels folder in your app.
 ///
+/// \param clearDatabase Setting this to <code>true</code> will clear all registered users and faces and return the Ver-ID database to the same state as when the app was first installed.
+///
 /// \param callback Block to be executed when Ver-ID is loaded. The block’s <code>error</code> parameter will not be <code>nil</code> if the client app authentication fails.
 ///
-- (void)load:(NSString * _Nullable)apiSecret resourcesURL:(NSURL * _Nullable)resourcesURL callback:(void (^ _Nullable)(BOOL, NSError * _Nullable))callback;
+- (void)load:(NSString * _Nullable)apiSecret resourcesURL:(NSURL * _Nullable)resourcesURL clearDatabase:(BOOL)clearDatabase callback:(void (^ _Nullable)(BOOL, NSError * _Nullable))callback;
 /// Unload Ver-ID. Unload Ver-ID and release its resources. You must call <code>load()</code> or <code>loadAsync(_:)</code> again prior to calling any Ver-ID methods.
 /// seealso:
 /// <code>load(_:resourcesURL:callback:)</code>

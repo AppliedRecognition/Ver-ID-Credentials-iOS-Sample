@@ -185,6 +185,32 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # pragma pop_macro("any")
 #endif
 
+
+SWIFT_PROTOCOL("_TtP16VerIDCredentials13BarcodeParser_")
+@protocol BarcodeParser
+- (NSDictionary<NSString *, NSDictionary<NSString *, NSString *> *> * _Nullable)parse:(NSData * _Nonnull)data error:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+SWIFT_CLASS("_TtC16VerIDCredentials18AAMVABarcodeParser")
+@interface AAMVABarcodeParser : NSObject <BarcodeParser>
+- (NSDictionary<NSString *, NSDictionary<NSString *, NSString *> *> * _Nullable)parse:(NSData * _Nonnull)data error:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_PROTOCOL("_TtP16VerIDCredentials20BarcodeParserFactory_")
+@protocol BarcodeParserFactory
+- (id <BarcodeParser> _Nonnull)makeBarcodeParser SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+SWIFT_CLASS("_TtC16VerIDCredentials25AAMVABarcodeParserFactory")
+@interface AAMVABarcodeParserFactory : NSObject <BarcodeParserFactory>
+- (id <BarcodeParser> _Nonnull)makeBarcodeParser SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
 /// Barcode encoding
 typedef SWIFT_ENUM(NSInteger, BarcodeEncoding) {
   BarcodeEncodingAAMVA = 0,
@@ -217,6 +243,8 @@ SWIFT_CLASS("_TtC16VerIDCredentials14BarcodeFeature")
 @property (nonatomic, readonly) enum BarcodeEncoding encoding;
 /// Raw text detected in the barcode
 @property (nonatomic, readonly, copy) NSString * _Nullable payload;
+/// Raw barcode data
+@property (nonatomic, readonly, copy) NSData * _Nullable data;
 /// Barcode feature constructor
 /// \param format Barcode format
 ///
@@ -229,71 +257,10 @@ SWIFT_CLASS("_TtC16VerIDCredentials14BarcodeFeature")
 /// \param payload Detected raw text, encoding will be detected automatically
 ///
 - (nonnull instancetype)initWithFormat:(enum BarcodeFormat)format payload:(NSString * _Nonnull)payload OBJC_DESIGNATED_INITIALIZER;
-/// Family name of the cardholder. (Family name is sometimes also called “last name” or “surname.”)
-@property (nonatomic, readonly, copy) NSString * _Nullable surname;
-/// First name of the cardholder.
-@property (nonatomic, readonly, copy) NSString * _Nullable name;
-/// Name Suffix (If jurisdiction participates in systems requiring name suffix (PDPS, CDLIS, etc.), the suffix is displayed on the DL/ID and in the MRT).
-/// JR (Junior), SR (Senior), 1ST or I (First), 2ND or II (Second), 3RD or III (Third), 4TH or IV (Fourth), 5TH or V (Fifth), 6TH or VI (Sixth), 7TH or VII (Seventh), 8TH or VIII (Eighth), 9TH or IX (Ninth)
-@property (nonatomic, readonly, copy) NSString * _Nullable nameSuffix;
-/// Date on which the document was issued.
-@property (nonatomic, readonly, copy) NSDate * _Nullable issueDate;
-/// Date on which the driving and identification privileges granted by the document are no longer valid.
-@property (nonatomic, readonly, copy) NSDate * _Nullable expiryDate;
-/// Date on which the cardholder was born.
-@property (nonatomic, readonly, copy) NSDate * _Nullable dateOfBirth;
-/// Color of cardholder’s eyes. (ANSI D-20 codes)
-@property (nonatomic, readonly, copy) NSString * _Nullable eyeColour;
-/// Height of cardholder.
-/// Inches (in): number of inches followed by “ in”, ex. 6’1’’ = “073 in”
-/// Centimeters (cm): number of centimeters followed by “ cm”, ex. 181 centimeters=“181 cm”
-@property (nonatomic, readonly, copy) NSString * _Nullable height;
-/// Street portion of the cardholder address.
-@property (nonatomic, readonly, copy) NSString * _Nullable street1;
-/// Second line of street portion of the cardholder address.
-@property (nonatomic, readonly, copy) NSString * _Nullable street2;
-/// City portion of the cardholder address.
-@property (nonatomic, readonly, copy) NSString * _Nullable city;
-/// State portion of the cardholder address.
-@property (nonatomic, readonly, copy) NSString * _Nullable juridistictionCode;
-/// Postal code portion of the cardholder address in the U.S. and Canada. If the trailing portion of the postal code in the U.S. is not known, zeros will be used to fill the trailing set of numbers up to nine (9) digits.
-@property (nonatomic, readonly, copy) NSString * _Nullable postalCode;
-/// Country in which DL/ID is issued. U.S. = USA, Canada = CAN.
-@property (nonatomic, readonly, copy) NSString * _Nullable country;
-/// Weight range of the cardholder (kg).
-@property (nonatomic, readonly, copy) NSString * _Nullable weight;
-/// Number that uniquely identifies a particular document issued to the cardholder from others that may have been issued in the past. This number serves multiple purposes of document discrimination, audit information number, and/or inventory control.
-@property (nonatomic, readonly, copy) NSString * _Nullable documentDiscriminator;
-/// The number assigned or calculated by the issuing authority.
-@property (nonatomic, readonly, copy) NSString * _Nullable customerIDNumber;
-@property (nonatomic, readonly, copy) NSString * _Nonnull type;
-/// Generates a string representation of the data detected on the ID card
-///
-/// returns:
-/// Human-readable string
-@property (nonatomic, readonly, copy) NSString * _Nonnull string;
-/// Generates an array representation of the data detected on the ID card
-///
-/// returns:
-/// An array of key-value object pairs
-@property (nonatomic, readonly, copy) NSArray<NSDictionary<NSString *, NSString *> *> * _Nonnull array;
+- (nonnull instancetype)initWithFormat:(enum BarcodeFormat)format data:(NSData * _Nullable)data OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
-
-/// Sex/gender
-/// <ul>
-///   <li>
-///     Female
-///   </li>
-///   <li>
-///     Male
-///   </li>
-/// </ul>
-typedef SWIFT_ENUM(NSInteger, Sex) {
-  SexFemale = 2,
-  SexMale = 1,
-};
 
 /// Barcode format
 typedef SWIFT_ENUM(NSInteger, BarcodeFormat) {
@@ -301,13 +268,6 @@ typedef SWIFT_ENUM(NSInteger, BarcodeFormat) {
 };
 
 
-SWIFT_CLASS("_TtC16VerIDCredentials13BarcodeParser")
-@interface BarcodeParser : NSObject
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSData * _Nonnull example SWIFT_DEPRECATED_OBJC("Swift property 'BarcodeParser.example' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");)
-+ (NSData * _Nonnull)example SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_OBJC("Swift property 'BarcodeParser.example' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
-+ (NSDictionary<NSString *, NSDictionary<NSString *, NSString *> *> * _Nullable)parseData:(NSData * _Nonnull)data error:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_OBJC("Swift method 'BarcodeParser.parseData(_:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
 
 
 /// Card format

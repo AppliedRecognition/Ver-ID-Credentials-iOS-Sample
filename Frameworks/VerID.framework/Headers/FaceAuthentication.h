@@ -930,6 +930,20 @@ typedef NS_ENUM(NSInteger, FaceAuthenticationSecurityLevel) {
                             withOrientation:(int)orientation
                                       error:(NSError **)error;
 
++ (NSArray<FBFace *> *) detectFacesInIDCardUsingBackgroundProcessing:(CGImageRef )image
+                                                     withOrientation:(int)orientation
+                                                               error:(NSError **)error;
+
++ (NSArray<FBFace *> *) detectFacesInIDCardInImageBuffer:(unsigned char *)buffer
+                                                  withWidth:(int)width
+                                                     height:(int)height
+                                                      error:(NSError **)error;
+
++ (NSArray<FBFace *> *) detectFacesInIDCardUsingBackgroundProcessingInImageBuffer:(unsigned char *)buffer
+                                                                          withWidth:(int)width
+                                                                             height:(int)height
+                                                                              error:(NSError **)error;
+
 /**
  * Discard a face obtained from detection. *** All valid faces returned from detection must
  * either be added to subject (and not discarded), or discarded, regardless if they are

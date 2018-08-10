@@ -12,10 +12,10 @@ import AVFoundation
 import VerIDCredentials
 
 /// View controller that shows a detected ID card and its properties
-class IdCardViewController: UIViewController, UITableViewDataSource {
+class IdCardViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var document: IDDocument?
-    var properties: [[String:String]] = []
+    var properties: [(String,String)] = []
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var cardImageView: IdCardImageView!
@@ -23,6 +23,7 @@ class IdCardViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.dataSource = self
+        self.tableView.delegate = self
         if let url = self.document?.pages.first?.imageURL, let image = UIImage(contentsOfFile: url.path) {
             // Show the card image
             self.cardImageView.image = image
@@ -31,8 +32,21 @@ class IdCardViewController: UIViewController, UITableViewDataSource {
                 self.cardImageView.faceBounds = faceBounds
             }
         }
-        if let barcode = self.document?.barcodes.first?.value.first {
-            self.properties = barcode.array
+        if let data = self.document?.barcodes.values.filter({ $0.contains(where: { $0.data != nil }) }).first?.first(where: { $0.data != nil })?.data {
+            do {
+                let parsed = try AAMVABarcodeParser().parse(data)
+                for entries in parsed.values {
+                    for entry in entries {
+                        self.properties.append((entry.key, entry.value))
+                    }
+                }
+            } catch {
+                if let str = String(data: data, encoding: .utf8) {
+                    self.properties = [
+                        ("Data",str)
+                    ]
+                }
+            }
         }
     }
     
@@ -63,10 +77,19 @@ class IdCardViewController: UIViewController, UITableViewDataSource {
         let property = self.properties[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "property", for: indexPath)
 
-        cell.textLabel?.text = property.keys.first
-        cell.detailTextLabel?.text = property.values.first
+        cell.textLabel?.text = property.0
+        cell.detailTextLabel?.text = property.1
 
         return cell
+    }
+    
+    // MARK: - Table view delegate
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let property = self.properties[indexPath.row]
+        let alert = UIAlertController(title: property.0, message: property.1, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
