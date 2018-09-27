@@ -1,4 +1,4 @@
 framework module VerIDCredentials {
-    header "VerIDCredentials-Swift.h"
-    requires objc
+  header "VerIDCredentials-Swift.h"
+  requires objc
 }
