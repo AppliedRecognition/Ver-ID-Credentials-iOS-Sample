@@ -28,7 +28,7 @@ class ResultsViewController: UIViewController {
         self.similarityDialLayer = SimiarityDial()
         self.similarityDialLayer!.fillColor = nil
         self.similarityDialLayer!.strokeColor = UIColor.black.cgColor
-        self.similarityDialLayer!.lineCap = kCALineCapRound
+        self.similarityDialLayer!.lineCap = CAShapeLayerLineCap.round
         self.similarityDialLayer!.lineWidth = 3
         self.dialImageView.layer.addSublayer(self.similarityDialLayer!)
         self.liveFaceView.image = self.liveFaceImage
