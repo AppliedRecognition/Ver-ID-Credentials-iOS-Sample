@@ -14,6 +14,18 @@ Ver-ID gives your application the ability to capture and parse government-issued
 	<string>[your API secret]</string>
 	~~~
 1. Download the latest [**VerIDCredentials framework**](https://github.com/AppliedRecognition/Ver-ID-Credentials-iOS-Sample/tree/master/Frameworks/VerIDCredentials.framework) and [**VerID framework**](https://github.com/AppliedRecognition/Ver-ID-Credentials-iOS-Sample/tree/master/Frameworks/VerID.framework).
+2. [Download Ver-ID resources](https://github.com/AppliedRecognition/Ver-ID-iOS-Sample/releases/download/v3.4.1/VerIDModels.zip) and add them to your app:
+
+	1. In your project's folder create a folder called **VerIDModels**.
+	2. Download ... and unzip it in to the **VerIDModels** folder created in the previous step.
+	3. In Xcode select File/Add Files to "*your project name*"...
+	4. Select the downloaded **VerIDModels** folder and under **Options** select **Create folder references**.
+5. As an alternative to the previous step you can place the downloaded zip archive on a remote server. This will cut the initial download size of your app. Add the following entry into your app's **Info.plist** replacing the URL with the zip file address on your server:
+		
+	~~~xml
+	<key>com.appliedrec.verid.resourcesURL</key>
+	<string>http://my.domain/path/to/resources.zip</string>
+	~~~
 2. Open your Xcode project and select the ***.xcodeproj** file in the Project navigator.
 3. Select your target and click on the **General** tab.
 4. Under **Deployment Info** check that **Deployment Target** is set to **11.0** or higher. If you need to target older iOS versions please contact us.
