@@ -14,7 +14,7 @@ Ver-ID gives your application the ability to capture and parse government-issued
 	<string>[your API secret]</string>
 	~~~
 1. Download the latest [**VerIDCredentials framework**](https://github.com/AppliedRecognition/Ver-ID-Credentials-iOS-Sample/tree/master/Frameworks/VerIDCredentials.framework) and [**VerID framework**](https://github.com/AppliedRecognition/Ver-ID-Credentials-iOS-Sample/tree/master/Frameworks/VerID.framework).
-2. [Download Ver-ID resources](https://github.com/AppliedRecognition/Ver-ID-iOS-Sample/releases/download/v3.4.1/VerIDModels.zip) and add them to your app:
+2. [Download Ver-ID resources](https://ver-id.s3.amazonaws.com/resources/models/v1/VerIDModels.zip) and add them to your app:
 
 	1. In your project's folder create a folder called **VerIDModels**.
 	2. Download ... and unzip it in to the **VerIDModels** folder created in the previous step.
