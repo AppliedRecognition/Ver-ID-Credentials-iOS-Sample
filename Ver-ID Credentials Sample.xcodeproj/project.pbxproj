@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B130CEE21ADED4700E6C94F /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B130CED21ADED4700E6C94F /* ErrorViewController.swift */; };
 		3B2D249620ECF656009C3D0D /* VerIDModels in Resources */ = {isa = PBXBuildFile; fileRef = 3B2D249520ECF656009C3D0D /* VerIDModels */; };
 		3B5AEDB1200A129B00FBD7EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AEDB0200A129B00FBD7EC /* AppDelegate.swift */; };
 		3B5AEDB3200A129B00FBD7EC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AEDB2200A129B00FBD7EC /* ViewController.swift */; };
@@ -17,10 +18,6 @@
 		3B5AEDCC200A131A00FBD7EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B5AEDC6200A131900FBD7EC /* Main.storyboard */; };
 		3B5AEDCE200A131A00FBD7EC /* SimiarityDial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AEDC8200A131900FBD7EC /* SimiarityDial.swift */; };
 		3B5AEDCF200A131A00FBD7EC /* IdCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AEDC9200A131A00FBD7EC /* IdCardViewController.swift */; };
-		3B5AEDE0200A180200FBD7EC /* VerID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5AEDDD200A17EB00FBD7EC /* VerID.framework */; };
-		3B5AEDE1200A180200FBD7EC /* VerID.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5AEDDD200A17EB00FBD7EC /* VerID.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3B5AEDE2200A180200FBD7EC /* VerIDCredentials.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5AEDDC200A17EB00FBD7EC /* VerIDCredentials.framework */; };
-		3B5AEDE3200A180200FBD7EC /* VerIDCredentials.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5AEDDC200A17EB00FBD7EC /* VerIDCredentials.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,8 +27,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3B5AEDE3200A180200FBD7EC /* VerIDCredentials.framework in Embed Frameworks */,
-				3B5AEDE1200A180200FBD7EC /* VerID.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -39,6 +34,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3B130CED21ADED4700E6C94F /* ErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
 		3B2D249520ECF656009C3D0D /* VerIDModels */ = {isa = PBXFileReference; lastKnownFileType = folder; path = VerIDModels; sourceTree = "<group>"; };
 		3B5AEDAD200A129B00FBD7EC /* Ver-ID Credentials Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ver-ID Credentials Sample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B5AEDB0200A129B00FBD7EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -51,8 +47,8 @@
 		3B5AEDC6200A131900FBD7EC /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		3B5AEDC8200A131900FBD7EC /* SimiarityDial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimiarityDial.swift; sourceTree = "<group>"; };
 		3B5AEDC9200A131A00FBD7EC /* IdCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdCardViewController.swift; sourceTree = "<group>"; };
-		3B5AEDDC200A17EB00FBD7EC /* VerIDCredentials.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VerIDCredentials.framework; sourceTree = "<group>"; };
-		3B5AEDDD200A17EB00FBD7EC /* VerID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VerID.framework; sourceTree = "<group>"; };
+		E9D49BB2E4F071E52A95D56E /* Pods-Ver-ID Credentials Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ver-ID Credentials Sample.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ver-ID Credentials Sample/Pods-Ver-ID Credentials Sample.release.xcconfig"; sourceTree = "<group>"; };
+		EC90FE46A242043B367A08D2 /* Pods-Ver-ID Credentials Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ver-ID Credentials Sample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ver-ID Credentials Sample/Pods-Ver-ID Credentials Sample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +56,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B5AEDE2200A180200FBD7EC /* VerIDCredentials.framework in Frameworks */,
-				3B5AEDE0200A180200FBD7EC /* VerID.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,9 +66,9 @@
 			isa = PBXGroup;
 			children = (
 				3B2D249520ECF656009C3D0D /* VerIDModels */,
-				3B5AEDD0200A134D00FBD7EC /* Frameworks */,
 				3B5AEDAF200A129B00FBD7EC /* Ver-ID Credentials Sample */,
 				3B5AEDAE200A129B00FBD7EC /* Products */,
+				D127BB552CB88F6D9E2CA379 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -89,6 +83,7 @@
 		3B5AEDAF200A129B00FBD7EC /* Ver-ID Credentials Sample */ = {
 			isa = PBXGroup;
 			children = (
+				3B130CED21ADED4700E6C94F /* ErrorViewController.swift */,
 				3B5AEDC9200A131A00FBD7EC /* IdCardViewController.swift */,
 				3B5AEDC6200A131900FBD7EC /* Main.storyboard */,
 				3B5AEDC5200A131900FBD7EC /* ResultsViewController.swift */,
@@ -103,13 +98,13 @@
 			name = "Ver-ID Credentials Sample";
 			sourceTree = "<group>";
 		};
-		3B5AEDD0200A134D00FBD7EC /* Frameworks */ = {
+		D127BB552CB88F6D9E2CA379 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3B5AEDDD200A17EB00FBD7EC /* VerID.framework */,
-				3B5AEDDC200A17EB00FBD7EC /* VerIDCredentials.framework */,
+				EC90FE46A242043B367A08D2 /* Pods-Ver-ID Credentials Sample.debug.xcconfig */,
+				E9D49BB2E4F071E52A95D56E /* Pods-Ver-ID Credentials Sample.release.xcconfig */,
 			);
-			path = Frameworks;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,10 +114,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3B5AEDBF200A129B00FBD7EC /* Build configuration list for PBXNativeTarget "Ver-ID Credentials Sample" */;
 			buildPhases = (
+				0EF69039E11BAC0BACC73E88 /* [CP] Check Pods Manifest.lock */,
 				3B5AEDA9200A129B00FBD7EC /* Sources */,
 				3B5AEDAA200A129B00FBD7EC /* Frameworks */,
 				3B5AEDAB200A129B00FBD7EC /* Resources */,
 				3B5AEDE4200A180200FBD7EC /* Embed Frameworks */,
+				0A9DBABF7886568C581F5477 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -182,12 +179,56 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0A9DBABF7886568C581F5477 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Ver-ID Credentials Sample/Pods-Ver-ID Credentials Sample-frameworks.sh",
+				"${PODS_ROOT}/Ver-ID/VerID.framework",
+				"${PODS_ROOT}/Ver-ID-Credentials/VerIDCredentials.framework",
+				"${BUILT_PRODUCTS_DIR}/ZIPFoundation/ZIPFoundation.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VerID.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VerIDCredentials.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZIPFoundation.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Ver-ID Credentials Sample/Pods-Ver-ID Credentials Sample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0EF69039E11BAC0BACC73E88 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Ver-ID Credentials Sample-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3B5AEDA9200A129B00FBD7EC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				3B5AEDB3200A129B00FBD7EC /* ViewController.swift in Sources */,
+				3B130CEE21ADED4700E6C94F /* ErrorViewController.swift in Sources */,
 				3B5AEDCF200A131A00FBD7EC /* IdCardViewController.swift in Sources */,
 				3B5AEDB1200A129B00FBD7EC /* AppDelegate.swift in Sources */,
 				3B5AEDCB200A131A00FBD7EC /* ResultsViewController.swift in Sources */,
@@ -334,11 +375,12 @@
 		};
 		3B5AEDC0200A129B00FBD7EC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EC90FE46A242043B367A08D2 /* Pods-Ver-ID Credentials Sample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = CSD8L9EK66;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -357,11 +399,12 @@
 		};
 		3B5AEDC1200A129B00FBD7EC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9D49BB2E4F071E52A95D56E /* Pods-Ver-ID Credentials Sample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = CSD8L9EK66;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
