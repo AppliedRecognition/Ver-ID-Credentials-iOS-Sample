@@ -11,7 +11,6 @@
 		3B2D249620ECF656009C3D0D /* VerIDModels in Resources */ = {isa = PBXBuildFile; fileRef = 3B2D249520ECF656009C3D0D /* VerIDModels */; };
 		3B5AEDB1200A129B00FBD7EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AEDB0200A129B00FBD7EC /* AppDelegate.swift */; };
 		3B5AEDB3200A129B00FBD7EC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AEDB2200A129B00FBD7EC /* ViewController.swift */; };
-		3B5AEDB6200A129B00FBD7EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B5AEDB4200A129B00FBD7EC /* Main.storyboard */; };
 		3B5AEDB8200A129B00FBD7EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B5AEDB7200A129B00FBD7EC /* Assets.xcassets */; };
 		3B5AEDBB200A129B00FBD7EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B5AEDB9200A129B00FBD7EC /* LaunchScreen.storyboard */; };
 		3B5AEDCB200A131A00FBD7EC /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AEDC5200A131900FBD7EC /* ResultsViewController.swift */; };
@@ -34,19 +33,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3B130CED21ADED4700E6C94F /* ErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
+		3B130CED21ADED4700E6C94F /* ErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ErrorViewController.swift; path = Source/ErrorViewController.swift; sourceTree = "<group>"; };
 		3B2D249520ECF656009C3D0D /* VerIDModels */ = {isa = PBXFileReference; lastKnownFileType = folder; path = VerIDModels; sourceTree = "<group>"; };
 		3B5AEDAD200A129B00FBD7EC /* Ver-ID Credentials Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ver-ID Credentials Sample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B5AEDB0200A129B00FBD7EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3B5AEDB2200A129B00FBD7EC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		3B5AEDB5200A129B00FBD7EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
+		3B5AEDB0200A129B00FBD7EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Source/AppDelegate.swift; sourceTree = "<group>"; };
+		3B5AEDB2200A129B00FBD7EC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Source/ViewController.swift; sourceTree = "<group>"; };
 		3B5AEDB7200A129B00FBD7EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B5AEDBA200A129B00FBD7EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		3B5AEDBC200A129B00FBD7EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3B5AEDC5200A131900FBD7EC /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
-		3B5AEDC6200A131900FBD7EC /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		3B5AEDC8200A131900FBD7EC /* SimiarityDial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimiarityDial.swift; sourceTree = "<group>"; };
-		3B5AEDC9200A131A00FBD7EC /* IdCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdCardViewController.swift; sourceTree = "<group>"; };
+		3B5AEDBC200A129B00FBD7EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Source/Info.plist; sourceTree = "<group>"; };
+		3B5AEDC5200A131900FBD7EC /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultsViewController.swift; path = Source/ResultsViewController.swift; sourceTree = "<group>"; };
+		3B5AEDC6200A131900FBD7EC /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Source/Main.storyboard; sourceTree = "<group>"; };
+		3B5AEDC8200A131900FBD7EC /* SimiarityDial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SimiarityDial.swift; path = Source/SimiarityDial.swift; sourceTree = "<group>"; };
+		3B5AEDC9200A131A00FBD7EC /* IdCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IdCardViewController.swift; path = Source/IdCardViewController.swift; sourceTree = "<group>"; };
 		E9D49BB2E4F071E52A95D56E /* Pods-Ver-ID Credentials Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ver-ID Credentials Sample.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ver-ID Credentials Sample/Pods-Ver-ID Credentials Sample.release.xcconfig"; sourceTree = "<group>"; };
 		EC90FE46A242043B367A08D2 /* Pods-Ver-ID Credentials Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ver-ID Credentials Sample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ver-ID Credentials Sample/Pods-Ver-ID Credentials Sample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -90,7 +88,6 @@
 				3B5AEDC8200A131900FBD7EC /* SimiarityDial.swift */,
 				3B5AEDB0200A129B00FBD7EC /* AppDelegate.swift */,
 				3B5AEDB2200A129B00FBD7EC /* ViewController.swift */,
-				3B5AEDB4200A129B00FBD7EC /* Main.storyboard */,
 				3B5AEDB7200A129B00FBD7EC /* Assets.xcassets */,
 				3B5AEDB9200A129B00FBD7EC /* LaunchScreen.storyboard */,
 				3B5AEDBC200A129B00FBD7EC /* Info.plist */,
@@ -173,7 +170,6 @@
 				3B5AEDCC200A131A00FBD7EC /* Main.storyboard in Resources */,
 				3B5AEDB8200A129B00FBD7EC /* Assets.xcassets in Resources */,
 				3B2D249620ECF656009C3D0D /* VerIDModels in Resources */,
-				3B5AEDB6200A129B00FBD7EC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,14 +235,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		3B5AEDB4200A129B00FBD7EC /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3B5AEDB5200A129B00FBD7EC /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		3B5AEDB9200A129B00FBD7EC /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
