@@ -10,15 +10,33 @@ import UIKit
 import VerID
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, ErrorViewControllerDelegate {
 
     var window: UIWindow?
 
-
-    private func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         // Load Ver-ID, this will speed up the startup of live face capture
-        VerID.shared.load()
+        self.reload()
         return true
+    }
+    
+    func reload() {
+        VerID.shared.load { loaded, error in
+            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            if loaded {
+                self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "home")
+            } else if let errorViewController = storyboard.instantiateViewController(withIdentifier: "error") as? ErrorViewController {
+                errorViewController.delegate = self
+                self.window?.rootViewController = errorViewController
+            } else {
+                fatalError()
+            }
+        }
+    }
+    
+    func didReceiveReloadRequest(from viewController: ErrorViewController) {
+        self.window?.rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()
+        self.reload()
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
