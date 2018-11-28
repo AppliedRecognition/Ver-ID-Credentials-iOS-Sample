@@ -17,6 +17,7 @@
 		3B5AEDCC200A131A00FBD7EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B5AEDC6200A131900FBD7EC /* Main.storyboard */; };
 		3B5AEDCE200A131A00FBD7EC /* SimiarityDial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AEDC8200A131900FBD7EC /* SimiarityDial.swift */; };
 		3B5AEDCF200A131A00FBD7EC /* IdCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AEDC9200A131A00FBD7EC /* IdCardViewController.swift */; };
+		66EA1D6E7E6DEBAD0415DA3D /* Pods_Ver_ID_Credentials_Sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8625AF87A8231A03D4F4726B /* Pods_Ver_ID_Credentials_Sample.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -45,6 +46,7 @@
 		3B5AEDC6200A131900FBD7EC /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Source/Main.storyboard; sourceTree = "<group>"; };
 		3B5AEDC8200A131900FBD7EC /* SimiarityDial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SimiarityDial.swift; path = Source/SimiarityDial.swift; sourceTree = "<group>"; };
 		3B5AEDC9200A131A00FBD7EC /* IdCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IdCardViewController.swift; path = Source/IdCardViewController.swift; sourceTree = "<group>"; };
+		8625AF87A8231A03D4F4726B /* Pods_Ver_ID_Credentials_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ver_ID_Credentials_Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9D49BB2E4F071E52A95D56E /* Pods-Ver-ID Credentials Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ver-ID Credentials Sample.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ver-ID Credentials Sample/Pods-Ver-ID Credentials Sample.release.xcconfig"; sourceTree = "<group>"; };
 		EC90FE46A242043B367A08D2 /* Pods-Ver-ID Credentials Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ver-ID Credentials Sample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ver-ID Credentials Sample/Pods-Ver-ID Credentials Sample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -54,12 +56,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66EA1D6E7E6DEBAD0415DA3D /* Pods_Ver_ID_Credentials_Sample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		26572773E1EB6D2BAFE1AE6E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8625AF87A8231A03D4F4726B /* Pods_Ver_ID_Credentials_Sample.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3B5AEDA4200A129B00FBD7EC = {
 			isa = PBXGroup;
 			children = (
@@ -67,6 +78,7 @@
 				3B5AEDAF200A129B00FBD7EC /* Ver-ID Credentials Sample */,
 				3B5AEDAE200A129B00FBD7EC /* Products */,
 				D127BB552CB88F6D9E2CA379 /* Pods */,
+				26572773E1EB6D2BAFE1AE6E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
