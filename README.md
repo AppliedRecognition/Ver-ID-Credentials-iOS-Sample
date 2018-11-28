@@ -13,8 +13,10 @@ Ver-ID gives your application the ability to capture and parse government-issued
 	~~~ruby
 	pod 'Ver-ID-Credentials', '~> 2.1'
 	~~~
-1. Install the dependencies using `pod install`.
+1. Install the dependencies using `pod install`.\*
 1. Open the generated **xcworkspace** in Xcode.
+
+\*If you receive an error `[!] Unable to find a specification for Ver-ID-Credentials (~> 2.1)` try running `pod repo update` before trying `pod install` again.
 
 ### Manual Installation
 
