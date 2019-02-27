@@ -1,3 +1,5 @@
+![Cocoapods](https://img.shields.io/cocoapods/v/Ver-ID-Credentials.svg)
+
 # Ver-ID Credentials SDK
 
 ## Introduction
