@@ -1,208 +1,278 @@
 {
   "warnings": [
     {
-      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/BarcodeFeature.swift",
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Credentials-Apple/Ver-ID Credentials/API/BarcodeFeature.swift",
       "line": 14,
+      "symbol": "BarcodeFeature.parsed",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Credentials-Apple/Ver-ID Credentials/API/BarcodeFeature.swift",
+      "line": 16,
       "symbol": "BarcodeFeature.copy(with:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/BarcodeFeature.swift",
-      "line": 64,
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Credentials-Apple/Ver-ID Credentials/API/BarcodeFeature.swift",
+      "line": 68,
+      "symbol": "BarcodeFeature.init(format:data:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Credentials-Apple/Ver-ID Credentials/API/BarcodeFeature.swift",
+      "line": 75,
       "symbol": "BarcodeFeature.init(from:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/BarcodeFeature.swift",
-      "line": 81,
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Credentials-Apple/Ver-ID Credentials/API/BarcodeFeature.swift",
+      "line": 93,
       "symbol": "BarcodeFeature.encode(to:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/BarcodeFeature.swift",
-      "line": 100,
-      "symbol": "BarcodeFeature.Sex.female",
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Credentials-Apple/Ver-ID Credentials/API/BarcodeFeature.swift",
+      "line": 104,
+      "symbol": "BarcodeFormat.pdf417",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/BarcodeFeature.swift",
-      "line": 101,
-      "symbol": "BarcodeFeature.Sex.male",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/BarcodeFeature.swift",
-      "line": 156,
-      "symbol": "BarcodeFeature.type",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/BarcodeFeature.swift",
-      "line": 431,
-      "symbol": "BarcodeFormat.PDF417",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/BarcodeFeature.swift",
-      "line": 436,
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Credentials-Apple/Ver-ID Credentials/API/BarcodeFeature.swift",
+      "line": 116,
       "symbol": "BarcodeEncoding.AAMVA",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/BarcodeFeature.swift",
-      "line": 436,
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Credentials-Apple/Ver-ID Credentials/API/BarcodeFeature.swift",
+      "line": 116,
       "symbol": "BarcodeEncoding.BC",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/BarcodeFeature.swift",
-      "line": 436,
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Credentials-Apple/Ver-ID Credentials/API/BarcodeFeature.swift",
+      "line": 116,
       "symbol": "BarcodeEncoding.plain",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/Card.swift",
-      "line": 15,
-      "symbol": "Card.copy(with:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Credentials-Apple/Ver-ID Credentials/API/BarcodeParser.swift",
+      "line": 11,
+      "symbol": "BarcodeParser",
+      "symbol_kind": "source.lang.swift.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/Card.swift",
-      "line": 124,
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Credentials-Apple/Ver-ID Credentials/API/BarcodeParser.swift",
+      "line": 15,
+      "symbol": "BarcodeParserFactory",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Credentials-Apple/Ver-ID Credentials/API/BarcodeParser.swift",
+      "line": 19,
+      "symbol": "AAMVABarcodeParserFactory",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Credentials-Apple/Ver-ID Credentials/API/BarcodeParser.swift",
+      "line": 25,
+      "symbol": "IntellicheckBarcodeParserFactory",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Credentials-Apple/Ver-ID Credentials/API/BarcodeParser.swift",
+      "line": 31,
+      "symbol": "IntellicheckBarcodeParser",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Credentials-Apple/Ver-ID Credentials/API/BarcodeParser.swift",
+      "line": 127,
+      "symbol": "IdCardInfo",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Credentials-Apple/Ver-ID Credentials/API/BarcodeParser.swift",
+      "line": 788,
+      "symbol": "AAMVABarcodeParser",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Credentials-Apple/Ver-ID Credentials/API/Card.swift",
+      "line": 15,
+      "symbol": "CardFeature",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Credentials-Apple/Ver-ID Credentials/API/Card.swift",
+      "line": 33,
       "symbol": "ISOID1PhotoCard.init(from:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/Card.swift",
-      "line": 140,
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Credentials-Apple/Ver-ID Credentials/API/Card.swift",
+      "line": 49,
       "symbol": "ISOID1CardWithPDF417Barcode.init(from:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/Card.swift",
-      "line": 256,
-      "symbol": "CardFeature.copy(with:)",
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Credentials-Apple/Ver-ID Credentials/API/Card.swift",
+      "line": 164,
+      "symbol": "CardFormat.isEqual(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/Card.swift",
-      "line": 299,
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Credentials-Apple/Ver-ID Credentials/API/FacePhotoFeature.swift",
+      "line": 15,
       "symbol": "FacePhotoFeature.copy(with:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/Card.swift",
-      "line": 329,
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Credentials-Apple/Ver-ID Credentials/API/FacePhotoFeature.swift",
+      "line": 45,
       "symbol": "FacePhotoFeature.init(from:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/Card.swift",
-      "line": 337,
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Credentials-Apple/Ver-ID Credentials/API/FacePhotoFeature.swift",
+      "line": 53,
       "symbol": "FacePhotoFeature.encode(to:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/IDBundle.swift",
-      "line": 14,
-      "symbol": "IDBundle.copy(with:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Credentials-Apple/Ver-ID Credentials/API/IDBundle.swift",
+      "line": 11,
+      "symbol": "IDBundle",
+      "symbol_kind": "source.lang.swift.decl.typealias",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/IDBundle.swift",
-      "line": 54,
-      "symbol": "IDBundle.features()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/IDBundle.swift",
-      "line": 98,
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Credentials-Apple/Ver-ID Credentials/API/IDBundle.swift",
+      "line": 16,
       "symbol": "SingleSidedPhotoCard.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/IDBundle.swift",
-      "line": 102,
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Credentials-Apple/Ver-ID Credentials/API/IDBundle.swift",
+      "line": 20,
       "symbol": "SingleSidedPhotoCard.init(from:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/IDBundle.swift",
-      "line": 110,
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Credentials-Apple/Ver-ID Credentials/API/IDBundle.swift",
+      "line": 28,
       "symbol": "DoubleSidedPhotoCardWithPDF417Barcode.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/IDBundle.swift",
-      "line": 114,
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Credentials-Apple/Ver-ID Credentials/API/IDBundle.swift",
+      "line": 32,
       "symbol": "DoubleSidedPhotoCardWithPDF417Barcode.init(from:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/IDCaptureSessionResult.swift",
-      "line": 21,
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Credentials-Apple/Ver-ID Credentials/API/IDCaptureSessionResult.swift",
+      "line": 20,
+      "symbol": "IDCaptureSessionResult.document",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Credentials-Apple/Ver-ID Credentials/API/IDCaptureSessionResult.swift",
+      "line": 24,
+      "symbol": "IDCaptureSessionResult.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Credentials-Apple/Ver-ID Credentials/API/IDCaptureSessionResult.swift",
+      "line": 52,
       "symbol": "IDCaptureSessionStatus",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/API/IDCaptureSessionSettings.swift",
-      "line": 39,
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Credentials-Apple/Ver-ID Credentials/API/IDCaptureSessionSettings.swift",
+      "line": 83,
       "symbol": "Region",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/DetectionOperations.swift",
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Credentials-Apple/Ver-ID Credentials/API/IDDocument.swift",
+      "line": 11,
+      "symbol": "IDDocument",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Credentials-Apple/Ver-ID Credentials/API/IDFeature.swift",
+      "line": 15,
+      "symbol": "IDFeature.copy(with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Credentials-Apple/Ver-ID Credentials/API/Page.swift",
+      "line": 12,
+      "symbol": "Page",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Credentials-Apple/Ver-ID Credentials/DetectionOperations.swift",
       "line": 13,
       "symbol": "PerspectiveCorrectionParamsOperation",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/VerID+CMSampleBuffer.swift",
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Credentials-Apple/Ver-ID Credentials/VerID+CMSampleBuffer.swift",
       "line": 15,
       "symbol": "CVImageBuffer.cgImage(withOrientation:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/VerID+CMSampleBuffer.swift",
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Credentials-Apple/Ver-ID Credentials/VerID+CMSampleBuffer.swift",
       "line": 80,
       "symbol": "CMSampleBuffer.cgImage(withOrientation:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture/Ver-ID ID Capture/VerIDIDCaptureError.swift",
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Credentials-Apple/Ver-ID Credentials/VerIDIDCaptureError.swift",
       "line": 11,
       "symbol": "VerIDIDCaptureError",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     }
   ],
-  "source_directory": "/Users/jakub/Documents/Fotobounce/source/trunk/ios/Ver-ID ID Capture"
+  "source_directory": "/Users/jakub/Applied-Recognition/Ver-ID-Credentials-Apple"
 }
