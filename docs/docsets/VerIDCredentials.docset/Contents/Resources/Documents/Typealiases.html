@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Enumerations  Reference</title>
+    <title>Type Aliases  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Section/Enumerations" class="dashAnchor"></a>
-    <a title="Enumerations  Reference"></a>
+    <a name="//apple_ref/swift/Section/Type Aliases" class="dashAnchor"></a>
+    <a title="Type Aliases  Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="index.html">VerIDCredentials Docs</a></p>
@@ -21,7 +21,7 @@
       <p id="breadcrumbs">
         <a href="index.html">VerIDCredentials Reference</a>
         <img id="carat" src="img/carat.png" />
-        Enumerations  Reference
+        Type Aliases  Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -100,8 +100,8 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>Enumerations</h1>
-            <p>The following enumerations are available globally.</p>
+            <h1>Type Aliases</h1>
+            <p>The following type aliases are available globally.</p>
 
           </section>
           <section class="section task-group-section">
@@ -110,9 +110,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@VerIDCredentials@E@BarcodeFormat"></a>
-                    <a name="//apple_ref/swift/Enum/BarcodeFormat" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@VerIDCredentials@E@BarcodeFormat">BarcodeFormat</a>
+                    <a name="/s:16VerIDCredentials4Carda"></a>
+                    <a name="//apple_ref/swift/Alias/Card" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16VerIDCredentials4Carda">Card</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -120,77 +120,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Barcode format</p>
+                        <p>Card with an ISO format</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="kd">enum</span> <span class="kt">BarcodeFormat</span> <span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="kt">Codable</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:@M@VerIDCredentials@E@BarcodeEncoding"></a>
-                    <a name="//apple_ref/swift/Enum/BarcodeEncoding" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@VerIDCredentials@E@BarcodeEncoding">BarcodeEncoding</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Barcode encoding</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@available(*, deprecated: 2.1.0)</span>
-<span class="kd">@objc</span>
-<span class="kd">public</span> <span class="kd">enum</span> <span class="kt">BarcodeEncoding</span> <span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="kt">Codable</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:@M@VerIDCredentials@E@ISOCardFormat"></a>
-                    <a name="//apple_ref/swift/Enum/ISOCardFormat" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@VerIDCredentials@E@ISOCardFormat">ISOCardFormat</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>ISO card format</p>
-
-                        <a href="Enums/ISOCardFormat.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="kd">enum</span> <span class="kt">ISOCardFormat</span> <span class="p">:</span> <span class="kt">Int</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@available(*, deprecated: 2.0.0, renamed: "Page")</span>
+<span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">Card</span> <span class="o">=</span> <span class="kt">Page</span></code></pre>
 
                         </div>
                       </div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>IDCaptureSessionResult Class Reference</title>
+    <title>IDFeature Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Class/IDCaptureSessionResult" class="dashAnchor"></a>
-    <a title="IDCaptureSessionResult Class Reference"></a>
+    <a name="//apple_ref/swift/Class/IDFeature" class="dashAnchor"></a>
+    <a title="IDFeature Class Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">VerIDCredentials Docs</a></p>
@@ -21,7 +21,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">VerIDCredentials Reference</a>
         <img id="carat" src="../img/carat.png" />
-        IDCaptureSessionResult Class Reference
+        IDFeature Class Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -100,16 +100,16 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>IDCaptureSessionResult</h1>
+            <h1>IDFeature</h1>
               <div class="declaration">
                 <div class="language">
                   <pre class="highlight swift"><code><span class="kd">@objc</span>
 <span class="kd">@objcMembers</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="kt">IDCaptureSessionResult</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">Codable</span></code></pre>
+<span class="kd">public</span> <span class="kd">class</span> <span class="kt">IDFeature</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">Codable</span><span class="p">,</span> <span class="kt">NSCopying</span></code></pre>
 
                 </div>
               </div>
-            <p>Result of an ID capture session</p>
+            <p>Feature on the card</p>
 
           </section>
           <section class="section task-group-section">
@@ -118,9 +118,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@VerIDCredentials@objc(cs)IDCaptureSessionResult(py)idBundle"></a>
-                    <a name="//apple_ref/swift/Property/idBundle" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@VerIDCredentials@objc(cs)IDCaptureSessionResult(py)idBundle">idBundle</a>
+                    <a name="/c:@M@VerIDCredentials@objc(cs)IDFeature(py)bounds"></a>
+                    <a name="//apple_ref/swift/Property/bounds" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@VerIDCredentials@objc(cs)IDFeature(py)bounds">bounds</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -128,15 +128,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Detected ID bundle or nil on failure or cancellation</p>
+                        <p>Expected or detected bounds of the feature (defaults to <code>CGRect.null</code>)</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@available(*, deprecated: 2.0.0, renamed: "document")</span>
-<span class="kd">internal(set)</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">idBundle</span><span class="p">:</span> <span class="kt">IDDocument</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">internal(set)</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">bounds</span><span class="p">:</span> <span class="kt">CGRect</span></code></pre>
 
                         </div>
                       </div>
@@ -146,9 +145,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@VerIDCredentials@objc(cs)IDCaptureSessionResult(py)status"></a>
-                    <a name="//apple_ref/swift/Property/status" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@VerIDCredentials@objc(cs)IDCaptureSessionResult(py)status">status</a>
+                    <a name="/c:@M@VerIDCredentials@objc(cs)IDFeature(im)init"></a>
+                    <a name="//apple_ref/swift/Method/init()" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@VerIDCredentials@objc(cs)IDFeature(im)init">init()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -156,14 +155,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Status of the ID capture session</p>
+                        <p>Constructor</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">internal(set)</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">status</span><span class="p">:</span> <span class="kt">IDCaptureSessionStatus</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">override</span> <span class="nf">init</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
