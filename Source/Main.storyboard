@@ -239,13 +239,14 @@
                                             </imageView>
                                         </subviews>
                                     </stackView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="similarity_dial" translatesAutoresizingMaskIntoConstraints="NO" id="Bka-MD-qOp">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YEt-u2-i8h">
                                         <rect key="frame" x="0.0" y="214" width="248" height="93"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="93" id="Z2e-Pj-e70"/>
-                                            <constraint firstAttribute="width" constant="248" id="ZIL-Uh-5ei"/>
+                                            <constraint firstAttribute="width" constant="248" id="3xx-8d-e9i"/>
+                                            <constraint firstAttribute="height" constant="93" id="OOu-yy-ri1"/>
                                         </constraints>
-                                    </imageView>
+                                    </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Similarity score 0.0/10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sTd-aK-Sly">
                                         <rect key="frame" x="0.0" y="371" width="248" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -266,7 +267,7 @@
                     <navigationItem key="navigationItem" title="Comparison Result" id="cUr-2c-9j8"/>
                     <connections>
                         <outlet property="cardFaceView" destination="DXz-Qz-qIP" id="fm5-K6-J5A"/>
-                        <outlet property="dialImageView" destination="Bka-MD-qOp" id="mX7-hV-d5B"/>
+                        <outlet property="dialView" destination="YEt-u2-i8h" id="mWa-D3-Cpr"/>
                         <outlet property="liveFaceView" destination="73K-2l-gf3" id="Ppi-mf-g5V"/>
                         <outlet property="simiarityScoreLabel" destination="sTd-aK-Sly" id="Vxr-Jh-YY6"/>
                     </connections>
@@ -547,6 +548,5 @@
     <resources>
         <image name="card_back" width="232" height="148"/>
         <image name="card_front" width="232" height="148"/>
-        <image name="similarity_dial" width="248" height="93"/>
     </resources>
 </document>

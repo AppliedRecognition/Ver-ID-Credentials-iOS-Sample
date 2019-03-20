@@ -17,7 +17,7 @@ class ResultsViewController: UIViewController {
     var liveFaceImage: UIImage?
     var liveFace: RecognizableFace?
     
-    @IBOutlet var dialImageView: UIImageView!
+    @IBOutlet var dialView: UIView!
     @IBOutlet var cardFaceView: UIImageView!
     @IBOutlet var liveFaceView: UIImageView!
     @IBOutlet var simiarityScoreLabel: UILabel!
@@ -27,11 +27,8 @@ class ResultsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.similarityDialLayer = SimiarityDial()
-        self.similarityDialLayer!.fillColor = nil
-        self.similarityDialLayer!.strokeColor = UIColor.black.cgColor
-        self.similarityDialLayer!.lineCap = CAShapeLayerLineCap.round
-        self.similarityDialLayer!.lineWidth = 3
-        self.dialImageView.layer.addSublayer(self.similarityDialLayer!)
+        self.similarityDialLayer!.max = 5.6
+        self.dialView.layer.addSublayer(self.similarityDialLayer!)
         self.liveFaceView.image = self.liveFaceImage
         self.cardFaceView.layer.cornerRadius = 12
         self.cardFaceView.layer.masksToBounds = true
@@ -55,24 +52,22 @@ class ResultsViewController: UIViewController {
             return
         }
         do {
-            let threshold = verid.faceRecognition.authenticationScoreThreshold.floatValue
-            let maxScore: Float = 5.6
-            let score: Float = try verid.faceRecognition.compareSubjectFaces([liveFace], toFaces: cardFaces).floatValue
-            let adjustedScore: CGFloat
-            if score > threshold {
-                adjustedScore = CGFloat(0.5 + (score - threshold) / (maxScore / 2))
+            self.similarityDialLayer!.threshold = CGFloat(verid.faceRecognition.authenticationScoreThreshold.floatValue)
+            let score: CGFloat = CGFloat(try verid.faceRecognition.compareSubjectFaces([liveFace], toFaces: cardFaces).floatValue)
+            self.similarityDialLayer?.score = score
+            if score > CGFloat(verid.faceRecognition.authenticationScoreThreshold.floatValue) {
+                self.simiarityScoreLabel.text = "Authenticated"
             } else {
-                adjustedScore = CGFloat(score / threshold * 0.5)
+                self.simiarityScoreLabel.text = "Not authenticated"
             }
-            self.similarityDialLayer?.score = adjustedScore
-            self.simiarityScoreLabel.text = String(format: "Similarity score: %.01f/10", adjustedScore * 10)
         } catch {
+            self.simiarityScoreLabel.text = "Comparison failed"
         }
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.similarityDialLayer?.frame = self.dialImageView.bounds
+        self.similarityDialLayer?.frame = self.dialView.bounds
         self.similarityDialLayer?.setNeedsDisplay()
     }
 }
