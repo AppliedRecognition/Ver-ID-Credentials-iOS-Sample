@@ -1,24 +1,20 @@
 PODS:
-  - Ver-ID (3.4.4):
-    - ZIPFoundation (~> 0.9)
-  - Ver-ID-Credentials (2.1.6):
-    - Ver-ID (= 3.4.4)
-  - ZIPFoundation (0.9.6)
+  - Ver-ID-Core (1.0.0-beta.7)
+  - Ver-ID-Credentials (3.0.0-beta.1):
+    - Ver-ID-Core (= 1.0.0-beta.7)
 
 DEPENDENCIES:
-  - Ver-ID-Credentials (~> 2.1)
+  - Ver-ID-Credentials (= 3.0.0-beta.1)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - Ver-ID
+    - Ver-ID-Core
     - Ver-ID-Credentials
-    - ZIPFoundation
 
 SPEC CHECKSUMS:
-  Ver-ID: a7a125815f07b2ba053b534e40cd2fcbb7aeac91
-  Ver-ID-Credentials: 40916ff201a0f32c2006d8ce7e566e29fb29ffe9
-  ZIPFoundation: 68c35eb2637c21abe56dc60b3277636443bc1501
+  Ver-ID-Core: 16690c88498a0ee9ab225183e7db5cd9ea9df017
+  Ver-ID-Credentials: ac8e47918895570dc9093b9a17298562f5e4022f
 
-PODFILE CHECKSUM: c05ead4a5d6519ba7540cec10ce2136b20d6c30c
+PODFILE CHECKSUM: c6939d33b5b3509ebcaf0a4a0fa32ca4181ba370
 
 COCOAPODS: 1.5.2
