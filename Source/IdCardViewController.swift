@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import VerID
+import VerIDCore
 import AVFoundation
 import VerIDCredentials
 

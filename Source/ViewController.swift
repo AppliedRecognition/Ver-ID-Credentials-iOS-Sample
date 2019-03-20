@@ -8,19 +8,23 @@
 
 import UIKit
 import VerIDCredentials
-import VerID
+import VerIDCore
+import VerIDUI
 
-class ViewController: UIViewController, IDCaptureSessionDelegate, VerIDSessionDelegate {
+class ViewController: UIViewController, IDCaptureSessionDelegate, SessionDelegate, CardPropertiesViewControllerDelegate {
     
     @IBOutlet var compareLiveFaceButton: UIButton!
     @IBOutlet var scanIdCardButton: UIButton!
     @IBOutlet var cardImageView: UIImageView!
     @IBOutlet var introTextView: UITextView!
     
+    var verid: VerID?
+    var veridCredentials: VerID?
+    
     lazy var cardImageURL: URL? = {
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent(self.cardImageFileName)
     }()
-    var liveFace: VerIDFace?
+    var liveFace: RecognizableFace?
     var liveFaceImage: UIImage?
     var document: IDDocument?
     let cardImageFileName = "capturedIdCard.png"
@@ -55,24 +59,13 @@ class ViewController: UIViewController, IDCaptureSessionDelegate, VerIDSessionDe
         }
     }
     
-    @IBAction func scanIdCard(_ sender: Any?) {
-        let settings = IDCaptureSessionSettings()
-        settings.document = IDDocument(pages: [])
-        // To scan an ID with a photo on the front and a PDF 417 barcode on the back (e.g. US/Canadian driver's licence) uncomment the line below
-        // settings.document = DoubleSidedPhotoCardWithPDF417Barcode()
-        settings.showResult = true
-        settings.showGuide = true
-        settings.detectFaceForRecognition = true
-        let session = IDCaptureSession(settings: settings)
-        session.delegate = self
-        session.start()
-    }
-    
     @IBAction func compareLiveFace(_ sender: Any?) {
-        let settings = VerIDLivenessDetectionSessionSettings()
-        settings.includeFaceTemplatesInResult = true
+        guard let verid = self.verid else {
+            return
+        }
+        let settings = LivenessDetectionSessionSettings()
         settings.numberOfResultsToCollect = 2
-        let session = VerIDLivenessDetectionSession(settings: settings)
+        let session = Session(environment: verid, settings: settings)
         session.delegate = self
         session.start()
     }
@@ -90,52 +83,61 @@ class ViewController: UIViewController, IDCaptureSessionDelegate, VerIDSessionDe
         self.scanIdCardButton.setTitle("Scan ID Card", for: .normal)
     }
     
-    func idCaptureSession(_ session: IDCaptureSession, didFinishWithResult result: IDCaptureSessionResult) {
-        if result.status == .finished {
-            guard let cardImageURL = self.cardImageURL else {
-                return
-            }
-            guard let sourceCardImageURL = result.document?.pages.first?.imageURL else {
-                return
-            }
-            guard let imageData = try? Data(contentsOf: sourceCardImageURL) else {
-                return
-            }
-            guard let image = UIImage(data: imageData) else {
-                return
-            }
+    func idCaptureSession(_ session: IDCaptureSession, didCaptureIDDocument document: IDDocument) {
+        self.navigationController?.popToRootViewController(animated: false)
+        guard let cardImageURL = self.cardImageURL else {
+            return
+        }
+        guard let sourceCardImageURL = document.pages.first?.imageURL else {
+            return
+        }
+        guard let imageData = try? Data(contentsOf: sourceCardImageURL) else {
+            return
+        }
+        guard let image = UIImage(data: imageData) else {
+            return
+        }
+        do {
+            try imageData.write(to: cardImageURL)
+        } catch {
+            NSLog("Error copying file %@ to %@: %@", sourceCardImageURL.path, cardImageURL.path, error.localizedDescription)
+            return
+        }
+        self.document = document
+        self.document?.pages.first?.imagePath = self.cardImageFileName
+        self.cardImageView.image = image
+        self.compareLiveFaceButton.isEnabled = true
+        self.introTextView.isHidden = true
+        self.cardImageView.isHidden = false
+        self.scanIdCardButton.setTitle("Rescan ID Card", for: .normal)
+        if let card = self.document {
             do {
-                try imageData.write(to: cardImageURL)
-            } catch {
-                NSLog("Error copying file %@ to %@: %@", sourceCardImageURL.path, cardImageURL.path, error.localizedDescription)
-                return
-            }
-            self.document = result.document
-            self.document?.pages.first?.imagePath = self.cardImageFileName
-            self.cardImageView.image = image
-            self.compareLiveFaceButton.isEnabled = true
-            self.introTextView.isHidden = true
-            self.cardImageView.isHidden = false
-            self.scanIdCardButton.setTitle("Rescan ID Card", for: .normal)
-            if let card = self.document {
-                do {
-                    let cardData = try JSONEncoder().encode(card)
-                    UserDefaults.standard.set(cardData, forKey: "idBundle")
-                    if let cardString = String(data: cardData, encoding: .utf8) {
-                        NSLog("Encoded idBundle data:\n%@", cardString)
-                    }
-                } catch {
-                    NSLog("Error encoding idBundle: %@", error.localizedDescription)
+                let cardData = try JSONEncoder().encode(card)
+                UserDefaults.standard.set(cardData, forKey: "idBundle")
+                if let cardString = String(data: cardData, encoding: .utf8) {
+                    NSLog("Encoded idBundle data:\n%@", cardString)
                 }
+            } catch {
+                NSLog("Error encoding idBundle: %@", error.localizedDescription)
             }
         }
     }
     
-    func session(_ session: VerIDSession, didFinishWithResult result: VerIDSessionResult) {
-        guard result.isPositive else {
+    func idCaptureSession(_ session: IDCaptureSession, didFailWithError error: Error) {
+        let alert = UIAlertController(title: "ID capture session failed", message: error.localizedDescription, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func didCancelIDCaptureSession(_ session: IDCaptureSession) {
+        
+    }
+    
+    func session(_ session: Session, didFinishWithResult result: SessionResult) {
+        if let error = result.error {
             return
         }
-        guard let (face, imageURL) = result.faceImages(withBearing: .straight).first else {
+        guard let detectedFace = result.attachments.first, let imageURL = detectedFace.imageURL, let face = detectedFace.face as? RecognizableFace else {
             return
         }
         guard let imageData = try? Data(contentsOf: imageURL) else {
@@ -145,22 +147,44 @@ class ViewController: UIViewController, IDCaptureSessionDelegate, VerIDSessionDe
             return
         }
         self.liveFace = face
-        let scaleTransform = CGAffineTransform(scaleX: image.size.width, y: image.size.height)
-        let faceBounds = face.bounds.applying(scaleTransform)
-        UIGraphicsBeginImageContext(faceBounds.size)
-        image.draw(at: CGPoint(x: 0-faceBounds.minX, y: 0-faceBounds.minY))
+        UIGraphicsBeginImageContext(face.bounds.size)
+        defer {
+            UIGraphicsEndImageContext()
+        }
+        image.draw(at: CGPoint(x: 0-face.bounds.minX, y: 0-face.bounds.minY))
         self.liveFaceImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
         self.performSegue(withIdentifier: "comparisonResult", sender: nil)
+    }
+    
+    func sessionWasCanceled(_ session: Session) {
+        
+    }
+    
+    
+    func cardPropertiesViewController(_ viewController: CardPropertiesViewController, didSelectIDDocument document: IDDocument) {
+        guard let verid = self.veridCredentials else {
+            return
+        }
+        let settings = IDCaptureSessionSettings()
+        settings.document = document
+        settings.showResult = true
+        settings.showGuide = true
+        settings.detectFaceForRecognition = true
+        let session = IDCaptureSession(environment: verid, settings: settings)
+        session.delegate = self
+        session.start()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let controller = segue.destination as? ResultsViewController {
+            controller.verid = self.verid
             controller.page = self.document?.pages.first
             controller.liveFaceImage = self.liveFaceImage
             controller.liveFace = self.liveFace
         } else if let controller = segue.destination as? IdCardViewController {
             controller.document = self.document
+        } else if let controller = segue.destination as? CardPropertiesViewController {
+            controller.delegate = self
         }
     }
 }
