@@ -8,13 +8,14 @@
 
 import UIKit
 import VerIDCredentials
-import VerID
+import VerIDCore
 
 class ResultsViewController: UIViewController {
     
+    var verid: VerID?
     var page: Page?
     var liveFaceImage: UIImage?
-    var liveFace: VerIDFace?
+    var liveFace: RecognizableFace?
     
     @IBOutlet var dialImageView: UIImageView!
     @IBOutlet var cardFaceView: UIImageView!
@@ -38,19 +39,34 @@ class ResultsViewController: UIViewController {
         self.liveFaceView.layer.masksToBounds = true
         
         if let cardImageURL = self.page?.imageURL, let cardFaceBounds = self.page?.features.first(where: { $0 is FacePhotoFeature })?.bounds, !cardFaceBounds.isNull, let cardImage = UIImage(contentsOfFile: cardImageURL.path) {
-            let scaleTransform = CGAffineTransform(scaleX: cardImage.size.width, y: cardImage.size.height)
-            let faceBounds = cardFaceBounds.applying(scaleTransform)
-            UIGraphicsBeginImageContext(faceBounds.size)
-            cardImage.draw(at: CGPoint(x: 0-faceBounds.minX, y: 0-faceBounds.minY))
-            if let cardFaceImage = UIGraphicsGetImageFromCurrentImageContext() {
-                self.cardFaceView.image = cardFaceImage
-            }
+            UIGraphicsBeginImageContext(cardFaceBounds.size)
+            cardImage.draw(at: CGPoint(x: 0-cardFaceBounds.minX, y: 0-cardFaceBounds.minY))
+            self.cardFaceView.image = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
         }
         
-        if let cardFaceTemplate = self.page?.features.compactMap({ $0 as? FacePhotoFeature }).first?.faceTemplate, let liveFaceTemplate = self.liveFace?.faceTemplate, let score = try? VerID.shared.compareFaceTemplates(cardFaceTemplate, liveFaceTemplate) {
-            self.similarityDialLayer?.score = CGFloat(score.floatValue)
-            self.simiarityScoreLabel.text = String(format: "Similarity score: %.01f/10", score.floatValue * 10)
+        guard let verid = self.verid else {
+            return
+        }
+        guard let liveFace = self.liveFace else {
+            return
+        }
+        guard let cardFaces = self.page?.features.compactMap({ ($0 as? FacePhotoFeature)?.faceTemplate }) else {
+            return
+        }
+        do {
+            let threshold = verid.faceRecognition.authenticationScoreThreshold.floatValue
+            let maxScore: Float = 5.6
+            let score: Float = try verid.faceRecognition.compareSubjectFaces([liveFace], toFaces: cardFaces).floatValue
+            let adjustedScore: CGFloat
+            if score > threshold {
+                adjustedScore = CGFloat(0.5 + (score - threshold) / (maxScore / 2))
+            } else {
+                adjustedScore = CGFloat(score / threshold * 0.5)
+            }
+            self.similarityDialLayer?.score = adjustedScore
+            self.simiarityScoreLabel.text = String(format: "Similarity score: %.01f/10", adjustedScore * 10)
+        } catch {
         }
     }
 
