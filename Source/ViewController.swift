@@ -171,6 +171,10 @@ class ViewController: UIViewController, IDCaptureSessionDelegate, SessionDelegat
         settings.showGuide = true
         settings.detectFaceForRecognition = true
         let session = IDCaptureSession(environment: verid, settings: settings)
+        if UserDefaults.standard.bool(forKey: "intellicheck") {
+            let barcodeParserFactory = BarcodeParserFactory(useIntellicheck: true)
+            session.viewControllersFactory = DefaultIDCaptureSessionViewControllersFactory(environment: verid, barcodeParserFactory: barcodeParserFactory)
+        }
         session.delegate = self
         session.start()
     }
