@@ -14,7 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ErrorViewControllerDelega
     
     var window: UIWindow?
     var verid: VerID?
-    var veridCredentials: VerID?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         let defaults: [String:AnyObject] = ["securityLevel":NSNumber(value: 4.0),"intellicheck":NSNumber(value: false)]
@@ -35,21 +34,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ErrorViewControllerDelega
             veridFactory.createVerID()
             return
         }
-        guard self.veridCredentials != nil else {
-            let detRecLibSettings = DetRecLibSettings(modelsURL: nil)
-            detRecLibSettings.faceExtractQualityThreshold = 3.5
-            detRecLibSettings.sizeRange = 0.3
-            let detRecFactory = VerIDFaceDetectionRecognitionFactory(apiSecret: nil, settings: detRecLibSettings)
-            veridFactory.faceDetectionFactory = detRecFactory
-            veridFactory.faceRecognitionFactory = detRecFactory
-            veridFactory.createVerID()
-            return
-        }
         loadMainViewController()
     }
     
     func loadMainViewController() {
-        guard let verid = self.verid, let veridCredentials = self.veridCredentials else {
+        guard let verid = self.verid else {
             reload()
             return
         }
@@ -58,7 +47,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ErrorViewControllerDelega
             return
         }
         (navController.viewControllers.first as? ViewController)?.verid = verid
-        (navController.viewControllers.first as? ViewController)?.veridCredentials = veridCredentials
         self.window?.rootViewController = navController
     }
     
@@ -78,12 +66,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ErrorViewControllerDelega
     // MARK: - Ver-ID factory delegate
     
     func veridFactory(_ factory: VerIDFactory, didCreateVerID instance: VerID) {
-        if let detRecFactory = factory.faceDetectionFactory as? VerIDFaceDetectionRecognitionFactory, detRecFactory.settings.faceExtractQualityThreshold == 3.5 {
-            self.veridCredentials = instance
-        } else {
-            self.verid = instance
-            self.verid?.faceRecognition.authenticationScoreThreshold = NSNumber(value: UserDefaults.standard.float(forKey: "securityLevel"))
-        }
+        self.verid = instance
+        self.verid?.faceRecognition.authenticationScoreThreshold = NSNumber(value: UserDefaults.standard.float(forKey: "securityLevel"))
         self.loadMainViewController()
     }
     

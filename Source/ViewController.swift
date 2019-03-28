@@ -19,7 +19,6 @@ class ViewController: UIViewController, IDCaptureSessionDelegate, SessionDelegat
     @IBOutlet var introTextView: UITextView!
     
     var verid: VerID?
-    var veridCredentials: VerID?
     
     lazy var cardImageURL: URL? = {
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent(self.cardImageFileName)
@@ -162,7 +161,7 @@ class ViewController: UIViewController, IDCaptureSessionDelegate, SessionDelegat
     
     
     func cardPropertiesViewController(_ viewController: CardPropertiesViewController, didSelectIDDocument document: IDDocument) {
-        guard let verid = self.veridCredentials else {
+        guard let verid = self.verid else {
             return
         }
         let settings = IDCaptureSessionSettings()
