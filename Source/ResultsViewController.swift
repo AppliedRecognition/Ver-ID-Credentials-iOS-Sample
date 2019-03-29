@@ -20,14 +20,14 @@ class ResultsViewController: UIViewController {
     @IBOutlet var dialView: UIView!
     @IBOutlet var cardFaceView: UIImageView!
     @IBOutlet var liveFaceView: UIImageView!
-    @IBOutlet var simiarityScoreLabel: UILabel!
+    @IBOutlet var scoreLabel: UILabel!
+    @IBOutlet var helpButton: UIButton!
     
     var similarityDialLayer: SimiarityDial?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.similarityDialLayer = SimiarityDial()
-        self.similarityDialLayer!.max = 5.6
         self.dialView.layer.addSublayer(self.similarityDialLayer!)
         self.liveFaceView.image = self.liveFaceImage
         self.cardFaceView.layer.cornerRadius = 12
@@ -51,17 +51,15 @@ class ResultsViewController: UIViewController {
         guard let cardFaces = self.page?.features.compactMap({ ($0 as? FacePhotoFeature)?.faceTemplate }) else {
             return
         }
+        self.similarityDialLayer!.max = CGFloat(verid.faceRecognition.maxAuthenticationScore.floatValue)
         do {
             self.similarityDialLayer!.threshold = CGFloat(verid.faceRecognition.authenticationScoreThreshold.floatValue)
             let score: CGFloat = CGFloat(try verid.faceRecognition.compareSubjectFaces([liveFace], toFaces: cardFaces).floatValue)
             self.similarityDialLayer?.score = score
-            if score > CGFloat(verid.faceRecognition.authenticationScoreThreshold.floatValue) {
-                self.simiarityScoreLabel.text = "Authenticated"
-            } else {
-                self.simiarityScoreLabel.text = "Not authenticated"
-            }
+            self.scoreLabel.text = String(format: "Score: %.01f", score)
         } catch {
-            self.simiarityScoreLabel.text = "Comparison failed"
+            self.scoreLabel.text = "Comparison failed"
+            self.helpButton.isHidden = true
         }
     }
 
@@ -69,5 +67,15 @@ class ResultsViewController: UIViewController {
         super.viewDidAppear(animated)
         self.similarityDialLayer?.frame = self.dialView.bounds
         self.similarityDialLayer?.setNeedsDisplay()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? ScoreTableViewController {
+            dest.score = self.similarityDialLayer?.score
+        }
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        return identifier != "score" || self.similarityDialLayer?.score != nil
     }
 }
