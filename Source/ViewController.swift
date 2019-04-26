@@ -11,7 +11,9 @@ import VerIDCredentials
 import VerIDCore
 import VerIDUI
 
-class ViewController: UIViewController, IDCaptureSessionDelegate, SessionDelegate, CardPropertiesViewControllerDelegate {
+class ViewController: UIViewController, IDCaptureSessionDelegate, VerIDSessionDelegate, CardPropertiesViewControllerDelegate {
+    
+    // MARK: -
     
     @IBOutlet var compareLiveFaceButton: UIButton!
     @IBOutlet var scanIdCardButton: UIButton!
@@ -64,7 +66,7 @@ class ViewController: UIViewController, IDCaptureSessionDelegate, SessionDelegat
         }
         let settings = LivenessDetectionSessionSettings()
         settings.numberOfResultsToCollect = 2
-        let session = Session(environment: verid, settings: settings)
+        let session = VerIDSession(environment: verid, settings: settings)
         session.delegate = self
         session.start()
     }
@@ -132,7 +134,7 @@ class ViewController: UIViewController, IDCaptureSessionDelegate, SessionDelegat
         
     }
     
-    func session(_ session: Session, didFinishWithResult result: SessionResult) {
+    func session(_ session: VerIDSession, didFinishWithResult result: VerIDSessionResult) {
         if let error = result.error {
             return
         }
@@ -155,7 +157,7 @@ class ViewController: UIViewController, IDCaptureSessionDelegate, SessionDelegat
         self.performSegue(withIdentifier: "comparisonResult", sender: nil)
     }
     
-    func sessionWasCanceled(_ session: Session) {
+    func sessionWasCanceled(_ session: VerIDSession) {
         
     }
     
