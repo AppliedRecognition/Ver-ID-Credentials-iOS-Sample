@@ -30,28 +30,30 @@ class ViewController: UIViewController, IDCaptureSessionDelegate, VerIDSessionDe
         guard let cardData = UserDefaults.standard.data(forKey: "idBundle") else {
             return
         }
-        if let document = try? JSONDecoder().decode(IDDocument.self, from: cardData) {
-            self.document = document
-        } else {
-            return
-        }
-        guard let imageURL = self.document?.pages.first?.imageURL else {
-            return
-        }
-        do {
-            let imageData = try Data(contentsOf: imageURL)
-            guard let image = UIImage(data: imageData) else {
+        DispatchQueue.global().async {
+            guard let document = try? JSONDecoder().decode(IDDocument.self, from: cardData) else {
                 return
             }
-            self.cardImageView.image = image
-            self.cardImageView.layer.masksToBounds = true
-            self.compareLiveFaceButton.isEnabled = true
-            self.introTextView.isHidden = true
-            self.cardImageView.isHidden = false
-            self.scanIdCardButton.setTitle("Rescan ID Card", for: .normal)
-        } catch {
-            NSLog("Error reading image data from %@: %@", imageURL.path, error.localizedDescription)
-            return
+            guard let imageURL = document.pages.first?.imageURL else {
+                return
+            }
+            do {
+                let imageData = try Data(contentsOf: imageURL)
+                guard let image = UIImage(data: imageData) else {
+                    return
+                }
+                DispatchQueue.main.async {
+                    self.document = document
+                    self.cardImageView.image = image
+                    self.cardImageView.layer.masksToBounds = true
+                    self.compareLiveFaceButton.isEnabled = true
+                    self.introTextView.isHidden = true
+                    self.cardImageView.isHidden = false
+                    self.scanIdCardButton.setTitle("Rescan ID Card", for: .normal)
+                }
+            } catch {
+                NSLog("Error reading image data from %@: %@", imageURL.path, error.localizedDescription)
+            }
         }
     }
     
@@ -92,9 +94,6 @@ class ViewController: UIViewController, IDCaptureSessionDelegate, VerIDSessionDe
     
     func idCaptureSession(_ session: IDCaptureSession, didFinishWithResult result: IDCaptureSessionResult) {
         if result.status == .finished {
-            guard let cardImageURL = self.cardImageURL else {
-                return
-            }
             guard let sourceCardImageURL = result.document?.pages.first?.imageURL else {
                 return
             }
@@ -104,28 +103,23 @@ class ViewController: UIViewController, IDCaptureSessionDelegate, VerIDSessionDe
             guard let image = UIImage(data: imageData) else {
                 return
             }
-            do {
-                try imageData.write(to: cardImageURL)
-            } catch {
-                NSLog("Error copying file %@ to %@: %@", sourceCardImageURL.path, cardImageURL.path, error.localizedDescription)
-                return
-            }
             self.document = result.document
-            self.document?.pages.first?.imagePath = self.cardImageFileName
             self.cardImageView.image = image
             self.compareLiveFaceButton.isEnabled = true
             self.introTextView.isHidden = true
             self.cardImageView.isHidden = false
             self.scanIdCardButton.setTitle("Rescan ID Card", for: .normal)
             if let card = self.document {
-                do {
-                    let cardData = try JSONEncoder().encode(card)
-                    UserDefaults.standard.set(cardData, forKey: "idBundle")
-                    if let cardString = String(data: cardData, encoding: .utf8) {
-                        NSLog("Encoded idBundle data:\n%@", cardString)
+                DispatchQueue.global().async {
+                    do {
+                        let cardData = try JSONEncoder().encode(card)
+                        UserDefaults.standard.set(cardData, forKey: "idBundle")
+                        if let cardString = String(data: cardData, encoding: .utf8) {
+                            NSLog("Encoded idBundle data:\n%@", cardString)
+                        }
+                    } catch {
+                        NSLog("Error encoding idBundle: %@", error.localizedDescription)
                     }
-                } catch {
-                    NSLog("Error encoding idBundle: %@", error.localizedDescription)
                 }
             }
         }
