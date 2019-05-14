@@ -1,13 +1,13 @@
 PODS:
-  - Ver-ID-Core (1.0.0-beta.8)
-  - Ver-ID-Credentials (3.0.0-beta.3):
-    - Ver-ID-Core (= 1.0.0-beta.8)
-  - Ver-ID-UI (1.0.0-beta.8):
-    - Ver-ID-Core (= 1.0.0-beta.8)
+  - Ver-ID-Core (1.0.5)
+  - Ver-ID-Credentials (3.0.0-beta.7):
+    - Ver-ID-Core (~> 1.0)
+  - Ver-ID-UI (1.0.5):
+    - Ver-ID-Core (= 1.0.5)
 
 DEPENDENCIES:
-  - Ver-ID-Credentials (= 3.0.0-beta.3)
-  - Ver-ID-UI (= 1.0.0-beta.8)
+  - Ver-ID-Credentials (= 3.0.0-beta.7)
+  - Ver-ID-UI (~> 1.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -16,10 +16,10 @@ SPEC REPOS:
     - Ver-ID-UI
 
 SPEC CHECKSUMS:
-  Ver-ID-Core: 2dd00f3a3fa0e53dc44d01afc633da6068a99c58
-  Ver-ID-Credentials: 374732b9278d904a55e8e44bedf424ea84911170
-  Ver-ID-UI: 20d2a209716169985ff180e9d51270872ea64f3a
+  Ver-ID-Core: 224760d389d0a045faf3f91412f67b0b3ff7807f
+  Ver-ID-Credentials: 25eb926c12bb005b550b5c9671afe3d34e4d1a43
+  Ver-ID-UI: 93ccdbf2d0777df38c101e56a67f539b6be0a107
 
-PODFILE CHECKSUM: 4aecaa1d41a99d56d143b57c619147609edc1429
+PODFILE CHECKSUM: 65ecec54274888af3d1b2d8647def59c6af9389c
 
 COCOAPODS: 1.5.2

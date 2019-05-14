@@ -19,6 +19,7 @@
 		3B5AEDCC200A131A00FBD7EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B5AEDC6200A131900FBD7EC /* Main.storyboard */; };
 		3B5AEDCE200A131A00FBD7EC /* SimiarityDial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AEDC8200A131900FBD7EC /* SimiarityDial.swift */; };
 		3B5AEDCF200A131A00FBD7EC /* IdCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AEDC9200A131A00FBD7EC /* IdCardViewController.swift */; };
+		3B942166228B42D500460F18 /* ScoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B942165228B42D500460F18 /* ScoreTableViewController.swift */; };
 		66EA1D6E7E6DEBAD0415DA3D /* Pods_Ver_ID_Credentials_Sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8625AF87A8231A03D4F4726B /* Pods_Ver_ID_Credentials_Sample.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		3B5AEDC6200A131900FBD7EC /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Source/Main.storyboard; sourceTree = "<group>"; };
 		3B5AEDC8200A131900FBD7EC /* SimiarityDial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SimiarityDial.swift; path = Source/SimiarityDial.swift; sourceTree = "<group>"; };
 		3B5AEDC9200A131A00FBD7EC /* IdCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IdCardViewController.swift; path = Source/IdCardViewController.swift; sourceTree = "<group>"; };
+		3B942165228B42D500460F18 /* ScoreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScoreTableViewController.swift; path = Source/ScoreTableViewController.swift; sourceTree = "<group>"; };
 		8625AF87A8231A03D4F4726B /* Pods_Ver_ID_Credentials_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ver_ID_Credentials_Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9D49BB2E4F071E52A95D56E /* Pods-Ver-ID Credentials Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ver-ID Credentials Sample.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ver-ID Credentials Sample/Pods-Ver-ID Credentials Sample.release.xcconfig"; sourceTree = "<group>"; };
 		EC90FE46A242043B367A08D2 /* Pods-Ver-ID Credentials Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ver-ID Credentials Sample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ver-ID Credentials Sample/Pods-Ver-ID Credentials Sample.debug.xcconfig"; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 		3B5AEDAF200A129B00FBD7EC /* Ver-ID Credentials Sample */ = {
 			isa = PBXGroup;
 			children = (
+				3B942165228B42D500460F18 /* ScoreTableViewController.swift */,
 				3B3B66F32243B7EE004941C4 /* CardPropertiesViewController.swift */,
 				3B3B66F42243B7EE004941C4 /* Settings.bundle */,
 				3B130CED21ADED4700E6C94F /* ErrorViewController.swift */,
@@ -203,14 +206,20 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Ver-ID Credentials Sample/Pods-Ver-ID Credentials Sample-frameworks.sh",
 				"${PODS_ROOT}/Ver-ID-Core/VerIDCore.framework",
+				"${PODS_ROOT}/Ver-ID-Core/VerIDCore.framework.dSYM",
 				"${PODS_ROOT}/Ver-ID-Credentials/VerIDCredentials.framework",
+				"${PODS_ROOT}/Ver-ID-Credentials/VerIDCredentials.framework.dSYM",
 				"${PODS_ROOT}/Ver-ID-UI/VerIDUI.framework",
+				"${PODS_ROOT}/Ver-ID-UI/VerIDUI.framework.dSYM",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VerIDCore.framework",
+				"${DWARF_DSYM_FOLDER_PATH}/VerIDCore.framework.dSYM",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VerIDCredentials.framework",
+				"${DWARF_DSYM_FOLDER_PATH}/VerIDCredentials.framework.dSYM",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VerIDUI.framework",
+				"${DWARF_DSYM_FOLDER_PATH}/VerIDUI.framework.dSYM",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -246,6 +255,7 @@
 				3B130CEE21ADED4700E6C94F /* ErrorViewController.swift in Sources */,
 				3B5AEDCF200A131A00FBD7EC /* IdCardViewController.swift in Sources */,
 				3B5AEDB1200A129B00FBD7EC /* AppDelegate.swift in Sources */,
+				3B942166228B42D500460F18 /* ScoreTableViewController.swift in Sources */,
 				3B5AEDCB200A131A00FBD7EC /* ResultsViewController.swift in Sources */,
 				3B3B66F52243B7EE004941C4 /* CardPropertiesViewController.swift in Sources */,
 				3B5AEDCE200A131A00FBD7EC /* SimiarityDial.swift in Sources */,
