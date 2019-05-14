@@ -112,14 +112,13 @@ class ViewController: UIViewController, IDCaptureSessionDelegate, VerIDSessionDe
         self.cardImageView.isHidden = false
         self.scanIdCardButton.setTitle("Rescan ID Card", for: .normal)
         if let card = self.document {
-            do {
-                let cardData = try JSONEncoder().encode(card)
-                UserDefaults.standard.set(cardData, forKey: "idBundle")
-                if let cardString = String(data: cardData, encoding: .utf8) {
-                    NSLog("Encoded idBundle data:\n%@", cardString)
-                }
-            } catch {
-                NSLog("Error encoding idBundle: %@", error.localizedDescription)
+            DispatchQueue.global().async {
+                do {
+                    let cardData = try JSONEncoder().encode(card)
+                    UserDefaults.standard.set(cardData, forKey: "idBundle")
+                } catch {
+                    NSLog("Error encoding idBundle: %@", error.localizedDescription)
+                }                
             }
         }
     }
