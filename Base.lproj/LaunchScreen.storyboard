@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,18 +21,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="credentials_launch_icon" translatesAutoresizingMaskIntoConstraints="NO" id="X49-Ko-fBa">
-                                <rect key="frame" x="157" y="303.5" width="60" height="60"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="woman_with_licence" translatesAutoresizingMaskIntoConstraints="NO" id="wGQ-pM-fXY">
+                                <rect key="frame" x="27.5" y="400" width="320" height="267"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="N5r-pU-FzZ"/>
-                                    <constraint firstAttribute="width" constant="60" id="hcu-nU-xSz"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="320" id="kg8-zA-TkG"/>
+                                    <constraint firstAttribute="width" constant="320" id="uuR-Ej-4iR"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="X49-Ko-fBa" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Oym-1U-Bay"/>
-                            <constraint firstItem="X49-Ko-fBa" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="qNz-1N-LWQ"/>
+                            <constraint firstItem="wGQ-pM-fXY" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="0.4" id="73z-lx-SFG"/>
+                            <constraint firstItem="wGQ-pM-fXY" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="hFK-mi-jws"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="wGQ-pM-fXY" secondAttribute="bottom" id="pUP-rb-Cle"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -41,6 +43,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="credentials_launch_icon" width="60" height="60"/>
+        <image name="woman_with_licence" width="488" height="316"/>
     </resources>
 </document>
