@@ -86,8 +86,9 @@ class MyViewController: UIViewController, IDCaptureSessionDelegate {
 		// This example will scan an ISO ID1 photo card (credit card size) 
 		// with a photo on the front and PDF417 barcode on the back
 		let document = IDDocument(pages: [ISOID1PhotoCard(), ISOID1CardWithPDF417Barcode()])
-		let settings = IDCaptureSessionSettings(environment: verid, document: document)
-		let session = IDCaptureSession(settings: settings)
+		let settings = IDCaptureSessionSettings()
+		settings.document = document
+		let session = IDCaptureSession(environment: verid, settings: settings)
 		// Set the session delegate to this class
 		session.delegate = self
 		// Start the session
