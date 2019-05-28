@@ -11,6 +11,14 @@ import UIKit
 class ErrorViewController: UIViewController {
     
     weak var delegate: ErrorViewControllerDelegate?
+    var labelText: String = "Ver-ID failed to load"
+    
+    @IBOutlet var label: UILabel!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.label.text = labelText
+    }
     
     @IBAction func reload(_ sender: UIButton) {
         self.delegate?.didReceiveReloadRequest(from: self)

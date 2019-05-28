@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ErrorViewControllerDelega
     var verid: VerID?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        // Load Ver-ID, this will speed up the startup of live face capture
         let defaults: [String:AnyObject] = ["securityLevel":NSNumber(value: 4.0),"intellicheck":NSNumber(value: false)]
         UserDefaults.standard.register(defaults: defaults)
         NotificationCenter.default.addObserver(self, selector: #selector(self.defaultsDidChange), name: UserDefaults.didChangeNotification, object: nil)
@@ -42,20 +43,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ErrorViewControllerDelega
             reload()
             return
         }
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        guard let navController = storyboard.instantiateViewController(withIdentifier: "home") as? UINavigationController else {
+        guard let viewController = (self.window?.rootViewController as? UINavigationController)?.viewControllers.first as? ViewController else {
             return
         }
-        (navController.viewControllers.first as? ViewController)?.verid = verid
-        self.window?.rootViewController = navController
+        viewController.verid = verid
+        viewController.scanIdCardButton.isHidden = false
+        viewController.activityIndicator.stopAnimating()
     }
     
-    func loadErrorViewController() {
+    func loadErrorViewController(text: String) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         guard let errorViewController = storyboard.instantiateViewController(withIdentifier: "error") as? ErrorViewController else {
             fatalError()
         }
-        self.window?.rootViewController = errorViewController
+        errorViewController.labelText = text
+        (self.window?.rootViewController as? UINavigationController)?.setViewControllers([errorViewController], animated: false)
     }
     
     func didReceiveReloadRequest(from viewController: ErrorViewController) {
@@ -72,7 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ErrorViewControllerDelega
     }
     
     func veridFactory(_ factory: VerIDFactory, didFailWithError error: Error) {
-        self.loadErrorViewController()
+        self.loadErrorViewController(text: error.localizedDescription)
     }
     
     // MARK: -
@@ -101,3 +103,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ErrorViewControllerDelega
     
     
 }
+
