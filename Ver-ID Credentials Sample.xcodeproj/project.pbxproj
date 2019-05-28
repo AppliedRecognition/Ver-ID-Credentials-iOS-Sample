@@ -204,11 +204,11 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Ver-ID Credentials Sample/Pods-Ver-ID Credentials Sample-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Ver-ID Credentials Sample/Pods-Ver-ID Credentials Sample-frameworks.sh",
 				"${PODS_ROOT}/Ver-ID-Core/VerIDCore.framework",
 				"${PODS_ROOT}/Ver-ID-Core/VerIDCore.framework.dSYM",
-				"${PODS_ROOT}/Ver-ID-Credentials/VerIDCredentials.framework",
-				"${PODS_ROOT}/Ver-ID-Credentials/VerIDCredentials.framework.dSYM",
+				"${PODS_ROOT}/Ver-ID-Credentials-Beta/VerIDCredentials.framework",
+				"${PODS_ROOT}/Ver-ID-Credentials-Beta/VerIDCredentials.framework.dSYM",
 				"${PODS_ROOT}/Ver-ID-UI/VerIDUI.framework",
 				"${PODS_ROOT}/Ver-ID-UI/VerIDUI.framework.dSYM",
 			);
@@ -223,7 +223,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Ver-ID Credentials Sample/Pods-Ver-ID Credentials Sample-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Ver-ID Credentials Sample/Pods-Ver-ID Credentials Sample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		0EF69039E11BAC0BACC73E88 /* [CP] Check Pods Manifest.lock */ = {
