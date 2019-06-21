@@ -19,7 +19,7 @@ class CardViewController: UIViewController, VerIDSessionDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let photoPageImageURL = self.idDocument?.pages.first(where: { $0.features.contains(where: { $0 is FacePhotoFeature }) })?.imageURL else {
+        guard let photoPageImageURL = self.idDocument?.pages.first(where: { $0 is FacePhotoPage })?.imageURL else {
             return
         }
         self.cardImageView.image = UIImage(contentsOfFile: photoPageImageURL.path)
@@ -65,7 +65,7 @@ class CardViewController: UIViewController, VerIDSessionDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let controller = segue.destination as? ResultsViewController {
             controller.verid = self.verid
-            controller.page = self.idDocument?.pages.first(where: { $0.features.contains(where: { $0 is FacePhotoFeature }) })
+            controller.page = self.idDocument?.pages.first(where: { $0 is FacePhotoPage })
             controller.liveFace = sender as? RecognizableFace
             controller.liveFaceImage = self.liveFaceImage
         }

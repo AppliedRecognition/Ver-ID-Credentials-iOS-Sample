@@ -35,7 +35,7 @@ class ResultsViewController: UIViewController {
         self.liveFaceView.layer.cornerRadius = 12
         self.liveFaceView.layer.masksToBounds = true
         
-        if let cardImageURL = self.page?.imageURL, let cardFaceBounds = self.page?.features.first(where: { $0 is FacePhotoFeature })?.bounds, !cardFaceBounds.isNull, let cardImage = UIImage(contentsOfFile: cardImageURL.path) {
+        if let page = self.page as? FacePhotoPage, let cardImageURL = page.imageURL, let cardFaceBounds = page.face?.bounds, !cardFaceBounds.isNull, let cardImage = UIImage(contentsOfFile: cardImageURL.path) {
             UIGraphicsBeginImageContext(cardFaceBounds.size)
             cardImage.draw(at: CGPoint(x: 0-cardFaceBounds.minX, y: 0-cardFaceBounds.minY))
             self.cardFaceView.image = UIGraphicsGetImageFromCurrentImageContext()
@@ -48,13 +48,13 @@ class ResultsViewController: UIViewController {
         guard let liveFace = self.liveFace else {
             return
         }
-        guard let cardFaces = self.page?.features.compactMap({ ($0 as? FacePhotoFeature)?.faceTemplate }) else {
+        guard let cardFaces = (self.page as? FacePhotoPage)?.face else {
             return
         }
         self.similarityDialLayer!.max = CGFloat(verid.faceRecognition.maxAuthenticationScore.floatValue)
         do {
             self.similarityDialLayer!.threshold = CGFloat(verid.faceRecognition.authenticationScoreThreshold.floatValue)
-            let score: CGFloat = CGFloat(try verid.faceRecognition.compareSubjectFaces([liveFace], toFaces: cardFaces).floatValue)
+            let score: CGFloat = CGFloat(try verid.faceRecognition.compareSubjectFaces([liveFace], toFaces: [cardFaces]).floatValue)
             self.similarityDialLayer?.score = score
             self.scoreLabel.text = String(format: "Score: %.01f", score)
         } catch {
