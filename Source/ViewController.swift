@@ -139,8 +139,9 @@ class ViewController: UIViewController, IDCaptureSessionDelegate, VerIDSessionDe
             return
         }
         self.liveFace = face
-        let scaleTransform = CGAffineTransform(scaleX: image.size.width, y: image.size.height)
-        let faceBounds = face.bounds.applying(scaleTransform)
+//        let scaleTransform = CGAffineTransform(scaleX: image.size.width, y: image.size.height)
+//        let faceBounds = face.bounds.applying(scaleTransform)
+        let faceBounds = face.bounds
         UIGraphicsBeginImageContext(faceBounds.size)
         image.draw(at: CGPoint(x: 0-faceBounds.minX, y: 0-faceBounds.minY))
         self.liveFaceImage = UIGraphicsGetImageFromCurrentImageContext()

@@ -38,10 +38,8 @@ class ResultsViewController: UIViewController {
         self.liveFaceView.layer.masksToBounds = true
         
         if let cardImageURL = self.page?.imageURL, let cardFaceBounds = self.page?.features.first(where: { $0 is FacePhotoFeature })?.bounds, !cardFaceBounds.isNull, let cardImage = UIImage(contentsOfFile: cardImageURL.path) {
-            let scaleTransform = CGAffineTransform(scaleX: cardImage.size.width, y: cardImage.size.height)
-            let faceBounds = cardFaceBounds.applying(scaleTransform)
-            UIGraphicsBeginImageContext(faceBounds.size)
-            cardImage.draw(at: CGPoint(x: 0-faceBounds.minX, y: 0-faceBounds.minY))
+            UIGraphicsBeginImageContext(cardFaceBounds.size)
+            cardImage.draw(at: CGPoint(x: 0-cardFaceBounds.minX, y: 0-cardFaceBounds.minY))
             if let cardFaceImage = UIGraphicsGetImageFromCurrentImageContext() {
                 self.cardFaceView.image = cardFaceImage
             }
