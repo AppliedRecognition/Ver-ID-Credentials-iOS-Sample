@@ -9,5 +9,5 @@ target 'Ver-ID Credentials Sample' do
 
   # Pods for Ver-ID Credentials Sample
 
-  pod 'Ver-ID-Credentials', '~> 2.1'
+  pod 'Ver-ID-Credentials', '~> 2.2'
 end
