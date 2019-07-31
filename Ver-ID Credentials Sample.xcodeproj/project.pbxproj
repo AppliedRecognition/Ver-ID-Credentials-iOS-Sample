@@ -194,20 +194,22 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Ver-ID Credentials Sample/Pods-Ver-ID Credentials Sample-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Ver-ID Credentials Sample/Pods-Ver-ID Credentials Sample-frameworks.sh",
 				"${PODS_ROOT}/Ver-ID/VerID.framework",
+				"${PODS_ROOT}/Ver-ID/VerID.framework.dSYM",
 				"${PODS_ROOT}/Ver-ID-Credentials/VerIDCredentials.framework",
-				"${BUILT_PRODUCTS_DIR}/ZIPFoundation/ZIPFoundation.framework",
+				"${PODS_ROOT}/Ver-ID-Credentials/VerIDCredentials.framework.dSYM",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VerID.framework",
+				"${DWARF_DSYM_FOLDER_PATH}/VerID.framework.dSYM",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VerIDCredentials.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZIPFoundation.framework",
+				"${DWARF_DSYM_FOLDER_PATH}/VerIDCredentials.framework.dSYM",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Ver-ID Credentials Sample/Pods-Ver-ID Credentials Sample-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Ver-ID Credentials Sample/Pods-Ver-ID Credentials Sample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		0EF69039E11BAC0BACC73E88 /* [CP] Check Pods Manifest.lock */ = {
