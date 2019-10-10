@@ -58,7 +58,7 @@ class SimiarityDial: CAShapeLayer {
         let dotRadius: CGFloat = 12
         let dotPath = UIBezierPath(ovalIn: CGRect(x: bounds.midX-dotRadius/2, y: bounds.maxY-dotRadius/2, width: dotRadius, height: dotRadius))
         let dotLayer = CAShapeLayer()
-        dotLayer.fillColor = UIColor.black.cgColor
+        dotLayer.fillColor = UIColor.gray.cgColor
         dotLayer.path = dotPath.cgPath
         self.addSublayer(dotLayer)
         
@@ -68,7 +68,7 @@ class SimiarityDial: CAShapeLayer {
         needlePath.move(to: CGPoint(x: bounds.midX, y: bounds.maxY))
         needlePath.addLine(to: scorePoint)
         let scoreLayer = CAShapeLayer()
-        scoreLayer.strokeColor = UIColor.black.cgColor
+        scoreLayer.strokeColor = UIColor.gray.cgColor
         scoreLayer.lineWidth = 3
         scoreLayer.path = needlePath.cgPath
         self.addSublayer(scoreLayer)
