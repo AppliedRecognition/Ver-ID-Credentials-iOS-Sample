@@ -9,6 +9,6 @@ target 'Ver-ID Credentials Sample' do
 
   # Pods for Ver-ID Credentials Sample
 
-  pod 'Ver-ID-Credentials-Beta', '~> 3.0'
-  pod 'Ver-ID-UI', '~> 1.1'
+  pod 'Ver-ID-Credentials-Beta', '3.0.2'
+  pod 'Ver-ID-UI', '~> 1.9'
 end
