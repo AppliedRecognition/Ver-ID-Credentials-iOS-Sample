@@ -1,20 +1,56 @@
 PODS:
-  - Ver-ID (3.5.5)
-  - Ver-ID-Credentials (2.2.4):
-    - Ver-ID (~> 3.5)
+  - ID-Card-Camera (1.0.1)
+  - PPBlinkID (5.0.2)
+  - Rx-Ver-ID (1.1.1):
+    - Rx-Ver-ID/Core (= 1.1.1)
+    - Rx-Ver-ID/UI (= 1.1.1)
+    - RxCocoa (~> 5)
+    - RxSwift (~> 5)
+  - Rx-Ver-ID/Core (1.1.1):
+    - RxCocoa (~> 5)
+    - RxSwift (~> 5)
+    - Ver-ID-Core (< 2, >= 1.9.4)
+  - Rx-Ver-ID/UI (1.1.1):
+    - Rx-Ver-ID/Core (= 1.1.1)
+    - RxCocoa (~> 5)
+    - RxSwift (~> 5)
+    - Ver-ID-UI (< 2, >= 1.9.4)
+  - RxCocoa (5.0.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.0.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.0.1)
+  - Ver-ID-Core (1.9.4)
+  - Ver-ID-UI (1.9.4):
+    - Ver-ID-Core (= 1.9.4)
 
 DEPENDENCIES:
-  - Ver-ID-Credentials (= 2.2.4)
+  - ID-Card-Camera (< 2, >= 1.0.1)
+  - PPBlinkID (< 6, >= 5.0.2)
+  - Rx-Ver-ID (< 2, >= 1.1.1)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - Ver-ID
-    - Ver-ID-Credentials
+  trunk:
+    - ID-Card-Camera
+    - PPBlinkID
+    - Rx-Ver-ID
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+    - Ver-ID-Core
+    - Ver-ID-UI
 
 SPEC CHECKSUMS:
-  Ver-ID: c0f13b24fd461b74845fcc2df2d80ee4de9673d3
-  Ver-ID-Credentials: 5b076b0accbf5edcb53f9a5326bbd76314399165
+  ID-Card-Camera: 505801386c2213c05d29132714a0a70e2a1d3e40
+  PPBlinkID: 9a9f3610ee57e4a71f5d980da9c5c837c8559a6e
+  Rx-Ver-ID: 5bda2aee81d9be664143aca3a1d13389259cb60e
+  RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
+  RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
+  RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
+  Ver-ID-Core: 446839f0350728596907350d3a772b53f77c8b13
+  Ver-ID-UI: aa3ad54f0848e294a42edcd947c3897458b0d132
 
-PODFILE CHECKSUM: 146fa8249d42cfc70efc667dcda90b5d6678a089
+PODFILE CHECKSUM: b381448469166bf6f290a1272090d30b4b72069c
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.8.4

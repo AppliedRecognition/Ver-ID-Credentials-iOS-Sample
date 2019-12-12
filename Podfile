@@ -1,13 +1,13 @@
-project 'Ver-ID Credentials Sample.xcodeproj'
+workspace 'ID Capture.xcworkspace'
+project 'ID Capture.xcodeproj'
 
-# Uncomment the next line to define a global platform for your project
 platform :ios, '11.0'
 
-target 'Ver-ID Credentials Sample' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+target 'ID Capture' do
   use_frameworks!
 
-  # Pods for Ver-ID Credentials Sample
-
-  pod 'Ver-ID-Credentials', '2.2.4'
+  # Pods for ID Capture
+  pod 'Rx-Ver-ID', '>= 1.1.1', '< 2'
+  pod 'ID-Card-Camera', '>= 1.0.1', '< 2'
+  pod 'PPBlinkID', '>= 5.0.2', '< 6'
 end
