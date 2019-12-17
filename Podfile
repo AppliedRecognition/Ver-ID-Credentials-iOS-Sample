@@ -7,7 +7,7 @@ target 'ID Capture' do
   use_frameworks!
 
   # Pods for ID Capture
-  pod 'Rx-Ver-ID', '>= 1.1.1', '< 2'
-  pod 'ID-Card-Camera', '>= 1.0.1', '< 2'
+  pod 'Rx-Ver-ID', '>= 1.2.0', '< 2'
+  pod 'ID-Card-Camera', '>= 1.2.0', '< 2'
   pod 'PPBlinkID', '>= 5.0.2', '< 6'
 end

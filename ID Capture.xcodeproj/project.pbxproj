@@ -21,6 +21,10 @@
 		3B3FF9CF23A24BA300156A59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B3FF9C823A24BA300156A59 /* Main.storyboard */; };
 		3B3FF9D123A24F3600156A59 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3FF9D023A24F3600156A59 /* SettingsViewController.swift */; };
 		3B3FF9D323A250F100156A59 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3FF9D223A250F100156A59 /* CardViewController.swift */; };
+		3B5C14EC23A958250000D252 /* Gamma.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5C14E823A9573B0000D252 /* Gamma.swift */; };
+		3B5C14ED23A958250000D252 /* Erf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5C14E923A9573B0000D252 /* Erf.swift */; };
+		3B5C14EE23A958250000D252 /* ContinuedFraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5C14EA23A9573B0000D252 /* ContinuedFraction.swift */; };
+		3B5C14EF23A958250000D252 /* NormalDistribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5C14EB23A9573B0000D252 /* NormalDistribution.swift */; };
 		6C128773EA5E3E6BF2E68C57 /* Pods_ID_Capture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 419180C6135555744CF4A99A /* Pods_ID_Capture.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +61,10 @@
 		3B3FF9C823A24BA300156A59 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		3B3FF9D023A24F3600156A59 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		3B3FF9D223A250F100156A59 /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
+		3B5C14E823A9573B0000D252 /* Gamma.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gamma.swift; sourceTree = "<group>"; };
+		3B5C14E923A9573B0000D252 /* Erf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Erf.swift; sourceTree = "<group>"; };
+		3B5C14EA23A9573B0000D252 /* ContinuedFraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinuedFraction.swift; sourceTree = "<group>"; };
+		3B5C14EB23A9573B0000D252 /* NormalDistribution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalDistribution.swift; sourceTree = "<group>"; };
 		419180C6135555744CF4A99A /* Pods_ID_Capture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ID_Capture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		638E7A67289A680519B46277 /* Pods-ID Capture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ID Capture.release.xcconfig"; path = "Target Support Files/Pods-ID Capture/Pods-ID Capture.release.xcconfig"; sourceTree = "<group>"; };
 		FF4DD71811035F32DE6E594B /* Pods-ID Capture.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ID Capture.debug.xcconfig"; path = "Target Support Files/Pods-ID Capture/Pods-ID Capture.debug.xcconfig"; sourceTree = "<group>"; };
@@ -122,8 +130,20 @@
 				3B0B533823A2B36F00B64EB6 /* DocumentData.swift */,
 				3B0B533A23A2B6FA00B64EB6 /* CardDetailsTableViewController.swift */,
 				3B0B533C23A2B80D00B64EB6 /* ImageTableViewCell.swift */,
+				3B5C14E723A9573B0000D252 /* math */,
 			);
 			path = "ID Capture";
+			sourceTree = "<group>";
+		};
+		3B5C14E723A9573B0000D252 /* math */ = {
+			isa = PBXGroup;
+			children = (
+				3B5C14E823A9573B0000D252 /* Gamma.swift */,
+				3B5C14E923A9573B0000D252 /* Erf.swift */,
+				3B5C14EA23A9573B0000D252 /* ContinuedFraction.swift */,
+				3B5C14EB23A9573B0000D252 /* NormalDistribution.swift */,
+			);
+			path = math;
 			sourceTree = "<group>";
 		};
 		8A92B8622725B058A9344374 /* Frameworks */ = {
@@ -272,13 +292,17 @@
 				3B3FF93523A15E7700156A59 /* ViewController.swift in Sources */,
 				3B3FF93123A15E7700156A59 /* AppDelegate.swift in Sources */,
 				3B3FF9D123A24F3600156A59 /* SettingsViewController.swift in Sources */,
+				3B5C14EF23A958250000D252 /* NormalDistribution.swift in Sources */,
 				3B3FF9CC23A24BA300156A59 /* SimiarityDial.swift in Sources */,
+				3B5C14EC23A958250000D252 /* Gamma.swift in Sources */,
 				3B0B533523A2AB6600B64EB6 /* SupportedDocumentsViewController.swift in Sources */,
+				3B5C14EE23A958250000D252 /* ContinuedFraction.swift in Sources */,
 				3B3FF9D323A250F100156A59 /* CardViewController.swift in Sources */,
 				3B3FF9CB23A24BA300156A59 /* ScoreTableViewController.swift in Sources */,
 				3B0B533D23A2B80D00B64EB6 /* ImageTableViewCell.swift in Sources */,
 				3B3FF9CA23A24BA300156A59 /* ResultsViewController.swift in Sources */,
 				3B0B533B23A2B6FA00B64EB6 /* CardDetailsTableViewController.swift in Sources */,
+				3B5C14ED23A958250000D252 /* Erf.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,7 +379,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 3.0.0;
+				MARKETING_VERSION = 4.0.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -410,7 +434,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 3.0.0;
+				MARKETING_VERSION = 4.0.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -428,11 +452,13 @@
 				BLINKID_KEY = "sRwAAAEZY29tLmFwcGxpZWRyZWMuaWQtY2FwdHVyZZpSUB5IbSbnMB1ZBREcyJH6okTg3Ue4Jmx7/xoIAljTm1Dgw9470xm3JuKqt6ppqTebmcs7zP/YOLxaMTmXICAVtGPV25WdMWREtOqJ36rc+fSDsol5osvKP8xPFrxMJW7dr+dbFSe1y3bDQKaIM6NPlfvs5BOx4RwDV/mQUgFc4nlCSI1r1qLHhXzvu3qSXv+mIeJmB/rNzBF+oFWBCsFRuZoTVHVxKWxadeGjWI7W9eopta6qmyIQgMk0nU0F0KiUXr+MpBfA";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3DPTJHF24M;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "ID Capture/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 4.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.appliedrec.ID-Capture";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -449,11 +475,13 @@
 				BLINKID_KEY = "sRwAAAEZY29tLmFwcGxpZWRyZWMuaWQtY2FwdHVyZZpSUB5IbSbnMB1ZBREcyJH6okTg3Ue4Jmx7/xoIAljTm1Dgw9470xm3JuKqt6ppqTebmcs7zP/YOLxaMTmXICAVtGPV25WdMWREtOqJ36rc+fSDsol5osvKP8xPFrxMJW7dr+dbFSe1y3bDQKaIM6NPlfvs5BOx4RwDV/mQUgFc4nlCSI1r1qLHhXzvu3qSXv+mIeJmB/rNzBF+oFWBCsFRuZoTVHVxKWxadeGjWI7W9eopta6qmyIQgMk0nU0F0KiUXr+MpBfA";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3DPTJHF24M;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "ID Capture/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 4.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.appliedrec.ID-Capture";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

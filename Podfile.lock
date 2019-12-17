@@ -1,38 +1,43 @@
 PODS:
-  - ID-Card-Camera (1.0.1)
+  - ID-Card-Camera (1.2.0)
+  - OpenCV2 (4.1.2)
   - PPBlinkID (5.0.2)
-  - Rx-Ver-ID (1.1.1):
-    - Rx-Ver-ID/Core (= 1.1.1)
-    - Rx-Ver-ID/UI (= 1.1.1)
+  - Rx-Ver-ID (1.2.0):
+    - Rx-Ver-ID/Core (= 1.2.0)
+    - Rx-Ver-ID/UI (= 1.2.0)
     - RxCocoa (~> 5)
     - RxSwift (~> 5)
-  - Rx-Ver-ID/Core (1.1.1):
+  - Rx-Ver-ID/Core (1.2.0):
     - RxCocoa (~> 5)
     - RxSwift (~> 5)
-    - Ver-ID-Core (< 2, >= 1.9.4)
-  - Rx-Ver-ID/UI (1.1.1):
-    - Rx-Ver-ID/Core (= 1.1.1)
+    - Ver-ID-Core (< 2, >= 1.9.5)
+  - Rx-Ver-ID/UI (1.2.0):
+    - Rx-Ver-ID/Core (= 1.2.0)
     - RxCocoa (~> 5)
     - RxSwift (~> 5)
-    - Ver-ID-UI (< 2, >= 1.9.4)
+    - Ver-ID-UI (< 2, >= 1.9.5)
   - RxCocoa (5.0.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
   - RxRelay (5.0.1):
     - RxSwift (~> 5)
   - RxSwift (5.0.1)
-  - Ver-ID-Core (1.9.4)
-  - Ver-ID-UI (1.9.4):
-    - Ver-ID-Core (= 1.9.4)
+  - Ver-ID-Core (1.9.5):
+    - OpenCV2 (~> 4.1)
+    - ZIPFoundation (~> 0.9)
+  - Ver-ID-UI (1.9.5):
+    - Ver-ID-Core (= 1.9.5)
+  - ZIPFoundation (0.9.10)
 
 DEPENDENCIES:
-  - ID-Card-Camera (< 2, >= 1.0.1)
+  - ID-Card-Camera (< 2, >= 1.2.0)
   - PPBlinkID (< 6, >= 5.0.2)
-  - Rx-Ver-ID (< 2, >= 1.1.1)
+  - Rx-Ver-ID (< 2, >= 1.2.0)
 
 SPEC REPOS:
   trunk:
     - ID-Card-Camera
+    - OpenCV2
     - PPBlinkID
     - Rx-Ver-ID
     - RxCocoa
@@ -40,17 +45,20 @@ SPEC REPOS:
     - RxSwift
     - Ver-ID-Core
     - Ver-ID-UI
+    - ZIPFoundation
 
 SPEC CHECKSUMS:
-  ID-Card-Camera: 505801386c2213c05d29132714a0a70e2a1d3e40
+  ID-Card-Camera: dfb0da22d17bccd1dd73da3ee611a95759fb673a
+  OpenCV2: 3ac0512dabaddda936f112507f9095697d392551
   PPBlinkID: 9a9f3610ee57e4a71f5d980da9c5c837c8559a6e
-  Rx-Ver-ID: 5bda2aee81d9be664143aca3a1d13389259cb60e
+  Rx-Ver-ID: 6084c21d6373719016e3a95a830236d254e12132
   RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
   RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
   RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
-  Ver-ID-Core: 446839f0350728596907350d3a772b53f77c8b13
-  Ver-ID-UI: aa3ad54f0848e294a42edcd947c3897458b0d132
+  Ver-ID-Core: 52215c23f813a74ba672a1702e32ebbd4534083c
+  Ver-ID-UI: 87c354ef01c961b433819dd5b89293c67025d769
+  ZIPFoundation: 249fa8890597086cd536bb2df5c9804d84e122b0
 
-PODFILE CHECKSUM: b381448469166bf6f290a1272090d30b4b72069c
+PODFILE CHECKSUM: c6e9e491d99a74015e7ce0d3b453802a5586aaa5
 
 COCOAPODS: 1.8.4

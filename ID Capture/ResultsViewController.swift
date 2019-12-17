@@ -19,45 +19,30 @@ class ResultsViewController: UIViewController {
     
     let disposeBag = DisposeBag()
     
-    @IBOutlet var dialView: UIView!
     @IBOutlet var cardFaceView: UIImageView!
     @IBOutlet var liveFaceView: UIImageView!
+    @IBOutlet var cardFaceViewLandscape: UIImageView!
+    @IBOutlet var liveFaceViewLandscape: UIImageView!
     @IBOutlet var scoreLabel: UILabel!
+    @IBOutlet var farExplanationLabel: UILabel!
     @IBOutlet var helpButton: UIButton!
-    var similarityDialLayer: SimiarityDial?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.similarityDialLayer = SimiarityDial()
-        self.dialView.layer.addSublayer(self.similarityDialLayer!)
         self.liveFaceView.image = self.liveFaceImage
         self.cardFaceView.image = self.cardFaceImage
+        self.liveFaceViewLandscape.image = self.liveFaceImage
+        self.cardFaceViewLandscape.image = self.cardFaceImage
         
         guard let score = self.comparisonScore else {
             return
         }
         
-        rxVerID.verid.subscribe(onSuccess: { verid in
-            self.similarityDialLayer!.max = CGFloat(verid.faceRecognition.maxAuthenticationScore.floatValue)
-            self.similarityDialLayer!.threshold = CGFloat(verid.faceRecognition.authenticationScoreThreshold.floatValue)
-            self.similarityDialLayer!.score = CGFloat(score)
-            self.scoreLabel.text = String(format: "Score: %.01f", score)
-        }, onError: nil).disposed(by: self.disposeBag)
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.similarityDialLayer?.frame = self.dialView.bounds
-        self.similarityDialLayer?.setNeedsDisplay()
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let dest = segue.destination as? ScoreTableViewController {
-            dest.score = self.similarityDialLayer?.score
+        let normalDistribution = NormalDistribution()
+        guard let probability = try? normalDistribution.cumulativeProbability(Double(score)) else {
+            return
         }
-    }
-    
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        return identifier != "score" || self.similarityDialLayer?.score != nil
+        self.farExplanationLabel.text = String(format: "Setting Ver-ID face recognition's authentication threshold to %.02f means that there is a %.5f\u{00a0}%% probability of false acceptance.", score, 100.0-probability*100)
+        self.scoreLabel.text = String(format: "%.02f", score)
     }
 }

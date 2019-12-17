@@ -9,22 +9,6 @@
 import UIKit
 
 class ScoreTableViewController: UITableViewController {
-    
-    var score: CGFloat?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        if let score = self.score {
-            self.navigationItem.title = String(format: "Your score: %.01f", score)
-        }
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
 
     // MARK: - Table view data source
 

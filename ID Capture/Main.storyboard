@@ -217,14 +217,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="64" translatesAutoresizingMaskIntoConstraints="NO" id="Vqx-cm-wcp">
-                                <rect key="frame" x="36" y="89.5" width="248" height="389"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Vqx-cm-wcp">
+                                <rect key="frame" x="16" y="86.5" width="288" height="395"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="eHs-Tx-XmL">
-                                        <rect key="frame" x="0.0" y="0.0" width="248" height="135"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="eHs-Tx-XmL">
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="170"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DXz-Qz-qIP">
-                                                <rect key="frame" x="0.0" y="0.0" width="108" height="135"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="136" height="170"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="DXz-Qz-qIP" secondAttribute="height" multiplier="4:5" id="93b-GA-RXm"/>
                                                 </constraints>
@@ -236,7 +236,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="73K-2l-gf3">
-                                                <rect key="frame" x="140" y="0.0" width="108" height="135"/>
+                                                <rect key="frame" x="152" y="0.0" width="136" height="170"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="73K-2l-gf3" secondAttribute="height" multiplier="4:5" id="D32-Im-o0R"/>
                                                 </constraints>
@@ -248,58 +248,104 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                         </subviews>
+                                        <variation key="heightClass=compact" hidden="YES"/>
                                     </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YEt-u2-i8h">
-                                        <rect key="frame" x="0.0" y="199" width="248" height="93"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="248" id="3xx-8d-e9i"/>
-                                            <constraint firstAttribute="height" constant="93" id="OOu-yy-ri1"/>
-                                        </constraints>
-                                    </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9q3-id-Ioe">
-                                        <rect key="frame" x="0.0" y="356" width="248" height="33"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Th5-C8-prH">
-                                                <rect key="frame" x="0.0" y="0.0" width="47.5" height="33"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ix1-jw-oFn">
-                                                <rect key="frame" x="47.5" y="0.0" width="200.5" height="33"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <state key="normal" title="What does it mean?"/>
-                                                <connections>
-                                                    <segue destination="XYf-7B-L8F" kind="show" identifier="score" id="BRO-6d-fZF"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="3.5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Th5-C8-prH">
+                                        <rect key="frame" x="0.0" y="186" width="288" height="57.5"/>
+                                        <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Setting Ver-ID face recognition's authentication threshold to 3.5 means that there is a 0.02 % probability of false acceptance." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="08D-GX-8lp">
+                                        <rect key="frame" x="0.0" y="259.5" width="288" height="86.5"/>
+                                        <edgeInsets key="layoutMargins" top="8" left="16" bottom="8" right="16"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ix1-jw-oFn">
+                                        <rect key="frame" x="0.0" y="362" width="288" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="False acceptance rates"/>
+                                        <connections>
+                                            <segue destination="XYf-7B-L8F" kind="show" identifier="score" id="BRO-6d-fZF"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                                <variation key="heightClass=compact" spacing="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="RJ2-TG-nLE"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="320" id="qjD-nU-HZ0"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="RJ2-TG-nLE"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="RJ2-TG-nLE"/>
+                                    </mask>
+                                </variation>
                             </stackView>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jh1-uq-x9X">
+                                <rect key="frame" x="-92" y="221.5" width="100" height="125"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="125" id="8lK-hg-ewx"/>
+                                    <constraint firstAttribute="width" constant="100" id="CFT-ib-hL8"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="heightClass=compact" hidden="NO"/>
+                            </imageView>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="F9e-VX-00b">
+                                <rect key="frame" x="312" y="221.5" width="100" height="125"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="125" id="GTn-KD-mMC"/>
+                                    <constraint firstAttribute="width" constant="100" id="xE8-49-fzg"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="heightClass=compact" hidden="NO"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Vqx-cm-wcp" firstAttribute="centerX" secondItem="JwL-rY-7Wd" secondAttribute="centerX" id="gi3-xW-5Ll"/>
-                            <constraint firstItem="Vqx-cm-wcp" firstAttribute="centerY" secondItem="JwL-rY-7Wd" secondAttribute="centerY" id="oia-Jx-01R"/>
+                            <constraint firstItem="Vqx-cm-wcp" firstAttribute="leading" secondItem="Jh1-uq-x9X" secondAttribute="trailing" constant="8" id="2PO-r7-eY6"/>
+                            <constraint firstItem="Vqx-cm-wcp" firstAttribute="centerY" secondItem="JwL-rY-7Wd" secondAttribute="centerY" id="EMK-dj-xZ9"/>
+                            <constraint firstItem="F9e-VX-00b" firstAttribute="leading" secondItem="Vqx-cm-wcp" secondAttribute="trailing" constant="8" id="Lkh-Xz-mcd"/>
+                            <constraint firstItem="Vqx-cm-wcp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Hfk-Vk-Gbf" secondAttribute="leading" constant="16" id="fwt-IE-YjH"/>
+                            <constraint firstItem="Jh1-uq-x9X" firstAttribute="centerY" secondItem="JwL-rY-7Wd" secondAttribute="centerY" id="iux-ce-kpm"/>
+                            <constraint firstItem="F9e-VX-00b" firstAttribute="centerY" secondItem="JwL-rY-7Wd" secondAttribute="centerY" id="nq0-gR-GX8"/>
+                            <constraint firstItem="Vqx-cm-wcp" firstAttribute="centerX" secondItem="JwL-rY-7Wd" secondAttribute="centerX" id="ooy-Fe-HAj"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Vqx-cm-wcp" secondAttribute="trailing" constant="16" id="pXp-cn-QLa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Hfk-Vk-Gbf"/>
                     </view>
                     <navigationItem key="navigationItem" title="Comparison result" id="cUr-2c-9j8"/>
                     <connections>
                         <outlet property="cardFaceView" destination="DXz-Qz-qIP" id="fm5-K6-J5A"/>
-                        <outlet property="dialView" destination="YEt-u2-i8h" id="mWa-D3-Cpr"/>
+                        <outlet property="cardFaceViewLandscape" destination="Jh1-uq-x9X" id="U3v-8c-Sq7"/>
+                        <outlet property="farExplanationLabel" destination="08D-GX-8lp" id="yBB-mf-rPV"/>
                         <outlet property="helpButton" destination="Ix1-jw-oFn" id="nFp-bI-t84"/>
                         <outlet property="liveFaceView" destination="73K-2l-gf3" id="Ppi-mf-g5V"/>
+                        <outlet property="liveFaceViewLandscape" destination="F9e-VX-00b" id="aCx-BR-fj4"/>
                         <outlet property="scoreLabel" destination="Th5-C8-prH" id="Ety-Ks-0gE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w11-NR-i07" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1721" y="75"/>
+            <point key="canvasLocation" x="1720.7746478873239" y="75"/>
         </scene>
-        <!--Score explanation-->
+        <!--False acceptance rates-->
         <scene sceneID="QwX-Ko-cWy">
             <objects>
                 <tableViewController id="XYf-7B-L8F" customClass="ScoreTableViewController" customModule="ID_Capture" customModuleProvider="target" sceneMemberID="viewController">
@@ -632,7 +678,7 @@
                             <outlet property="delegate" destination="XYf-7B-L8F" id="qmd-3n-gWT"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Score explanation" id="G0y-7p-JMh"/>
+                    <navigationItem key="navigationItem" title="False acceptance rates" id="G0y-7p-JMh"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OPL-fL-MTU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -782,7 +828,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OBa-my-eO3">
-                                <rect key="frame" x="50.5" y="84" width="219" height="138"/>
+                                <rect key="frame" x="40" y="77.5" width="240" height="151"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="OBa-my-eO3" secondAttribute="height" multiplier="85.6:53.98" identifier="aspectRatio" id="JN0-KN-Bfd"/>
                                     <constraint firstAttribute="height" priority="999" constant="240" id="mMv-VJ-HtS"/>
@@ -802,7 +848,7 @@
                             <constraint firstItem="4Fh-Yo-Bzv" firstAttribute="centerX" secondItem="sqR-lv-MsW" secondAttribute="centerX" id="86U-JQ-hpa"/>
                             <constraint firstItem="4Fh-Yo-Bzv" firstAttribute="height" secondItem="y7H-x4-Sko" secondAttribute="height" multiplier="0.45" id="C14-qX-3EN"/>
                             <constraint firstItem="4Fh-Yo-Bzv" firstAttribute="bottom" secondItem="y7H-x4-Sko" secondAttribute="bottom" id="Mw4-5h-gip"/>
-                            <constraint firstItem="OBa-my-eO3" firstAttribute="top" relation="greaterThanOrEqual" secondItem="y7H-x4-Sko" secondAttribute="top" constant="40" id="dlj-lx-cHF"/>
+                            <constraint firstItem="OBa-my-eO3" firstAttribute="top" relation="greaterThanOrEqual" secondItem="y7H-x4-Sko" secondAttribute="top" constant="20" id="dlj-lx-cHF"/>
                             <constraint firstItem="4Fh-Yo-Bzv" firstAttribute="leading" secondItem="y7H-x4-Sko" secondAttribute="leading" priority="999" id="duh-jh-rGP"/>
                             <constraint firstItem="Ki3-Nd-msq" firstAttribute="centerY" secondItem="sqR-lv-MsW" secondAttribute="centerY" id="gT8-K2-uIa"/>
                             <constraint firstItem="OBa-my-eO3" firstAttribute="centerX" secondItem="sqR-lv-MsW" secondAttribute="centerX" id="kbj-Wd-iJW"/>
