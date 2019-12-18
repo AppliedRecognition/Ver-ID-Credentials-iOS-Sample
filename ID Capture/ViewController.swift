@@ -46,6 +46,11 @@ class ViewController: UIViewController, CardDetectionViewControllerDelegate, MBB
             return
         }
         MBMicroblinkSDK.sharedInstance().setLicenseKey(licenceKey)
+        let alert = self.createRegionSelectionAlert()
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func createRegionSelectionAlert() -> UIAlertController {
         let alert = UIAlertController(title: "Select issuing region", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "USA and Canada*", style: .default, handler: { _ in
             let recognizer = MBUsdlCombinedRecognizer()
@@ -64,7 +69,7 @@ class ViewController: UIViewController, CardDetectionViewControllerDelegate, MBB
             self.performSegue(withIdentifier: "documents", sender: url)
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        return alert
     }
     
     func scanCardUsingMicroblinkRecognizer(_ recognizer: MBRecognizer) {
