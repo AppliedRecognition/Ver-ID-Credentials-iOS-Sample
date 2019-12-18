@@ -21,6 +21,8 @@ class ViewController: UIViewController, CardDetectionViewControllerDelegate, MBB
     var cardFace: RecognizableFace?
     var cardAspectRatio: CGFloat?
     var documentData: DocumentData?
+    var verid: VerID?
+    var faceTracking: FaceTracking?
     
     @IBOutlet var scanButton: UIButton!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
@@ -36,8 +38,30 @@ class ViewController: UIViewController, CardDetectionViewControllerDelegate, MBB
     
     func scanCardUsingIDCardCamera() {
         self.documentData = nil
+        self.faceTracking = nil
+        if #available(iOS 13, *) {
+            self.startCardDetection()
+            return
+        }
+        self.scanButton.isHidden = true
+        self.activityIndicator.startAnimating()
+        rxVerID.verid.subscribeOn(SerialDispatchQueueScheduler(qos: .default)).observeOn(MainScheduler.instance).subscribe(onSuccess: { verid in
+            self.verid = verid
+            self.startCardDetection()
+            self.scanButton.isHidden = false
+            self.activityIndicator.stopAnimating()
+        }, onError: { error in
+            let alert = UIAlertController(title: "Failed to load Ver-ID", message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }).disposed(by: self.disposeBag)
+    }
+    
+    func startCardDetection() {
         let controller = CardDetectionViewController()
-        controller.settings.imagePoolSize = 10
+        if #available(iOS 13, *) {
+            controller.settings.imagePoolSize = 10
+        }
         controller.delegate = self
         self.present(controller, animated: true, completion: nil)
     }
@@ -153,9 +177,33 @@ class ViewController: UIViewController, CardDetectionViewControllerDelegate, MBB
     // MARK: - ID card camera delegate
     
     func cardDetectionViewController(_ viewController: CardDetectionViewController, didDetectCard image: CGImage, withSettings settings: CardDetectionSettings) {
+        self.faceTracking = nil
         self.cardImage = UIImage(cgImage: image)
         self.cardAspectRatio = settings.size.width/settings.size.height
         self.detectFaceInImage(image)
+    }
+    
+    func cardDetectionViewControllerDidCancel(_ viewController: CardDetectionViewController) {
+        self.faceTracking = nil
+    }
+    
+    func qualityOfImage(_ image: CGImage) -> NSNumber? {
+        if #available(iOS 13, *) {
+            // Use the built-in image sharpness detection to determine the image quality
+            return nil
+        }
+        guard let verid = self.verid else {
+            return nil
+        }
+        let faceTracking = self.faceTracking ?? verid.faceDetection.startFaceTracking()
+        do {
+            let face = try faceTracking.trackFaceInImage(VerIDImage(cgImage: image, orientation: .up))
+            // Use the detected face quality as image quality
+            return NSNumber(value: Float(face.quality))
+        } catch {
+            // Set image quality to 0 (no face found)
+            return NSNumber(value: 0)
+        }
     }
     
     // MARK: - BlinkID delegate

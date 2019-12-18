@@ -1,5 +1,5 @@
 PODS:
-  - ID-Card-Camera (1.2.1)
+  - ID-Card-Camera (1.3.1)
   - OpenCV2 (4.1.2)
   - PPBlinkID (5.1.0)
   - Rx-Ver-ID (1.2.0):
@@ -30,7 +30,7 @@ PODS:
   - ZIPFoundation (0.9.10)
 
 DEPENDENCIES:
-  - ID-Card-Camera (< 2, >= 1.2.1)
+  - ID-Card-Camera (< 2, >= 1.3.1)
   - PPBlinkID (< 6, >= 5.0.2)
   - Rx-Ver-ID (< 2, >= 1.2.0)
 
@@ -48,7 +48,7 @@ SPEC REPOS:
     - ZIPFoundation
 
 SPEC CHECKSUMS:
-  ID-Card-Camera: f0dbcbeb2dd5d7da751ab7c6adaa8eaf808adbbd
+  ID-Card-Camera: b4e6df4b6216085ac0abb5b6f1d4f8c36e770a52
   OpenCV2: 3ac0512dabaddda936f112507f9095697d392551
   PPBlinkID: 74fb55226345eb74acce8caaa6240fb4ddc43343
   Rx-Ver-ID: 6084c21d6373719016e3a95a830236d254e12132
@@ -59,6 +59,6 @@ SPEC CHECKSUMS:
   Ver-ID-UI: 87c354ef01c961b433819dd5b89293c67025d769
   ZIPFoundation: 249fa8890597086cd536bb2df5c9804d84e122b0
 
-PODFILE CHECKSUM: 8b4549301be37b2eb143951f3b968648b754b38f
+PODFILE CHECKSUM: 15fed5aa8b3e40fb68bb5ef424ba87114834b8bc
 
 COCOAPODS: 1.8.4
