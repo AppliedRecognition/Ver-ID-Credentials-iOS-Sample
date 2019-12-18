@@ -37,6 +37,7 @@ class ViewController: UIViewController, CardDetectionViewControllerDelegate, MBB
     func scanCardUsingIDCardCamera() {
         self.documentData = nil
         let controller = CardDetectionViewController()
+        controller.settings.imagePoolSize = 10
         controller.delegate = self
         self.present(controller, animated: true, completion: nil)
     }
@@ -90,15 +91,52 @@ class ViewController: UIViewController, CardDetectionViewControllerDelegate, MBB
     
     // MARK: - Face detection
     
+    func uiImageOrientationFromCGImageOrientation(_ orientation: CGImagePropertyOrientation) -> UIImage.Orientation {
+        switch orientation {
+        case .up:
+            return .up
+        case .left:
+            return .left
+        case .right:
+            return .right
+        case .down:
+            return .down
+        case .upMirrored:
+            return .upMirrored
+        case .leftMirrored:
+            return .leftMirrored
+        case .rightMirrored:
+            return .rightMirrored
+        case .downMirrored:
+            return .downMirrored
+        default:
+            return .up
+        }
+    }
+    
     func detectFaceInImage(_ image: CGImage) {
         self.scanButton.isHidden = true
         self.activityIndicator.startAnimating()
-        let veridImage = VerIDImage(cgImage: image, orientation: .up)
-        rxVerID.detectRecognizableFacesInImage(veridImage, limit: 1)
+        let images: [VerIDImage] = [
+            VerIDImage(cgImage: image, orientation: .up),
+            VerIDImage(cgImage: image, orientation: .left),
+            VerIDImage(cgImage: image, orientation: .right),
+            VerIDImage(cgImage: image, orientation: .down)
+        ]
+        Observable.from(images).flatMap({ veridImage in
+            rxVerID.detectRecognizableFacesInImage(veridImage, limit: 1).map({ face in
+                return (face,veridImage.orientation)
+            })
+        })
+        .take(1)
         .asSingle()
         .subscribeOn(SerialDispatchQueueScheduler(qos: .default))
         .observeOn(MainScheduler.instance)
-        .subscribe(onSuccess: { face in
+        .subscribe(onSuccess: { (face,orientation) in
+            if let aspectRatio = self.cardAspectRatio, (orientation == .left || orientation == .right) {
+                self.cardAspectRatio = 1.0/aspectRatio
+            }
+            self.cardImage = UIImage(cgImage: image, scale: 1, orientation: self.uiImageOrientationFromCGImageOrientation(orientation))
             self.scanButton.isHidden = false
             self.activityIndicator.stopAnimating()
             self.cardFace = face
