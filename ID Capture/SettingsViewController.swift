@@ -16,6 +16,7 @@ class SettingsViewController: UITableViewController {
     @IBOutlet var microblinkSwitch: UISwitch!
     @IBOutlet var versionLabel: UILabel!
     @IBOutlet var veridVersionLabel: UILabel!
+    @IBOutlet var intellicheckApiKeyTextField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,9 +33,14 @@ class SettingsViewController: UITableViewController {
         } else {
             self.veridVersionLabel.text = "Unknown"
         }
+        // TODO: Get Intellicheck API key from secure key store
     }
     
     @IBAction func toggleMicroblink(_ toggle: UISwitch) {
         UserDefaults.standard.set(toggle.isOn, forKey: SettingsViewController.useBlinkIdKey)
+    }
+    
+    @IBAction func intellicheckApiKeyDidChange(_ textField: UITextField) {
+        // TODO: Save Intellicheck API key in secure key store
     }
 }

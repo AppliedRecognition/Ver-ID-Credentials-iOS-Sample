@@ -1,5 +1,6 @@
 PODS:
-  - ID-Card-Camera (1.3.1)
+  - AAMVA-Barcode-Parser (1.1.0)
+  - ID-Card-Camera (1.4.0)
   - OpenCV2 (4.1.2)
   - PPBlinkID (5.1.0)
   - Rx-Ver-ID (1.2.0):
@@ -30,7 +31,8 @@ PODS:
   - ZIPFoundation (0.9.10)
 
 DEPENDENCIES:
-  - ID-Card-Camera (< 2, >= 1.3.1)
+  - AAMVA-Barcode-Parser (from `/Users/jakub/Applied-Recognition/AAMVA Barcode Parser/`)
+  - ID-Card-Camera (< 2, >= 1.4.0)
   - PPBlinkID (< 6, >= 5.0.2)
   - Rx-Ver-ID (< 2, >= 1.2.0)
 
@@ -47,8 +49,13 @@ SPEC REPOS:
     - Ver-ID-UI
     - ZIPFoundation
 
+EXTERNAL SOURCES:
+  AAMVA-Barcode-Parser:
+    :path: "/Users/jakub/Applied-Recognition/AAMVA Barcode Parser/"
+
 SPEC CHECKSUMS:
-  ID-Card-Camera: b4e6df4b6216085ac0abb5b6f1d4f8c36e770a52
+  AAMVA-Barcode-Parser: be5f9bd623c8783cc0645ff8dca14242666d0ad3
+  ID-Card-Camera: 0dfe1711f46657ef98b55f8fedc7d7ddb2f98df8
   OpenCV2: 3ac0512dabaddda936f112507f9095697d392551
   PPBlinkID: 74fb55226345eb74acce8caaa6240fb4ddc43343
   Rx-Ver-ID: 6084c21d6373719016e3a95a830236d254e12132
@@ -59,6 +66,6 @@ SPEC CHECKSUMS:
   Ver-ID-UI: 87c354ef01c961b433819dd5b89293c67025d769
   ZIPFoundation: 249fa8890597086cd536bb2df5c9804d84e122b0
 
-PODFILE CHECKSUM: 15fed5aa8b3e40fb68bb5ef424ba87114834b8bc
+PODFILE CHECKSUM: d73c63f3934415d4338883ddbd6b593ceb082600
 
 COCOAPODS: 1.8.4

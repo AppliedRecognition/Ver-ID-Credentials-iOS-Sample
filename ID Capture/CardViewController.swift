@@ -10,6 +10,7 @@ import UIKit
 import VerIDCore
 import RxVerID
 import RxSwift
+import AAMVABarcodeParser
 
 class CardViewController: UIViewController {
     

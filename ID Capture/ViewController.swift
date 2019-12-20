@@ -12,8 +12,10 @@ import VerIDCore
 import RxVerID
 import RxSwift
 import Microblink
+import Vision
+import AAMVABarcodeParser
 
-class ViewController: UIViewController, CardDetectionViewControllerDelegate, MBBlinkIdOverlayViewControllerDelegate {
+class ViewController: UIViewController, CardAndBarcodeDetectionViewControllerDelegate, MBBlinkIdOverlayViewControllerDelegate {
     
     let disposeBag = DisposeBag()
     var blinkIdRecognizer: MBSuccessFrameGrabberRecognizer?
@@ -58,9 +60,10 @@ class ViewController: UIViewController, CardDetectionViewControllerDelegate, MBB
     }
     
     func startCardDetection() {
-        let controller = CardDetectionViewController()
+        let settings = CardAndBarcodeDetectionSettings()
+        let controller = CardAndBarcodeDetectionViewController(settings: settings)
         if #available(iOS 13, *) {
-            controller.settings.imagePoolSize = 10
+            controller.settings.cardDetectionSettings.imagePoolSize = 10
         }
         controller.delegate = self
         self.present(controller, animated: true, completion: nil)
@@ -176,14 +179,20 @@ class ViewController: UIViewController, CardDetectionViewControllerDelegate, MBB
     
     // MARK: - ID card camera delegate
     
-    func cardDetectionViewController(_ viewController: CardDetectionViewController, didDetectCard image: CGImage, withSettings settings: CardDetectionSettings) {
+    func cardAndBarcodeDetectionViewController(_ viewController: CardAndBarcodeDetectionViewController, didDetectCard image: CGImage, andBarcodes barcodes: [VNBarcodeObservation], withSettings settings: CardAndBarcodeDetectionSettings) {
         self.faceTracking = nil
         self.cardImage = UIImage(cgImage: image)
-        self.cardAspectRatio = settings.size.width/settings.size.height
-        self.detectFaceInImage(image)
+        self.cardAspectRatio = settings.cardDetectionSettings.size.width/settings.cardDetectionSettings.size.height
+        self.parseBarcodes(barcodes).subscribe(onSuccess: { docData in
+            self.documentData = docData
+            self.detectFaceInImage(image)
+        }, onError: { error in
+            self.documentData = nil
+            self.detectFaceInImage(image)
+        }).disposed(by: self.disposeBag)
     }
     
-    func cardDetectionViewControllerDidCancel(_ viewController: CardDetectionViewController) {
+    func cardAndBarcodeDetectionViewControllerDidCancel(_ viewController: CardAndBarcodeDetectionViewController) {
         self.faceTracking = nil
     }
     
@@ -215,11 +224,11 @@ class ViewController: UIViewController, CardDetectionViewControllerDelegate, MBB
                 blinkIdOverlayViewController.dismiss(animated: true, completion: nil)
                 if let result = (self.blinkIdRecognizer?.slaveRecognizer as? MBBlinkIdCombinedRecognizer)?.result, let jpeg = result.encodedFullDocumentFrontImage {
                     self.cardImage = UIImage(data: jpeg)
-                    self.documentData = DocumentData(result: result)
+                    self.documentData = MicroblinkDocumentData(result: result)
                     self.detectFaceInImage(self.cardImage!.cgImage!)
                 } else if let result = (self.blinkIdRecognizer?.slaveRecognizer as? MBUsdlCombinedRecognizer)?.result, let jpeg = result.encodedFullDocumentImage {
                     self.cardImage = UIImage(data: jpeg)
-                    self.documentData = DocumentData(result: result)
+                    self.documentData = MicroblinkDocumentData(result: result)
                     self.detectFaceInImage(self.cardImage!.cgImage!)
                 }
             }
@@ -229,6 +238,25 @@ class ViewController: UIViewController, CardDetectionViewControllerDelegate, MBB
     func blinkIdOverlayViewControllerDidTapClose(_ blinkIdOverlayViewController: MBBlinkIdOverlayViewController) {
         blinkIdOverlayViewController.recognizerRunnerViewController?.pauseScanning()
         blinkIdOverlayViewController.dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: - Barcode parsing
+    
+    private func parseBarcodes(_ barcodes: [VNBarcodeObservation]) -> Single<DocumentData> {
+        return Single<DocumentData>.create(subscribe: { event in
+            do {
+                guard let barcodeData = barcodes.first?.payloadStringValue?.data(using: .utf8) else {
+                    throw BarcodeParserError.emptyDocument
+                }
+                // TODO: Get Intellicheck API key from secure store and if it exists use intellicheck parser. Otherwise use ours.
+                let parser = AAMVABarcodeParser()
+                let docData = try parser.parseData(barcodeData)
+                event(.success(docData))
+            } catch {
+                event(.error(error))
+            }
+            return Disposables.create()
+        }).subscribeOn(SerialDispatchQueueScheduler(qos: .default)).observeOn(MainScheduler.instance)
     }
     
     // MARK: -

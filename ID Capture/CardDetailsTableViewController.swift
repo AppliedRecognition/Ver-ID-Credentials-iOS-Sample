@@ -7,38 +7,18 @@
 //
 
 import UIKit
+import AAMVABarcodeParser
 
 class CardDetailsTableViewController: UITableViewController {
     
-    var cardProperties: [(String,String)] = []
+    var cardProperties: [(key:String,value:String)] = []
     var documentData: DocumentData?
     var cardImage: UIImage?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let firstName = self.documentData?.firstName, !firstName.isEmpty {
-            cardProperties.append(("First name", firstName))
-        }
-        if let lastName = self.documentData?.lastName, !lastName.isEmpty {
-            cardProperties.append(("Last name", lastName))
-        }
-        if let dateOfBirth = self.documentData?.dateOfBirth, !dateOfBirth.isEmpty {
-            cardProperties.append(("Date of birth", dateOfBirth))
-        }
-        if let sex = self.documentData?.sex, !sex.isEmpty {
-            cardProperties.append(("Sex", sex))
-        }
-        if let address = self.documentData?.address, !address.isEmpty {
-            cardProperties.append(("Address", address))
-        }
-        if let dateOfIssue = self.documentData?.dateOfIssue, !dateOfIssue.isEmpty {
-            cardProperties.append(("Date of issue", dateOfIssue))
-        }
-        if let dateOfExpiry = self.documentData?.dateOfExpiry, !dateOfExpiry.isEmpty {
-            cardProperties.append(("Date of expiry", dateOfExpiry))
-        }
-        if let docNumber = self.documentData?.documentNumber, !docNumber.isEmpty {
-            cardProperties.append(("Document number", docNumber))
+        if let documentData = self.documentData {
+            self.cardProperties = documentData.entries
         }
     }
 
