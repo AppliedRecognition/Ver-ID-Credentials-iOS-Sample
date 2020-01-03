@@ -248,8 +248,12 @@ class ViewController: UIViewController, CardAndBarcodeDetectionViewControllerDel
                 guard let barcodeData = barcodes.first?.payloadStringValue?.data(using: .utf8) else {
                     throw BarcodeParserError.emptyDocument
                 }
-                // TODO: Get Intellicheck API key from secure store and if it exists use intellicheck parser. Otherwise use ours.
-                let parser = AAMVABarcodeParser()
+                let parser: BarcodeParsing
+                if let intellicheckPassword = try SecureStorage.getString(forKey: SecureStorage.commonKeys.intellicheckPassword.rawValue) {
+                    parser = IntellicheckBarcodeParser(apiKey: intellicheckPassword)
+                } else {
+                    parser = AAMVABarcodeParser()
+                }
                 let docData = try parser.parseData(barcodeData)
                 event(.success(docData))
             } catch {

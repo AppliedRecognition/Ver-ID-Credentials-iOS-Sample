@@ -784,18 +784,33 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Intellicheck API key" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OPj-pn-Tai">
-                                                    <rect key="frame" x="15" y="11" width="313" height="22"/>
+                                                    <rect key="frame" x="15" y="11" width="275" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                     <connections>
-                                                        <action selector="intellicheckApiKeyDidChange:" destination="K3b-VW-Lj0" eventType="valueChanged" id="Nbm-uf-PzL"/>
+                                                        <action selector="intellicheckApiKeyDidChange:" destination="K3b-VW-Lj0" eventType="editingChanged" id="v9D-1p-vA9"/>
                                                     </connections>
                                                 </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yje-BV-bEU">
+                                                    <rect key="frame" x="298" y="11" width="30" height="22"/>
+                                                    <state key="normal" title="Test"/>
+                                                    <connections>
+                                                        <action selector="testIntellicheckPassword" destination="K3b-VW-Lj0" eventType="touchUpInside" id="hYt-wh-DgG"/>
+                                                    </connections>
+                                                </button>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="NcX-YY-r03">
+                                                    <rect key="frame" x="303" y="12" width="20" height="20"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="OPj-pn-Tai" firstAttribute="trailing" secondItem="Z56-TI-9bK" secondAttribute="trailingMargin" id="50O-4S-9ZF"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="yje-BV-bEU" secondAttribute="bottom" id="3mE-ZQ-lRZ"/>
+                                                <constraint firstItem="NcX-YY-r03" firstAttribute="centerX" secondItem="yje-BV-bEU" secondAttribute="centerX" id="K6j-9c-feh"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="OPj-pn-Tai" secondAttribute="bottom" id="NBy-hb-bWE"/>
                                                 <constraint firstItem="OPj-pn-Tai" firstAttribute="leading" secondItem="Z56-TI-9bK" secondAttribute="leadingMargin" id="S4Z-cX-9Cp"/>
+                                                <constraint firstItem="NcX-YY-r03" firstAttribute="centerY" secondItem="yje-BV-bEU" secondAttribute="centerY" id="Uaz-Kg-aKE"/>
+                                                <constraint firstItem="yje-BV-bEU" firstAttribute="trailing" secondItem="Z56-TI-9bK" secondAttribute="trailingMargin" id="Ul8-Bj-dhC"/>
+                                                <constraint firstItem="yje-BV-bEU" firstAttribute="leading" secondItem="OPj-pn-Tai" secondAttribute="trailing" constant="8" id="afu-wQ-Ptp"/>
+                                                <constraint firstItem="yje-BV-bEU" firstAttribute="top" secondItem="Z56-TI-9bK" secondAttribute="topMargin" id="jVX-Md-DvD"/>
                                                 <constraint firstItem="OPj-pn-Tai" firstAttribute="top" secondItem="Z56-TI-9bK" secondAttribute="topMargin" id="xhd-xY-zCb"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -812,6 +827,8 @@
                     <connections>
                         <outlet property="intellicheckApiKeyTextField" destination="OPj-pn-Tai" id="qH2-u1-Whb"/>
                         <outlet property="microblinkSwitch" destination="qpa-lz-wbd" id="s0i-21-6jX"/>
+                        <outlet property="passwordCheckActivityIndicator" destination="NcX-YY-r03" id="ISo-pZ-bHd"/>
+                        <outlet property="testButton" destination="yje-BV-bEU" id="uMK-0q-rRM"/>
                         <outlet property="veridVersionLabel" destination="Wpa-LZ-A0i" id="1DU-48-ADF"/>
                         <outlet property="versionLabel" destination="huy-t3-H5z" id="tgp-BR-qku"/>
                     </connections>

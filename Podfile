@@ -10,5 +10,5 @@ target 'ID Capture' do
   pod 'Rx-Ver-ID', '>= 1.2.0', '< 2'
   pod 'ID-Card-Camera', '>= 1.4.0', '< 2'
   pod 'PPBlinkID', '>= 5.0.2', '< 6'
-  pod 'AAMVA-Barcode-Parser', '~> 1.2'
+  pod 'AAMVA-Barcode-Parser', '1.2.1'
 end
