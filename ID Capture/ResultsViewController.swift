@@ -10,6 +10,7 @@ import UIKit
 import VerIDCore
 import RxSwift
 import RxVerID
+import NormalDistribution
 
 class ResultsViewController: UIViewController {
     
