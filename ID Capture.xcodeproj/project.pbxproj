@@ -447,7 +447,7 @@
 				BLINKID_KEY_URL = "https://ver-id.s3.us-east-1.amazonaws.com/ios/microblink_keys/com.appliedrec.ID-Capture.txt";
 				BLINKID_RECOGNIZED_DOCS_URL = "https://github.com/BlinkID/blinkid-ios/blob/master/documentation/BlinkIDRecognizer.md";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 3DPTJHF24M;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "ID Capture/Info.plist";
@@ -473,7 +473,7 @@
 				BLINKID_KEY_URL = "https://ver-id.s3.us-east-1.amazonaws.com/ios/microblink_keys/com.appliedrec.ID-Capture.txt";
 				BLINKID_RECOGNIZED_DOCS_URL = "https://github.com/BlinkID/blinkid-ios/blob/master/documentation/BlinkIDRecognizer.md";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 3DPTJHF24M;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "ID Capture/Info.plist";
