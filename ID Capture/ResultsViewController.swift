@@ -43,7 +43,7 @@ class ResultsViewController: UIViewController {
         guard let probability = try? normalDistribution.cumulativeProbability(Double(score)) else {
             return
         }
-        self.farExplanationLabel.text = String(format: "There is a %.5f\u{00a0}%% chance that the person on the card is not the person in the selfie.", score, 100.0-probability*100)
+        self.farExplanationLabel.text = String(format: "There is a %.5f\u{00a0}%% chance that the person on the card is not the person in the selfie.", 100.0-probability*100)
         self.scoreLabel.text = String(format: "%.02f", score)
     }
 }
