@@ -23,6 +23,7 @@
 		3B3FF9CF23A24BA300156A59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B3FF9C823A24BA300156A59 /* Main.storyboard */; };
 		3B3FF9D123A24F3600156A59 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3FF9D023A24F3600156A59 /* SettingsViewController.swift */; };
 		3B3FF9D323A250F100156A59 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3FF9D223A250F100156A59 /* CardViewController.swift */; };
+		3BDA7B0A23E9EAFF003C3FD7 /* Ver-ID identity.p12 in Resources */ = {isa = PBXBuildFile; fileRef = 3BDA7B0923E9EAFF003C3FD7 /* Ver-ID identity.p12 */; };
 		3BDCDCCB23AD71B000EA6123 /* MicroblinkDocumentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDCDCCA23AD71B000EA6123 /* MicroblinkDocumentData.swift */; };
 		6C128773EA5E3E6BF2E68C57 /* Pods_ID_Capture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 419180C6135555744CF4A99A /* Pods_ID_Capture.framework */; };
 /* End PBXBuildFile section */
@@ -53,7 +54,6 @@
 		3B3FF93923A15E7A00156A59 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B3FF93C23A15E7A00156A59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3B3FF93E23A15E7A00156A59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3B3FF94623A15EDB00156A59 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		3B3FF9C223A24BA300156A59 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3B3FF9C323A24BA300156A59 /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		3B3FF9C423A24BA300156A59 /* ScoreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreTableViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +61,7 @@
 		3B3FF9C823A24BA300156A59 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		3B3FF9D023A24F3600156A59 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		3B3FF9D223A250F100156A59 /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
+		3BDA7B0923E9EAFF003C3FD7 /* Ver-ID identity.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ver-ID identity.p12"; sourceTree = "<group>"; };
 		3BDCDCCA23AD71B000EA6123 /* MicroblinkDocumentData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MicroblinkDocumentData.swift; sourceTree = "<group>"; };
 		419180C6135555744CF4A99A /* Pods_ID_Capture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ID_Capture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		638E7A67289A680519B46277 /* Pods-ID Capture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ID Capture.release.xcconfig"; path = "Target Support Files/Pods-ID Capture/Pods-ID Capture.release.xcconfig"; sourceTree = "<group>"; };
@@ -92,7 +93,6 @@
 		3B3FF92423A15E7700156A59 = {
 			isa = PBXGroup;
 			children = (
-				3B3FF94623A15EDB00156A59 /* Podfile */,
 				3B3FF92F23A15E7700156A59 /* ID Capture */,
 				3B3FF92E23A15E7700156A59 /* Products */,
 				13CA53EBA6FF8E1A79E1A525 /* Pods */,
@@ -111,6 +111,7 @@
 		3B3FF92F23A15E7700156A59 /* ID Capture */ = {
 			isa = PBXGroup;
 			children = (
+				3BDA7B0923E9EAFF003C3FD7 /* Ver-ID identity.p12 */,
 				3BDCDCCA23AD71B000EA6123 /* MicroblinkDocumentData.swift */,
 				3B3FF9D223A250F100156A59 /* CardViewController.swift */,
 				3B3FF9C223A24BA300156A59 /* LaunchScreen.storyboard */,
@@ -211,6 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B3FF9CF23A24BA300156A59 /* Main.storyboard in Resources */,
+				3BDA7B0A23E9EAFF003C3FD7 /* Ver-ID identity.p12 in Resources */,
 				3B3FF9C923A24BA300156A59 /* LaunchScreen.storyboard in Resources */,
 				3B3FF93A23A15E7A00156A59 /* Assets.xcassets in Resources */,
 			);
@@ -371,7 +373,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 4.2.0;
+				MARKETING_VERSION = 4.3.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -426,7 +428,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 4.2.0;
+				MARKETING_VERSION = 4.3.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -441,9 +443,11 @@
 			baseConfigurationReference = FF4DD71811035F32DE6E594B /* Pods-ID Capture.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				BLINKID_KEY = "sRwAAAEZY29tLmFwcGxpZWRyZWMuaWQtY2FwdHVyZZpSUB5IbSbnMB1ZBREcyJH6okTg3Ue4Jmx7/xoIAljTm1Dgw9470xm3JuKqt6ppqTebmcs7zP/YOLxaMTmXICAVtGPV25WdMWREtOqJ36rc+fSDsol5osvKP8xPFrxMJW7dr+dbFSe1y3bDQKaIM6NPlfvs5BOx4RwDV/mQUgFc4nlCSI1r1qLHhXzvu3qSXv+mIeJmB/rNzBF+oFWBCsFRuZoTVHVxKWxadeGjWI7W9eopta6qmyIQgMk0nU0F0KiUXr+MpBfA";
+				BLINKID_KEY = "sRwAAAEZY29tLmFwcGxpZWRyZWMuaWQtY2FwdHVyZZpSUB5IbSbnMB1ZBRXEyJFi5w7JZd64qgW8w/lrXeczEOSFsmiind2mYq02HN20AFX3g2xHssd8n9aFu5JPZJmYNmA+rFSyLmvx385ykWhGDVM7+d6cAzcLrHxL/hrv0hkg0j9DaiEpwq0kVkPdEKx8tS06WnuoImCTxTE24fdDWRDmnffUPg9V/WFqWyjpZlt27sQijfBfb5adzVGwx38stz/fa4SYA3fIninHz8E6oQK1QYBFJHGtYeCaw+HV9/+Ef2yQ8kjrfdC4Bw==";
+				BLINKID_KEY_URL = "https://ver-id.s3.us-east-1.amazonaws.com/ios/microblink_keys/com.appliedrec.ID-Capture.txt";
+				BLINKID_RECOGNIZED_DOCS_URL = "https://github.com/BlinkID/blinkid-ios/blob/master/documentation/BlinkIDRecognizer.md";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 3DPTJHF24M;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "ID Capture/Info.plist";
@@ -455,7 +459,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VERID_SECRET = 8bb81af6df361c37f8a0119938d06f2aa463a8f8c160d4972f6265a06333f583;
+				VERID_PASSWORD = "d68988b5-143c-4238-9076-fd14904b4b8a";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -465,9 +469,11 @@
 			baseConfigurationReference = 638E7A67289A680519B46277 /* Pods-ID Capture.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				BLINKID_KEY = "sRwAAAEZY29tLmFwcGxpZWRyZWMuaWQtY2FwdHVyZZpSUB5IbSbnMB1ZBREcyJH6okTg3Ue4Jmx7/xoIAljTm1Dgw9470xm3JuKqt6ppqTebmcs7zP/YOLxaMTmXICAVtGPV25WdMWREtOqJ36rc+fSDsol5osvKP8xPFrxMJW7dr+dbFSe1y3bDQKaIM6NPlfvs5BOx4RwDV/mQUgFc4nlCSI1r1qLHhXzvu3qSXv+mIeJmB/rNzBF+oFWBCsFRuZoTVHVxKWxadeGjWI7W9eopta6qmyIQgMk0nU0F0KiUXr+MpBfA";
+				BLINKID_KEY = "sRwAAAEZY29tLmFwcGxpZWRyZWMuaWQtY2FwdHVyZZpSUB5IbSbnMB1ZBRXEyJFi5w7JZd64qgW8w/lrXeczEOSFsmiind2mYq02HN20AFX3g2xHssd8n9aFu5JPZJmYNmA+rFSyLmvx385ykWhGDVM7+d6cAzcLrHxL/hrv0hkg0j9DaiEpwq0kVkPdEKx8tS06WnuoImCTxTE24fdDWRDmnffUPg9V/WFqWyjpZlt27sQijfBfb5adzVGwx38stz/fa4SYA3fIninHz8E6oQK1QYBFJHGtYeCaw+HV9/+Ef2yQ8kjrfdC4Bw==";
+				BLINKID_KEY_URL = "https://ver-id.s3.us-east-1.amazonaws.com/ios/microblink_keys/com.appliedrec.ID-Capture.txt";
+				BLINKID_RECOGNIZED_DOCS_URL = "https://github.com/BlinkID/blinkid-ios/blob/master/documentation/BlinkIDRecognizer.md";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 3DPTJHF24M;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "ID Capture/Info.plist";
@@ -479,7 +485,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VERID_SECRET = 8bb81af6df361c37f8a0119938d06f2aa463a8f8c160d4972f6265a06333f583;
+				VERID_PASSWORD = "d68988b5-143c-4238-9076-fd14904b4b8a";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

@@ -45,7 +45,11 @@
 	</array>
 	<key>blinkIdLicenceKey</key>
 	<string>$(BLINKID_KEY)</string>
-	<key>com.appliedrec.verid.apiSecret</key>
-	<string>$(VERID_SECRET)</string>
+	<key>blinkIdLicenceKeyURL</key>
+	<string>$(BLINKID_KEY_URL)</string>
+	<key>blinkIdRecognizedDocumentsURL</key>
+	<string>$(BLINKID_RECOGNIZED_DOCS_URL)</string>
+	<key>com.appliedrec.verid.password</key>
+	<string>$(VERID_PASSWORD)</string>
 </dict>
 </plist>

@@ -8,6 +8,7 @@ target 'ID Capture' do
 
   # Pods for ID Capture
   pod 'Rx-Ver-ID', '>= 1.2.0', '< 2'
+  pod 'Ver-ID-UI', '~> 1.10'
   pod 'ID-Card-Camera', '>= 1.4.0', '< 2'
   pod 'PPBlinkID', '>= 5.0.2', '< 6'
   pod 'AAMVA-Barcode-Parser', '1.2.1'

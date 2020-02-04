@@ -56,7 +56,9 @@ class CardViewController: UIViewController {
                     })
                 }).asMaybe()
             })
-        }).subscribe(onSuccess: { (image, score) in
+        }).subscribeOn(SerialDispatchQueueScheduler(qos: .default))
+        .observeOn(MainScheduler.instance)
+        .subscribe(onSuccess: { (image, score) in
             self.liveFaceImage = image
             self.comparisonScore = score
             self.performSegue(withIdentifier: "comparison", sender: nil)

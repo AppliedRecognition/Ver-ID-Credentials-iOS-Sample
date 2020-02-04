@@ -70,12 +70,37 @@ class ViewController: UIViewController, CardAndBarcodeDetectionViewControllerDel
     }
     
     func scanCardUsingMicroblink() {
-        guard let licenceKey = Bundle.main.object(forInfoDictionaryKey: "blinkIdLicenceKey") as? String else {
+        guard let licenceURLString = Bundle.main.object(forInfoDictionaryKey: "blinkIdLicenceKeyURL") as? String else {
             return
         }
-        MBMicroblinkSDK.sharedInstance().setLicenseKey(licenceKey)
-        let alert = self.createRegionSelectionAlert()
-        self.present(alert, animated: true, completion: nil)
+        guard let licenceURL = URL(string: licenceURLString) else {
+            return
+        }
+        DispatchQueue.global().async {
+            var key: String
+            do {
+                let licenceKeyData = try Data(contentsOf: licenceURL)
+                guard let licenceKey = String(data: licenceKeyData, encoding: .utf8) else {
+                    return
+                }
+                key = licenceKey
+            } catch {
+                guard let licenceKey = Bundle.main.object(forInfoDictionaryKey: "blinkIdLicenceKey") as? String else {
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "Failed to retrieve Microblink licence key", message: error.localizedDescription, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                    return
+                }
+                key = licenceKey
+            }
+            MBMicroblinkSDK.sharedInstance().setLicenseKey(key)
+            DispatchQueue.main.async {
+                let alert = self.createRegionSelectionAlert()
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
     }
     
     func createRegionSelectionAlert() -> UIAlertController {
@@ -90,12 +115,11 @@ class ViewController: UIViewController, CardAndBarcodeDetectionViewControllerDel
             recognizer.encodeFullDocumentImage = true
             self.scanCardUsingMicroblinkRecognizer(recognizer)
         }))
-        alert.addAction(UIAlertAction(title: "*View supported documents", style: .default, handler: { _ in
-            guard let url = URL(string: "https://github.com/BlinkID/blinkid-ios/blob/master/documentation/BlinkIDRecognizer.md") else {
-                return
-            }
-            self.performSegue(withIdentifier: "documents", sender: url)
-        }))
+        if let urlString = Bundle.main.object(forInfoDictionaryKey: "blinkIdRecognizedDocumentsURL") as? String, let url = URL(string: urlString) {
+            alert.addAction(UIAlertAction(title: "*View supported documents", style: .default, handler: { _ in
+                self.performSegue(withIdentifier: "documents", sender: url)
+            }))            
+        }
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         return alert
     }
@@ -183,7 +207,7 @@ class ViewController: UIViewController, CardAndBarcodeDetectionViewControllerDel
         self.faceTracking = nil
         self.cardImage = UIImage(cgImage: image)
         self.cardAspectRatio = settings.cardDetectionSettings.size.width/settings.cardDetectionSettings.size.height
-        self.parseBarcodes(barcodes).subscribe(onSuccess: { docData in
+        self.parseBarcodes(barcodes).subscribeOn(SerialDispatchQueueScheduler(qos: .default)).observeOn(MainScheduler.instance).subscribe(onSuccess: { docData in
             self.documentData = docData
             self.detectFaceInImage(image)
         }, onError: { error in

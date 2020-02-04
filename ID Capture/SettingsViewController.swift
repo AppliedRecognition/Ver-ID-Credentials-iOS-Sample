@@ -76,8 +76,13 @@ class SettingsViewController: UITableViewController {
             self.showIntellicheckPasswordCheckResponse("Unknown device ID", isFailure: true)
             return
         }
+        guard let appId = Bundle.main.bundleIdentifier else {
+            self.showIntellicheckPasswordCheckResponse("Missing app ID", isFailure: true)
+            return
+        }
         guard let data = [
                 "device_id": deviceId,
+                "app_id": appId,
                 "password": password
             ].map({ $0+"="+$1 }).joined(separator: "&").data(using: .utf8) else {
             self.showIntellicheckPasswordCheckResponse("Failed to serialize request data", isFailure: true)
