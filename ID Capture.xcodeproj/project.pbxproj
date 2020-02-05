@@ -10,6 +10,7 @@
 		3B0B533523A2AB6600B64EB6 /* SupportedDocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B533423A2AB6600B64EB6 /* SupportedDocumentsViewController.swift */; };
 		3B0B533B23A2B6FA00B64EB6 /* CardDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B533A23A2B6FA00B64EB6 /* CardDetailsTableViewController.swift */; };
 		3B0B533D23A2B80D00B64EB6 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B533C23A2B80D00B64EB6 /* ImageTableViewCell.swift */; };
+		3B2EBFA823EB059C00F7FA14 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B2EBFA723EB059C00F7FA14 /* GoogleService-Info.plist */; };
 		3B3196CD23AB86FF009B8564 /* BarcodeScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3196CC23AB86FF009B8564 /* BarcodeScan.swift */; };
 		3B360B1323C49AC1007FC1F1 /* NormalDistribution in Frameworks */ = {isa = PBXBuildFile; productRef = 3B360B1223C49AC1007FC1F1 /* NormalDistribution */; };
 		3B3E6A9923BE688E00495F42 /* SecureStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3E6A9823BE688E00495F42 /* SecureStorage.swift */; };
@@ -45,6 +46,7 @@
 		3B0B533423A2AB6600B64EB6 /* SupportedDocumentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedDocumentsViewController.swift; sourceTree = "<group>"; };
 		3B0B533A23A2B6FA00B64EB6 /* CardDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsTableViewController.swift; sourceTree = "<group>"; };
 		3B0B533C23A2B80D00B64EB6 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
+		3B2EBFA723EB059C00F7FA14 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3B3196CC23AB86FF009B8564 /* BarcodeScan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScan.swift; sourceTree = "<group>"; };
 		3B3E6A9823BE688E00495F42 /* SecureStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStorage.swift; sourceTree = "<group>"; };
 		3B3FF92D23A15E7700156A59 /* ID Capture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ID Capture.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,6 +113,7 @@
 		3B3FF92F23A15E7700156A59 /* ID Capture */ = {
 			isa = PBXGroup;
 			children = (
+				3B2EBFA723EB059C00F7FA14 /* GoogleService-Info.plist */,
 				3BDA7B0923E9EAFF003C3FD7 /* Ver-ID identity.p12 */,
 				3BDCDCCA23AD71B000EA6123 /* MicroblinkDocumentData.swift */,
 				3B3FF9D223A250F100156A59 /* CardViewController.swift */,
@@ -157,6 +160,7 @@
 				64DCFAEE176B8F7F45AA72F7 /* [CP] Embed Pods Frameworks */,
 				821B16792C7B878D31C41327 /* [CP] Copy Pods Resources */,
 				3B3FF95823A1682B00156A59 /* Embed Frameworks */,
+				3B2EBFA923EB073100F7FA14 /* Run Firebase Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -213,6 +217,7 @@
 			files = (
 				3B3FF9CF23A24BA300156A59 /* Main.storyboard in Resources */,
 				3BDA7B0A23E9EAFF003C3FD7 /* Ver-ID identity.p12 in Resources */,
+				3B2EBFA823EB059C00F7FA14 /* GoogleService-Info.plist in Resources */,
 				3B3FF9C923A24BA300156A59 /* LaunchScreen.storyboard in Resources */,
 				3B3FF93A23A15E7A00156A59 /* Assets.xcassets in Resources */,
 			);
@@ -221,6 +226,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3B2EBFA923EB073100F7FA14 /* Run Firebase Crashlytics */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = "Run Firebase Crashlytics";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
+		};
 		64DCFAEE176B8F7F45AA72F7 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
