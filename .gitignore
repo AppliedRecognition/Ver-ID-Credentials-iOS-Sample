@@ -26,3 +26,4 @@ Workspace app/Info.plist
 Pods
 Ver-ID Credentials Sample.xcworkspace
 ID Capture.xcworkspace
+ID Capture/GoogleService-Info.plist
