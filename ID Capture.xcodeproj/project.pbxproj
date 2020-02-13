@@ -472,7 +472,7 @@
 				BLINKID_KEY_URL = "https://ver-id.s3.us-east-1.amazonaws.com/ios/microblink_keys/com.appliedrec.ID-Capture.txt";
 				BLINKID_RECOGNIZED_DOCS_URL = "https://github.com/BlinkID/blinkid-ios/blob/master/documentation/BlinkIDRecognizer.md";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 3DPTJHF24M;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "ID Capture/Info.plist";
@@ -484,7 +484,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VERID_PASSWORD = "d68988b5-143c-4238-9076-fd14904b4b8a";
+				VERID_PASSWORD = "ff9efc4c-6f5e-4799-b4dd-791888df1b36";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -498,7 +498,7 @@
 				BLINKID_KEY_URL = "https://ver-id.s3.us-east-1.amazonaws.com/ios/microblink_keys/com.appliedrec.ID-Capture.txt";
 				BLINKID_RECOGNIZED_DOCS_URL = "https://github.com/BlinkID/blinkid-ios/blob/master/documentation/BlinkIDRecognizer.md";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 3DPTJHF24M;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "ID Capture/Info.plist";
@@ -510,7 +510,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VERID_PASSWORD = "d68988b5-143c-4238-9076-fd14904b4b8a";
+				VERID_PASSWORD = "ff9efc4c-6f5e-4799-b4dd-791888df1b36";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
