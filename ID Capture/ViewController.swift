@@ -18,7 +18,7 @@ import AAMVABarcodeParser
 class ViewController: UIViewController, CardAndBarcodeDetectionViewControllerDelegate, MBBlinkIdOverlayViewControllerDelegate {
     
     let disposeBag = DisposeBag()
-    var blinkIdRecognizer: MBSuccessFrameGrabberRecognizer?
+    var blinkIdRecognizer: MBBlinkIdCombinedRecognizer?
     var cardImage: UIImage?
     var cardFace: RecognizableFace?
     var cardAspectRatio: CGFloat?
@@ -97,47 +97,18 @@ class ViewController: UIViewController, CardAndBarcodeDetectionViewControllerDel
             }
             MBMicroblinkSDK.sharedInstance().setLicenseKey(key)
             DispatchQueue.main.async {
-                let alert = self.createRegionSelectionAlert()
-                self.present(alert, animated: true, completion: nil)
+                let recognizer = MBBlinkIdCombinedRecognizer()
+                recognizer.returnFullDocumentImage = true
+                recognizer.encodeFullDocumentImage = true
+                self.blinkIdRecognizer = recognizer
+                let settings = MBBlinkIdOverlaySettings()
+                settings.autorotateOverlay = true
+                let recognizerCollection = MBRecognizerCollection(recognizers: [recognizer])
+                let blinkIdOverlayViewController = MBBlinkIdOverlayViewController(settings: settings, recognizerCollection: recognizerCollection, delegate: self)
+                let recognizerRunnerViewController = MBViewControllerFactory.recognizerRunnerViewController(withOverlayViewController: blinkIdOverlayViewController)
+                self.present(recognizerRunnerViewController, animated: true, completion: nil)
             }
         }
-    }
-    
-    func createRegionSelectionAlert() -> UIAlertController {
-        let alert = UIAlertController(title: "Select issuing region", message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "USA and Canada*", style: .default, handler: { _ in
-            let recognizer = MBUsdlCombinedRecognizer()
-            recognizer.encodeFullDocumentImage = true
-            self.scanCardUsingMicroblinkRecognizer(recognizer)
-        }))
-        alert.addAction(UIAlertAction(title: "Other*", style: .default, handler: { _ in
-            let recognizer = MBBlinkIdCombinedRecognizer()
-            recognizer.encodeFullDocumentImage = true
-            self.scanCardUsingMicroblinkRecognizer(recognizer)
-        }))
-        if let urlString = Bundle.main.object(forInfoDictionaryKey: "blinkIdRecognizedDocumentsURL") as? String, let url = URL(string: urlString) {
-            alert.addAction(UIAlertAction(title: "*View supported documents", style: .default, handler: { _ in
-                self.performSegue(withIdentifier: "documents", sender: url)
-            }))            
-        }
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        return alert
-    }
-    
-    func scanCardUsingMicroblinkRecognizer(_ recognizer: MBRecognizer) {
-        self.documentData = nil
-        self.blinkIdRecognizer = MBSuccessFrameGrabberRecognizer(recognizer: recognizer)
-        /** Create BlinkID settings */
-        let settings : MBBlinkIdOverlaySettings = MBBlinkIdOverlaySettings()
-        settings.autorotateOverlay = true
-        /** Crate recognizer collection */
-        let recognizerCollection : MBRecognizerCollection = MBRecognizerCollection(recognizers: [self.blinkIdRecognizer!])
-        /** Create your overlay view controller */
-        let blinkIdOverlayViewController : MBBlinkIdOverlayViewController = MBBlinkIdOverlayViewController(settings: settings, recognizerCollection: recognizerCollection, delegate: self)
-        /** Create recognizer view controller with wanted overlay view controller */
-        let recognizerRunneViewController : UIViewController = MBViewControllerFactory.recognizerRunnerViewController(withOverlayViewController: blinkIdOverlayViewController)
-        /** Present the recognizer runner view controller. You can use other presentation methods as well (instead of presentViewController) */
-        self.present(recognizerRunneViewController, animated: true, completion: nil)
     }
     
     // MARK: - Face detection
@@ -246,15 +217,21 @@ class ViewController: UIViewController, CardAndBarcodeDetectionViewControllerDel
             blinkIdOverlayViewController.recognizerRunnerViewController?.pauseScanning()
             DispatchQueue.main.async {
                 blinkIdOverlayViewController.dismiss(animated: true, completion: nil)
-                if let result = (self.blinkIdRecognizer?.slaveRecognizer as? MBBlinkIdCombinedRecognizer)?.result, let jpeg = result.encodedFullDocumentFrontImage {
-                    self.cardImage = UIImage(data: jpeg)
-                    self.documentData = MicroblinkDocumentData(result: result)
-                    self.detectFaceInImage(self.cardImage!.cgImage!)
-                } else if let result = (self.blinkIdRecognizer?.slaveRecognizer as? MBUsdlCombinedRecognizer)?.result, let jpeg = result.encodedFullDocumentImage {
-                    self.cardImage = UIImage(data: jpeg)
-                    self.documentData = MicroblinkDocumentData(result: result)
-                    self.detectFaceInImage(self.cardImage!.cgImage!)
+                guard let result = self.blinkIdRecognizer?.result, let jpeg = result.encodedFullDocumentFrontImage else {
+                    return
                 }
+                self.cardImage = UIImage(data: jpeg)
+                self.documentData = MicroblinkDocumentData(result: result)
+                if result.documentDataMatch == .failed {
+                    let alert = UIAlertController(title: "Invalid licence", message: "The front and the back of the licence don't seem to match.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                    alert.addAction(UIAlertAction(title: "Proceed anyway", style: .default, handler: { _ in
+                        self.detectFaceInImage(self.cardImage!.cgImage!)
+                    }))
+                    self.present(alert, animated: true)
+                    return
+                }
+                self.detectFaceInImage(self.cardImage!.cgImage!)
             }
         }
     }
