@@ -15,6 +15,7 @@ import AAMVABarcodeParser
 class CardViewController: UIViewController {
     
     var cardImage: UIImage?
+    var cardFaceImage: UIImage?
     var cardAspectRatio: CGFloat?
     var cardFace: RecognizableFace?
     var comparisonScore: Float?
@@ -71,12 +72,16 @@ class CardViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let controller = segue.destination as? ResultsViewController, let cardFace = self.cardFace, let cardImage = self.cardImage {
-            UIGraphicsBeginImageContext(cardFace.bounds.size)
-            defer {
-                UIGraphicsEndImageContext()
+            if let faceImage = self.cardFaceImage {
+                controller.cardFaceImage = faceImage
+            } else {
+                UIGraphicsBeginImageContext(cardFace.bounds.size)
+                defer {
+                    UIGraphicsEndImageContext()
+                }
+                cardImage.draw(at: CGPoint(x: 0-cardFace.bounds.minX, y: 0-cardFace.bounds.minY))
+                controller.cardFaceImage = UIGraphicsGetImageFromCurrentImageContext()
             }
-            cardImage.draw(at: CGPoint(x: 0-cardFace.bounds.minX, y: 0-cardFace.bounds.minY))
-            controller.cardFaceImage = UIGraphicsGetImageFromCurrentImageContext()
             controller.liveFaceImage = self.liveFaceImage
             controller.comparisonScore = self.comparisonScore
         } else if let controller = segue.destination as? CardDetailsTableViewController {

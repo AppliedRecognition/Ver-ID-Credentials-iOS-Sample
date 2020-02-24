@@ -80,8 +80,9 @@
                                         </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="Be6-VG-A8m" secondAttribute="trailing" id="5ec-Dv-bPp"/>
-                                        <constraint firstItem="Be6-VG-A8m" firstAttribute="leading" secondItem="jaO-yC-Wtp" secondAttribute="leading" id="RVP-lU-baL"/>
+                                        <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Be6-VG-A8m" secondAttribute="trailing" id="5ec-Dv-bPp"/>
+                                        <constraint firstItem="Be6-VG-A8m" firstAttribute="centerX" secondItem="jaO-yC-Wtp" secondAttribute="centerX" id="IWM-uE-qJ4"/>
+                                        <constraint firstItem="Be6-VG-A8m" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="jaO-yC-Wtp" secondAttribute="leading" id="RVP-lU-baL"/>
                                         <constraint firstAttribute="bottom" secondItem="Be6-VG-A8m" secondAttribute="bottom" id="ymN-SC-YzW"/>
                                         <constraint firstItem="Be6-VG-A8m" firstAttribute="top" secondItem="jaO-yC-Wtp" secondAttribute="top" id="zTg-Fu-B8Y"/>
                                     </constraints>
@@ -218,13 +219,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Vqx-cm-wcp">
-                                <rect key="frame" x="31.5" y="128.5" width="312" height="410"/>
+                                <rect key="frame" x="32" y="128.5" width="311.5" height="410"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="eHs-Tx-XmL">
-                                        <rect key="frame" x="0.0" y="0.0" width="312" height="185"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="311.5" height="185"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DXz-Qz-qIP">
-                                                <rect key="frame" x="0.0" y="0.0" width="148" height="185"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="147.5" height="185"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="DXz-Qz-qIP" secondAttribute="height" multiplier="4:5" id="93b-GA-RXm"/>
                                                 </constraints>
@@ -236,7 +237,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="73K-2l-gf3">
-                                                <rect key="frame" x="164" y="0.0" width="148" height="185"/>
+                                                <rect key="frame" x="163.5" y="0.0" width="148" height="185"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="73K-2l-gf3" secondAttribute="height" multiplier="4:5" id="D32-Im-o0R"/>
                                                 </constraints>
@@ -251,21 +252,21 @@
                                         <variation key="heightClass=compact" hidden="YES"/>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="3.5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Th5-C8-prH">
-                                        <rect key="frame" x="0.0" y="201" width="312" height="57.5"/>
+                                        <rect key="frame" x="0.0" y="201" width="311.5" height="57.5"/>
                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="48"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Setting Ver-ID face recognition's authentication threshold to 3.5 means that there is a 0.02 % probability of false acceptance." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="08D-GX-8lp">
-                                        <rect key="frame" x="0.0" y="274.5" width="312" height="86.5"/>
+                                        <rect key="frame" x="0.0" y="274.5" width="311.5" height="86.5"/>
                                         <edgeInsets key="layoutMargins" top="8" left="16" bottom="8" right="16"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ix1-jw-oFn">
-                                        <rect key="frame" x="0.0" y="377" width="312" height="33"/>
+                                        <rect key="frame" x="0.0" y="377" width="311.5" height="33"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="False acceptance rates"/>
                                         <connections>
@@ -289,7 +290,7 @@
                                 </variation>
                             </stackView>
                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jh1-uq-x9X">
-                                <rect key="frame" x="-76.5" y="271" width="100" height="125"/>
+                                <rect key="frame" x="-76.5" y="271" width="100.5" height="125"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="125" id="8lK-hg-ewx"/>
                                     <constraint firstAttribute="width" constant="100" id="CFT-ib-hL8"/>
@@ -872,8 +873,9 @@
                                     <action selector="captureSelfie" destination="XlS-am-sjt" eventType="touchUpInside" id="9Hy-DU-PkG"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OBa-my-eO3">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OBa-my-eO3">
                                 <rect key="frame" x="67.5" y="102" width="240" height="151.5"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="OBa-my-eO3" secondAttribute="height" multiplier="85.6:53.98" identifier="aspectRatio" id="JN0-KN-Bfd"/>
                                     <constraint firstAttribute="height" priority="999" constant="240" id="mMv-VJ-HtS"/>
@@ -885,6 +887,9 @@
                                         <integer key="value" value="12"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="tqb-qi-N9N" appends="YES" id="B2c-Vi-z5J"/>
+                                </connections>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -910,6 +915,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QU0-4m-wzW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="tqb-qi-N9N">
+                    <connections>
+                        <segue destination="d0L-Qm-e2F" kind="show" id="DLz-Vl-MCQ"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="924" y="74"/>
         </scene>
@@ -919,4 +929,7 @@
         <image name="settings" width="26" height="26"/>
         <image name="woman_with_licence" width="488" height="316"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Yao-GV-p4Y"/>
+    </inferredMetricsTieBreakers>
 </document>

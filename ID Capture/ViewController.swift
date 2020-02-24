@@ -20,6 +20,7 @@ class ViewController: UIViewController, CardAndBarcodeDetectionViewControllerDel
     let disposeBag = DisposeBag()
     var blinkIdRecognizer: MBBlinkIdCombinedRecognizer?
     var cardImage: UIImage?
+    var cardFaceImage: UIImage?
     var cardFace: RecognizableFace?
     var cardAspectRatio: CGFloat?
     var documentData: DocumentData?
@@ -100,6 +101,8 @@ class ViewController: UIViewController, CardAndBarcodeDetectionViewControllerDel
                 let recognizer = MBBlinkIdCombinedRecognizer()
                 recognizer.returnFullDocumentImage = true
                 recognizer.encodeFullDocumentImage = true
+                recognizer.returnFaceImage = true
+                recognizer.encodeFaceImage = true
                 self.blinkIdRecognizer = recognizer
                 let settings = MBBlinkIdOverlaySettings()
                 settings.autorotateOverlay = true
@@ -136,14 +139,15 @@ class ViewController: UIViewController, CardAndBarcodeDetectionViewControllerDel
         }
     }
     
-    func detectFaceInImage(_ image: CGImage) {
+    func detectFaceInImage(_ image: CGImage, croppedFaceImage: CGImage? = nil) {
         self.scanButton.isHidden = true
         self.activityIndicator.startAnimating()
+        let detectionImage = croppedFaceImage ?? image
         let images: [VerIDImage] = [
-            VerIDImage(cgImage: image, orientation: .up),
-            VerIDImage(cgImage: image, orientation: .left),
-            VerIDImage(cgImage: image, orientation: .right),
-            VerIDImage(cgImage: image, orientation: .down)
+            VerIDImage(cgImage: detectionImage, orientation: .up),
+            VerIDImage(cgImage: detectionImage, orientation: .left),
+            VerIDImage(cgImage: detectionImage, orientation: .right),
+            VerIDImage(cgImage: detectionImage, orientation: .down)
         ]
         Observable.from(images).flatMap({ veridImage in
             rxVerID.detectRecognizableFacesInImage(veridImage, limit: 1).map({ face in
@@ -162,6 +166,11 @@ class ViewController: UIViewController, CardAndBarcodeDetectionViewControllerDel
             self.scanButton.isHidden = false
             self.activityIndicator.stopAnimating()
             self.cardFace = face
+            if let cardFaceImage = croppedFaceImage {
+                self.cardFaceImage = UIImage(cgImage: cardFaceImage, scale: 1, orientation: self.uiImageOrientationFromCGImageOrientation(orientation))
+            } else {
+                self.cardFaceImage = nil
+            }
             self.performSegue(withIdentifier: "selfie", sender: nil)
         }, onError: { error in
             self.scanButton.isHidden = false
@@ -217,21 +226,35 @@ class ViewController: UIViewController, CardAndBarcodeDetectionViewControllerDel
             blinkIdOverlayViewController.recognizerRunnerViewController?.pauseScanning()
             DispatchQueue.main.async {
                 blinkIdOverlayViewController.dismiss(animated: true, completion: nil)
-                guard let result = self.blinkIdRecognizer?.result, let jpeg = result.encodedFullDocumentFrontImage else {
+                guard let result = self.blinkIdRecognizer?.result else {
+                    let alert = UIAlertController(title: "Card scan failed", message: nil, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true)
                     return
                 }
-                self.cardImage = UIImage(data: jpeg)
+                guard let jpeg = result.encodedFullDocumentFrontImage, let image = UIImage(data: jpeg), let cgImage = image.cgImage else {
+                    let alert = UIAlertController(title: "Failed to extract ID card image", message: nil, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                    return
+                }
+                self.cardImage = image
+                if let faceImageJpeg = result.encodedFaceImage, let faceImage = UIImage(data: faceImageJpeg) {
+                    self.cardFaceImage = faceImage
+                } else {
+                    self.cardFaceImage = nil
+                }
                 self.documentData = MicroblinkDocumentData(result: result)
                 if result.documentDataMatch == .failed {
                     let alert = UIAlertController(title: "Invalid licence", message: "The front and the back of the licence don't seem to match.", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
                     alert.addAction(UIAlertAction(title: "Proceed anyway", style: .default, handler: { _ in
-                        self.detectFaceInImage(self.cardImage!.cgImage!)
+                        self.detectFaceInImage(cgImage, croppedFaceImage: cgImage)
                     }))
                     self.present(alert, animated: true)
                     return
                 }
-                self.detectFaceInImage(self.cardImage!.cgImage!)
+                self.detectFaceInImage(cgImage, croppedFaceImage: self.cardFaceImage?.cgImage)
             }
         }
     }
@@ -270,6 +293,7 @@ class ViewController: UIViewController, CardAndBarcodeDetectionViewControllerDel
         if let destination = segue.destination as? CardViewController {
             destination.cardImage = self.cardImage
             destination.cardFace = self.cardFace
+            destination.cardFaceImage = self.cardFaceImage
             destination.cardAspectRatio = self.cardAspectRatio
             destination.documentData = self.documentData
         } else if let destination = segue.destination as? SupportedDocumentsViewController, let url = sender as? URL {
