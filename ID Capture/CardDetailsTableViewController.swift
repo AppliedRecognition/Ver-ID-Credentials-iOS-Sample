@@ -46,6 +46,7 @@ class CardDetailsTableViewController: UITableViewController {
                 if let imageSize = self.cardImage?.size {
                     let constraint = NSLayoutConstraint(item: cell.cardImageView!, attribute: .width, relatedBy: .equal, toItem: cell.cardImageView!, attribute: .height, multiplier: imageSize.width/imageSize.height, constant: 0)
                     constraint.identifier = "aspectRatio"
+                    constraint.priority = .defaultHigh
                     cell.cardImageView.addConstraint(constraint)
                 }
                 return cell
