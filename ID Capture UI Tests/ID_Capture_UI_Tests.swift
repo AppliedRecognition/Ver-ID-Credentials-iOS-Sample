@@ -24,6 +24,16 @@ class ID_Capture_UI_Tests: XCTestCase {
         XCTAssertTrue(app.buttons.matching(identifier: "compareToSelfie").firstMatch.waitForExistence(timeout: 5))
     }
     
+    func testIDCaptureWithLowQualityFace() throws {
+        app.launchArguments.append("--lowQualityCardFace")
+        app.launch()
+        app.buttons.matching(identifier: "scanCard").firstMatch.tap()
+        XCTAssertTrue(app.buttons.matching(identifier: "compareToSelfie").firstMatch.waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons.matching(identifier: "qualityWarning").firstMatch.exists)
+        app.buttons.matching(identifier: "qualityWarning").firstMatch.tap()
+        XCTAssertTrue(app.alerts["Warning"].exists)
+    }
+    
     func testIDCaptureCancelation() throws {
         app.launchArguments.append("--cancelIDCapture")
         app.launch()

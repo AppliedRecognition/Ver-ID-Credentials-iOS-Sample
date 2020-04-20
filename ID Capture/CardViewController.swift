@@ -24,6 +24,7 @@ class CardViewController: UIViewController {
     let disposeBag = DisposeBag()
     
     @IBOutlet var cardImageView: UIImageView!
+    @IBOutlet var qualityWarningButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,9 @@ class CardViewController: UIViewController {
             let aspectRatioConstraint = NSLayoutConstraint(item: self.cardImageView!, attribute: .width, relatedBy: .equal, toItem: self.cardImageView!, attribute: .height, multiplier: aspectRatio, constant: 0)
             aspectRatioConstraint.identifier = "aspectRatio"
             self.cardImageView.addConstraint(aspectRatioConstraint)
+        }
+        if let faceQuality = self.cardFace?.quality, let threshold = (rxVerID.faceRecognitionFactory as? VerIDFaceDetectionRecognitionFactory)?.settings.faceExtractQualityThreshold {
+            self.qualityWarningButton.isHidden = faceQuality >= CGFloat(threshold)
         }
         if self.documentData != nil {
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Details", style: .plain, target: self, action: #selector(showCardDetails))
@@ -80,6 +84,12 @@ class CardViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }, onCompleted: nil).disposed(by: self.disposeBag)
+    }
+    
+    @IBAction func showQualityWarning() {
+        let alert = UIAlertController(title: "Warning", message: "The face in the image is very low quality. The comparison with the selfie may show an unexpected score.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+        self.present(alert, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

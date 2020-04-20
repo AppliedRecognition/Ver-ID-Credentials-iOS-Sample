@@ -178,7 +178,10 @@ class ViewController: UIViewController, CardAndBarcodeDetectionViewControllerDel
             VerIDImage(cgImage: detectionImage, orientation: .down)
         ]
         Observable.from(images).flatMap({ veridImage in
-            rxVerID.detectRecognizableFacesInImage(veridImage, limit: 1).map({ face in
+            rxVerIDCard.detectRecognizableFacesInImage(veridImage, limit: 1).map({ face -> (RecognizableFace,CGImagePropertyOrientation) in
+                if ExecutionParams.shouldIDCardFaceBeLowQuality {
+                    face.quality = 5.0
+                }
                 return (face,veridImage.orientation)
             })
         })

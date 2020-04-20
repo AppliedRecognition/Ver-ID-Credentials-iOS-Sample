@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import VerIDCore
 import RxVerID
 import Firebase
 
@@ -21,8 +22,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if ExecutionParams.isTesting {
             UserDefaults.standard.set(false, forKey: SettingsViewController.useBlinkIdKey)
         }
+        let detectionRecognitionFactory = VerIDFaceDetectionRecognitionFactory(apiSecret: nil)
+        detectionRecognitionFactory.settings.faceExtractQualityThreshold = 5
+        rxVerIDCard.faceDetectionFactory = detectionRecognitionFactory
+        rxVerIDCard.faceRecognitionFactory = detectionRecognitionFactory
         return true
     }
 }
 
 let rxVerID = RxVerID()
+let rxVerIDCard = RxVerID()

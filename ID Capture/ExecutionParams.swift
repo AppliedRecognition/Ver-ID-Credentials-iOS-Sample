@@ -29,6 +29,10 @@ class ExecutionParams {
         return CommandLine.arguments.contains("--failFaceOnIDCard")
     }
     
+    static var shouldIDCardFaceBeLowQuality: Bool {
+        return CommandLine.arguments.contains("--lowQualityCardFace")
+    }
+    
     static var mockCardImage: CGImage? {
         if let url = Bundle(for: ExecutionParams.self).url(forResource: "cardImage", withExtension: "png", subdirectory: "Test resources"), let imageData = try? Data(contentsOf: url) {
             return UIImage(data: imageData)?.cgImage
