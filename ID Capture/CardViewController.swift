@@ -49,14 +49,26 @@ class CardViewController: UIViewController {
         guard let cardFace = self.cardFace else {
             return
         }
-        rxVerID.session(settings: LivenessDetectionSessionSettings()).flatMap({ result in
-            rxVerID.recognizableFacesAndImagesFromSessionResult(result, bearing: .straight).asMaybe().flatMap({ (face, url, _) in
-                return rxVerID.compareFace(cardFace, toFaces: [face]).flatMap({ score in
-                    rxVerID.cropImageURL(url, toFace: face).map({ image in
-                        return (image, score)
-                    })
+        let session: Maybe<(RecognizableFace, URL, Bearing)>
+        if ExecutionParams.isTesting, let url = ExecutionParams.selfieURL {
+            if ExecutionParams.shouldFailLivenessDetection {
+                session = .error(NSError(domain: kVerIDErrorDomain, code: 1, userInfo: nil))
+            } else {
+                session = rxVerID.detectRecognizableFacesInImageURL(url, limit: 1).map({ face in
+                    (face, url, Bearing.straight)
                 }).asMaybe()
+            }
+        } else {
+            session = rxVerID.session(settings: LivenessDetectionSessionSettings()).flatMap({ result in
+                rxVerID.recognizableFacesAndImagesFromSessionResult(result, bearing: .straight).asMaybe()
             })
+        }
+        session.flatMap({ (face, url, _) in
+            rxVerID.compareFace(cardFace, toFaces: [face]).flatMap({ score in
+                rxVerID.cropImageURL(url, toFace: face).map({ image in
+                    return (image, score)
+                })
+            }).asMaybe()
         }).subscribeOn(SerialDispatchQueueScheduler(qos: .default))
         .observeOn(MainScheduler.instance)
         .subscribe(onSuccess: { (image, score) in

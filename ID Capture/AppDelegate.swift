@@ -18,6 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         UserDefaults.standard.register(defaults: [SettingsViewController.useBlinkIdKey: true])
+        if ExecutionParams.isTesting {
+            UserDefaults.standard.set(false, forKey: SettingsViewController.useBlinkIdKey)
+        }
         return true
     }
 }

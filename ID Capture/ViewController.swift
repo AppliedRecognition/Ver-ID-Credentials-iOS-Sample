@@ -63,11 +63,21 @@ class ViewController: UIViewController, CardAndBarcodeDetectionViewControllerDel
     func startCardDetection() {
         let settings = CardAndBarcodeDetectionSettings()
         let controller = CardAndBarcodeDetectionViewController(settings: settings)
-        if #available(iOS 13, *) {
-            controller.settings.cardDetectionSettings.imagePoolSize = 10
+        if ExecutionParams.isTesting {
+            if ExecutionParams.shouldCancelIDCapture {
+                self.cardAndBarcodeDetectionViewControllerDidCancel(controller)
+            } else if ExecutionParams.shouldFailDetectingFaceOnIDCard, let cardImage = ExecutionParams.badCardImage {
+                self.cardAndBarcodeDetectionViewController(controller, didDetectCard: cardImage, andBarcodes: [], withSettings: settings)
+            } else if !ExecutionParams.shouldFailDetectingFaceOnIDCard, let cardImage = ExecutionParams.mockCardImage, let barcode = ExecutionParams.mockBarcodeObservation {
+                self.cardAndBarcodeDetectionViewController(controller, didDetectCard: cardImage, andBarcodes: [barcode], withSettings: settings)
+            }
+        } else {
+            if #available(iOS 13, *) {
+                controller.settings.cardDetectionSettings.imagePoolSize = 10
+            }
+            controller.delegate = self
+            self.present(controller, animated: true, completion: nil)
         }
-        controller.delegate = self
-        self.present(controller, animated: true, completion: nil)
     }
     
     func scanCardUsingMicroblink() {
@@ -98,18 +108,36 @@ class ViewController: UIViewController, CardAndBarcodeDetectionViewControllerDel
             }
             MBMicroblinkSDK.sharedInstance().setLicenseKey(key)
             DispatchQueue.main.async {
-                let recognizer = MBBlinkIdCombinedRecognizer()
-                recognizer.returnFullDocumentImage = true
-                recognizer.encodeFullDocumentImage = true
-                recognizer.returnFaceImage = true
-                recognizer.encodeFaceImage = true
-                self.blinkIdRecognizer = recognizer
-                let settings = MBBlinkIdOverlaySettings()
-                settings.autorotateOverlay = true
-                let recognizerCollection = MBRecognizerCollection(recognizers: [recognizer])
-                let blinkIdOverlayViewController = MBBlinkIdOverlayViewController(settings: settings, recognizerCollection: recognizerCollection, delegate: self)
-                let recognizerRunnerViewController = MBViewControllerFactory.recognizerRunnerViewController(withOverlayViewController: blinkIdOverlayViewController)
-                self.present(recognizerRunnerViewController, animated: true, completion: nil)
+                if ExecutionParams.isTesting {
+                    if !ExecutionParams.shouldCancelIDCapture && ExecutionParams.shouldFailDetectingFaceOnIDCard, let cardImage = ExecutionParams.badCardImage {
+                        self.detectFaceInImage(cardImage)
+                    } else if !ExecutionParams.shouldFailDetectingFaceOnIDCard, let cardImage = ExecutionParams.mockCardImage, let barcode = ExecutionParams.mockBarcodeObservation {
+                        self.parseBarcodes([barcode])
+                            .subscribeOn(SerialDispatchQueueScheduler(qos: .default))
+                            .observeOn(MainScheduler.instance)
+                            .subscribe(onSuccess: { docData in
+                                self.documentData = docData
+                                self.detectFaceInImage(cardImage)
+                            }, onError: { error in
+                                self.documentData = nil
+                                self.detectFaceInImage(cardImage)
+                            })
+                            .disposed(by: self.disposeBag)
+                    }
+                } else {
+                    let recognizer = MBBlinkIdCombinedRecognizer()
+                    recognizer.returnFullDocumentImage = true
+                    recognizer.encodeFullDocumentImage = true
+                    recognizer.returnFaceImage = true
+                    recognizer.encodeFaceImage = true
+                    self.blinkIdRecognizer = recognizer
+                    let settings = MBBlinkIdOverlaySettings()
+                    settings.autorotateOverlay = true
+                    let recognizerCollection = MBRecognizerCollection(recognizers: [recognizer])
+                    let blinkIdOverlayViewController = MBBlinkIdOverlayViewController(settings: settings, recognizerCollection: recognizerCollection, delegate: self)
+                    let recognizerRunnerViewController = MBViewControllerFactory.recognizerRunnerViewController(withOverlayViewController: blinkIdOverlayViewController)
+                    self.present(recognizerRunnerViewController, animated: true, completion: nil)
+                }
             }
         }
     }
@@ -187,13 +215,16 @@ class ViewController: UIViewController, CardAndBarcodeDetectionViewControllerDel
         self.faceTracking = nil
         self.cardImage = UIImage(cgImage: image)
         self.cardAspectRatio = settings.cardDetectionSettings.size.width/settings.cardDetectionSettings.size.height
-        self.parseBarcodes(barcodes).subscribeOn(SerialDispatchQueueScheduler(qos: .default)).observeOn(MainScheduler.instance).subscribe(onSuccess: { docData in
-            self.documentData = docData
-            self.detectFaceInImage(image)
-        }, onError: { error in
-            self.documentData = nil
-            self.detectFaceInImage(image)
-        }).disposed(by: self.disposeBag)
+        self.parseBarcodes(barcodes)
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .default))
+            .observeOn(MainScheduler.instance)
+            .subscribe(onSuccess: { docData in
+                self.documentData = docData
+                self.detectFaceInImage(image)
+            }, onError: { error in
+                self.documentData = nil
+                self.detectFaceInImage(image)
+            }).disposed(by: self.disposeBag)
     }
     
     func cardAndBarcodeDetectionViewControllerDidCancel(_ viewController: CardAndBarcodeDetectionViewController) {
@@ -301,4 +332,3 @@ class ViewController: UIViewController, CardAndBarcodeDetectionViewControllerDel
         }
     }
 }
-
