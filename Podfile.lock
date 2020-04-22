@@ -74,7 +74,7 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (6.5.1):
     - GoogleUtilities/Logger
-  - ID-Card-Camera (1.4.0)
+  - ID-Card-Camera (1.4.1)
   - nanopb (0.3.9011):
     - nanopb/decode (= 0.3.9011)
     - nanopb/encode (= 0.3.9011)
@@ -116,7 +116,7 @@ DEPENDENCIES:
   - AAMVA-Barcode-Parser (= 1.2.1)
   - Firebase/Analytics
   - Firebase/Crashlytics
-  - ID-Card-Camera (~> 1.4)
+  - ID-Card-Camera (< 2.0, >= 1.4.1)
   - PPBlinkID (~> 5.3)
   - Rx-Ver-ID (~> 1.5)
   - Ver-ID-UI (~> 1.12)
@@ -166,7 +166,7 @@ SPEC CHECKSUMS:
   GoogleDataTransport: 47fe3b8e1673e5187dfd615656a3c5034f150d69
   GoogleDataTransportCCTSupport: 36f69887fd212db6d7ef4dd45ba44523717a434e
   GoogleUtilities: 06eb53bb579efe7099152735900dd04bf09e7275
-  ID-Card-Camera: 0dfe1711f46657ef98b55f8fedc7d7ddb2f98df8
+  ID-Card-Camera: bda6fa003027ef22b93c2f0aaddb8373260ea680
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   OpenCV2: ffe82e5cb5d16dc3fc01a5f4127b9a5b3cfc7d1b
   PPBlinkID: 0cf67faca4becbde9ada3fd082739708c236f157
@@ -180,6 +180,6 @@ SPEC CHECKSUMS:
   Ver-ID-UI: 4823ab50153106621df2036e9529696095d523c5
   ZIPFoundation: b1f0de4eed33e74a676f76e12559ab6b75990197
 
-PODFILE CHECKSUM: 51d13e42dc80d54e42660ef5172f1e66420d3312
+PODFILE CHECKSUM: 6d900f9e6e171e38f2b9118411952928024c4eb1
 
 COCOAPODS: 1.9.1
