@@ -7,9 +7,6 @@
 //
 
 import UIKit
-import VerIDCore
-import RxSwift
-import RxVerID
 import NormalDistribution
 
 class ResultsViewController: UIViewController {
@@ -17,8 +14,6 @@ class ResultsViewController: UIViewController {
     var liveFaceImage: UIImage?
     var cardFaceImage: UIImage?
     var comparisonScore: Float?
-    
-    let disposeBag = DisposeBag()
     
     @IBOutlet var cardFaceView: UIImageView!
     @IBOutlet var liveFaceView: UIImageView!

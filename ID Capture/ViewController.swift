@@ -26,9 +26,28 @@ class ViewController: UIViewController, CardAndBarcodeDetectionViewControllerDel
     var documentData: DocumentData?
     var verid: VerID?
     var faceTracking: FaceTracking?
+    let rxVerID = RxVerID()
     
     @IBOutlet var scanButton: UIButton!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.activityIndicator.startAnimating()
+        let detectionRecognitionFactory = VerIDFaceDetectionRecognitionFactory(apiSecret: nil)
+        detectionRecognitionFactory.settings.faceExtractQualityThreshold = 5
+        self.rxVerID.faceDetectionFactory = detectionRecognitionFactory
+        self.rxVerID.faceRecognitionFactory = detectionRecognitionFactory
+        self.rxVerID.verid.subscribeOn(SerialDispatchQueueScheduler(qos: .default)).observeOn(MainScheduler.instance).subscribe(onSuccess: { verid in
+            self.verid = verid
+            self.scanButton.isHidden = false
+            self.activityIndicator.stopAnimating()
+        }, onError: { error in
+            let alert = UIAlertController(title: "Failed to load Ver-ID", message: error.localizedDescription, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }).disposed(by: self.disposeBag)
+    }
     
     @IBAction func scanIDCard() {
         let useBlinkId = UserDefaults.standard.bool(forKey: SettingsViewController.useBlinkIdKey)
@@ -42,22 +61,7 @@ class ViewController: UIViewController, CardAndBarcodeDetectionViewControllerDel
     func scanCardUsingIDCardCamera() {
         self.documentData = nil
         self.faceTracking = nil
-        if #available(iOS 13, *) {
-            self.startCardDetection()
-            return
-        }
-        self.scanButton.isHidden = true
-        self.activityIndicator.startAnimating()
-        rxVerID.verid.subscribeOn(SerialDispatchQueueScheduler(qos: .default)).observeOn(MainScheduler.instance).subscribe(onSuccess: { verid in
-            self.verid = verid
-            self.startCardDetection()
-            self.scanButton.isHidden = false
-            self.activityIndicator.stopAnimating()
-        }, onError: { error in
-            let alert = UIAlertController(title: "Failed to load Ver-ID", message: nil, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }).disposed(by: self.disposeBag)
+        self.startCardDetection()
     }
     
     func startCardDetection() {
@@ -178,7 +182,7 @@ class ViewController: UIViewController, CardAndBarcodeDetectionViewControllerDel
             VerIDImage(cgImage: detectionImage, orientation: .down)
         ]
         Observable.from(images).flatMap({ veridImage in
-            rxVerIDCard.detectRecognizableFacesInImage(veridImage, limit: 1).map({ face -> (RecognizableFace,CGImagePropertyOrientation) in
+            self.rxVerID.detectRecognizableFacesInImage(veridImage, limit: 1).map({ face -> (RecognizableFace,CGImagePropertyOrientation) in
                 if ExecutionParams.shouldIDCardFaceBeLowQuality {
                     face.quality = 5.0
                 }
