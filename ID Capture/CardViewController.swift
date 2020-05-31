@@ -8,6 +8,7 @@
 
 import UIKit
 import VerIDCore
+import VerIDUI
 import RxVerID
 import RxSwift
 import AAMVABarcodeParser
@@ -22,7 +23,6 @@ class CardViewController: UIViewController {
     var liveFaceImage: UIImage?
     var documentData: DocumentData?
     let disposeBag = DisposeBag()
-    let rxVerID = RxVerID()
     
     @IBOutlet var cardImageView: UIImageView!
     @IBOutlet var qualityWarningButton: UIButton!
@@ -44,7 +44,7 @@ class CardViewController: UIViewController {
         if self.documentData != nil {
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Details", style: .plain, target: self, action: #selector(showCardDetails))
         }
-        self.rxVerID.verid.subscribe(onSuccess: { _ in }, onError: { _ in }).disposed(by: self.disposeBag)
+        rxVerID.verid.subscribe(onSuccess: { _ in }, onError: { _ in }).disposed(by: self.disposeBag)
     }
     
     @objc func showCardDetails() {
@@ -60,18 +60,18 @@ class CardViewController: UIViewController {
             if ExecutionParams.shouldFailLivenessDetection {
                 session = .error(NSError(domain: kVerIDErrorDomain, code: 1, userInfo: nil))
             } else {
-                session = self.rxVerID.detectRecognizableFacesInImageURL(url, limit: 1).map({ face in
+                session = rxVerID.detectRecognizableFacesInImageURL(url, limit: 1).map({ face in
                     (face, url, Bearing.straight)
                 }).asMaybe()
             }
         } else {
-            session = self.rxVerID.session(settings: LivenessDetectionSessionSettings()).flatMap({ result in
-                self.rxVerID.recognizableFacesAndImagesFromSessionResult(result, bearing: .straight).asMaybe()
+            session = rxVerID.session(settings: LivenessDetectionSessionSettings()).flatMap({ result in
+                rxVerID.recognizableFacesAndImagesFromSessionResult(result, bearing: .straight).asMaybe()
             })
         }
         session.flatMap({ (face, url, _) in
-            self.rxVerID.compareFace(cardFace, toFaces: [face]).flatMap({ score in
-                self.rxVerID.cropImageURL(url, toFace: face).map({ image in
+            rxVerID.compareFace(cardFace, toFaces: [face]).flatMap({ score in
+                rxVerID.cropImageURL(url, toFace: face).map({ image in
                     return (image, score)
                 })
             }).asMaybe()

@@ -33,8 +33,26 @@ class ExecutionParams {
         return CommandLine.arguments.contains("--lowQualityCardFace")
     }
     
+    static var shouldIDCardBeRotated: Bool {
+        return CommandLine.arguments.contains("--rotatedCardImage")
+    }
+    
+    static var faceDetectionVariant: Int {
+        if CommandLine.arguments.contains("--faceDetectionVariant2") {
+            return 1
+        }
+        return 0
+    }
+    
     static var mockCardImage: CGImage? {
         if let url = Bundle(for: ExecutionParams.self).url(forResource: "cardImage", withExtension: "png", subdirectory: "Test resources"), let imageData = try? Data(contentsOf: url) {
+            return UIImage(data: imageData)?.cgImage
+        }
+        return nil
+    }
+    
+    static var mockCardImageRotated: CGImage? {
+        if let url = Bundle(for: ExecutionParams.self).url(forResource: "cardImageRotated", withExtension: "png", subdirectory: "Test resources"), let imageData = try? Data(contentsOf: url) {
             return UIImage(data: imageData)?.cgImage
         }
         return nil
@@ -59,6 +77,6 @@ class ExecutionParams {
     }
     
     static var selfieURL: URL? {
-        return Bundle(for: ExecutionParams.self).url(forResource: "selfieImage", withExtension: "jpg", subdirectory: "Test resources")
+        return Bundle(for: ExecutionParams.self).url(forResource: "selfieImage", withExtension: "png", subdirectory: "Test resources")
     }
 }

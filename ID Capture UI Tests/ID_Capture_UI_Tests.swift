@@ -24,6 +24,13 @@ class ID_Capture_UI_Tests: XCTestCase {
         XCTAssertTrue(app.buttons.matching(identifier: "compareToSelfie").firstMatch.waitForExistence(timeout: 5))
     }
     
+    func testIDCaptureWithRotatedImage() throws {
+        app.launchArguments.append("--rotatedCardImage")
+        app.launch()
+        app.buttons.matching(identifier: "scanCard").firstMatch.tap()
+        XCTAssertTrue(app.buttons.matching(identifier: "compareToSelfie").firstMatch.waitForExistence(timeout: 5))
+    }
+    
     func testIDCaptureWithLowQualityFace() throws {
         app.launchArguments.append("--lowQualityCardFace")
         app.launch()
@@ -85,7 +92,7 @@ class ID_Capture_UI_Tests: XCTestCase {
         try self.testIDCapture()
         app.buttons.matching(identifier: "compareToSelfie").firstMatch.tap()
         XCTAssertTrue(app.staticTexts.matching(identifier: "score").firstMatch.waitForExistence(timeout: 2))
-        XCTAssertEqual(app.staticTexts.matching(identifier: "score").firstMatch.label, "3.86")
+        XCTAssertEqual(app.staticTexts.matching(identifier: "score").firstMatch.label, "3.97")
     }
     
     func testLivenessDetectionFailure() throws {

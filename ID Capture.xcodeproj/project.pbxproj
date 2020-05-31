@@ -27,6 +27,7 @@
 		3BB0E570244DAAA400785E47 /* ID_Capture_UI_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB0E56F244DAAA400785E47 /* ID_Capture_UI_Tests.swift */; };
 		3BB0E580244DB27F00785E47 /* TestBarcodeObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB0E579244DB16500785E47 /* TestBarcodeObservation.swift */; };
 		3BB0E582244DCD4C00785E47 /* ExecutionParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB0E581244DCD4C00785E47 /* ExecutionParams.swift */; };
+		3BB0E5882451F68500785E47 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB0E5872451F68500785E47 /* Globals.swift */; };
 		3BDA7B0A23E9EAFF003C3FD7 /* Ver-ID identity.p12 in Resources */ = {isa = PBXBuildFile; fileRef = 3BDA7B0923E9EAFF003C3FD7 /* Ver-ID identity.p12 */; };
 		3BDCDCCB23AD71B000EA6123 /* MicroblinkDocumentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDCDCCA23AD71B000EA6123 /* MicroblinkDocumentData.swift */; };
 		6C128773EA5E3E6BF2E68C57 /* Pods_ID_Capture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 419180C6135555744CF4A99A /* Pods_ID_Capture.framework */; };
@@ -80,6 +81,7 @@
 		3BB0E579244DB16500785E47 /* TestBarcodeObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBarcodeObservation.swift; sourceTree = "<group>"; };
 		3BB0E57E244DB27700785E47 /* Test resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Test resources"; sourceTree = "<group>"; };
 		3BB0E581244DCD4C00785E47 /* ExecutionParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExecutionParams.swift; sourceTree = "<group>"; };
+		3BB0E5872451F68500785E47 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		3BDA7B0923E9EAFF003C3FD7 /* Ver-ID identity.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ver-ID identity.p12"; sourceTree = "<group>"; };
 		3BDCDCCA23AD71B000EA6123 /* MicroblinkDocumentData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MicroblinkDocumentData.swift; sourceTree = "<group>"; };
 		419180C6135555744CF4A99A /* Pods_ID_Capture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ID_Capture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,6 +162,7 @@
 				3B3196CC23AB86FF009B8564 /* BarcodeScan.swift */,
 				3B3E6A9823BE688E00495F42 /* SecureStorage.swift */,
 				3BB0E581244DCD4C00785E47 /* ExecutionParams.swift */,
+				3BB0E5872451F68500785E47 /* Globals.swift */,
 			);
 			path = "ID Capture";
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 				3B3FF9D323A250F100156A59 /* CardViewController.swift in Sources */,
 				3BDCDCCB23AD71B000EA6123 /* MicroblinkDocumentData.swift in Sources */,
 				3B3FF9CB23A24BA300156A59 /* ScoreTableViewController.swift in Sources */,
+				3BB0E5882451F68500785E47 /* Globals.swift in Sources */,
 				3B0B533D23A2B80D00B64EB6 /* ImageTableViewCell.swift in Sources */,
 				3B3FF9CA23A24BA300156A59 /* ResultsViewController.swift in Sources */,
 				3B0B533B23A2B6FA00B64EB6 /* CardDetailsTableViewController.swift in Sources */,
@@ -464,7 +468,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -483,7 +487,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 4.5.1;
+				MARKETING_VERSION = 4.5.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -526,7 +530,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -539,7 +543,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 4.5.1;
+				MARKETING_VERSION = 4.5.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -605,7 +609,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3DPTJHF24M;
 				INFOPLIST_FILE = "ID Capture UI Tests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -625,7 +628,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3DPTJHF24M;
 				INFOPLIST_FILE = "ID Capture UI Tests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
