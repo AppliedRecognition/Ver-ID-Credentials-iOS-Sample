@@ -9,14 +9,13 @@
 import UIKit
 import IDCardCamera
 import VerIDCore
-import RxVerID
 import RxSwift
 import Microblink
 import Vision
 import AAMVABarcodeParser
 import os.signpost
 
-class ViewController: UIViewController, CardAndBarcodeDetectionViewControllerDelegate, MBBlinkIdOverlayViewControllerDelegate {
+class ViewController: UIViewController, VerIDFactoryDelegate, CardAndBarcodeDetectionViewControllerDelegate, MBBlinkIdOverlayViewControllerDelegate {
     
     let disposeBag = DisposeBag()
     var blinkIdRecognizer: MBBlinkIdCombinedRecognizer?
@@ -25,7 +24,6 @@ class ViewController: UIViewController, CardAndBarcodeDetectionViewControllerDel
     var cardFace: RecognizableFace?
     var cardAspectRatio: CGFloat?
     var documentData: DocumentData?
-    var verid: VerID?
     var faceTracking: FaceTracking?
     
     lazy var log: OSLog = {
@@ -39,16 +37,13 @@ class ViewController: UIViewController, CardAndBarcodeDetectionViewControllerDel
         super.viewDidLoad()
         self.activityIndicator.startAnimating()
         self.scanButton.isHidden = true
-        rxVerIDCard.verid.subscribeOn(SerialDispatchQueueScheduler(qos: .default)).observeOn(MainScheduler.instance).subscribe(onSuccess: { verid in
-            self.verid = verid
-            self.scanButton.isHidden = false
-            self.activityIndicator.stopAnimating()
-        }, onError: { error in
-            self.activityIndicator.stopAnimating()
-            let alert = UIAlertController(title: "Failed to load Ver-ID", message: error.localizedDescription, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }).disposed(by: self.disposeBag)
+        let veridFactory = VerIDFactory()
+        let detRecFactory = VerIDFaceDetectionRecognitionFactory(apiSecret: nil)
+        detRecFactory.settings.faceExtractQualityThreshold = 5.0
+        veridFactory.faceDetectionFactory = detRecFactory
+        veridFactory.faceRecognitionFactory = detRecFactory
+        veridFactory.delegate = self
+        veridFactory.createVerID()
     }
     
     @IBAction func scanIDCard() {
@@ -131,7 +126,7 @@ class ViewController: UIViewController, CardAndBarcodeDetectionViewControllerDel
                 }
                 key = licenceKey
             }
-            MBMicroblinkSDK.sharedInstance().setLicenseKey(key)
+            MBMicroblinkSDK.shared().setLicenseKey(key)
             DispatchQueue.main.async {
                 if ExecutionParams.isTesting {
                     if !ExecutionParams.shouldCancelIDCapture && ExecutionParams.shouldFailDetectingFaceOnIDCard, let cardImage = ExecutionParams.badCardImage {
@@ -160,11 +155,31 @@ class ViewController: UIViewController, CardAndBarcodeDetectionViewControllerDel
                     settings.autorotateOverlay = true
                     let recognizerCollection = MBRecognizerCollection(recognizers: [recognizer])
                     let blinkIdOverlayViewController = MBBlinkIdOverlayViewController(settings: settings, recognizerCollection: recognizerCollection, delegate: self)
-                    let recognizerRunnerViewController = MBViewControllerFactory.recognizerRunnerViewController(withOverlayViewController: blinkIdOverlayViewController)
+                    guard let recognizerRunnerViewController : UIViewController = MBViewControllerFactory.recognizerRunnerViewController(withOverlayViewController: blinkIdOverlayViewController) else {
+                        let alert = UIAlertController(title: "Error", message: "Failed to start scan", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+                        self.present(alert, animated: true)
+                        return
+                    }
                     self.present(recognizerRunnerViewController, animated: true, completion: nil)
                 }
             }
         }
+    }
+    
+    // MARK: - VerIDFactoryDelegate
+    
+    func veridFactory(_ factory: VerIDFactory, didCreateVerID instance: VerID) {
+        Globals.veridCard = instance
+        self.scanButton.isHidden = false
+        self.activityIndicator.stopAnimating()
+    }
+    
+    func veridFactory(_ factory: VerIDFactory, didFailWithError error: Error) {
+        self.activityIndicator.stopAnimating()
+        let alert = UIAlertController(title: "Failed to load Ver-ID", message: error.localizedDescription, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     // MARK: - Face detection
@@ -196,55 +211,53 @@ class ViewController: UIViewController, CardAndBarcodeDetectionViewControllerDel
         self.scanButton.isHidden = true
         self.activityIndicator.startAnimating()
         
-        rxVerIDCard
-            .verid
-            .compactMap({ verid -> (RecognizableFace,CGImagePropertyOrientation)? in
-                do {
-                    let orientations: [CGImagePropertyOrientation] = [.up, .left, .right, .down]
-                    for orientation in orientations {
-                        let veridImage = VerIDImage(cgImage: croppedFaceImage ?? image, orientation: orientation)
-                        guard let face = try verid.faceDetection.detectFacesInImage(veridImage, limit: 1, options: 0).first else {
-                            continue
-                        }
-                        guard let recognizable = try verid.faceRecognition.createRecognizableFacesFromFaces([face], inImage: veridImage).first else {
-                            continue
-                        }
-                        let recognizableFace = RecognizableFace(face: face, recognitionData: recognizable.recognitionData, version: recognizable.version)
-                        if ExecutionParams.shouldIDCardFaceBeLowQuality {
-                            recognizableFace.quality = 5.0
-                        }
-                        return (recognizableFace, orientation)
+        Single<(RecognizableFace,CGImagePropertyOrientation)>.create(subscribe: { emitter in
+            do {
+                let orientations: [CGImagePropertyOrientation] = [.up, .left, .right, .down]
+                for orientation in orientations {
+                    let veridImage = VerIDImage(cgImage: croppedFaceImage ?? image, orientation: orientation)
+                    guard let face = try Globals.veridCard?.faceDetection.detectFacesInImage(veridImage, limit: 1, options: 0).first else {
+                        continue
                     }
-                } catch {
+                    guard let recognizable = try Globals.veridCard?.faceRecognition.createRecognizableFacesFromFaces([face], inImage: veridImage).first else {
+                        continue
+                    }
+                    let recognizableFace = RecognizableFace(face: face, recognitionData: recognizable.recognitionData, version: recognizable.version)
+                    if ExecutionParams.shouldIDCardFaceBeLowQuality {
+                        recognizableFace.quality = 5.0
+                    }
+                    emitter(.success((recognizableFace, orientation)))
+                    return Disposables.create()
                 }
-                return nil
-            })
-            .asObservable()
-            .asSingle()
-            .subscribeOn(SerialDispatchQueueScheduler(qos: .default))
-            .observeOn(MainScheduler.instance)
-            .subscribe(onSuccess: { face, orientation in
-                if let aspectRatio = self.cardAspectRatio, (orientation == .left || orientation == .right) {
-                    self.cardAspectRatio = 1.0/aspectRatio
-                }
-                self.cardImage = UIImage(cgImage: image, scale: 1, orientation: self.uiImageOrientationFromCGImageOrientation(orientation))
-                self.scanButton.isHidden = false
-                self.activityIndicator.stopAnimating()
-                self.cardFace = face
-                if let cardFaceImage = croppedFaceImage {
-                    self.cardFaceImage = UIImage(cgImage: cardFaceImage, scale: 1, orientation: self.uiImageOrientationFromCGImageOrientation(orientation))
-                } else {
-                    self.cardFaceImage = nil
-                }
-                self.performSegue(withIdentifier: "selfie", sender: nil)
-            }, onError: { error in
-                self.scanButton.isHidden = false
-                self.activityIndicator.stopAnimating()
-                let alert = UIAlertController(title: "Error", message: "Failed to find a face on the ID card", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-            })
-            .disposed(by: self.disposeBag)
+                emitter(.error(NSError()))
+            } catch {
+                emitter(.error(error))
+            }
+            return Disposables.create()
+        })
+        .subscribeOn(SerialDispatchQueueScheduler(qos: .default))
+        .observeOn(MainScheduler.instance)
+        .subscribe(onSuccess: { face, orientation in
+            if let aspectRatio = self.cardAspectRatio, (orientation == .left || orientation == .right) {
+                self.cardAspectRatio = 1.0/aspectRatio
+            }
+            self.cardImage = UIImage(cgImage: image, scale: 1, orientation: self.uiImageOrientationFromCGImageOrientation(orientation))
+            self.scanButton.isHidden = false
+            self.activityIndicator.stopAnimating()
+            self.cardFace = face
+            if let cardFaceImage = croppedFaceImage {
+                self.cardFaceImage = UIImage(cgImage: cardFaceImage, scale: 1, orientation: self.uiImageOrientationFromCGImageOrientation(orientation))
+            } else {
+                self.cardFaceImage = nil
+            }
+            self.performSegue(withIdentifier: "selfie", sender: nil)
+        }, onError: { error in
+            self.scanButton.isHidden = false
+            self.activityIndicator.stopAnimating()
+            let alert = UIAlertController(title: "Error", message: "Failed to find a face on the ID card", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }).disposed(by: self.disposeBag)
     }
     
     // MARK: - ID card camera delegate
@@ -274,7 +287,7 @@ class ViewController: UIViewController, CardAndBarcodeDetectionViewControllerDel
             // Use the built-in image sharpness detection to determine the image quality
             return nil
         }
-        guard let verid = self.verid else {
+        guard let verid = Globals.verid else {
             return nil
         }
         let faceTracking = self.faceTracking ?? verid.faceDetection.startFaceTracking()
@@ -295,6 +308,8 @@ class ViewController: UIViewController, CardAndBarcodeDetectionViewControllerDel
             blinkIdOverlayViewController.recognizerRunnerViewController?.pauseScanning()
             DispatchQueue.main.async {
                 blinkIdOverlayViewController.dismiss(animated: true, completion: nil)
+                self.scanButton.isHidden = true
+                self.activityIndicator.startAnimating()
                 guard let result = self.blinkIdRecognizer?.result else {
                     let alert = UIAlertController(title: "Card scan failed", message: nil, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -313,7 +328,6 @@ class ViewController: UIViewController, CardAndBarcodeDetectionViewControllerDel
                 } else {
                     self.cardFaceImage = nil
                 }
-                self.documentData = MicroblinkDocumentData(result: result)
                 if result.documentDataMatch == .failed {
                     let alert = UIAlertController(title: "Invalid licence", message: "The front and the back of the licence don't seem to match.", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -323,7 +337,18 @@ class ViewController: UIViewController, CardAndBarcodeDetectionViewControllerDel
                     self.present(alert, animated: true)
                     return
                 }
-                self.detectFaceInImage(cgImage, croppedFaceImage: self.cardFaceImage?.cgImage)
+                if let data = result.barcodeResult?.rawData, let _ = try? SecureStorage.getString(forKey: SecureStorage.commonKeys.intellicheckPassword.rawValue) {
+                    self.parseBarcodeData(data).subscribe(onSuccess: { docData in
+                        self.documentData = docData
+                        self.detectFaceInImage(cgImage, croppedFaceImage: self.cardFaceImage?.cgImage)
+                    }, onError: { error in
+                        self.documentData = MicroblinkDocumentData(result: result)
+                        self.detectFaceInImage(cgImage, croppedFaceImage: self.cardFaceImage?.cgImage)
+                    }).disposed(by: self.disposeBag)
+                } else {
+                    self.documentData = MicroblinkDocumentData(result: result)
+                    self.detectFaceInImage(cgImage, croppedFaceImage: self.cardFaceImage?.cgImage)
+                }
             }
         }
     }
@@ -336,11 +361,24 @@ class ViewController: UIViewController, CardAndBarcodeDetectionViewControllerDel
     // MARK: - Barcode parsing
     
     private func parseBarcodes(_ barcodes: [VNBarcodeObservation]) -> Single<DocumentData> {
-        return Single<DocumentData>.create(subscribe: { event in
+        return Single<Data>.create(subscribe: { event in
             do {
                 guard let barcodeData = barcodes.first?.payloadStringValue?.data(using: .utf8) else {
                     throw BarcodeParserError.emptyDocument
                 }
+                event(.success(barcodeData))
+            } catch {
+                event(.error(error))
+            }
+            return Disposables.create()
+        }).flatMap({ data in
+            self.parseBarcodeData(data)
+        }).subscribeOn(SerialDispatchQueueScheduler(qos: .default)).observeOn(MainScheduler.instance)
+    }
+    
+    private func parseBarcodeData(_ barcodeData: Data) -> Single<DocumentData> {
+        return Single<DocumentData>.create(subscribe: { event in
+            do {
                 let parser: BarcodeParsing
                 if !ExecutionParams.isTesting, let intellicheckPassword = try SecureStorage.getString(forKey: SecureStorage.commonKeys.intellicheckPassword.rawValue) {
                     parser = IntellicheckBarcodeParser(apiKey: intellicheckPassword)

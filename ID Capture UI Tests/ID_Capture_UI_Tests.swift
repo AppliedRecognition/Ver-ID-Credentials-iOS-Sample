@@ -20,6 +20,7 @@ class ID_Capture_UI_Tests: XCTestCase {
 
     func testIDCapture() throws {
         app.launch()
+        XCTAssertTrue(app.buttons.matching(identifier: "scanCard").firstMatch.waitForExistence(timeout: 10))
         app.buttons.matching(identifier: "scanCard").firstMatch.tap()
         XCTAssertTrue(app.buttons.matching(identifier: "compareToSelfie").firstMatch.waitForExistence(timeout: 5))
     }
@@ -27,6 +28,7 @@ class ID_Capture_UI_Tests: XCTestCase {
     func testIDCaptureWithRotatedImage() throws {
         app.launchArguments.append("--rotatedCardImage")
         app.launch()
+        XCTAssertTrue(app.buttons.matching(identifier: "scanCard").firstMatch.waitForExistence(timeout: 10))
         app.buttons.matching(identifier: "scanCard").firstMatch.tap()
         XCTAssertTrue(app.buttons.matching(identifier: "compareToSelfie").firstMatch.waitForExistence(timeout: 5))
     }
@@ -34,6 +36,7 @@ class ID_Capture_UI_Tests: XCTestCase {
     func testIDCaptureWithLowQualityFace() throws {
         app.launchArguments.append("--lowQualityCardFace")
         app.launch()
+        XCTAssertTrue(app.buttons.matching(identifier: "scanCard").firstMatch.waitForExistence(timeout: 10))
         app.buttons.matching(identifier: "scanCard").firstMatch.tap()
         XCTAssertTrue(app.buttons.matching(identifier: "compareToSelfie").firstMatch.waitForExistence(timeout: 5))
         XCTAssertTrue(app.buttons.matching(identifier: "qualityWarning").firstMatch.exists)
@@ -44,6 +47,7 @@ class ID_Capture_UI_Tests: XCTestCase {
     func testIDCaptureCancelation() throws {
         app.launchArguments.append("--cancelIDCapture")
         app.launch()
+        XCTAssertTrue(app.buttons.matching(identifier: "scanCard").firstMatch.waitForExistence(timeout: 10))
         app.buttons.matching(identifier: "scanCard").firstMatch.tap()
         XCTAssertFalse(app.buttons.matching(identifier: "compareToSelfie").firstMatch.exists)
     }
@@ -58,6 +62,7 @@ class ID_Capture_UI_Tests: XCTestCase {
     func testFailDetectingFaceOnIDCard() throws {
         app.launchArguments.append("--failFaceOnIDCard")
         app.launch()
+        XCTAssertTrue(app.buttons.matching(identifier: "scanCard").firstMatch.waitForExistence(timeout: 10))
         app.buttons.matching(identifier: "scanCard").firstMatch.tap()
         XCTAssertTrue(app.alerts["Error"].waitForExistence(timeout: 5))
     }
@@ -92,7 +97,7 @@ class ID_Capture_UI_Tests: XCTestCase {
         try self.testIDCapture()
         app.buttons.matching(identifier: "compareToSelfie").firstMatch.tap()
         XCTAssertTrue(app.staticTexts.matching(identifier: "score").firstMatch.waitForExistence(timeout: 2))
-        XCTAssertEqual(app.staticTexts.matching(identifier: "score").firstMatch.label, "3.97")
+        XCTAssertEqual(app.staticTexts.matching(identifier: "score").firstMatch.label, "3.91")
     }
     
     func testLivenessDetectionFailure() throws {
@@ -104,6 +109,7 @@ class ID_Capture_UI_Tests: XCTestCase {
     
     func testDisplayFalseAcceptanceRates() throws {
         try self.testLivenessDetection()
+        XCTAssertTrue(app.buttons.matching(identifier: "far").firstMatch.waitForExistence(timeout: 5))
         app.buttons.matching(identifier: "far").firstMatch.tap()
         XCTAssertTrue(app.navigationBars["False acceptance rates"].exists)
     }

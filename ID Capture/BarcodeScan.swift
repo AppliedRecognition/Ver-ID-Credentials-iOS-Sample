@@ -23,7 +23,7 @@ class BarcodeScan: NSObject, MBBlinkIdOverlayViewControllerDelegate {
         guard let licenceKey = Bundle.main.object(forInfoDictionaryKey: "blinkIdLicenceKey") as? String else {
             return
         }
-        MBMicroblinkSDK.sharedInstance().setLicenseKey(licenceKey)
+        MBMicroblinkSDK.shared().setLicenseKey(licenceKey)
         self.recognizer = MBUsdlRecognizer()
         /** Create BlinkID settings */
         let settings : MBBlinkIdOverlaySettings = MBBlinkIdOverlaySettings()
@@ -33,7 +33,12 @@ class BarcodeScan: NSObject, MBBlinkIdOverlayViewControllerDelegate {
         /** Create your overlay view controller */
         let blinkIdOverlayViewController : MBBlinkIdOverlayViewController = MBBlinkIdOverlayViewController(settings: settings, recognizerCollection: recognizerCollection, delegate: self)
         /** Create recognizer view controller with wanted overlay view controller */
-        let recognizerRunneViewController : UIViewController = MBViewControllerFactory.recognizerRunnerViewController(withOverlayViewController: blinkIdOverlayViewController)
+        guard let recognizerRunneViewController : UIViewController = MBViewControllerFactory.recognizerRunnerViewController(withOverlayViewController: blinkIdOverlayViewController) else {
+            let alert = UIAlertController(title: "Error", message: "Failed to start scan", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+            self.viewController.present(alert, animated: true)
+            return
+        }
         /** Present the recognizer runner view controller. You can use other presentation methods as well (instead of presentViewController) */
         self.viewController.present(recognizerRunneViewController, animated: true, completion: nil)
     }

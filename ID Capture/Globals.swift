@@ -7,15 +7,9 @@
 //
 
 import Foundation
-import RxVerID
 import VerIDCore
 
-let rxVerID = RxVerID()
-let rxVerIDCard: RxVerID = {
-    let detRecFactory = VerIDFaceDetectionRecognitionFactory(apiSecret: nil)
-    detRecFactory.settings.faceExtractQualityThreshold = 5.0
-    let verid = RxVerID()
-    verid.faceDetectionFactory = detRecFactory
-    verid.faceRecognitionFactory = detRecFactory
-    return verid
-}()
+struct Globals {
+    static var verid: VerID?
+    static var veridCard: VerID?
+}

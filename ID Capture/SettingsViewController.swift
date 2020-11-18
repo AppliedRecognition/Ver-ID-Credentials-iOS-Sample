@@ -82,6 +82,8 @@ class SettingsViewController: UITableViewController {
         }
         guard let data = [
                 "device_id": deviceId,
+                "device_os": "iOS",
+                "device_name": UIDevice.current.name,
                 "app_id": appId,
                 "password": password
             ].map({ $0+"="+$1 }).joined(separator: "&").data(using: .utf8) else {

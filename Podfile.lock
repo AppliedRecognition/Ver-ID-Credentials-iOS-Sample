@@ -1,5 +1,6 @@
 PODS:
-  - AAMVA-Barcode-Parser (1.2.1)
+  - AAMVA-Barcode-Parser (1.3.0)
+  - DeviceKit (4.2.1)
   - Firebase/Analytics (6.23.0):
     - Firebase/Core
   - Firebase/Core (6.23.0):
@@ -81,50 +82,42 @@ PODS:
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
   - OpenCV2 (4.3.0)
-  - PPBlinkID (5.3.0)
+  - PPBlinkID (5.8.0)
   - PromisesObjC (1.2.8)
-  - Rx-Ver-ID (1.5.0):
-    - Rx-Ver-ID/Core (= 1.5.0)
-    - Rx-Ver-ID/UI (= 1.5.0)
-    - RxCocoa (~> 5)
-    - RxSwift (~> 5)
-  - Rx-Ver-ID/Core (1.5.0):
-    - RxCocoa (~> 5)
-    - RxSwift (~> 5)
-    - Ver-ID-Core (< 2, >= 1.11.1)
-  - Rx-Ver-ID/UI (1.5.0):
-    - Rx-Ver-ID/Core (= 1.5.0)
-    - RxCocoa (~> 5)
-    - RxSwift (~> 5)
-    - Ver-ID-UI (< 2, >= 1.11.1)
   - RxCocoa (5.1.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
   - RxRelay (5.1.1):
     - RxSwift (~> 5)
   - RxSwift (5.1.1)
-  - Ver-ID-Core (1.12.4):
+  - Ver-ID-Core (2.0.0-beta.04):
+    - DeviceKit (~> 4.1)
     - OpenCV2 (~> 4.1)
+    - RxCocoa (~> 5)
+    - RxSwift (~> 5)
     - Ver-ID-SDK-Identity (~> 3.0)
     - ZIPFoundation (~> 0.9)
   - Ver-ID-SDK-Identity (3.0.1)
-  - Ver-ID-UI (1.12.4):
-    - Ver-ID-Core (< 2.0, >= 1.12.4)
+  - Ver-ID-UI (2.0.0-beta.04):
+    - RxCocoa (~> 5)
+    - RxSwift (~> 5)
+    - Ver-ID-Core (< 3.0, >= 2.0.0-beta.04)
   - ZIPFoundation (0.9.11)
 
 DEPENDENCIES:
-  - AAMVA-Barcode-Parser (= 1.2.1)
+  - AAMVA-Barcode-Parser (= 1.3.0)
   - Firebase/Analytics
   - Firebase/Crashlytics
   - ID-Card-Camera (< 2.0, >= 1.4.1)
-  - PPBlinkID (~> 5.3)
-  - Rx-Ver-ID (~> 1.5)
-  - Ver-ID-Core (= 1.12.4)
-  - Ver-ID-UI (= 1.12.4)
+  - PPBlinkID (~> 5.8)
+  - RxCocoa (~> 5.0)
+  - RxSwift (~> 5.0)
+  - Ver-ID-UI (= 2.0.0-beta.04)
 
 SPEC REPOS:
   trunk:
     - AAMVA-Barcode-Parser
+    - DeviceKit
     - Firebase
     - FirebaseAnalytics
     - FirebaseAnalyticsInterop
@@ -142,7 +135,6 @@ SPEC REPOS:
     - OpenCV2
     - PPBlinkID
     - PromisesObjC
-    - Rx-Ver-ID
     - RxCocoa
     - RxRelay
     - RxSwift
@@ -152,7 +144,8 @@ SPEC REPOS:
     - ZIPFoundation
 
 SPEC CHECKSUMS:
-  AAMVA-Barcode-Parser: 2b9617a98ae8280d25bc76f78d7bf09ad4620ca5
+  AAMVA-Barcode-Parser: d6caa66c90d947fcdb0a632889288b62911671d7
+  DeviceKit: cadb5ff25d45fe186778bf2d0fd2ea4750542189
   Firebase: 585ae467b3edda6a5444e788fda6888f024d8d6f
   FirebaseAnalytics: 558f7a03d19de451093032c806f39d5f9dff096e
   FirebaseAnalyticsInterop: 3f86269c38ae41f47afeb43ebf32a001f58fcdae
@@ -168,17 +161,16 @@ SPEC CHECKSUMS:
   ID-Card-Camera: bda6fa003027ef22b93c2f0aaddb8373260ea680
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   OpenCV2: ffe82e5cb5d16dc3fc01a5f4127b9a5b3cfc7d1b
-  PPBlinkID: 0cf67faca4becbde9ada3fd082739708c236f157
+  PPBlinkID: e319b1a3403a59e0af21879bd30841d304de4428
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
-  Rx-Ver-ID: f5668c4bd49a860e57a0f07c920409c19f9fa298
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
-  Ver-ID-Core: 1c8aad498d9ae3d60b2978f73d65711750add4e0
+  Ver-ID-Core: 926fb50e8b11e48494f29865097cd9b381a5179f
   Ver-ID-SDK-Identity: b89e0645c17d2bce24b93454ef9d31bcf196e872
-  Ver-ID-UI: 76ad304343480af8f38ba409b7ca8d1898a910ca
+  Ver-ID-UI: ecda810ee0a081e7b14250faa5734c479ba69a1b
   ZIPFoundation: b1f0de4eed33e74a676f76e12559ab6b75990197
 
-PODFILE CHECKSUM: f2596ef945eb2ff6446902b6570a49689d740c39
+PODFILE CHECKSUM: 1e650dd8e16ef3db0d1e075171367498827f2d77
 
-COCOAPODS: 1.9.2
+COCOAPODS: 1.10.0

@@ -9,11 +9,10 @@
 import UIKit
 import VerIDCore
 import VerIDUI
-import RxVerID
 import RxSwift
 import AAMVABarcodeParser
 
-class CardViewController: UIViewController {
+class CardViewController: UIViewController, VerIDFactoryDelegate, VerIDSessionDelegate {
     
     var cardImage: UIImage?
     var cardFaceImage: UIImage?
@@ -26,6 +25,7 @@ class CardViewController: UIViewController {
     
     @IBOutlet var cardImageView: UIImageView!
     @IBOutlet var qualityWarningButton: UIButton!
+    @IBOutlet var captureSelfieButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,54 +38,102 @@ class CardViewController: UIViewController {
             aspectRatioConstraint.identifier = "aspectRatio"
             self.cardImageView.addConstraint(aspectRatioConstraint)
         }
-        if let faceQuality = self.cardFace?.quality, let threshold = (rxVerID.faceRecognitionFactory as? VerIDFaceDetectionRecognitionFactory)?.settings.faceExtractQualityThreshold {
+        let veridFactory = VerIDFactory()
+        if let verid = Globals.verid {
+            self.veridFactory(veridFactory, didCreateVerID: verid)
+        } else {
+            veridFactory.delegate = self
+            veridFactory.createVerID()
+        }
+        if let faceQuality = self.cardFace?.quality, let threshold = (veridFactory.faceRecognitionFactory as? VerIDFaceDetectionRecognitionFactory)?.settings.faceExtractQualityThreshold {
             self.qualityWarningButton.isHidden = faceQuality >= CGFloat(threshold)
         }
         if self.documentData != nil {
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Details", style: .plain, target: self, action: #selector(showCardDetails))
         }
-        rxVerID.verid.subscribe(onSuccess: { _ in }, onError: { _ in }).disposed(by: self.disposeBag)
     }
+    
+    // MARK: - VerIDFactoryDelegate
+    
+    func veridFactory(_ factory: VerIDFactory, didCreateVerID instance: VerID) {
+        Globals.verid = instance
+        self.captureSelfieButton.isEnabled = true
+    }
+    
+    func veridFactory(_ factory: VerIDFactory, didFailWithError error: Error) {
+        // TODO
+    }
+    
+    // MARK: - VerIDSessionDelegate
+    
+    func didFinishSession(_ session: VerIDSession, withResult result: VerIDSessionResult) {
+        do {
+            if let error = result.error {
+                throw error
+            }
+            guard let cardFace = self.cardFace else {
+                return
+            }
+            guard let verid = Globals.verid else {
+                return
+            }
+            guard let faceCapture = result.faceCaptures.first(where: { $0.bearing == .straight }) else {
+                return
+            }
+            self.comparisonScore = try verid.faceRecognition.compareSubjectFaces([cardFace], toFaces: [faceCapture.face]).floatValue
+            self.liveFaceImage = faceCapture.faceImage
+            self.performSegue(withIdentifier: "comparison", sender: nil)
+        } catch {
+            let alert = UIAlertController(title: "Failed to capture live face", message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func didCancelSession(_ session: VerIDSession) {
+        
+    }
+    
+    // MARK: -
     
     @objc func showCardDetails() {
         self.performSegue(withIdentifier: "details", sender: nil)
     }
     
     @IBAction func captureSelfie() {
-        guard let cardFace = self.cardFace else {
+        guard let verid = Globals.verid else {
             return
         }
-        let session: Maybe<(RecognizableFace, URL, Bearing)>
+        let session = VerIDSession(environment: verid, settings: LivenessDetectionSessionSettings())
         if ExecutionParams.isTesting, let url = ExecutionParams.selfieURL {
             if ExecutionParams.shouldFailLivenessDetection {
-                session = .error(NSError(domain: kVerIDErrorDomain, code: 1, userInfo: nil))
+                self.didFinishSession(session, withResult: VerIDSessionResult(error: NSError(domain: kVerIDErrorDomain, code: 1, userInfo: nil)))
             } else {
-                session = rxVerID.detectRecognizableFacesInImageURL(url, limit: 1).map({ face in
-                    (face, url, Bearing.straight)
-                }).asMaybe()
+                let result: VerIDSessionResult
+                do {
+                    guard let image = VerIDImage(url: url) else {
+                        throw NSError(domain: kVerIDErrorDomain, code: 1, userInfo: nil)
+                    }
+                    let faces = try verid.faceDetection.detectFacesInImage(image, limit: 1, options: 0)
+                    if faces.isEmpty {
+                        throw NSError(domain: kVerIDErrorDomain, code: 1, userInfo: nil)
+                    }
+                    guard let face = try verid.faceRecognition.createRecognizableFacesFromFaces(faces, inImage: image).first else {
+                        throw NSError(domain: kVerIDErrorDomain, code: 1, userInfo: nil)
+                    }
+                    guard let uiImage = UIImage(contentsOfFile: url.path) else {
+                        throw NSError(domain: kVerIDErrorDomain, code: 1, userInfo: nil)
+                    }
+                    result = VerIDSessionResult(faceCaptures: [FaceCapture(face: RecognizableFace(face: faces[0], recognitionData: face.recognitionData), bearing: .straight, image: uiImage)])
+                } catch {
+                    result = VerIDSessionResult(error: error)
+                }
+                self.didFinishSession(session, withResult: result)
             }
-        } else {
-            session = rxVerID.session(settings: LivenessDetectionSessionSettings()).flatMap({ result in
-                rxVerID.recognizableFacesAndImagesFromSessionResult(result, bearing: .straight).asMaybe()
-            })
+            return
         }
-        session.flatMap({ (face, url, _) in
-            rxVerID.compareFace(cardFace, toFaces: [face]).flatMap({ score in
-                rxVerID.cropImageURL(url, toFace: face).map({ image in
-                    return (image, score)
-                })
-            }).asMaybe()
-        }).subscribeOn(SerialDispatchQueueScheduler(qos: .default))
-        .observeOn(MainScheduler.instance)
-        .subscribe(onSuccess: { (image, score) in
-            self.liveFaceImage = image
-            self.comparisonScore = score
-            self.performSegue(withIdentifier: "comparison", sender: nil)
-        }, onError: { error in
-            let alert = UIAlertController(title: "Failed to capture live face", message: nil, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }, onCompleted: nil).disposed(by: self.disposeBag)
+        session.delegate = self
+        session.start()
     }
     
     @IBAction func showQualityWarning() {
