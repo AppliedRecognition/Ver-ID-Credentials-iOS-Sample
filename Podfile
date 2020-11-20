@@ -20,7 +20,7 @@ target 'ID Capture' do
   pod 'RxSwift', '~> 5.0'
   pod 'ID-Card-Camera', '>= 1.4.1', '< 2.0'
   pod 'PPBlinkID', '~> 5.8'
-  pod 'AAMVA-Barcode-Parser', '1.3.0'
+  pod 'AAMVA-Barcode-Parser', '1.4.0'
   pod 'Firebase/Analytics'
   pod 'Firebase/Crashlytics'
 end
