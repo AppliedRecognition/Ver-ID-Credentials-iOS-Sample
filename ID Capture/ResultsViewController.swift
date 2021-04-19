@@ -19,9 +19,10 @@ class ResultsViewController: UIViewController {
     @IBOutlet var liveFaceView: UIImageView!
     @IBOutlet var cardFaceViewLandscape: UIImageView!
     @IBOutlet var liveFaceViewLandscape: UIImageView!
-    @IBOutlet var scoreLabel: UILabel!
+    @IBOutlet var resultLabel: UILabel!
     @IBOutlet var farExplanationLabel: UILabel!
-    @IBOutlet var helpButton: UIButton!
+    
+    let threshold: Float = 3.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,12 +34,18 @@ class ResultsViewController: UIViewController {
         guard let score = self.comparisonScore else {
             return
         }
-        
-        let normalDistribution = NormalDistribution()
-        guard let probability = try? normalDistribution.cumulativeProbability(Double(score)) else {
-            return
+        if score >= threshold {
+            let normalDistribution = NormalDistribution()
+            guard let probability = try? normalDistribution.cumulativeProbability(Double(score)) else {
+                return
+            }
+            self.farExplanationLabel.text = String(format: "The face matching score %.01f indicates a likelihood of %.5f\u{00a0}%% that the person on the ID card is the same person as the one in the selfie. We recommend a threshold of %.01f for a positive identification when comparing faces from identity cards.", score, probability*100, threshold)
+            self.resultLabel.text = "Pass"
+            self.resultLabel.textColor = UIColor(red: 54/255, green: 175/255, blue: 0, alpha: 1)
+        } else {
+            self.farExplanationLabel.text = String(format: "The face matching algorithm indicates that the person on the ID card is likely NOT the same person as the one in the selfie. We recommend a threshold of %.01f for a positive identification when comparing faces from identity cards.", threshold)
+            self.resultLabel.text = "Warning"
+            self.resultLabel.textColor = UIColor.red
         }
-        self.farExplanationLabel.text = String(format: "There is a %.5f\u{00a0}%% chance that the person on the card is not the person in the selfie.", 100.0-probability*100)
-        self.scoreLabel.text = String(format: "%.02f", score)
     }
 }

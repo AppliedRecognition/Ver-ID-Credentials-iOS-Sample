@@ -126,7 +126,15 @@ class ViewController: UIViewController, VerIDFactoryDelegate, CardAndBarcodeDete
                 }
                 key = licenceKey
             }
-            MBMicroblinkSDK.shared().setLicenseKey(key)
+            MBMicroblinkSDK.shared().setLicenseKey(key, errorCallback: { error in
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Error", message: "Failed to set barcode scanner licence key", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                        self.dismiss(animated: true)
+                    }))
+                    self.present(alert, animated: true)
+                }
+            })
             DispatchQueue.main.async {
                 if ExecutionParams.isTesting {
                     if !ExecutionParams.shouldCancelIDCapture && ExecutionParams.shouldFailDetectingFaceOnIDCard, let cardImage = ExecutionParams.badCardImage {

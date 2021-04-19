@@ -10,17 +10,15 @@
 		3B0B533523A2AB6600B64EB6 /* SupportedDocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B533423A2AB6600B64EB6 /* SupportedDocumentsViewController.swift */; };
 		3B0B533B23A2B6FA00B64EB6 /* CardDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B533A23A2B6FA00B64EB6 /* CardDetailsTableViewController.swift */; };
 		3B0B533D23A2B80D00B64EB6 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B533C23A2B80D00B64EB6 /* ImageTableViewCell.swift */; };
+		3B2E34292628732F0055FE28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B3FF93923A15E7A00156A59 /* Assets.xcassets */; };
 		3B2EBFA823EB059C00F7FA14 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B2EBFA723EB059C00F7FA14 /* GoogleService-Info.plist */; };
 		3B3196CD23AB86FF009B8564 /* BarcodeScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3196CC23AB86FF009B8564 /* BarcodeScan.swift */; };
 		3B360B1323C49AC1007FC1F1 /* NormalDistribution in Frameworks */ = {isa = PBXBuildFile; productRef = 3B360B1223C49AC1007FC1F1 /* NormalDistribution */; };
 		3B3E6A9923BE688E00495F42 /* SecureStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3E6A9823BE688E00495F42 /* SecureStorage.swift */; };
 		3B3FF93123A15E7700156A59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3FF93023A15E7700156A59 /* AppDelegate.swift */; };
 		3B3FF93523A15E7700156A59 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3FF93423A15E7700156A59 /* ViewController.swift */; };
-		3B3FF93A23A15E7A00156A59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B3FF93923A15E7A00156A59 /* Assets.xcassets */; };
 		3B3FF9C923A24BA300156A59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B3FF9C223A24BA300156A59 /* LaunchScreen.storyboard */; };
 		3B3FF9CA23A24BA300156A59 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3FF9C323A24BA300156A59 /* ResultsViewController.swift */; };
-		3B3FF9CB23A24BA300156A59 /* ScoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3FF9C423A24BA300156A59 /* ScoreTableViewController.swift */; };
-		3B3FF9CC23A24BA300156A59 /* SimiarityDial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3FF9C523A24BA300156A59 /* SimiarityDial.swift */; };
 		3B3FF9CF23A24BA300156A59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B3FF9C823A24BA300156A59 /* Main.storyboard */; };
 		3B3FF9D123A24F3600156A59 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3FF9D023A24F3600156A59 /* SettingsViewController.swift */; };
 		3B3FF9D323A250F100156A59 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3FF9D223A250F100156A59 /* CardViewController.swift */; };
@@ -70,8 +68,6 @@
 		3B3FF93E23A15E7A00156A59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B3FF9C223A24BA300156A59 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3B3FF9C323A24BA300156A59 /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
-		3B3FF9C423A24BA300156A59 /* ScoreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreTableViewController.swift; sourceTree = "<group>"; };
-		3B3FF9C523A24BA300156A59 /* SimiarityDial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimiarityDial.swift; sourceTree = "<group>"; };
 		3B3FF9C823A24BA300156A59 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		3B3FF9D023A24F3600156A59 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		3B3FF9D223A250F100156A59 /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
@@ -149,8 +145,6 @@
 				3B3FF9C223A24BA300156A59 /* LaunchScreen.storyboard */,
 				3B3FF9C823A24BA300156A59 /* Main.storyboard */,
 				3B3FF9C323A24BA300156A59 /* ResultsViewController.swift */,
-				3B3FF9C423A24BA300156A59 /* ScoreTableViewController.swift */,
-				3B3FF9C523A24BA300156A59 /* SimiarityDial.swift */,
 				3B3FF93023A15E7700156A59 /* AppDelegate.swift */,
 				3B3FF93423A15E7700156A59 /* ViewController.swift */,
 				3B3FF93923A15E7A00156A59 /* Assets.xcassets */,
@@ -200,6 +194,7 @@
 				64DCFAEE176B8F7F45AA72F7 /* [CP] Embed Pods Frameworks */,
 				3B3FF95823A1682B00156A59 /* Embed Frameworks */,
 				3B2EBFA923EB073100F7FA14 /* Run Firebase Crashlytics */,
+				B98F7C99DDC82CA95D798C6C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -281,7 +276,7 @@
 				3BDA7B0A23E9EAFF003C3FD7 /* Ver-ID identity.p12 in Resources */,
 				3B2EBFA823EB059C00F7FA14 /* GoogleService-Info.plist in Resources */,
 				3B3FF9C923A24BA300156A59 /* LaunchScreen.storyboard in Resources */,
-				3B3FF93A23A15E7A00156A59 /* Assets.xcassets in Resources */,
+				3B2E34292628732F0055FE28 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,6 +367,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B98F7C99DDC82CA95D798C6C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ID Capture/Pods-ID Capture-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ID Capture/Pods-ID Capture-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ID Capture/Pods-ID Capture-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -385,12 +397,10 @@
 				3BB0E582244DCD4C00785E47 /* ExecutionParams.swift in Sources */,
 				3B3FF93123A15E7700156A59 /* AppDelegate.swift in Sources */,
 				3B3FF9D123A24F3600156A59 /* SettingsViewController.swift in Sources */,
-				3B3FF9CC23A24BA300156A59 /* SimiarityDial.swift in Sources */,
 				3B0B533523A2AB6600B64EB6 /* SupportedDocumentsViewController.swift in Sources */,
 				3BB0E580244DB27F00785E47 /* TestBarcodeObservation.swift in Sources */,
 				3B3FF9D323A250F100156A59 /* CardViewController.swift in Sources */,
 				3BDCDCCB23AD71B000EA6123 /* MicroblinkDocumentData.swift in Sources */,
-				3B3FF9CB23A24BA300156A59 /* ScoreTableViewController.swift in Sources */,
 				3BB0E5882451F68500785E47 /* Globals.swift in Sources */,
 				3B0B533D23A2B80D00B64EB6 /* ImageTableViewCell.swift in Sources */,
 				3B3FF9CA23A24BA300156A59 /* ResultsViewController.swift in Sources */,
@@ -450,7 +460,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -469,7 +479,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 4.6.1;
+				MARKETING_VERSION = 4.7.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -512,7 +522,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -525,7 +535,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 4.6.1;
+				MARKETING_VERSION = 4.7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

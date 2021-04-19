@@ -13,7 +13,7 @@ class BarcodeScan: NSObject, MBBlinkIdOverlayViewControllerDelegate {
     
     let viewController: UIViewController
     var delegate: BarcodeScanDelegate?
-    private var recognizer: MBUsdlRecognizer?
+    private var recognizer: MBIdBarcodeRecognizer?
     
     init(viewController: UIViewController) {
         self.viewController = viewController
@@ -23,8 +23,12 @@ class BarcodeScan: NSObject, MBBlinkIdOverlayViewControllerDelegate {
         guard let licenceKey = Bundle.main.object(forInfoDictionaryKey: "blinkIdLicenceKey") as? String else {
             return
         }
-        MBMicroblinkSDK.shared().setLicenseKey(licenceKey)
-        self.recognizer = MBUsdlRecognizer()
+        MBMicroblinkSDK.shared().setLicenseKey(licenceKey, errorCallback: { error in
+            let alert = UIAlertController(title: "Error", message: "Failed to set barcode scanner licence key", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+            self.viewController.present(alert, animated: true)
+        })
+        self.recognizer = MBIdBarcodeRecognizer()
         /** Create BlinkID settings */
         let settings : MBBlinkIdOverlaySettings = MBBlinkIdOverlaySettings()
         settings.autorotateOverlay = true

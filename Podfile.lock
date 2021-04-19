@@ -1,107 +1,104 @@
 PODS:
   - AAMVA-Barcode-Parser (1.4.0)
-  - DeviceKit (4.2.1)
-  - Firebase/Analytics (6.23.0):
+  - DeviceKit (4.3.0)
+  - Firebase/Analytics (7.10.0):
     - Firebase/Core
-  - Firebase/Core (6.23.0):
+  - Firebase/Core (7.10.0):
     - Firebase/CoreOnly
-    - FirebaseAnalytics (= 6.4.2)
-  - Firebase/CoreOnly (6.23.0):
-    - FirebaseCore (= 6.6.7)
-  - Firebase/Crashlytics (6.23.0):
+    - FirebaseAnalytics (~> 7.10.0)
+  - Firebase/CoreOnly (7.10.0):
+    - FirebaseCore (= 7.10.0)
+  - Firebase/Crashlytics (7.10.0):
     - Firebase/CoreOnly
-    - FirebaseCrashlytics (~> 4.0.0)
-  - FirebaseAnalytics (6.4.2):
-    - FirebaseCore (~> 6.6)
-    - FirebaseInstallations (~> 1.2)
-    - GoogleAppMeasurement (= 6.4.2)
-    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
-    - GoogleUtilities/MethodSwizzler (~> 6.0)
-    - GoogleUtilities/Network (~> 6.0)
-    - "GoogleUtilities/NSData+zlib (~> 6.0)"
-    - nanopb (= 0.3.9011)
-  - FirebaseAnalyticsInterop (1.5.0)
-  - FirebaseCore (6.6.7):
-    - FirebaseCoreDiagnostics (~> 1.2)
-    - FirebaseCoreDiagnosticsInterop (~> 1.2)
-    - GoogleUtilities/Environment (~> 6.5)
-    - GoogleUtilities/Logger (~> 6.5)
-  - FirebaseCoreDiagnostics (1.2.4):
-    - FirebaseCoreDiagnosticsInterop (~> 1.2)
-    - GoogleDataTransportCCTSupport (~> 3.0)
-    - GoogleUtilities/Environment (~> 6.5)
-    - GoogleUtilities/Logger (~> 6.5)
-    - nanopb (~> 0.3.901)
-  - FirebaseCoreDiagnosticsInterop (1.2.0)
-  - FirebaseCrashlytics (4.0.0):
-    - FirebaseAnalyticsInterop (~> 1.2)
-    - FirebaseCore (~> 6.6)
-    - FirebaseInstallations (~> 1.1)
-    - GoogleDataTransport (~> 6.0)
-    - GoogleDataTransportCCTSupport (~> 3.0)
-    - nanopb (~> 0.3.901)
+    - FirebaseCrashlytics (~> 7.10.0)
+  - FirebaseAnalytics (7.10.0):
+    - FirebaseCore (~> 7.0)
+    - FirebaseInstallations (~> 7.0)
+    - GoogleAppMeasurement (= 7.10.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
+    - GoogleUtilities/MethodSwizzler (~> 7.0)
+    - GoogleUtilities/Network (~> 7.0)
+    - "GoogleUtilities/NSData+zlib (~> 7.0)"
+    - nanopb (~> 2.30908.0)
+  - FirebaseCore (7.10.0):
+    - FirebaseCoreDiagnostics (~> 7.4)
+    - GoogleUtilities/Environment (~> 7.0)
+    - GoogleUtilities/Logger (~> 7.0)
+  - FirebaseCoreDiagnostics (7.10.0):
+    - GoogleDataTransport (~> 8.4)
+    - GoogleUtilities/Environment (~> 7.0)
+    - GoogleUtilities/Logger (~> 7.0)
+    - nanopb (~> 2.30908.0)
+  - FirebaseCrashlytics (7.10.0):
+    - FirebaseCore (~> 7.0)
+    - FirebaseInstallations (~> 7.0)
+    - GoogleDataTransport (~> 8.4)
+    - nanopb (~> 2.30908.0)
     - PromisesObjC (~> 1.2)
-  - FirebaseInstallations (1.2.0):
-    - FirebaseCore (~> 6.6)
-    - GoogleUtilities/Environment (~> 6.6)
-    - GoogleUtilities/UserDefaults (~> 6.6)
+  - FirebaseInstallations (7.10.0):
+    - FirebaseCore (~> 7.0)
+    - GoogleUtilities/Environment (~> 7.0)
+    - GoogleUtilities/UserDefaults (~> 7.0)
     - PromisesObjC (~> 1.2)
-  - GoogleAppMeasurement (6.4.2):
-    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
-    - GoogleUtilities/MethodSwizzler (~> 6.0)
-    - GoogleUtilities/Network (~> 6.0)
-    - "GoogleUtilities/NSData+zlib (~> 6.0)"
-    - nanopb (= 0.3.9011)
-  - GoogleDataTransport (6.0.0)
-  - GoogleDataTransportCCTSupport (3.0.0):
-    - GoogleDataTransport (~> 6.0)
-    - nanopb (~> 0.3.901)
-  - GoogleUtilities/AppDelegateSwizzler (6.6.0):
+  - GoogleAppMeasurement (7.10.0):
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
+    - GoogleUtilities/MethodSwizzler (~> 7.0)
+    - GoogleUtilities/Network (~> 7.0)
+    - "GoogleUtilities/NSData+zlib (~> 7.0)"
+    - nanopb (~> 2.30908.0)
+  - GoogleDataTransport (8.4.0):
+    - GoogleUtilities/Environment (~> 7.2)
+    - nanopb (~> 2.30908.0)
+    - PromisesObjC (~> 1.2)
+  - GoogleUtilities/AppDelegateSwizzler (7.3.1):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
     - GoogleUtilities/Network
-  - GoogleUtilities/Environment (6.6.0):
+  - GoogleUtilities/Environment (7.3.1):
     - PromisesObjC (~> 1.2)
-  - GoogleUtilities/Logger (6.6.0):
+  - GoogleUtilities/Logger (7.3.1):
     - GoogleUtilities/Environment
-  - GoogleUtilities/MethodSwizzler (6.6.0):
+  - GoogleUtilities/MethodSwizzler (7.3.1):
     - GoogleUtilities/Logger
-  - GoogleUtilities/Network (6.6.0):
+  - GoogleUtilities/Network (7.3.1):
     - GoogleUtilities/Logger
     - "GoogleUtilities/NSData+zlib"
     - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (6.6.0)"
-  - GoogleUtilities/Reachability (6.6.0):
+  - "GoogleUtilities/NSData+zlib (7.3.1)"
+  - GoogleUtilities/Reachability (7.3.1):
     - GoogleUtilities/Logger
-  - GoogleUtilities/UserDefaults (6.6.0):
+  - GoogleUtilities/UserDefaults (7.3.1):
     - GoogleUtilities/Logger
   - ID-Card-Camera (1.4.1)
-  - nanopb (0.3.9011):
-    - nanopb/decode (= 0.3.9011)
-    - nanopb/encode (= 0.3.9011)
-  - nanopb/decode (0.3.9011)
-  - nanopb/encode (0.3.9011)
+  - nanopb (2.30908.0):
+    - nanopb/decode (= 2.30908.0)
+    - nanopb/encode (= 2.30908.0)
+  - nanopb/decode (2.30908.0)
+  - nanopb/encode (2.30908.0)
   - OpenCV2 (4.3.0)
-  - PPBlinkID (5.8.0)
-  - PromisesObjC (1.2.8)
+  - PPBlinkID (5.11.0)
+  - PromisesObjC (1.2.12)
   - RxCocoa (5.1.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
   - RxRelay (5.1.1):
     - RxSwift (~> 5)
-  - RxSwift (5.1.1)
-  - Ver-ID-Core (2.0.0-beta.04):
+  - RxSwift (5.1.2)
+  - Ver-ID (2.0.1):
+    - Ver-ID/Core (= 2.0.1)
+    - Ver-ID/UI (= 2.0.1)
+  - Ver-ID-SDK-Identity (3.0.1)
+  - Ver-ID/Core (2.0.1):
     - DeviceKit (~> 4.1)
     - OpenCV2 (~> 4.1)
     - RxCocoa (~> 5)
     - RxSwift (~> 5)
     - Ver-ID-SDK-Identity (~> 3.0)
     - ZIPFoundation (~> 0.9)
-  - Ver-ID-SDK-Identity (3.0.1)
-  - Ver-ID-UI (2.0.0-beta.04):
+  - Ver-ID/UI (2.0.1):
     - RxCocoa (~> 5)
     - RxSwift (~> 5)
-    - Ver-ID-Core (< 3.0, >= 2.0.0-beta.04)
+    - Ver-ID/Core
   - ZIPFoundation (0.9.11)
 
 DEPENDENCIES:
@@ -109,10 +106,10 @@ DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/Crashlytics
   - ID-Card-Camera (< 2.0, >= 1.4.1)
-  - PPBlinkID (~> 5.8)
+  - PPBlinkID (~> 5.9)
   - RxCocoa (~> 5.0)
   - RxSwift (~> 5.0)
-  - Ver-ID-UI (= 2.0.0-beta.04)
+  - Ver-ID (< 3.0, >= 2.0.1)
 
 SPEC REPOS:
   trunk:
@@ -120,15 +117,12 @@ SPEC REPOS:
     - DeviceKit
     - Firebase
     - FirebaseAnalytics
-    - FirebaseAnalyticsInterop
     - FirebaseCore
     - FirebaseCoreDiagnostics
-    - FirebaseCoreDiagnosticsInterop
     - FirebaseCrashlytics
     - FirebaseInstallations
     - GoogleAppMeasurement
     - GoogleDataTransport
-    - GoogleDataTransportCCTSupport
     - GoogleUtilities
     - ID-Card-Camera
     - nanopb
@@ -138,39 +132,34 @@ SPEC REPOS:
     - RxCocoa
     - RxRelay
     - RxSwift
-    - Ver-ID-Core
+    - Ver-ID
     - Ver-ID-SDK-Identity
-    - Ver-ID-UI
     - ZIPFoundation
 
 SPEC CHECKSUMS:
   AAMVA-Barcode-Parser: bae0d0080c8a2b59a032e740afd98523de4d4502
-  DeviceKit: cadb5ff25d45fe186778bf2d0fd2ea4750542189
-  Firebase: 585ae467b3edda6a5444e788fda6888f024d8d6f
-  FirebaseAnalytics: 558f7a03d19de451093032c806f39d5f9dff096e
-  FirebaseAnalyticsInterop: 3f86269c38ae41f47afeb43ebf32a001f58fcdae
-  FirebaseCore: a2788a0d5f6c1dff17b8f79b4a73654a8d4bfdbd
-  FirebaseCoreDiagnostics: b59c024493a409f8aecba02c99928d0d8431d159
-  FirebaseCoreDiagnosticsInterop: 296e2c5f5314500a850ad0b83e9e7c10b011a850
-  FirebaseCrashlytics: 941608d2a3475b48fb7010b998703d07696b8db1
-  FirebaseInstallations: 2119fb3e46b0a88bfdbf12562f855ee3252462fa
-  GoogleAppMeasurement: 2253e99c1f22638cf234c059144660c338ad76c3
-  GoogleDataTransport: 061fe7d9b476710e3cd8ea51e8e07d8b67c2b420
-  GoogleDataTransportCCTSupport: 0f39025e8cf51f168711bd3fb773938d7e62ddb5
-  GoogleUtilities: 39530bc0ad980530298e9c4af8549e991fd033b1
+  DeviceKit: 7decde449c308ac7e816e2184ded1c7c596fb885
+  Firebase: fffddd0bab8677d07376538365faa93ff3889b39
+  FirebaseAnalytics: 4641d7ae4220174f6ca5626163ffc5de2e90391e
+  FirebaseCore: ec566d917b2195fc2610aeb148dae99f57a788f9
+  FirebaseCoreDiagnostics: 5662a3823ffcc0acbaa9a21ba5ed302fac634705
+  FirebaseCrashlytics: e7669d368a22d202f1d0c7546ffdfdff496e1a8c
+  FirebaseInstallations: bf2ec8dbf36ff4c91af6b9a003d15855757680c1
+  GoogleAppMeasurement: 1c863b1161fc3c8cf614a7460d1be6a7c262aab3
+  GoogleDataTransport: cd9db2180fcecd8da1b561aea31e3e56cf834aa7
+  GoogleUtilities: e1d9ed4e544fc32a93e00e721400cbc3f377200d
   ID-Card-Camera: bda6fa003027ef22b93c2f0aaddb8373260ea680
-  nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
+  nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   OpenCV2: ffe82e5cb5d16dc3fc01a5f4127b9a5b3cfc7d1b
-  PPBlinkID: e319b1a3403a59e0af21879bd30841d304de4428
-  PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
+  PPBlinkID: 9c486150ba4f0547c5e12a5862d8a35286bd34ba
+  PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
-  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
-  Ver-ID-Core: 926fb50e8b11e48494f29865097cd9b381a5179f
+  RxSwift: 1e2e1f9570186967f617e49128ed26ccf1bafc8e
+  Ver-ID: 6159649a9a6f93d55e00bf64f6339613eb11f1ac
   Ver-ID-SDK-Identity: b89e0645c17d2bce24b93454ef9d31bcf196e872
-  Ver-ID-UI: ecda810ee0a081e7b14250faa5734c479ba69a1b
   ZIPFoundation: b1f0de4eed33e74a676f76e12559ab6b75990197
 
-PODFILE CHECKSUM: 3a34d3294d90425d0149095803598b72d2258ba1
+PODFILE CHECKSUM: 5f3f0a54548d735b4569f9120d832bdbdb417fc1
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.10.1
