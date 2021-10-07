@@ -43,7 +43,7 @@ class ResultsViewController: UIViewController {
             self.resultLabel.text = "Pass"
             self.resultLabel.textColor = UIColor(red: 54/255, green: 175/255, blue: 0, alpha: 1)
         } else {
-            self.farExplanationLabel.text = String(format: "The face matching algorithm indicates that the person on the ID card is likely NOT the same person as the one in the selfie. We recommend a threshold of %.01f for a positive identification when comparing faces from identity cards.", threshold)
+            self.farExplanationLabel.text = String(format: "The face matching score %.01f indicates that the person on the ID card is likely NOT the same person as the one in the selfie. We recommend a threshold of %.01f for a positive identification when comparing faces from identity cards.", score, threshold)
             self.resultLabel.text = "Warning"
             self.resultLabel.textColor = UIColor.red
         }

@@ -550,10 +550,11 @@
 			baseConfigurationReference = FF4DD71811035F32DE6E594B /* Pods-ID Capture.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				BLINKID_KEY = "sRwAAAEZY29tLmFwcGxpZWRyZWMuaWQtY2FwdHVyZZpSUB5IbSbnMB1ZBRLky5FiCT0AOLmMhxbx0tNrFTTfMwLJ+T7eBTzXzPuOsy0QkskmYKSy+6n+WahYhCGtofeBKhdMCc5ky7cvdNBS60tRzbNLWDC301LBbuLofg7Kvl02WkBnZrhSpvVZaRwkBKbGQyf+hqePHDOr4KPUIcXwuTMleAiEGfZ7xTy/93AFbvK9u//rSQJt21kA391MpMfx4s+gVlgYfUmLMgBKQXUzc0K5zt/+cQp9qdGkKtIJAw4FYkYzTJYreHS4HA==";
+				BLINKID_KEY = "sRwAAAEZY29tLmFwcGxpZWRyZWMuaWQtY2FwdHVyZZpSUB4IbSbnMB1ZdRJ8T5Q8v+rYT+KR3D7fmoajr+l1y04WJ72NnyBOL9Hd3YkViJ/blue2V6CIXRl+5zzdFltj0ODV2jSB3+OD2G4jcbnc6H5+SFY8K8cFTJtzGJ1SPj1VFoTR6pkLI8FAjD1AqP2t32EyhbRuGyYEdT6JQ2UctDEsVhRCH0Kk1qsEQVnWEoypKAa1Gzc+Wnq1tSK0BHTyM1z3lxZwIPrUKuxjGSUuM5riBiOuEu8Ea2bFILLZgINcONNkj762n0QV8a26WIGH";
 				BLINKID_KEY_URL = "https://ver-id.s3.us-east-1.amazonaws.com/ios/microblink_keys/com.appliedrec.ID-Capture.txt";
 				BLINKID_RECOGNIZED_DOCS_URL = "https://github.com/BlinkID/blinkid-ios/blob/master/documentation/BlinkIDRecognizer.md";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = 3DPTJHF24M;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "ID Capture/Info.plist";
@@ -561,6 +562,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 4.7.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.appliedrec.ID-Capture";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -575,10 +577,11 @@
 			baseConfigurationReference = 638E7A67289A680519B46277 /* Pods-ID Capture.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				BLINKID_KEY = "sRwAAAEZY29tLmFwcGxpZWRyZWMuaWQtY2FwdHVyZZpSUB5IbSbnMB1ZBRLky5FiCT0AOLmMhxbx0tNrFTTfMwLJ+T7eBTzXzPuOsy0QkskmYKSy+6n+WahYhCGtofeBKhdMCc5ky7cvdNBS60tRzbNLWDC301LBbuLofg7Kvl02WkBnZrhSpvVZaRwkBKbGQyf+hqePHDOr4KPUIcXwuTMleAiEGfZ7xTy/93AFbvK9u//rSQJt21kA391MpMfx4s+gVlgYfUmLMgBKQXUzc0K5zt/+cQp9qdGkKtIJAw4FYkYzTJYreHS4HA==";
+				BLINKID_KEY = "sRwAAAEZY29tLmFwcGxpZWRyZWMuaWQtY2FwdHVyZZpSUB4IbSbnMB1ZdRJ8T5Q8v+rYT+KR3D7fmoajr+l1y04WJ72NnyBOL9Hd3YkViJ/blue2V6CIXRl+5zzdFltj0ODV2jSB3+OD2G4jcbnc6H5+SFY8K8cFTJtzGJ1SPj1VFoTR6pkLI8FAjD1AqP2t32EyhbRuGyYEdT6JQ2UctDEsVhRCH0Kk1qsEQVnWEoypKAa1Gzc+Wnq1tSK0BHTyM1z3lxZwIPrUKuxjGSUuM5riBiOuEu8Ea2bFILLZgINcONNkj762n0QV8a26WIGH";
 				BLINKID_KEY_URL = "https://ver-id.s3.us-east-1.amazonaws.com/ios/microblink_keys/com.appliedrec.ID-Capture.txt";
 				BLINKID_RECOGNIZED_DOCS_URL = "https://github.com/BlinkID/blinkid-ios/blob/master/documentation/BlinkIDRecognizer.md";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = 3DPTJHF24M;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "ID Capture/Info.plist";
@@ -586,6 +589,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 4.7.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.appliedrec.ID-Capture";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

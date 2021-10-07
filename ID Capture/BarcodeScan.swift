@@ -66,7 +66,7 @@ class BarcodeScan: NSObject, MBBlinkIdOverlayViewControllerDelegate {
     
 }
 
-protocol BarcodeScanDelegate: class {
+protocol BarcodeScanDelegate: AnyObject {
     func barcodeScan(_ barcodeScan: BarcodeScan, didScanData data: MicroblinkDocumentData)
     func barcodeScanDidCancel(_ barcodeScan: BarcodeScan)
 }

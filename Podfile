@@ -15,11 +15,11 @@ target 'ID Capture' do
   end
 
   # Pods for ID Capture
-  pod 'Ver-ID', '>= 2.0.1', '< 3.0'
+  pod 'Ver-ID', '>= 2.3.2', '< 3.0'
   pod 'RxCocoa', '~> 5.0'
   pod 'RxSwift', '~> 5.0'
   pod 'ID-Card-Camera', '>= 1.4.1', '< 2.0'
-  pod 'PPBlinkID', '~> 5.9'
+  pod 'PPBlinkID', '5.14'
   pod 'AAMVA-Barcode-Parser', '1.4.0'
   pod 'Firebase/Analytics'
   pod 'Firebase/Crashlytics'
