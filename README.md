@@ -1,3 +1,5 @@
+![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/AppliedRecognition/Ver-ID-Credentials-iOS-Sample?sort=semver) [![Tests](https://github.com/AppliedRecognition/Ver-ID-Credentials-iOS-Sample/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/AppliedRecognition/Ver-ID-Credentials-iOS-Sample/actions/workflows/main.yml)
+
 # Ver-ID Credentials Sample
 
 ![](ID%20Capture/Assets.xcassets/woman_with_licence.imageset/iStock-466158408.png)
