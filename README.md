@@ -26,18 +26,10 @@ The project contains a sample application that uses either [ID Card Camera](http
 
 ## Adding Ver-ID to your own Xcode project
 
-The sample app uses a [Reactive implementation](https://github.com/AppliedRecognition/Rx-Ver-ID-Apple) of the Ver-ID SDK. It has the simplest Swift interface. If you wish to call Ver-ID directly from Objective-C please use the lower-level [VerIDUI](https://github.com/AppliedRecognition/Ver-ID-UI-iOS) framework.
-
-1. Add either **Rx-Ver-ID**:
-
-    ```ruby
-    pod 'Rx-Ver-ID', '~> 1.3'
-    pod 'Ver-ID-UI', '~> 1.10'
-    ```
-    or **Ver-ID-UI**:
+1. Add **Ver-ID**:
     
     ```ruby
-    pod 'Ver-ID-UI', '~> 1.10'
+    pod 'Ver-ID', '~> 2.3'
     ```
     into your Podfile and run:
     
@@ -75,7 +67,7 @@ The sample app uses a [Reactive implementation](https://github.com/AppliedRecogn
 2. Add **PPBlinkID** into your Podfile:
 
     ```ruby
-    pod 'PPBlinkID', '~> 5.0'
+    pod 'PPBlinkID', '~> 5.14'
     ```
 3. Before calling the BlinkID API set your licence key:
 
