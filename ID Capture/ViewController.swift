@@ -253,7 +253,7 @@ class ViewController: UIViewController, VerIDFactoryDelegate, CardAndBarcodeDete
                     emitter(.success((recognizableFace, orientation, authenticityScore)))
                     return Disposables.create()
                 }
-                emitter(.error(NSError()))
+                emitter(.error(FaceDetectionError.faceNotFound))
             } catch {
                 emitter(.error(error))
             }

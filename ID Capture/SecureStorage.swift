@@ -19,7 +19,7 @@ class SecureStorage {
     
     static func setString(_ string: String, forKey key: String) throws {
         guard let value = string.data(using: .utf8) else {
-            throw NSError()
+            throw SecureStorageError.failedToConvertUTF8StringToData
         }
         let account = keyPrefix + key
         let attributes: [CFString: Any] = [
@@ -34,10 +34,10 @@ class SecureStorage {
             ]
             status = SecItemUpdate(attributes as CFDictionary, toUpdate as CFDictionary)
             if status != errSecSuccess {
-                throw NSError()
+                throw SecureStorageError.failedToUpdateItem(status: status)
             }
         } else if status != errSecSuccess {
-            throw NSError()
+            throw SecureStorageError.failedToWriteItem(status: status)
         }
     }
     
@@ -56,7 +56,7 @@ class SecureStorage {
         } else if status == errSecItemNotFound {
             return nil
         }
-        throw NSError()
+        throw SecureStorageError.failedToRetrieveItem(status: status)
     }
     
     static func deleteValue(forKey key: String) throws {
@@ -67,7 +67,15 @@ class SecureStorage {
         ]
         let status = SecItemDelete(query as CFDictionary)
         if status != errSecSuccess && status != errSecItemNotFound {
-            throw NSError()
+            throw SecureStorageError.failedToDeleteItem(status: status)
         }
     }
+}
+
+enum SecureStorageError: Error {
+    case failedToConvertUTF8StringToData
+    case failedToUpdateItem(status: OSStatus)
+    case failedToWriteItem(status: OSStatus)
+    case failedToRetrieveItem(status: OSStatus)
+    case failedToDeleteItem(status: OSStatus)
 }
