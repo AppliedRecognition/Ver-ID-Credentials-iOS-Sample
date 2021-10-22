@@ -10,6 +10,10 @@
 		3B0B533523A2AB6600B64EB6 /* SupportedDocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B533423A2AB6600B64EB6 /* SupportedDocumentsViewController.swift */; };
 		3B0B533B23A2B6FA00B64EB6 /* CardDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B533A23A2B6FA00B64EB6 /* CardDetailsTableViewController.swift */; };
 		3B0B533D23A2B80D00B64EB6 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B533C23A2B80D00B64EB6 /* ImageTableViewCell.swift */; };
+		3B0E6F46272208500061A3A3 /* license01-20210720ay-vh2ukei%2200-q08.nv in Resources */ = {isa = PBXBuildFile; fileRef = 3B0E6F45272208500061A3A3 /* license01-20210720ay-vh2ukei%2200-q08.nv */; };
+		3B0E6F48272209750061A3A3 /* AuthenticityScoreSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0E6F47272209750061A3A3 /* AuthenticityScoreSupport.swift */; };
+		3B0E6F4B2722BF730061A3A3 /* BarcodeDataMatcher in Frameworks */ = {isa = PBXBuildFile; productRef = 3B0E6F4A2722BF730061A3A3 /* BarcodeDataMatcher */; };
+		3B0E6F4D2722F58D0061A3A3 /* ScoreDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0E6F4C2722F58D0061A3A3 /* ScoreDescriptionViewController.swift */; };
 		3B2E34292628732F0055FE28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B3FF93923A15E7A00156A59 /* Assets.xcassets */; };
 		3B2EBFA823EB059C00F7FA14 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B2EBFA723EB059C00F7FA14 /* GoogleService-Info.plist */; };
 		3B3196CD23AB86FF009B8564 /* BarcodeScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3196CC23AB86FF009B8564 /* BarcodeScan.swift */; };
@@ -58,6 +62,10 @@
 		3B0B533423A2AB6600B64EB6 /* SupportedDocumentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedDocumentsViewController.swift; sourceTree = "<group>"; };
 		3B0B533A23A2B6FA00B64EB6 /* CardDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsTableViewController.swift; sourceTree = "<group>"; };
 		3B0B533C23A2B80D00B64EB6 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
+		3B0E6F45272208500061A3A3 /* license01-20210720ay-vh2ukei%2200-q08.nv */ = {isa = PBXFileReference; lastKnownFileType = file; path = "license01-20210720ay-vh2ukei%2200-q08.nv"; sourceTree = "<group>"; };
+		3B0E6F47272209750061A3A3 /* AuthenticityScoreSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticityScoreSupport.swift; sourceTree = "<group>"; };
+		3B0E6F4C2722F58D0061A3A3 /* ScoreDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreDescriptionViewController.swift; sourceTree = "<group>"; };
+		3B0E6F4E2722FC260061A3A3 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		3B2EBFA723EB059C00F7FA14 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3B3196CC23AB86FF009B8564 /* BarcodeScan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScan.swift; sourceTree = "<group>"; };
 		3B3E6A9823BE688E00495F42 /* SecureStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStorage.swift; sourceTree = "<group>"; };
@@ -91,6 +99,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C128773EA5E3E6BF2E68C57 /* Pods_ID_Capture.framework in Frameworks */,
+				3B0E6F4B2722BF730061A3A3 /* BarcodeDataMatcher in Frameworks */,
 				3B360B1323C49AC1007FC1F1 /* NormalDistribution in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,6 +146,7 @@
 		3B3FF92F23A15E7700156A59 /* ID Capture */ = {
 			isa = PBXGroup;
 			children = (
+				3B0E6F45272208500061A3A3 /* license01-20210720ay-vh2ukei%2200-q08.nv */,
 				3BB0E57E244DB27700785E47 /* Test resources */,
 				3B2EBFA723EB059C00F7FA14 /* GoogleService-Info.plist */,
 				3BDA7B0923E9EAFF003C3FD7 /* Ver-ID identity.p12 */,
@@ -157,6 +167,9 @@
 				3B3E6A9823BE688E00495F42 /* SecureStorage.swift */,
 				3BB0E581244DCD4C00785E47 /* ExecutionParams.swift */,
 				3BB0E5872451F68500785E47 /* Globals.swift */,
+				3B0E6F47272209750061A3A3 /* AuthenticityScoreSupport.swift */,
+				3B0E6F4C2722F58D0061A3A3 /* ScoreDescriptionViewController.swift */,
+				3B0E6F4E2722FC260061A3A3 /* Config.xcconfig */,
 			);
 			path = "ID Capture";
 			sourceTree = "<group>";
@@ -203,6 +216,7 @@
 			name = "ID Capture";
 			packageProductDependencies = (
 				3B360B1223C49AC1007FC1F1 /* NormalDistribution */,
+				3B0E6F4A2722BF730061A3A3 /* BarcodeDataMatcher */,
 			);
 			productName = "ID Capture";
 			productReference = 3B3FF92D23A15E7700156A59 /* ID Capture.app */;
@@ -256,6 +270,7 @@
 			mainGroup = 3B3FF92423A15E7700156A59;
 			packageReferences = (
 				3B360B1123C49AC1007FC1F1 /* XCRemoteSwiftPackageReference "Normal-Distribution-Swift" */,
+				3B0E6F492722BF730061A3A3 /* XCRemoteSwiftPackageReference "Barcode-Data-Matcher-Apple" */,
 			);
 			productRefGroup = 3B3FF92E23A15E7700156A59 /* Products */;
 			projectDirPath = "";
@@ -275,6 +290,7 @@
 				3B3FF9CF23A24BA300156A59 /* Main.storyboard in Resources */,
 				3BDA7B0A23E9EAFF003C3FD7 /* Ver-ID identity.p12 in Resources */,
 				3B2EBFA823EB059C00F7FA14 /* GoogleService-Info.plist in Resources */,
+				3B0E6F46272208500061A3A3 /* license01-20210720ay-vh2ukei%2200-q08.nv in Resources */,
 				3B3FF9C923A24BA300156A59 /* LaunchScreen.storyboard in Resources */,
 				3B2E34292628732F0055FE28 /* Assets.xcassets in Resources */,
 			);
@@ -395,6 +411,7 @@
 				3B3196CD23AB86FF009B8564 /* BarcodeScan.swift in Sources */,
 				3B3FF93523A15E7700156A59 /* ViewController.swift in Sources */,
 				3BB0E582244DCD4C00785E47 /* ExecutionParams.swift in Sources */,
+				3B0E6F48272209750061A3A3 /* AuthenticityScoreSupport.swift in Sources */,
 				3B3FF93123A15E7700156A59 /* AppDelegate.swift in Sources */,
 				3B3FF9D123A24F3600156A59 /* SettingsViewController.swift in Sources */,
 				3B0B533523A2AB6600B64EB6 /* SupportedDocumentsViewController.swift in Sources */,
@@ -404,6 +421,7 @@
 				3BB0E5882451F68500785E47 /* Globals.swift in Sources */,
 				3B0B533D23A2B80D00B64EB6 /* ImageTableViewCell.swift in Sources */,
 				3B3FF9CA23A24BA300156A59 /* ResultsViewController.swift in Sources */,
+				3B0E6F4D2722F58D0061A3A3 /* ScoreDescriptionViewController.swift in Sources */,
 				3B0B533B23A2B6FA00B64EB6 /* CardDetailsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -429,6 +447,7 @@
 /* Begin XCBuildConfiguration section */
 		3B3FF93F23A15E7A00156A59 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B0E6F4E2722FC260061A3A3 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -460,7 +479,6 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 16;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -479,7 +497,6 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 4.7.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -491,6 +508,7 @@
 		};
 		3B3FF94023A15E7A00156A59 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B0E6F4E2722FC260061A3A3 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -522,7 +540,6 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 16;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -535,7 +552,6 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 4.7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -554,7 +570,6 @@
 				BLINKID_KEY_URL = "https://ver-id.s3.us-east-1.amazonaws.com/ios/microblink_keys/com.appliedrec.ID-Capture.txt";
 				BLINKID_RECOGNIZED_DOCS_URL = "https://github.com/BlinkID/blinkid-ios/blob/master/documentation/BlinkIDRecognizer.md";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = 3DPTJHF24M;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "ID Capture/Info.plist";
@@ -562,7 +577,6 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.7.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.appliedrec.ID-Capture";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -581,7 +595,6 @@
 				BLINKID_KEY_URL = "https://ver-id.s3.us-east-1.amazonaws.com/ios/microblink_keys/com.appliedrec.ID-Capture.txt";
 				BLINKID_RECOGNIZED_DOCS_URL = "https://github.com/BlinkID/blinkid-ios/blob/master/documentation/BlinkIDRecognizer.md";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = 3DPTJHF24M;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "ID Capture/Info.plist";
@@ -589,7 +602,6 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.7.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.appliedrec.ID-Capture";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -670,6 +682,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		3B0E6F492722BF730061A3A3 /* XCRemoteSwiftPackageReference "Barcode-Data-Matcher-Apple" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppliedRecognition/Barcode-Data-Matcher-Apple.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		3B360B1123C49AC1007FC1F1 /* XCRemoteSwiftPackageReference "Normal-Distribution-Swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AppliedRecognition/Normal-Distribution-Swift.git";
@@ -681,6 +701,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3B0E6F4A2722BF730061A3A3 /* BarcodeDataMatcher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B0E6F492722BF730061A3A3 /* XCRemoteSwiftPackageReference "Barcode-Data-Matcher-Apple" */;
+			productName = BarcodeDataMatcher;
+		};
 		3B360B1223C49AC1007FC1F1 /* NormalDistribution */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3B360B1123C49AC1007FC1F1 /* XCRemoteSwiftPackageReference "Normal-Distribution-Swift" */;

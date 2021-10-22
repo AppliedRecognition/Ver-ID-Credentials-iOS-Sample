@@ -16,6 +16,7 @@ class SettingsViewController: UITableViewController {
     @IBOutlet var microblinkSwitch: UISwitch!
     @IBOutlet var versionLabel: UILabel!
     @IBOutlet var veridVersionLabel: UILabel!
+    @IBOutlet var authenticityModelLabel: UILabel!
     @IBOutlet var intellicheckApiKeyTextField: UITextField!
     @IBOutlet var testButton: UIButton!
     @IBOutlet var passwordCheckActivityIndicator: UIActivityIndicatorView!
@@ -35,6 +36,11 @@ class SettingsViewController: UITableViewController {
         } else {
             self.veridVersionLabel.text = "Unknown"
         }
+        if let classifier = AuthenticityScoreSupport.default.classifiers.first, let filename = classifier.filename {
+            self.authenticityModelLabel.text = (filename as NSString).pathComponents.last
+        } else {
+            self.authenticityModelLabel.text = "unavailable"
+        }
         do {
             if let intellicheckPassword = try SecureStorage.getString(forKey: SecureStorage.commonKeys.intellicheckPassword.rawValue) {
                 self.intellicheckApiKeyTextField.text = intellicheckPassword
@@ -47,6 +53,13 @@ class SettingsViewController: UITableViewController {
     
     @IBAction func toggleMicroblink(_ toggle: UISwitch) {
         UserDefaults.standard.set(toggle.isOn, forKey: SettingsViewController.useBlinkIdKey)
+    }
+    
+    @IBAction func showFullAuthenticityModelName(_ cell: UITableViewCell) {
+        let alert = UIAlertController(title: nil, message: self.authenticityModelLabel.text, preferredStyle: .actionSheet)
+        alert.popoverPresentationController?.sourceView = cell
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+        self.present(alert, animated: true)
     }
     
     @IBAction func intellicheckApiKeyDidChange(_ textField: UITextField) {
@@ -124,6 +137,12 @@ class SettingsViewController: UITableViewController {
             let alert = UIAlertController(title: isFailure ? "Error" : "Success", message: response, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
             self.present(alert, animated: true)
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 && indexPath.row == 3 && !AuthenticityScoreSupport.default.classifiers.isEmpty {
+            self.showFullAuthenticityModelName(tableView.cellForRow(at: indexPath)!)
         }
     }
 }

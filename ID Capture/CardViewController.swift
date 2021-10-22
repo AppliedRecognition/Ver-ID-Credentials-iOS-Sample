@@ -18,6 +18,8 @@ class CardViewController: UIViewController, VerIDFactoryDelegate, VerIDSessionDe
     var cardFaceImage: UIImage?
     var cardAspectRatio: CGFloat?
     var cardFace: RecognizableFace?
+    var authenticityScore: Float?
+    var frontBackMatchScore: Float?
     var comparisonScore: Float?
     var liveFaceImage: UIImage?
     var documentData: DocumentData?
@@ -159,6 +161,8 @@ class CardViewController: UIViewController, VerIDFactoryDelegate, VerIDSessionDe
         } else if let controller = segue.destination as? CardDetailsTableViewController {
             controller.documentData = self.documentData
             controller.cardImage = self.cardImage
+            controller.authenticityScore = self.authenticityScore
+            controller.frontBackMatchScore = self.frontBackMatchScore
         }
     }
 }
