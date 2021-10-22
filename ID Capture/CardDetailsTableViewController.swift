@@ -21,7 +21,7 @@ class CardDetailsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let authenticityScore = self.authenticityScore {
-            let authenticity = authenticityScore >= 0.6 ? "is" : "is not"
+            let authenticity = authenticityScore >= 0.5 ? "is" : "is not"
             self.scores.append((key: "Authenticity score", value: String(format: "%.02f", authenticityScore), description: String(format: "Ver-ID uses machine learning to calculate an authenticity score. The score between 0.0 and 1.0 indicates the authenticity of the document holder's image. Higher scores mean a lesser chance that the image has been tampered with.\n\nThis scan's score of %.02f suggests that the document %@ authentic.", authenticityScore, authenticity)))
         }
         if let frontBackMatchScore = self.frontBackMatchScore {
