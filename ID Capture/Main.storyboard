@@ -619,7 +619,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ki3-Nd-msq">
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ki3-Nd-msq">
                                 <rect key="frame" x="61" y="386.66666666666669" width="253" height="39"/>
                                 <color key="backgroundColor" red="0.21176470589999999" green="0.68627450980000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <accessibility key="accessibilityConfiguration" identifier="compareToSelfie"/>
@@ -638,7 +638,7 @@
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="36"/>
                                 </variation>
                                 <connections>
-                                    <action selector="captureSelfie" destination="XlS-am-sjt" eventType="touchUpInside" id="9Hy-DU-PkG"/>
+                                    <action selector="captureSelfie" destination="XlS-am-sjt" eventType="touchUpInside" id="XMG-5F-e0R"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OBa-my-eO3">
