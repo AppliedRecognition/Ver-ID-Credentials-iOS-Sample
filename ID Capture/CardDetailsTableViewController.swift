@@ -31,6 +31,16 @@ class CardDetailsTableViewController: UITableViewController {
             self.cardProperties.append(contentsOf: documentData.entries)
         }
     }
+    
+    @IBAction func shareCardImage(_ button: UIBarButtonItem) {
+        guard let image = self.cardImage else {
+            return
+        }
+        let activityController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        activityController.popoverPresentationController?.barButtonItem = button
+        activityController.title = "Card image"
+        self.present(activityController, animated: true)
+    }
 
     // MARK: - Table view data source
 
