@@ -40,8 +40,8 @@ class CardViewController: UIViewController, VerIDSessionDelegate {
             aspectRatioConstraint.identifier = "aspectRatio"
             self.cardImageView.addConstraint(aspectRatioConstraint)
         }
-        if let faceQuality = self.cardFace?.quality, let threshold = (self.verid?.faceDetection as? VerIDFaceDetection)?.detRecLib.settings.faceExtractQualityThreshold {
-            self.qualityWarningButton.isHidden = faceQuality >= CGFloat(threshold)
+        if let faceQuality = self.cardFace?.quality {
+            self.qualityWarningButton.isHidden = faceQuality >= 8.0
         }
         if self.documentData != nil {
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Details", style: .plain, target: self, action: #selector(showCardDetails))
