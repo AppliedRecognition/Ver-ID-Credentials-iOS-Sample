@@ -106,11 +106,4 @@ class ID_Capture_UI_Tests: XCTestCase {
         app.buttons.matching(identifier: "compareToSelfie").firstMatch.tap()
         XCTAssertTrue(app.alerts["Failed to capture live face"].waitForExistence(timeout: 2))
     }
-    
-    func testDisplayFalseAcceptanceRates() throws {
-        try self.testLivenessDetection()
-        XCTAssertTrue(app.buttons.matching(identifier: "far").firstMatch.waitForExistence(timeout: 5))
-        app.buttons.matching(identifier: "far").firstMatch.tap()
-        XCTAssertTrue(app.navigationBars["False acceptance rates"].exists)
-    }
 }
