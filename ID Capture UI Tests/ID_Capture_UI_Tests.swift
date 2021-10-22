@@ -97,7 +97,7 @@ class ID_Capture_UI_Tests: XCTestCase {
         try self.testIDCapture()
         app.buttons.matching(identifier: "compareToSelfie").firstMatch.tap()
         XCTAssertTrue(app.staticTexts.matching(identifier: "score").firstMatch.waitForExistence(timeout: 2))
-        XCTAssertEqual(app.staticTexts.matching(identifier: "score").firstMatch.label, "3.91")
+        XCTAssertEqual(app.staticTexts.matching(identifier: "score").firstMatch.label, "Pass")
     }
     
     func testLivenessDetectionFailure() throws {
