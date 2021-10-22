@@ -12,10 +12,10 @@ import VerIDUI
 import RxSwift
 import AAMVABarcodeParser
 
-class CardViewController: UIViewController, VerIDFactoryDelegate, VerIDSessionDelegate {
+class CardViewController: UIViewController, VerIDSessionDelegate {
     
+    var verid: VerID?
     var cardImage: UIImage?
-    var cardFaceImage: UIImage?
     var cardAspectRatio: CGFloat?
     var cardFace: RecognizableFace?
     var authenticityScore: Float?
@@ -40,30 +40,12 @@ class CardViewController: UIViewController, VerIDFactoryDelegate, VerIDSessionDe
             aspectRatioConstraint.identifier = "aspectRatio"
             self.cardImageView.addConstraint(aspectRatioConstraint)
         }
-        let veridFactory = VerIDFactory()
-        if let verid = Globals.verid {
-            self.veridFactory(veridFactory, didCreateVerID: verid)
-        } else {
-            veridFactory.delegate = self
-            veridFactory.createVerID()
-        }
-        if let faceQuality = self.cardFace?.quality, let threshold = (veridFactory.faceRecognitionFactory as? VerIDFaceDetectionRecognitionFactory)?.settings.faceExtractQualityThreshold {
+        if let faceQuality = self.cardFace?.quality, let threshold = (self.verid?.faceDetection as? VerIDFaceDetection)?.detRecLib.settings.faceExtractQualityThreshold {
             self.qualityWarningButton.isHidden = faceQuality >= CGFloat(threshold)
         }
         if self.documentData != nil {
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Details", style: .plain, target: self, action: #selector(showCardDetails))
         }
-    }
-    
-    // MARK: - VerIDFactoryDelegate
-    
-    func veridFactory(_ factory: VerIDFactory, didCreateVerID instance: VerID) {
-        Globals.verid = instance
-        self.captureSelfieButton.isEnabled = true
-    }
-    
-    func veridFactory(_ factory: VerIDFactory, didFailWithError error: Error) {
-        // TODO
     }
     
     // MARK: - VerIDSessionDelegate
@@ -76,7 +58,7 @@ class CardViewController: UIViewController, VerIDFactoryDelegate, VerIDSessionDe
             guard let cardFace = self.cardFace else {
                 return
             }
-            guard let verid = Globals.verid else {
+            guard let verid = self.verid else {
                 return
             }
             guard let faceCapture = result.faceCaptures.first(where: { $0.bearing == .straight }) else {
@@ -103,7 +85,7 @@ class CardViewController: UIViewController, VerIDFactoryDelegate, VerIDSessionDe
     }
     
     @IBAction func captureSelfie() {
-        guard let verid = Globals.verid else {
+        guard let verid = self.verid else {
             return
         }
         let session = VerIDSession(environment: verid, settings: LivenessDetectionSessionSettings())
@@ -146,16 +128,12 @@ class CardViewController: UIViewController, VerIDFactoryDelegate, VerIDSessionDe
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let controller = segue.destination as? ResultsViewController, let cardFace = self.cardFace, let cardImage = self.cardImage {
-            if let faceImage = self.cardFaceImage {
-                controller.cardFaceImage = faceImage
-            } else {
-                UIGraphicsBeginImageContext(cardFace.bounds.size)
-                defer {
-                    UIGraphicsEndImageContext()
-                }
-                cardImage.draw(at: CGPoint(x: 0-cardFace.bounds.minX, y: 0-cardFace.bounds.minY))
-                controller.cardFaceImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsBeginImageContext(cardFace.bounds.size)
+            defer {
+                UIGraphicsEndImageContext()
             }
+            cardImage.draw(at: CGPoint(x: 0-cardFace.bounds.minX, y: 0-cardFace.bounds.minY))
+            controller.cardFaceImage = UIGraphicsGetImageFromCurrentImageContext()
             controller.liveFaceImage = self.liveFaceImage
             controller.comparisonScore = self.comparisonScore
         } else if let controller = segue.destination as? CardDetailsTableViewController {

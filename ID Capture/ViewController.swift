@@ -21,13 +21,13 @@ class ViewController: UIViewController, VerIDFactoryDelegate, CardAndBarcodeDete
     let disposeBag = DisposeBag()
     var blinkIdRecognizer: MBBlinkIdCombinedRecognizer?
     var cardImage: UIImage?
-    var cardFaceImage: UIImage?
     var cardFace: RecognizableFace?
     var cardAspectRatio: CGFloat?
     var authenticityScore: Float?
     var frontBackMatchScore: Float?
     var documentData: DocumentData?
     var faceTracking: FaceTracking?
+    var verid: VerID?
     
     lazy var log: OSLog = {
         OSLog(subsystem: "com.appliedrec.ID-Capture", category: "Face detection")
@@ -165,8 +165,8 @@ class ViewController: UIViewController, VerIDFactoryDelegate, CardAndBarcodeDete
                     let recognizer = MBBlinkIdCombinedRecognizer()
                     recognizer.returnFullDocumentImage = true
                     recognizer.encodeFullDocumentImage = true
-                    recognizer.returnFaceImage = true
-                    recognizer.encodeFaceImage = true
+                    recognizer.returnFaceImage = false
+                    recognizer.encodeFaceImage = false
                     self.blinkIdRecognizer = recognizer
                     let settings = MBBlinkIdOverlaySettings()
                     settings.autorotateOverlay = true
@@ -187,7 +187,7 @@ class ViewController: UIViewController, VerIDFactoryDelegate, CardAndBarcodeDete
     // MARK: - VerIDFactoryDelegate
     
     func veridFactory(_ factory: VerIDFactory, didCreateVerID instance: VerID) {
-        Globals.veridCard = instance
+        self.verid = instance
         self.scanButton.isHidden = false
         self.activityIndicator.stopAnimating()
     }
@@ -224,7 +224,7 @@ class ViewController: UIViewController, VerIDFactoryDelegate, CardAndBarcodeDete
         }
     }
     
-    func detectFaceInImage(_ image: CGImage, authenticityDetectionEnabled: Bool, croppedFaceImage: CGImage? = nil) {
+    func detectFaceInImage(_ image: CGImage, authenticityDetectionEnabled: Bool) {
         self.scanButton.isHidden = true
         self.activityIndicator.startAnimating()
         self.authenticityScore = nil
@@ -233,17 +233,19 @@ class ViewController: UIViewController, VerIDFactoryDelegate, CardAndBarcodeDete
             do {
                 let orientations: [CGImagePropertyOrientation] = [.up, .left, .right, .down]
                 for orientation in orientations {
-                    let veridImage = VerIDImage(cgImage: croppedFaceImage ?? image, orientation: orientation)
-                    guard let face = try Globals.veridCard?.faceDetection.detectFacesInImage(veridImage, limit: 1, options: 0).first else {
+                    let veridImage = VerIDImage(cgImage: image, orientation: orientation)
+                    guard let face = try self.verid?.faceDetection.detectFacesInImage(veridImage, limit: 1, options: 0).first else {
                         continue
                     }
-                    let authenticityScore: Float?
-                    if let faceDetection = Globals.veridCard?.faceDetection as? VerIDFaceDetection, let classifier = AuthenticityScoreSupport.default.classifiers.first {
-                        authenticityScore = try faceDetection.extractAttributeFromFace(face, image: veridImage, using: classifier.name).floatValue
-                    } else {
-                        authenticityScore = nil
+                    var authenticityScore: Float? = nil
+                    if let faceDetection = self.verid?.faceDetection as? VerIDFaceDetection, let classifier = AuthenticityScoreSupport.default.classifiers.first {
+                        do {
+                            authenticityScore = try faceDetection.extractAttributeFromFace(face, image: veridImage, using: classifier.name).floatValue
+                        } catch {
+                            NSLog("Failed to extract authenticity score: %@", error.localizedDescription)
+                        }
                     }
-                    guard let recognizable = try Globals.veridCard?.faceRecognition.createRecognizableFacesFromFaces([face], inImage: veridImage).first else {
+                    guard let recognizable = try self.verid?.faceRecognition.createRecognizableFacesFromFaces([face], inImage: veridImage).first else {
                         continue
                     }
                     let recognizableFace = RecognizableFace(face: face, recognitionData: recognizable.recognitionData, version: recognizable.version)
@@ -269,11 +271,6 @@ class ViewController: UIViewController, VerIDFactoryDelegate, CardAndBarcodeDete
             self.scanButton.isHidden = false
             self.activityIndicator.stopAnimating()
             self.cardFace = face
-            if let cardFaceImage = croppedFaceImage {
-                self.cardFaceImage = UIImage(cgImage: cardFaceImage, scale: 1, orientation: self.uiImageOrientationFromCGImageOrientation(orientation))
-            } else {
-                self.cardFaceImage = nil
-            }
             self.authenticityScore = authenticityScore
             self.performSegue(withIdentifier: "selfie", sender: nil)
         }, onError: { error in
@@ -312,7 +309,7 @@ class ViewController: UIViewController, VerIDFactoryDelegate, CardAndBarcodeDete
             // Use the built-in image sharpness detection to determine the image quality
             return nil
         }
-        guard let verid = Globals.verid else {
+        guard let verid = self.verid else {
             return nil
         }
         let faceTracking = self.faceTracking ?? verid.faceDetection.startFaceTracking()
@@ -348,11 +345,6 @@ class ViewController: UIViewController, VerIDFactoryDelegate, CardAndBarcodeDete
                     return
                 }
                 self.cardImage = image
-                if let faceImageJpeg = result.encodedFaceImage, let faceImage = UIImage(data: faceImageJpeg) {
-                    self.cardFaceImage = faceImage
-                } else {
-                    self.cardFaceImage = nil
-                }
                 if let frontPage = result.frontVizResult, let barcode = result.barcodeResult?.rawData, let dateOfBirth = frontPage.dateOfBirth.date, let dateOfIssue = frontPage.dateOfIssue.date, let dateOfExpiry = frontPage.dateOfExpiry.date {
                     self.frontBackMatchScore = try? DocumentFrontPageData(firstName: frontPage.firstName, lastName: frontPage.lastName, address: frontPage.address, dateOfBirth: dateOfBirth, documentNumber: frontPage.documentNumber, dateOfIssue: dateOfIssue, dateOfExpiry: dateOfExpiry).match(barcode)
                 }
@@ -361,7 +353,7 @@ class ViewController: UIViewController, VerIDFactoryDelegate, CardAndBarcodeDete
                     let alert = UIAlertController(title: "Invalid licence", message: "The front and the back of the licence don't seem to match.", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
                     alert.addAction(UIAlertAction(title: "Proceed anyway", style: .default, handler: { _ in
-                        self.detectFaceInImage(cgImage, authenticityDetectionEnabled: authenticityDetectionEnabled, croppedFaceImage: cgImage)
+                        self.detectFaceInImage(cgImage, authenticityDetectionEnabled: authenticityDetectionEnabled)
                     }))
                     self.present(alert, animated: true)
                     return
@@ -369,14 +361,14 @@ class ViewController: UIViewController, VerIDFactoryDelegate, CardAndBarcodeDete
                 if let data = result.barcodeResult?.rawData, let _ = try? SecureStorage.getString(forKey: SecureStorage.commonKeys.intellicheckPassword.rawValue) {
                     self.parseBarcodeData(data).subscribe(onSuccess: { docData in
                         self.documentData = docData
-                        self.detectFaceInImage(cgImage, authenticityDetectionEnabled: authenticityDetectionEnabled, croppedFaceImage: self.cardFaceImage?.cgImage)
+                        self.detectFaceInImage(cgImage, authenticityDetectionEnabled: authenticityDetectionEnabled)
                     }, onError: { error in
                         self.documentData = MicroblinkDocumentData(result: result)
-                        self.detectFaceInImage(cgImage, authenticityDetectionEnabled: authenticityDetectionEnabled, croppedFaceImage: self.cardFaceImage?.cgImage)
+                        self.detectFaceInImage(cgImage, authenticityDetectionEnabled: authenticityDetectionEnabled)
                     }).disposed(by: self.disposeBag)
                 } else {
                     self.documentData = MicroblinkDocumentData(result: result)
-                    self.detectFaceInImage(cgImage, authenticityDetectionEnabled: authenticityDetectionEnabled, croppedFaceImage: self.cardFaceImage?.cgImage)
+                    self.detectFaceInImage(cgImage, authenticityDetectionEnabled: authenticityDetectionEnabled)
                 }
             }
         }
@@ -427,9 +419,9 @@ class ViewController: UIViewController, VerIDFactoryDelegate, CardAndBarcodeDete
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? CardViewController {
+            destination.verid = self.verid
             destination.cardImage = self.cardImage
             destination.cardFace = self.cardFace
-            destination.cardFaceImage = self.cardFaceImage
             destination.cardAspectRatio = self.cardAspectRatio
             destination.documentData = self.documentData
             destination.authenticityScore = self.authenticityScore
