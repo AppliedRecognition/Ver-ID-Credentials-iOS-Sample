@@ -76,6 +76,7 @@ class CardDetailsTableViewController: UITableViewController {
                     constraint.priority = .defaultHigh
                     cell.cardImageView.addConstraint(constraint)
                 }
+                cell.accessibilityIdentifier = "card image"
                 return cell
             }
             return UITableViewCell()
@@ -97,6 +98,7 @@ class CardDetailsTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
             cell.textLabel?.text = text
             cell.detailTextLabel?.text = detailText
+            cell.accessibilityIdentifier = text
             return cell
         }
     }

@@ -106,4 +106,13 @@ class ID_Capture_UI_Tests: XCTestCase {
         app.buttons.matching(identifier: "compareToSelfie").firstMatch.tap()
         XCTAssertTrue(app.alerts["Failed to capture live face"].waitForExistence(timeout: 2))
     }
+    
+    func testAuthenticityScore() throws {
+        try self.testIDCapture()
+        XCTAssertTrue(app.navigationBars["Your ID card"].buttons["Details"].exists)
+        app.navigationBars["Your ID card"].buttons["Details"].tap()
+        XCTAssertTrue(app.navigationBars["Card details"].exists)
+        XCTAssertTrue(app.tables.firstMatch.cells.matching(identifier: "Authenticity score").staticTexts.element(boundBy: 1).exists)
+        XCTAssertEqual(app.tables.firstMatch.cells.matching(identifier: "Authenticity score").staticTexts.element(boundBy: 1).label, "1.00")
+    }
 }
