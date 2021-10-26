@@ -17,12 +17,16 @@ class ID_Capture_UI_Tests: XCTestCase {
         app = XCUIApplication()
         app.launchArguments.append("--test")
     }
-
-    func testIDCapture() throws {
-        app.launch()
+    
+    func scanIDCard() {
         XCTAssertTrue(app.buttons.matching(identifier: "scanCard").firstMatch.waitForExistence(timeout: 10))
         app.buttons.matching(identifier: "scanCard").firstMatch.tap()
-        XCTAssertTrue(app.buttons.matching(identifier: "compareToSelfie").firstMatch.waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons.matching(identifier: "compareToSelfie").firstMatch.waitForExistence(timeout: 10))
+    }
+
+    func testIDCapture() {
+        app.launch()
+        scanIDCard()
     }
     
     func testIDCaptureWithRotatedImage() throws {
@@ -68,14 +72,14 @@ class ID_Capture_UI_Tests: XCTestCase {
     }
     
     func testCardDetails() throws {
-        try self.testIDCapture()
+        self.testIDCapture()
         XCTAssertTrue(app.images.matching(identifier: "cardImage").firstMatch.exists)
         app.images.matching(identifier: "cardImage").firstMatch.tap()
         XCTAssertTrue(app.navigationBars["Card details"].exists)
     }
     
     func testCardDetails2() throws {
-        try self.testIDCapture()
+        self.testIDCapture()
         XCTAssertTrue(app.navigationBars["Your ID card"].buttons["Details"].exists)
         app.navigationBars["Your ID card"].buttons["Details"].tap()
         XCTAssertTrue(app.navigationBars["Card details"].exists)
@@ -90,11 +94,11 @@ class ID_Capture_UI_Tests: XCTestCase {
         }
         XCTAssertEqual(microblinkSwitch.value as? String, "1")
         app.navigationBars["Settings"].buttons["Scan ID card"].tap()
-        try self.testIDCapture()
+        self.scanIDCard()
     }
     
     func testLivenessDetection() throws {
-        try self.testIDCapture()
+        self.testIDCapture()
         app.buttons.matching(identifier: "compareToSelfie").firstMatch.tap()
         XCTAssertTrue(app.staticTexts.matching(identifier: "score").firstMatch.waitForExistence(timeout: 2))
         XCTAssertEqual(app.staticTexts.matching(identifier: "score").firstMatch.label, "Pass")
@@ -102,13 +106,13 @@ class ID_Capture_UI_Tests: XCTestCase {
     
     func testLivenessDetectionFailure() throws {
         app.launchArguments.append("--failLivenessDetection")
-        try self.testIDCapture()
+        self.testIDCapture()
         app.buttons.matching(identifier: "compareToSelfie").firstMatch.tap()
         XCTAssertTrue(app.alerts["Failed to capture live face"].waitForExistence(timeout: 2))
     }
     
     func testAuthenticityScore() throws {
-        try self.testIDCapture()
+        self.testIDCapture()
         XCTAssertTrue(app.navigationBars["Your ID card"].buttons["Details"].exists)
         app.navigationBars["Your ID card"].buttons["Details"].tap()
         XCTAssertTrue(app.navigationBars["Card details"].exists)

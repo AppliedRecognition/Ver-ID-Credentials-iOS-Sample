@@ -14,9 +14,14 @@
 		3B0E6F4B2722BF730061A3A3 /* BarcodeDataMatcher in Frameworks */ = {isa = PBXBuildFile; productRef = 3B0E6F4A2722BF730061A3A3 /* BarcodeDataMatcher */; };
 		3B0E6F4D2722F58D0061A3A3 /* ScoreDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0E6F4C2722F58D0061A3A3 /* ScoreDescriptionViewController.swift */; };
 		3B0E6F502726B6F00061A3A3 /* license01-20210820ay-xiypjic%2200-q08.nv in Resources */ = {isa = PBXBuildFile; fileRef = 3B0E6F4F2726B6EF0061A3A3 /* license01-20210820ay-xiypjic%2200-q08.nv */; };
+		3B0E6F522727ED530061A3A3 /* ViewController+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0E6F512727ED520061A3A3 /* ViewController+Testing.swift */; };
+		3B0E6F542727EEBE0061A3A3 /* ViewController+Microblink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0E6F532727EEBE0061A3A3 /* ViewController+Microblink.swift */; };
+		3B0E6F582727F5B00061A3A3 /* ViewController+IDCardCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0E6F572727F5B00061A3A3 /* ViewController+IDCardCamera.swift */; };
+		3B0E6F5A2727F7200061A3A3 /* BarcodeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0E6F592727F7200061A3A3 /* BarcodeParser.swift */; };
+		3B0E6F5C2727F7FB0061A3A3 /* FaceDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0E6F5B2727F7FB0061A3A3 /* FaceDetection.swift */; };
+		3B0E6F5E2727FC160061A3A3 /* CGImagePropertyOrientation+IDCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0E6F5D2727FC160061A3A3 /* CGImagePropertyOrientation+IDCapture.swift */; };
 		3B2E34292628732F0055FE28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B3FF93923A15E7A00156A59 /* Assets.xcassets */; };
 		3B2EBFA823EB059C00F7FA14 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B2EBFA723EB059C00F7FA14 /* GoogleService-Info.plist */; };
-		3B3196CD23AB86FF009B8564 /* BarcodeScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3196CC23AB86FF009B8564 /* BarcodeScan.swift */; };
 		3B360B1323C49AC1007FC1F1 /* NormalDistribution in Frameworks */ = {isa = PBXBuildFile; productRef = 3B360B1223C49AC1007FC1F1 /* NormalDistribution */; };
 		3B3E6A9923BE688E00495F42 /* SecureStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3E6A9823BE688E00495F42 /* SecureStorage.swift */; };
 		3B3FF93123A15E7700156A59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3FF93023A15E7700156A59 /* AppDelegate.swift */; };
@@ -65,8 +70,13 @@
 		3B0E6F4C2722F58D0061A3A3 /* ScoreDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreDescriptionViewController.swift; sourceTree = "<group>"; };
 		3B0E6F4E2722FC260061A3A3 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		3B0E6F4F2726B6EF0061A3A3 /* license01-20210820ay-xiypjic%2200-q08.nv */ = {isa = PBXFileReference; lastKnownFileType = file; path = "license01-20210820ay-xiypjic%2200-q08.nv"; sourceTree = "<group>"; };
+		3B0E6F512727ED520061A3A3 /* ViewController+Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Testing.swift"; sourceTree = "<group>"; };
+		3B0E6F532727EEBE0061A3A3 /* ViewController+Microblink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Microblink.swift"; sourceTree = "<group>"; };
+		3B0E6F572727F5B00061A3A3 /* ViewController+IDCardCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+IDCardCamera.swift"; sourceTree = "<group>"; };
+		3B0E6F592727F7200061A3A3 /* BarcodeParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeParser.swift; sourceTree = "<group>"; };
+		3B0E6F5B2727F7FB0061A3A3 /* FaceDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceDetection.swift; sourceTree = "<group>"; };
+		3B0E6F5D2727FC160061A3A3 /* CGImagePropertyOrientation+IDCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGImagePropertyOrientation+IDCapture.swift"; sourceTree = "<group>"; };
 		3B2EBFA723EB059C00F7FA14 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		3B3196CC23AB86FF009B8564 /* BarcodeScan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScan.swift; sourceTree = "<group>"; };
 		3B3E6A9823BE688E00495F42 /* SecureStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStorage.swift; sourceTree = "<group>"; };
 		3B3FF92D23A15E7700156A59 /* ID Capture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ID Capture.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B3FF93023A15E7700156A59 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -144,28 +154,33 @@
 		3B3FF92F23A15E7700156A59 /* ID Capture */ = {
 			isa = PBXGroup;
 			children = (
-				3B0E6F4F2726B6EF0061A3A3 /* license01-20210820ay-xiypjic%2200-q08.nv */,
 				3BB0E57E244DB27700785E47 /* Test resources */,
-				3B2EBFA723EB059C00F7FA14 /* GoogleService-Info.plist */,
+				3B0E6F4F2726B6EF0061A3A3 /* license01-20210820ay-xiypjic%2200-q08.nv */,
 				3BDA7B0923E9EAFF003C3FD7 /* Ver-ID identity.p12 */,
-				3BDCDCCA23AD71B000EA6123 /* MicroblinkDocumentData.swift */,
-				3B3FF9D223A250F100156A59 /* CardViewController.swift */,
+				3B2EBFA723EB059C00F7FA14 /* GoogleService-Info.plist */,
+				3B3FF93E23A15E7A00156A59 /* Info.plist */,
 				3B3FF9C223A24BA300156A59 /* LaunchScreen.storyboard */,
 				3B3FF9C823A24BA300156A59 /* Main.storyboard */,
-				3B3FF9C323A24BA300156A59 /* ResultsViewController.swift */,
 				3B3FF93023A15E7700156A59 /* AppDelegate.swift */,
-				3B3FF93423A15E7700156A59 /* ViewController.swift */,
-				3B3FF93923A15E7A00156A59 /* Assets.xcassets */,
-				3B3FF93E23A15E7A00156A59 /* Info.plist */,
+				3B0E6F47272209750061A3A3 /* AuthenticityScoreSupport.swift */,
+				3B0E6F592727F7200061A3A3 /* BarcodeParser.swift */,
+				3B0B533A23A2B6FA00B64EB6 /* CardDetailsTableViewController.swift */,
+				3B3FF9D223A250F100156A59 /* CardViewController.swift */,
+				3B0E6F5D2727FC160061A3A3 /* CGImagePropertyOrientation+IDCapture.swift */,
+				3BB0E581244DCD4C00785E47 /* ExecutionParams.swift */,
+				3B0E6F5B2727F7FB0061A3A3 /* FaceDetection.swift */,
+				3B0B533C23A2B80D00B64EB6 /* ImageTableViewCell.swift */,
+				3BDCDCCA23AD71B000EA6123 /* MicroblinkDocumentData.swift */,
+				3B3FF9C323A24BA300156A59 /* ResultsViewController.swift */,
+				3B0E6F4C2722F58D0061A3A3 /* ScoreDescriptionViewController.swift */,
+				3B3E6A9823BE688E00495F42 /* SecureStorage.swift */,
 				3B3FF9D023A24F3600156A59 /* SettingsViewController.swift */,
 				3B0B533423A2AB6600B64EB6 /* SupportedDocumentsViewController.swift */,
-				3B0B533A23A2B6FA00B64EB6 /* CardDetailsTableViewController.swift */,
-				3B0B533C23A2B80D00B64EB6 /* ImageTableViewCell.swift */,
-				3B3196CC23AB86FF009B8564 /* BarcodeScan.swift */,
-				3B3E6A9823BE688E00495F42 /* SecureStorage.swift */,
-				3BB0E581244DCD4C00785E47 /* ExecutionParams.swift */,
-				3B0E6F47272209750061A3A3 /* AuthenticityScoreSupport.swift */,
-				3B0E6F4C2722F58D0061A3A3 /* ScoreDescriptionViewController.swift */,
+				3B3FF93423A15E7700156A59 /* ViewController.swift */,
+				3B0E6F572727F5B00061A3A3 /* ViewController+IDCardCamera.swift */,
+				3B0E6F532727EEBE0061A3A3 /* ViewController+Microblink.swift */,
+				3B0E6F512727ED520061A3A3 /* ViewController+Testing.swift */,
+				3B3FF93923A15E7A00156A59 /* Assets.xcassets */,
 				3B0E6F4E2722FC260061A3A3 /* Config.xcconfig */,
 			);
 			path = "ID Capture";
@@ -404,8 +419,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B0E6F5C2727F7FB0061A3A3 /* FaceDetection.swift in Sources */,
 				3B3E6A9923BE688E00495F42 /* SecureStorage.swift in Sources */,
-				3B3196CD23AB86FF009B8564 /* BarcodeScan.swift in Sources */,
 				3B3FF93523A15E7700156A59 /* ViewController.swift in Sources */,
 				3BB0E582244DCD4C00785E47 /* ExecutionParams.swift in Sources */,
 				3B0E6F48272209750061A3A3 /* AuthenticityScoreSupport.swift in Sources */,
@@ -415,10 +430,15 @@
 				3BB0E580244DB27F00785E47 /* TestBarcodeObservation.swift in Sources */,
 				3B3FF9D323A250F100156A59 /* CardViewController.swift in Sources */,
 				3BDCDCCB23AD71B000EA6123 /* MicroblinkDocumentData.swift in Sources */,
+				3B0E6F582727F5B00061A3A3 /* ViewController+IDCardCamera.swift in Sources */,
 				3B0B533D23A2B80D00B64EB6 /* ImageTableViewCell.swift in Sources */,
 				3B3FF9CA23A24BA300156A59 /* ResultsViewController.swift in Sources */,
 				3B0E6F4D2722F58D0061A3A3 /* ScoreDescriptionViewController.swift in Sources */,
+				3B0E6F5A2727F7200061A3A3 /* BarcodeParser.swift in Sources */,
 				3B0B533B23A2B6FA00B64EB6 /* CardDetailsTableViewController.swift in Sources */,
+				3B0E6F542727EEBE0061A3A3 /* ViewController+Microblink.swift in Sources */,
+				3B0E6F522727ED530061A3A3 /* ViewController+Testing.swift in Sources */,
+				3B0E6F5E2727FC160061A3A3 /* CGImagePropertyOrientation+IDCapture.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
