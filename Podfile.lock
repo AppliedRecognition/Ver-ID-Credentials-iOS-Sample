@@ -85,7 +85,7 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (7.5.0):
     - GoogleUtilities/Logger
-  - ID-Card-Camera (1.4.1)
+  - ID-Card-Camera (1.4.2)
   - nanopb (2.30908.0):
     - nanopb/decode (= 2.30908.0)
     - nanopb/encode (= 2.30908.0)
@@ -121,7 +121,7 @@ PODS:
 DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/Crashlytics
-  - ID-Card-Camera (< 2.0, >= 1.4.1)
+  - ID-Card-Camera (from `https://github.com/AppliedRecognition/ID-Card-Camera.git`, tag `v1.4.2`)
   - PPBlinkID (= 5.14)
   - RxCocoa (~> 5.0)
   - RxSwift (~> 5.0)
@@ -139,7 +139,6 @@ SPEC REPOS:
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleUtilities
-    - ID-Card-Camera
     - nanopb
     - OpenCV2
     - PPBlinkID
@@ -150,6 +149,16 @@ SPEC REPOS:
     - Ver-ID
     - Ver-ID-SDK-Identity
     - ZIPFoundation
+
+EXTERNAL SOURCES:
+  ID-Card-Camera:
+    :git: https://github.com/AppliedRecognition/ID-Card-Camera.git
+    :tag: v1.4.2
+
+CHECKOUT OPTIONS:
+  ID-Card-Camera:
+    :git: https://github.com/AppliedRecognition/ID-Card-Camera.git
+    :tag: v1.4.2
 
 SPEC CHECKSUMS:
   DeviceKit: b68cded46afdaefc5d2253d631d441ba7049a7fe
@@ -162,7 +171,7 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: 8d10c1c470fcb0e5143ed74fddd164f0a0384800
   GoogleDataTransport: 85fd18ff3019bb85d3f2c551d04c481dedf71fc9
   GoogleUtilities: eea970f4a389963963bffe8d8fabe43540678b9c
-  ID-Card-Camera: bda6fa003027ef22b93c2f0aaddb8373260ea680
+  ID-Card-Camera: 54fec1fa2d1ff98a05b3568722b3e4944b616f80
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   OpenCV2: ffe82e5cb5d16dc3fc01a5f4127b9a5b3cfc7d1b
   PPBlinkID: c432c90e04d59698e9675d945e401720471a3ebb
@@ -174,6 +183,6 @@ SPEC CHECKSUMS:
   Ver-ID-SDK-Identity: c6918807b640dc19ae08bbb79c2766df5a3bb377
   ZIPFoundation: b1f0de4eed33e74a676f76e12559ab6b75990197
 
-PODFILE CHECKSUM: edbc5c830195c869e1dbb66cae96642978642489
+PODFILE CHECKSUM: 1417df5be47ae5207c100f485c4ce10e543d3ea9
 
 COCOAPODS: 1.11.2
