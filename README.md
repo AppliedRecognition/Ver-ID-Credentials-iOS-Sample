@@ -1,10 +1,10 @@
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/AppliedRecognition/Ver-ID-Credentials-iOS-Sample?sort=semver) [![Tests](https://github.com/AppliedRecognition/Ver-ID-Credentials-iOS-Sample/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/AppliedRecognition/Ver-ID-Credentials-iOS-Sample/actions/workflows/main.yml)
 
-# Ver-ID Credentials Sample
+# Ver-ID ID Capture Sample
 
 ![](ID%20Capture/Assets.xcassets/woman_with_licence.imageset/iStock-466158408.png)
 
-The project contains a sample application that uses either [ID Card Camera](https://github.com/AppliedRecognition/ID-Card-Camera) or Microblink's [BlinkID SDK](https://github.com/BlinkID/blinkid-ios) to scan an ID card. The app uses Ver-ID SDK to detect a face on the captured ID card and compare it to a live selfie taken with the iOS device's camera.
+The project contains a sample application that uses Microblink's [BlinkID SDK](https://github.com/BlinkID/blinkid-ios) to scan an ID card. The app uses Ver-ID SDK to detect a face on the captured ID card and compare it to a live selfie taken with the iOS device's camera.
 
 ## Project setup
 1. Download and install [CocoaPods](https://cocoapods.org/).
@@ -19,19 +19,13 @@ The project contains a sample application that uses either [ID Card Camera](http
     pod install
     ```
 4. Open the generated **ID Capture.xcworkspace** in Xcode.
-5. Open [Google Firebase console](https://console.firebase.google.com) add an iOS app with bundle identifier `com.appliedrec.ID-Capture` to your project and download the generated **GoogleServices-Info.plist** file.
-6. Add the **GoogleServices-Info.plist** file to the ID Capture project.
-7. Alternatively, if you don't wish to log app crashes in your Firebase account:
-	- Go to the Xcode project's **Build Phases** and remove the **Run Firebase Crashlytics** phase.
-	- Open **AppDelegate.swift** and remove the lines `import Firebase` and `FirebaseApp.configure()`.
-	- Delete **GoogleServices-Info.plist** in the Project navigator.
 
 ## Adding Ver-ID to your own Xcode project
 
 1. Add **Ver-ID**:
     
     ```ruby
-    pod 'Ver-ID', '~> 2.3'
+    pod 'Ver-ID', '~> 2.7'
     ```
     into your Podfile and run:
     
@@ -60,7 +54,7 @@ The project contains a sample application that uses either [ID Card Camera](http
         ~~~
 6. Open your Xcode project and select the ***.xcodeproj** file in the Project navigator.
 7. Select your target and click on the **General** tab.
-8. Under **Deployment Info** check that **Deployment Target** is set to **11.0** or higher. If you need to target older iOS versions please contact us.
+8. Under **Deployment Info** check that **Deployment Target** is set to **15.0** or higher. If you need to target older iOS versions please contact us.
 9. Ensure your app sets the **NSCameraUsageDescription** key in its **Info.plist** file.
 
 ## Adding Microblink to your Xcode project
@@ -69,7 +63,7 @@ The project contains a sample application that uses either [ID Card Camera](http
 2. Add **PPBlinkID** into your Podfile:
 
     ```ruby
-    pod 'PPBlinkID', '~> 5.14'
+    pod 'PPBlinkID', '~> 5.20'
     ```
 3. Before calling the BlinkID API set your licence key:
 

@@ -1,0 +1,1325 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.7 (swiftlang-5.7.0.127.4 clang-1400.0.29.50)
+// swift-module-flags: -target arm64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name DocumentVerificationClient
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+@_exported import DocumentVerificationClient
+import Foundation
+import Swift
+import UIKit
+import _Concurrency
+import _StringProcessing
+@objc public enum RequestError : Swift.Int, Swift.Error {
+  case unauthorized
+  case serverError
+  case serverIncompatibility
+  case unknownHost
+  case invalidURL
+  case unknown
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public static var _nsErrorDomain: Swift.String {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum CheckResult : Swift.Int, Swift.Codable, Swift.CustomStringConvertible {
+  case notPerformed
+  case pass
+  case fail
+  public init(from decoder: Swift.Decoder) throws
+  public var description: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum MatchLevel : Swift.Int, Swift.Codable, Swift.CustomStringConvertible {
+  case levelDisabled
+  case level0
+  case level1
+  case level2
+  case level3
+  case level4
+  case level5
+  case level6
+  case level7
+  case level8
+  case level9
+  case level10
+  public init(from decoder: Swift.Decoder) throws
+  public var description: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum CertaintyLevel : Swift.Int, Swift.Codable, Swift.CustomStringConvertible {
+  case notPerformed
+  case high
+  case medium
+  case low
+  public init(from decoder: Swift.Decoder) throws
+  public var description: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers final public class TieredCheck : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public var result: DocumentVerificationClient.CheckResult {
+    @objc get
+  }
+  @objc final public var matchLevel: DocumentVerificationClient.MatchLevel {
+    @objc get
+  }
+  @objc override final public var description: Swift.String {
+    @objc get
+  }
+  @objc override dynamic public init()
+  @objc deinit
+  public init(from decoder: Swift.Decoder) throws
+}
+@_inheritsConvenienceInitializers @objc final public class DetailedCheck : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public var result: DocumentVerificationClient.CheckResult {
+    @objc get
+  }
+  @objc final public var certaintyLevel: DocumentVerificationClient.CertaintyLevel {
+    @objc get
+  }
+  @objc override final public var description: Swift.String {
+    @objc get
+  }
+  @objc override dynamic public init()
+  @objc deinit
+  public init(from decoder: Swift.Decoder) throws
+}
+@objc public enum CardOrientation : Swift.Int, Swift.Decodable {
+  case horizontal
+  case vertical
+  public init(from decoder: Swift.Decoder) throws
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc @objcMembers final public class ImageAnalysisResult : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public let blurred: Swift.Bool
+  @objc final public let documentImageColorStatus: DocumentVerificationClient.DocumentImageColorStatus
+  @objc final public let documentImageMoireStatus: DocumentVerificationClient.ImageAnalysisDetectionStatus
+  @objc final public let faceDetectionStatus: DocumentVerificationClient.ImageAnalysisDetectionStatus
+  @objc final public let mrzDetectionStatus: DocumentVerificationClient.ImageAnalysisDetectionStatus
+  @objc final public let barcodeDetectionStatus: DocumentVerificationClient.ImageAnalysisDetectionStatus
+  @objc final public let cardOrientation: DocumentVerificationClient.CardOrientation
+  @objc deinit
+  public init(from decoder: Swift.Decoder) throws
+}
+@objc public enum DocumentImageColorStatus : Swift.Int, Swift.Decodable {
+  case notAvailable
+  case blackAndWhite
+  case color
+  public init(from decoder: Swift.Decoder) throws
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum ImageAnalysisDetectionStatus : Swift.Int, Swift.Decodable {
+  case notAvailable
+  case notDetected
+  case detected
+  public init(from decoder: Swift.Decoder) throws
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc @objcMembers final public class OverallFraudCheck : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public let result: DocumentVerificationClient.CheckResult
+  @objc final public let totalChecks: Swift.Int
+  @objc final public let performedChecks: Swift.Int
+  @objc final public let passedChecks: Swift.Int
+  @objc final public let score: Swift.Float
+  @objc override final public var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
+  public init(from decoder: Swift.Decoder) throws
+}
+@objc @objcMembers final public class DocumentVerificationResult : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public let overallFraudCheck: DocumentVerificationClient.OverallFraudCheck?
+  @objc final public let dataCheck: DocumentVerificationClient.DataCheck?
+  @objc final public let documentLivenessCheck: DocumentVerificationClient.DocumentLivenessCheck?
+  @objc final public let documentValidityCheck: DocumentVerificationClient.DocumentValidityCheck?
+  @objc final public let imageQualityCheck: DocumentVerificationClient.ImageQualityCheck?
+  @objc final public let visualCheck: DocumentVerificationClient.VisualCheck?
+  @objc final public let extractionResult: DocumentVerificationClient.ExtractionResult?
+  @objc final public let recognitionStatus: DocumentVerificationClient.ResultState
+  @objc override final public var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct Safe<Base> : Swift.Decodable where Base : Swift.Decodable {
+  public let value: Base?
+  public init(from decoder: Swift.Decoder) throws
+}
+@objc final public class VisualCheck : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public var overall: DocumentVerificationClient.CheckResult {
+    @objc get
+  }
+  @objc final public var photoForgeryCheck: DocumentVerificationClient.CheckResult {
+    @objc get
+  }
+  @objc final public var fontCheck: DocumentVerificationClient.CheckResult {
+    @objc get
+  }
+  @objc final public var backgroundCheck: DocumentVerificationClient.CheckResult {
+    @objc get
+  }
+  @objc final public var layoutCheck: DocumentVerificationClient.CheckResult {
+    @objc get
+  }
+  @objc final public let anomalyCheck: DocumentVerificationClient.AnomalyCheck?
+  @objc final public let securityFeatures: DocumentVerificationClient.SecurityFeatures?
+  @objc override final public var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
+  public init(from decoder: Swift.Decoder) throws
+}
+@objc public enum SecurityFeaturesProcessingStatus : Swift.Int, Swift.Decodable, Swift.CustomStringConvertible {
+  case notPerformed
+  case unsupportedByLicense
+  case unsupportedDocument
+  case performed
+  public init(from decoder: Swift.Decoder) throws
+  public var description: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc final public class SegmentResult : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public var checkResult: DocumentVerificationClient.CheckResult {
+    @objc get
+  }
+  @objc final public var rectangle: CoreFoundation.CGRect {
+    @objc get
+  }
+  @objc override final public var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
+  public init(from decoder: Swift.Decoder) throws
+}
+@objc final public class SecurityFeatures : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public var processingStatus: DocumentVerificationClient.SecurityFeaturesProcessingStatus {
+    @objc get
+  }
+  @objc final public var score: Swift.Float {
+    @objc get
+  }
+  @objc final public var fullDocumentImage: UIKit.UIImage? {
+    @objc get
+  }
+  @objc final public let segmentResult: [DocumentVerificationClient.SegmentResult]?
+  @objc override final public var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
+  public init(from decoder: Swift.Decoder) throws
+}
+@_inheritsConvenienceInitializers @objc final public class AnomalyCheck : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public var result: DocumentVerificationClient.CheckResult {
+    @objc get
+  }
+  @objc final public var heatmapImage: UIKit.UIImage? {
+    @objc get
+  }
+  @objc override final public var description: Swift.String {
+    @objc get
+  }
+  @objc override dynamic public init()
+  @objc deinit
+  public init(from decoder: Swift.Decoder) throws
+}
+@objc @objcMembers final public class BarcodeResult : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public let rawDataBase64: Swift.String?
+  @objc final public let stringData: Swift.String?
+  @objc final public let firstName: Swift.String?
+  @objc final public let middleName: Swift.String?
+  @objc final public let lastName: Swift.String?
+  @objc final public let fullName: Swift.String?
+  @objc final public let additionalNameInformation: Swift.String?
+  @objc final public let address: Swift.String?
+  @objc final public let placeOfBirth: Swift.String?
+  @objc final public let nationality: Swift.String?
+  @objc final public let race: Swift.String?
+  @objc final public let religion: Swift.String?
+  @objc final public let profession: Swift.String?
+  @objc final public let maritalStatus: Swift.String?
+  @objc final public let residentialStatus: Swift.String?
+  @objc final public let employer: Swift.String?
+  @objc final public let sex: Swift.String?
+  @objc final public let dateOfBirth: DocumentVerificationClient.DateResultSimple?
+  @objc final public let dateOfIssue: DocumentVerificationClient.DateResultSimple?
+  @objc final public let dateOfExpiry: DocumentVerificationClient.DateResultSimple?
+  @objc final public let documentNumber: Swift.String?
+  @objc final public let personalIdNumber: Swift.String?
+  @objc final public let documentAdditionalNumber: Swift.String?
+  @objc final public let issuingAuthority: Swift.String?
+  @objc final public let addressDetailedInfo: DocumentVerificationClient.AddressDetailedInfo?
+  @objc final public let driverLicenseDetailedInfo: DocumentVerificationClient.BarcodeDriverLicenseDetailedInfo?
+  @objc deinit
+  public init(from decoder: Swift.Decoder) throws
+}
+@objc @objcMembers final public class AddressDetailedInfo : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public let street: Swift.String?
+  @objc final public let postalCode: Swift.String?
+  @objc final public let city: Swift.String?
+  @objc final public let jurisdiction: Swift.String?
+  @objc deinit
+  public init(from decoder: Swift.Decoder) throws
+}
+@objc @objcMembers public class DocumentVerificationRequest : ObjectiveC.NSObject {
+  @objc public var imageFront: DocumentVerificationClient.ImageSource
+  @objc public var imageBack: DocumentVerificationClient.ImageSource?
+  @objc public var returnFullDocumentImage: Swift.Bool
+  @objc public var returnFaceImage: Swift.Bool
+  @objc public var returnSignatureImage: Swift.Bool
+  @objc public var screenMatchLevel: DocumentVerificationClient.MatchLevel
+  @objc public var photocopyMatchLevel: DocumentVerificationClient.MatchLevel
+  @objc public init(imageFront: DocumentVerificationClient.ImageSource, imageBack: DocumentVerificationClient.ImageSource? = nil)
+  @objc deinit
+}
+@objc @objcMembers public class ImageSource : ObjectiveC.NSObject {
+  @objc public var imageUrl: Swift.String?
+  @objc public var image: UIKit.UIImage?
+  @objc public init(imageUrl: Swift.String? = nil, image: UIKit.UIImage? = nil)
+  @objc deinit
+}
+@objc final public class DocumentLivenessCheck : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public var overall: DocumentVerificationClient.CheckResult {
+    @objc get
+  }
+  @objc final public let screenCheck: DocumentVerificationClient.TieredCheck?
+  @objc final public let photocopyCheck: DocumentVerificationClient.TieredCheck?
+  @objc final public var handPresenceCheck: DocumentVerificationClient.CheckResult {
+    @objc get
+  }
+  @objc override final public var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
+  public init(from decoder: Swift.Decoder) throws
+}
+@objc public enum Country : Swift.Int, Swift.Decodable {
+  case none
+  case albania
+  case algeria
+  case argentina
+  case australia
+  case austria
+  case azerbaijan
+  case bahrain
+  case bangladesh
+  case belgium
+  case bosniaAndHerzegovina
+  case brunei
+  case bulgaria
+  case cambodia
+  case canada
+  case chile
+  case colombia
+  case costaRica
+  case croatia
+  case cyprus
+  case czechia
+  case denmark
+  case dominicanRepublic
+  case egypt
+  case estonia
+  case finland
+  case france
+  case georgia
+  case germany
+  case ghana
+  case greece
+  case guatemala
+  case hongKong
+  case hungary
+  case india
+  case indonesia
+  case ireland
+  case israel
+  case italy
+  case jordan
+  case kazakhstan
+  case kenya
+  case kosovo
+  case kuwait
+  case latvia
+  case lithuania
+  case malaysia
+  case maldives
+  case malta
+  case mauritius
+  case mexico
+  case morocco
+  case netherlands
+  case newZealand
+  case nigeria
+  case pakistan
+  case panama
+  case paraguay
+  case philippines
+  case poland
+  case portugal
+  case puertoRico
+  case qatar
+  case romania
+  case russia
+  case saudiArabia
+  case serbia
+  case singapore
+  case slovakia
+  case slovenia
+  case southAfrica
+  case spain
+  case sweden
+  case switzerland
+  case taiwan
+  case thailand
+  case tunisia
+  case turkey
+  case uae
+  case uganda
+  case uk
+  case ukraine
+  case usa
+  case vietnam
+  case brazil
+  case norway
+  case oman
+  case ecuador
+  case elSalvador
+  case sriLanka
+  case peru
+  case uruguay
+  case bahamas
+  case bermuda
+  case bolivia
+  case china
+  case europeanUnion
+  case haiti
+  case honduras
+  case iceland
+  case japan
+  case luxembourg
+  case montenegro
+  case nicaragua
+  case southKorea
+  case venezuela
+  case afghanistan
+  case alandIslands
+  case americanSamoa
+  case andorra
+  case angola
+  case anguilla
+  case antarctica
+  case antiguaAndBarbuda
+  case armenia
+  case aruba
+  case bailiwickOfGuernsey
+  case bailiwickOfJersey
+  case barbados
+  case belarus
+  case belize
+  case benin
+  case bhutan
+  case bonaireSaintEustatiusAndSaba
+  case botswana
+  case bouvetIsland
+  case britishIndianOceanTerritory
+  case burkinaFaso
+  case burundi
+  case cameroon
+  case capeVerde
+  case caribbeanNetherlands
+  case caymanIslands
+  case centralAfricanRepublic
+  case chad
+  case christmasIsland
+  case cocosIslands
+  case comoros
+  case congo
+  case cookIslands
+  case cuba
+  case curacao
+  case democraticRepublicOfTheCongo
+  case djibouti
+  case dominica
+  case eastTimor
+  case equatorialGuinea
+  case eritrea
+  case ethiopia
+  case falklandIslands
+  case faroeIslands
+  case federatedStatesOfMicronesia
+  case fiji
+  case frenchGuiana
+  case frenchPolynesia
+  case frenchSouthernTerritories
+  case gabon
+  case gambia
+  case gibraltar
+  case greenland
+  case grenada
+  case guadeloupe
+  case guam
+  case guinea
+  case guineaBissau
+  case guyana
+  case heardIslandAndMcdonaldIslands
+  case iran
+  case iraq
+  case isleOfMan
+  case ivoryCoast
+  case jamaica
+  case kiribati
+  case kyrgyzstan
+  case laos
+  case lebanon
+  case lesotho
+  case liberia
+  case libya
+  case liechtenstein
+  case macau
+  case madagascar
+  case malawi
+  case mali
+  case marshallIslands
+  case martinique
+  case mauritania
+  case mayotte
+  case moldova
+  case monaco
+  case mongolia
+  case montserrat
+  case mozambique
+  case myanmar
+  case namibia
+  case nauru
+  case nepal
+  case newCaledonia
+  case niger
+  case niue
+  case norfolkIsland
+  case northernCyprus
+  case northernMarianaIslands
+  case northKorea
+  case northMacedonia
+  case palau
+  case palestine
+  case papuaNewGuinea
+  case pitcairn
+  case reunion
+  case rwanda
+  case saintBarthelemy
+  case saintHelenaAscensionAndTristianDaCunha
+  case saintKittsAndNevis
+  case saintLucia
+  case saintMartin
+  case saintPierreAndMiquelon
+  case saintVincentAndTheGrenadines
+  case samoa
+  case sanMarino
+  case saoTomeAndPrincipe
+  case senegal
+  case seychelles
+  case sierraLeone
+  case sintMaarten
+  case solomonIslands
+  case somalia
+  case southGeorgiaAndTheSouthSandwichIslands
+  case southSudan
+  case sudan
+  case suriname
+  case svalbardAndJanMayen
+  case eswatini
+  case syria
+  case tajikistan
+  case tanzania
+  case togo
+  case tokelau
+  case tonga
+  case trinidadAndTobago
+  case turkmenistan
+  case turksAndCaicosIslands
+  case tuvalu
+  case unitedStatesMinorOutlyingIslands
+  case uzbekistan
+  case vanuatu
+  case vaticanCity
+  case virginIslandsBritish
+  case virginIslandsUs
+  case wallisAndFutuna
+  case westernSahara
+  case yemen
+  case yugoslavia
+  case zambia
+  case zimbabwe
+  public init(from decoder: Swift.Decoder) throws
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum Region : Swift.Int, Swift.Decodable {
+  case none
+  case alabama
+  case alaska
+  case alberta
+  case arizona
+  case arkansas
+  case australianCapitalTerritory
+  case britishColumbia
+  case california
+  case colorado
+  case connecticut
+  case delaware
+  case districtOfColumbia
+  case florida
+  case georgia
+  case hawaii
+  case idaho
+  case illinois
+  case indiana
+  case iowa
+  case kansas
+  case kentucky
+  case louisiana
+  case maine
+  case manitoba
+  case maryland
+  case massachusetts
+  case michigan
+  case minnesota
+  case mississippi
+  case missouri
+  case montana
+  case nebraska
+  case nevada
+  case newBrunswick
+  case newHampshire
+  case newJersey
+  case newMexico
+  case newSouthWales
+  case newYork
+  case northernTerritory
+  case northCarolina
+  case northDakota
+  case novaScotia
+  case ohio
+  case oklahoma
+  case ontario
+  case oregon
+  case pennsylvania
+  case quebec
+  case queensland
+  case rhodeIsland
+  case saskatchewan
+  case southAustralia
+  case southCarolina
+  case southDakota
+  case tasmania
+  case tennessee
+  case texas
+  case utah
+  case vermont
+  case victoria
+  case virginia
+  case washington
+  case westernAustralia
+  case westVirginia
+  case wisconsin
+  case wyoming
+  case yukon
+  case ciudadDeMexico
+  case jalisco
+  case newfoundlandAndLabrador
+  case nuevoLeon
+  case bajaCalifornia
+  case chihuahua
+  case guanajuato
+  case guerrero
+  case mexico
+  case michoacan
+  case newYorkCity
+  case tamaulipas
+  case veracruz
+  case chiapas
+  case coahuila
+  case durango
+  case guerreroCocula
+  case guerreroJuchitan
+  case guerreroTepecoacuilco
+  case guerreroTlacoapa
+  case gujarat
+  case hidalgo
+  case karnataka
+  case kerala
+  case khyberPakhtunkhwa
+  case madhyaPradesh
+  case maharashtra
+  case morelos
+  case nayarit
+  case oaxaca
+  case puebla
+  case punjab
+  case queretaro
+  case sanLuisPotosi
+  case sinaloa
+  case sonora
+  case tabasco
+  case tamilNadu
+  case yucatan
+  case zacatecas
+  case aguascalientes
+  case bajaCaliforniaSur
+  case campeche
+  case colima
+  case quintanaRooBenitoJuarez
+  case quintanaRoo
+  case quintanaRooSolidaridad
+  case tlaxcala
+  case quintanaRooCozumel
+  case saoPaolo
+  public init(from decoder: Swift.Decoder) throws
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum DocumentType : Swift.Int, Swift.Decodable {
+  case none
+  case consularId
+  case dl
+  case dlPublicServicesCard
+  case employmentPass
+  case finCard
+  case id
+  case multipurposeId
+  case myKad
+  case myKid
+  case myPR
+  case myTentera
+  case panCard
+  case professionalId
+  case publicServicesCard
+  case residencePermit
+  case residentId
+  case temporaryResidencePermit
+  case voterId
+  case workPermit
+  case iKad
+  case militaryId
+  case myKas
+  case socialSecurityCard
+  case healthInsuranceCard
+  case passport
+  case sPass
+  case addressCard
+  case alienId
+  case alienPassport
+  case greenCard
+  case minorsId
+  case postalId
+  case professionalDl
+  case taxId
+  case weaponPermit
+  case visa
+  case borderCrossingCard
+  case driverCard
+  case globalEntryCard
+  case mypolis
+  case nexusCard
+  case passportCard
+  case proofOfAgeCard
+  case refugeeId
+  case tribalId
+  case veteranId
+  case citizenshipCertificate
+  case myNumberCard
+  case consularPassport
+  case minorsPassport
+  case minorsPublicServicesCard
+  public init(from decoder: Swift.Decoder) throws
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc final public class DocumentValidityCheck : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public var expiredCheck: DocumentVerificationClient.CheckResult {
+    @objc get
+  }
+  @objc override final public var description: Swift.String {
+    @objc get
+  }
+  @objc override dynamic public init()
+  @objc deinit
+  public init(from decoder: Swift.Decoder) throws
+}
+@objc public class DateResult : ObjectiveC.NSObject, Swift.Decodable {
+  @objc public var day: Swift.Int {
+    @objc get
+  }
+  @objc public var month: Swift.Int {
+    @objc get
+  }
+  @objc public var year: Swift.Int {
+    @objc get
+  }
+  @objc public var date: Foundation.Date? {
+    @objc get
+  }
+  @objc final public let originalString: DocumentVerificationClient.StringResult?
+  @objc public var successfullyParsed: Swift.Bool {
+    @objc get
+  }
+  @objc deinit
+  required public init(from decoder: Swift.Decoder) throws
+}
+@objc public class DateResultSimple : ObjectiveC.NSObject, Swift.Decodable {
+  @objc public var day: Swift.Int {
+    @objc get
+  }
+  @objc public var month: Swift.Int {
+    @objc get
+  }
+  @objc public var year: Swift.Int {
+    @objc get
+  }
+  @objc public var date: Foundation.Date? {
+    @objc get
+  }
+  @objc final public let originalString: Swift.String?
+  @objc public var successfullyParsed: Swift.Bool {
+    @objc get
+  }
+  @objc deinit
+  required public init(from decoder: Swift.Decoder) throws
+}
+@_inheritsConvenienceInitializers @objc final public class ImageQualityCheck : ObjectiveC.NSObject, Swift.Codable {
+  @objc final public var blurCheck: DocumentVerificationClient.CheckResult {
+    @objc get
+  }
+  @objc override final public var description: Swift.String {
+    @objc get
+  }
+  @objc override dynamic public init()
+  @objc deinit
+  final public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+@objc public enum ResultState : Swift.Int, Swift.Decodable {
+  case empty
+  case uncertain
+  case valid
+  case stageValid
+  public init(from decoder: Swift.Decoder) throws
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc @objcMembers final public class StringResult : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public let latin: Swift.String?
+  @objc final public let cyrillic: Swift.String?
+  @objc final public let arabic: Swift.String?
+  @objc deinit
+  public init(from decoder: Swift.Decoder) throws
+}
+@objc final public class ExtractionResult : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public let firstName: DocumentVerificationClient.StringResult?
+  @objc final public let lastName: DocumentVerificationClient.StringResult?
+  @objc final public let fullName: DocumentVerificationClient.StringResult?
+  @objc final public let address: DocumentVerificationClient.StringResult?
+  @objc final public let dateOfBirth: DocumentVerificationClient.DateResult?
+  @objc final public let dateOfIssue: DocumentVerificationClient.DateResult?
+  @objc final public let dateOfExpiry: DocumentVerificationClient.DateResult?
+  @objc final public let documentNumber: DocumentVerificationClient.StringResult?
+  @objc final public let sex: DocumentVerificationClient.StringResult?
+  @objc final public let driverLicenseDetailedInfo: DocumentVerificationClient.DriverLicenseDetailedInfo?
+  @objc final public let additionalNameInformation: DocumentVerificationClient.StringResult?
+  @objc final public let additionalAddressInformation: DocumentVerificationClient.StringResult?
+  @objc final public let additionalOptionalAddressInformation: DocumentVerificationClient.StringResult?
+  @objc final public let placeOfBirth: DocumentVerificationClient.StringResult?
+  @objc final public let nationality: DocumentVerificationClient.StringResult?
+  @objc final public let race: DocumentVerificationClient.StringResult?
+  @objc final public let religion: DocumentVerificationClient.StringResult?
+  @objc final public let profession: DocumentVerificationClient.StringResult?
+  @objc final public let maritalStatus: DocumentVerificationClient.StringResult?
+  @objc final public let residentialStatus: DocumentVerificationClient.StringResult?
+  @objc final public let employer: DocumentVerificationClient.StringResult?
+  @objc final public let personalIdNumber: DocumentVerificationClient.StringResult?
+  @objc final public let documentAdditionalNumber: DocumentVerificationClient.StringResult?
+  @objc final public let documentOptionalAdditionalNumber: DocumentVerificationClient.StringResult?
+  @objc final public let issuingAuthority: DocumentVerificationClient.StringResult?
+  @objc final public let mrzData: DocumentVerificationClient.MrzResult?
+  @objc final public let localizedName: DocumentVerificationClient.StringResult?
+  @objc final public let dataMatchResult: DocumentVerificationClient.DataMatchResult?
+  @objc final public let additionalPersonalIdNumber: DocumentVerificationClient.StringResult?
+  @objc final public let frontViz: DocumentVerificationClient.VizResult?
+  @objc final public let backViz: DocumentVerificationClient.VizResult?
+  @objc final public let frontImageAnalysisResult: DocumentVerificationClient.ImageAnalysisResult?
+  @objc final public let backImageAnalysisResult: DocumentVerificationClient.ImageAnalysisResult?
+  @objc final public let classInfo: DocumentVerificationClient.ClassInfo?
+  @objc final public let barcode: DocumentVerificationClient.BarcodeResult?
+  @objc final public let fathersName: DocumentVerificationClient.StringResult?
+  @objc final public let mothersName: DocumentVerificationClient.StringResult?
+  @objc final public let recognitionStatus: DocumentVerificationClient.ResultState
+  @objc final public var dateOfExpiryPermanent: Swift.Bool {
+    @objc get
+  }
+  @objc final public var scanningFirstSideDone: Swift.Bool {
+    @objc get
+  }
+  @objc final public var fullDocumentFrontImage: UIKit.UIImage? {
+    @objc get
+  }
+  @objc final public var fullDocumentBackImage: UIKit.UIImage? {
+    @objc get
+  }
+  @objc final public var faceImage: UIKit.UIImage? {
+    @objc get
+  }
+  @objc final public var signatureImage: UIKit.UIImage? {
+    @objc get
+  }
+  @objc final public var processingStatus: DocumentVerificationClient.ProcessingStatus {
+    @objc get
+  }
+  @objc final public var frontProcessingStatus: DocumentVerificationClient.ProcessingStatus {
+    @objc get
+  }
+  @objc final public var backProcessingStatus: DocumentVerificationClient.ProcessingStatus {
+    @objc get
+  }
+  @objc final public var recognitionMode: DocumentVerificationClient.RecognitionMode {
+    @objc get
+  }
+  @objc final public var belowAgeLimit: Swift.Bool {
+    @objc get
+  }
+  @objc final public var age: Swift.Int {
+    @objc get
+  }
+  @objc deinit
+  public init(from decoder: Swift.Decoder) throws
+}
+@objc final public class MrzResult : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public let rawMrzString: Swift.String?
+  @objc final public let documentCode: Swift.String?
+  @objc final public let issuer: Swift.String?
+  @objc final public let documentNumber: Swift.String?
+  @objc final public let opt1: Swift.String?
+  @objc final public let opt2: Swift.String?
+  @objc final public let gender: Swift.String?
+  @objc final public let primaryId: Swift.String?
+  @objc final public let secondaryId: Swift.String?
+  @objc final public let alienNumber: Swift.String?
+  @objc final public let applicationReceiptNumber: Swift.String?
+  @objc final public let immigrantCaseNumber: Swift.String?
+  @objc final public let dateOfBirth: DocumentVerificationClient.DateResultSimple?
+  @objc final public let dateOfExpiry: DocumentVerificationClient.DateResultSimple?
+  @objc final public let issuerName: Swift.String?
+  @objc final public let nationalityName: Swift.String?
+  @objc final public var mrzVerified: Swift.Bool {
+    @objc get
+  }
+  @objc final public var mrzParsed: Swift.Bool {
+    @objc get
+  }
+  @objc final public var documentType: DocumentVerificationClient.MrtdDocumentType {
+    @objc get
+  }
+  @objc deinit
+  public init(from decoder: Swift.Decoder) throws
+}
+@objc public enum MrtdDocumentType : Swift.Int, Swift.Decodable {
+  case unknown
+  case identityCard
+  case passport
+  case visa
+  case greenCard
+  case malaysianPassIMM13P
+  case driverLicense
+  case internationalTravelDocument
+  case borderCrossingCard
+  public init(from decoder: Swift.Decoder) throws
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc @objcMembers final public class DriverLicenseDetailedInfo : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public let restrictions: DocumentVerificationClient.StringResult?
+  @objc final public let endorsements: DocumentVerificationClient.StringResult?
+  @objc final public let vehicleClass: DocumentVerificationClient.StringResult?
+  @objc final public let conditions: DocumentVerificationClient.StringResult?
+  @objc final public let vehicleClassesInfo: [DocumentVerificationClient.VehicleClassInfo]?
+  @objc deinit
+  public init(from decoder: Swift.Decoder) throws
+}
+@objc @objcMembers final public class VehicleClassInfo : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public let vehicleClass: DocumentVerificationClient.StringResult?
+  @objc final public let licenceType: DocumentVerificationClient.StringResult?
+  @objc final public let effectiveDate: DocumentVerificationClient.DateResult?
+  @objc final public let expiryDate: DocumentVerificationClient.DateResult?
+  @objc deinit
+  public init(from decoder: Swift.Decoder) throws
+}
+@objc @objcMembers final public class BarcodeDriverLicenseDetailedInfo : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public let restrictions: Swift.String?
+  @objc final public let endorsements: Swift.String?
+  @objc final public let vehicleClass: Swift.String?
+  @objc final public let conditions: Swift.String?
+  @objc final public let vehicleClassesInfo: [DocumentVerificationClient.BarcodeVehicleClassInfo]?
+  @objc deinit
+  public init(from decoder: Swift.Decoder) throws
+}
+@objc @objcMembers final public class BarcodeVehicleClassInfo : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public let vehicleClass: Swift.String?
+  @objc final public let licenceType: Swift.String?
+  @objc final public let effectiveDate: DocumentVerificationClient.DateResultSimple?
+  @objc final public let expiryDate: DocumentVerificationClient.DateResultSimple?
+  @objc deinit
+  public init(from decoder: Swift.Decoder) throws
+}
+@objc @objcMembers final public class DataMatchResult : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public let dateOfBirth: DocumentVerificationClient.DataMatchState
+  @objc final public let dateOfExpiry: DocumentVerificationClient.DataMatchState
+  @objc final public let documentNumber: DocumentVerificationClient.DataMatchState
+  @objc final public let documentAdditionalNumber: DocumentVerificationClient.DataMatchState
+  @objc final public let documentOptionalAdditionalNumber: DocumentVerificationClient.DataMatchState
+  @objc final public let personalIdNumber: DocumentVerificationClient.DataMatchState
+  @objc final public let dataMatchResult: DocumentVerificationClient.DataMatchState
+  @objc deinit
+  public init(from decoder: Swift.Decoder) throws
+}
+@objc public enum DataMatchState : Swift.Int, Swift.Decodable {
+  case notPerformed
+  case failed
+  case success
+  public init(from decoder: Swift.Decoder) throws
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc final public class VizResult : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public let firstName: DocumentVerificationClient.StringResult?
+  @objc final public let lastName: DocumentVerificationClient.StringResult?
+  @objc final public let fullName: DocumentVerificationClient.StringResult?
+  @objc final public let fathersName: DocumentVerificationClient.StringResult?
+  @objc final public let mothersName: DocumentVerificationClient.StringResult?
+  @objc final public let additionalNameInformation: DocumentVerificationClient.StringResult?
+  @objc final public let localizedName: DocumentVerificationClient.StringResult?
+  @objc final public let address: DocumentVerificationClient.StringResult?
+  @objc final public let additionalAddressInformation: DocumentVerificationClient.StringResult?
+  @objc final public let additionalOptionalAddressInformation: DocumentVerificationClient.StringResult?
+  @objc final public let placeOfBirth: DocumentVerificationClient.StringResult?
+  @objc final public let nationality: DocumentVerificationClient.StringResult?
+  @objc final public let race: DocumentVerificationClient.StringResult?
+  @objc final public let religion: DocumentVerificationClient.StringResult?
+  @objc final public let profession: DocumentVerificationClient.StringResult?
+  @objc final public let maritalStatus: DocumentVerificationClient.StringResult?
+  @objc final public let residentialStatus: DocumentVerificationClient.StringResult?
+  @objc final public let employer: DocumentVerificationClient.StringResult?
+  @objc final public let sex: DocumentVerificationClient.StringResult?
+  @objc final public let dateOfBirth: DocumentVerificationClient.DateResult?
+  @objc final public let dateOfIssue: DocumentVerificationClient.DateResult?
+  @objc final public let dateOfExpiry: DocumentVerificationClient.DateResult?
+  @objc final public let documentNumber: DocumentVerificationClient.StringResult?
+  @objc final public let personalIdNumber: DocumentVerificationClient.StringResult?
+  @objc final public let documentAdditionalNumber: DocumentVerificationClient.StringResult?
+  @objc final public let documentOptionalAdditionalNumber: DocumentVerificationClient.StringResult?
+  @objc final public let additionalPersonalIdNumber: DocumentVerificationClient.StringResult?
+  @objc final public let issuingAuthority: DocumentVerificationClient.StringResult?
+  @objc final public let driverLicenseDetailedInfo: DocumentVerificationClient.DriverLicenseDetailedInfo?
+  @objc final public var dateOfExpiryPermanent: Swift.Bool {
+    @objc get
+  }
+  @objc deinit
+  public init(from decoder: Swift.Decoder) throws
+}
+@objc public enum ProcessingStatus : Swift.Int, Swift.Decodable {
+  case success
+  case detectionFailed
+  case imagePreprocessingFailed
+  case stabilityTestFailed
+  case scanningWrongSide
+  case fieldIdentificationFailed
+  case mandatoryFieldMissing
+  case invalidCharactersFound
+  case imageReturnFailed
+  case barcodeRecognitionFailed
+  case mrzParsingFailed
+  case classFiltered
+  case unsupportedClass
+  case unsupportedByLicense
+  case awaitingOtherSide
+  case notScanned
+  public init(from decoder: Swift.Decoder) throws
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum RecognitionMode : Swift.Int, Swift.Decodable {
+  case none
+  case mrzId
+  case mrzVisa
+  case mrzPassport
+  case photoId
+  case fullRecognition
+  case barcodeId
+  public init(from decoder: Swift.Decoder) throws
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc @objcMembers final public class ClassInfo : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public var country: DocumentVerificationClient.Country {
+    @objc get
+  }
+  @objc final public var region: DocumentVerificationClient.Region {
+    @objc get
+  }
+  @objc final public var type: DocumentVerificationClient.DocumentType {
+    @objc get
+  }
+  @objc final public let countryName: Swift.String?
+  @objc final public let isoAlpha3CountryCode: Swift.String?
+  @objc final public let isoAlpha2CountryCode: Swift.String?
+  @objc final public let isoNumericCountryCode: Swift.String?
+  @objc deinit
+  public init(from decoder: Swift.Decoder) throws
+}
+@objc public class DocumentVerificationService : ObjectiveC.NSObject {
+  @objc public init(settings: DocumentVerificationClient.DocumentVerificationServiceSettings)
+  #if compiler(>=5.3) && $AsyncAwait
+  @objc public func verify(documentVerificationRequest: DocumentVerificationClient.DocumentVerificationRequest) async throws -> DocumentVerificationClient.DocumentVerificationResult?
+  #endif
+  @objc deinit
+}
+@objc public class DocumentVerificationServiceSettings : ObjectiveC.NSObject {
+  @objc public init(verificationServiceBaseUrl: Swift.String, accessClientId: Swift.String, accessClientSecret: Swift.String)
+  @objc deinit
+}
+@objc @objcMembers final public class FieldCheck : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public let check: DocumentVerificationClient.DetailedCheck?
+  @objc override final public var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
+  public init(from decoder: Swift.Decoder) throws
+}
+@objc @objcMembers final public class MatchCheck : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public let overall: DocumentVerificationClient.DetailedCheck?
+  @objc final public let firstNameMatch: DocumentVerificationClient.FieldCheck?
+  @objc final public let lastNameMatch: DocumentVerificationClient.FieldCheck?
+  @objc final public let fullNameMatch: DocumentVerificationClient.FieldCheck?
+  @objc final public let additionalNameInformationMatch: DocumentVerificationClient.FieldCheck?
+  @objc final public let localizedNameMatch: DocumentVerificationClient.FieldCheck?
+  @objc final public let fathersNameMatch: DocumentVerificationClient.FieldCheck?
+  @objc final public let mothersNameMatch: DocumentVerificationClient.FieldCheck?
+  @objc final public let addressMatch: DocumentVerificationClient.FieldCheck?
+  @objc final public let additionalAddressInformationMatch: DocumentVerificationClient.FieldCheck?
+  @objc final public let additionalOptionalAddressInformationMatch: DocumentVerificationClient.FieldCheck?
+  @objc final public let placeOfBirthMatch: DocumentVerificationClient.FieldCheck?
+  @objc final public let nationalityMatch: DocumentVerificationClient.FieldCheck?
+  @objc final public let sexMatch: DocumentVerificationClient.FieldCheck?
+  @objc final public let dateOfBirthMatch: DocumentVerificationClient.FieldCheck?
+  @objc final public let dateOfIssueMatch: DocumentVerificationClient.FieldCheck?
+  @objc final public let dateOfExpiryMatch: DocumentVerificationClient.FieldCheck?
+  @objc final public let documentNumberMatch: DocumentVerificationClient.FieldCheck?
+  @objc final public let personalIdNumberMatch: DocumentVerificationClient.FieldCheck?
+  @objc final public let documentAdditionalNumberMatch: DocumentVerificationClient.FieldCheck?
+  @objc final public let documentOptionalAdditionalNumberMatch: DocumentVerificationClient.FieldCheck?
+  @objc final public let additionalPersonalIdNumberMatch: DocumentVerificationClient.FieldCheck?
+  @objc final public let issuingAuthorityMatch: DocumentVerificationClient.FieldCheck?
+  @objc override final public var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
+  public init(from decoder: Swift.Decoder) throws
+}
+@_inheritsConvenienceInitializers @objc final public class DateLogicCheck : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public var overall: DocumentVerificationClient.CheckResult {
+    @objc get
+  }
+  @objc final public var dateOfBirthBeforeDateOfIssueCheck: DocumentVerificationClient.CheckResult {
+    @objc get
+  }
+  @objc final public var dateOfBirthBeforeDateOfExpiryCheck: DocumentVerificationClient.CheckResult {
+    @objc get
+  }
+  @objc final public var dateOfIssueBeforeDateOfExpiryCheck: DocumentVerificationClient.CheckResult {
+    @objc get
+  }
+  @objc final public var dateOfBirthInPastCheck: DocumentVerificationClient.CheckResult {
+    @objc get
+  }
+  @objc final public var dateOfIssueInPastCheck: DocumentVerificationClient.CheckResult {
+    @objc get
+  }
+  @objc final public var dateOfExpiryInFutureCheck: DocumentVerificationClient.CheckResult {
+    @objc get
+  }
+  @objc override final public var description: Swift.String {
+    @objc get
+  }
+  @objc override dynamic public init()
+  @objc deinit
+  public init(from decoder: Swift.Decoder) throws
+}
+@objc @objcMembers final public class CheckDigitCheck : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public let mrz: DocumentVerificationClient.DetailedCheck?
+  @objc override final public var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
+  public init(from decoder: Swift.Decoder) throws
+}
+@objc @objcMembers final public class LogicCheck : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public let overall: DocumentVerificationClient.DetailedCheck?
+  @objc final public let dateLogicCheck: DocumentVerificationClient.DateLogicCheck?
+  @objc final public let checkDigitCheck: DocumentVerificationClient.CheckDigitCheck?
+  @objc override final public var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
+  public init(from decoder: Swift.Decoder) throws
+}
+@objc @objcMembers final public class ValueFormatCheck : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public let check: DocumentVerificationClient.DetailedCheck?
+  @objc override final public var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
+  public init(from decoder: Swift.Decoder) throws
+}
+@objc @objcMembers final public class FormatCheck : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public let overall: DocumentVerificationClient.DetailedCheck?
+  @objc final public let dateOfBirthCheck: DocumentVerificationClient.ValueFormatCheck?
+  @objc final public let dateOfExpiryCheck: DocumentVerificationClient.ValueFormatCheck?
+  @objc final public let dateOfIssueCheck: DocumentVerificationClient.ValueFormatCheck?
+  @objc final public let documentNumberCheck: DocumentVerificationClient.ValueFormatCheck?
+  @objc final public let genderCheck: DocumentVerificationClient.ValueFormatCheck?
+  @objc final public let nationalityCheck: DocumentVerificationClient.ValueFormatCheck?
+  @objc final public let issuingAuthorityCheck: DocumentVerificationClient.ValueFormatCheck?
+  @objc override final public var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
+  public init(from decoder: Swift.Decoder) throws
+}
+@objc @objcMembers final public class BarcodeAnomalyCheck : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public let overall: DocumentVerificationClient.DetailedCheck?
+  @objc override final public var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
+  public init(from decoder: Swift.Decoder) throws
+}
+@objc @objcMembers public class DataCheck : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public let overall: DocumentVerificationClient.DetailedCheck?
+  @objc final public let matchCheck: DocumentVerificationClient.MatchCheck?
+  @objc final public let logicCheck: DocumentVerificationClient.LogicCheck?
+  @objc final public let formatCheck: DocumentVerificationClient.FormatCheck?
+  @objc final public let barcodeAnomalyCheck: DocumentVerificationClient.BarcodeAnomalyCheck?
+  @objc final public let sampleStringCheck: DocumentVerificationClient.DetailedCheck?
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
+  required public init(from decoder: Swift.Decoder) throws
+}
+extension DocumentVerificationClient.RequestError : Swift.Equatable {}
+extension DocumentVerificationClient.RequestError : Swift.Hashable {}
+extension DocumentVerificationClient.RequestError : Swift.RawRepresentable {}
+extension DocumentVerificationClient.CheckResult : Swift.Equatable {}
+extension DocumentVerificationClient.CheckResult : Swift.Hashable {}
+extension DocumentVerificationClient.CheckResult : Swift.RawRepresentable {}
+extension DocumentVerificationClient.MatchLevel : Swift.Equatable {}
+extension DocumentVerificationClient.MatchLevel : Swift.Hashable {}
+extension DocumentVerificationClient.MatchLevel : Swift.RawRepresentable {}
+extension DocumentVerificationClient.CertaintyLevel : Swift.Equatable {}
+extension DocumentVerificationClient.CertaintyLevel : Swift.Hashable {}
+extension DocumentVerificationClient.CertaintyLevel : Swift.RawRepresentable {}
+extension DocumentVerificationClient.CardOrientation : Swift.Equatable {}
+extension DocumentVerificationClient.CardOrientation : Swift.Hashable {}
+extension DocumentVerificationClient.CardOrientation : Swift.RawRepresentable {}
+extension DocumentVerificationClient.DocumentImageColorStatus : Swift.Equatable {}
+extension DocumentVerificationClient.DocumentImageColorStatus : Swift.Hashable {}
+extension DocumentVerificationClient.DocumentImageColorStatus : Swift.RawRepresentable {}
+extension DocumentVerificationClient.ImageAnalysisDetectionStatus : Swift.Equatable {}
+extension DocumentVerificationClient.ImageAnalysisDetectionStatus : Swift.Hashable {}
+extension DocumentVerificationClient.ImageAnalysisDetectionStatus : Swift.RawRepresentable {}
+extension DocumentVerificationClient.SecurityFeaturesProcessingStatus : Swift.Equatable {}
+extension DocumentVerificationClient.SecurityFeaturesProcessingStatus : Swift.Hashable {}
+extension DocumentVerificationClient.SecurityFeaturesProcessingStatus : Swift.RawRepresentable {}
+extension DocumentVerificationClient.Country : Swift.Equatable {}
+extension DocumentVerificationClient.Country : Swift.Hashable {}
+extension DocumentVerificationClient.Country : Swift.RawRepresentable {}
+extension DocumentVerificationClient.Region : Swift.Equatable {}
+extension DocumentVerificationClient.Region : Swift.Hashable {}
+extension DocumentVerificationClient.Region : Swift.RawRepresentable {}
+extension DocumentVerificationClient.DocumentType : Swift.Equatable {}
+extension DocumentVerificationClient.DocumentType : Swift.Hashable {}
+extension DocumentVerificationClient.DocumentType : Swift.RawRepresentable {}
+extension DocumentVerificationClient.ResultState : Swift.Equatable {}
+extension DocumentVerificationClient.ResultState : Swift.Hashable {}
+extension DocumentVerificationClient.ResultState : Swift.RawRepresentable {}
+extension DocumentVerificationClient.MrtdDocumentType : Swift.Equatable {}
+extension DocumentVerificationClient.MrtdDocumentType : Swift.Hashable {}
+extension DocumentVerificationClient.MrtdDocumentType : Swift.RawRepresentable {}
+extension DocumentVerificationClient.DataMatchState : Swift.Equatable {}
+extension DocumentVerificationClient.DataMatchState : Swift.Hashable {}
+extension DocumentVerificationClient.DataMatchState : Swift.RawRepresentable {}
+extension DocumentVerificationClient.ProcessingStatus : Swift.Equatable {}
+extension DocumentVerificationClient.ProcessingStatus : Swift.Hashable {}
+extension DocumentVerificationClient.ProcessingStatus : Swift.RawRepresentable {}
+extension DocumentVerificationClient.RecognitionMode : Swift.Equatable {}
+extension DocumentVerificationClient.RecognitionMode : Swift.Hashable {}
+extension DocumentVerificationClient.RecognitionMode : Swift.RawRepresentable {}

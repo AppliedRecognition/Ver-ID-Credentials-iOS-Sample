@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>com.appliedrec.docverclientid</key>
+	<string>fc818e55903db8d2c2aef187a6539a3d.access</string>
+	<key>com.appliedrec.docverclientsecret</key>
+	<string>de9c9adc4b5a864387f5075ee1f07c481de058c1469efd25120dc104eb88c015</string>
+	<key>com.appliedrec.docverurl</key>
+	<string>docver.microblink.com</string>
+	<key>com.appliedrec.supporteddocsurl</key>
+	<string>https://github.com/BlinkID/blinkid-ios/blob/master/documentation/BlinkIDRecognizer.md</string>
+	<key>com.appliedrec.verid.password</key>
+	<string>42696453-8699-4828-be6f-681f3d6647df</string>
+	<key>microblink_licence_key</key>
+	<string>sRwAAAEZY29tLmFwcGxpZWRyZWMuSUQtQ2FwdHVyZZpSUB4ubSbnMB1Z9RDETJdBLqrogu59+2bXxsq05vG/nGbBEUgUbvjhyX02s+n6vR1NjsH9m7mUCe8ONGumr5jUDZH9tjEtly5e/jgmfJj1Pviv4UIu1BLz/Mi1dWEEVA7SG9skiHz29iQpcCD1YVqXUl39b9SMGHa7uVGkFAYdf4YxNYhaTHqCUBB15aYv5+Po7DMmqMhWY8MgLK9GVyGv1NPs/r+doY7DnmjoM2a8ch3TcSTz0GzENMSw1wB5ssLKDtkeH/R1MxFYQt1oojpe0nSr3mC511/linzZID+eUNO7XGtoplHSw6jzrY5xXR1JLwXNXUQ1SLK9A9NVX+e2hGXC</string>
+</dict>
+</plist>

@@ -2,14 +2,12 @@
 //  AuthenticityScoreSupport.swift
 //  ID Capture
 //
-//  Created by Jakub Dolejs on 21/10/2021.
-//  Copyright © 2021 Applied Recognition Inc. All rights reserved.
+//  Created by Jakub Dolejs on 14/12/2022.
 //
 
 import Foundation
 import Microblink
 import VerIDCore
-import AAMVABarcodeParser
 
 class AuthenticityScoreSupport {
     
@@ -28,19 +26,6 @@ class AuthenticityScoreSupport {
         .yukon: [.typeDl]
     ]
     
-    private var jurisdictions: [String:MBRegion] = [
-        "AB": .alberta,
-        "BC": .britishColumbia,
-        "MB": .manitoba,
-        "NB": .newBrunswick,
-        "NL": .newfoundlandAndLabrador,
-        "NS": .novaScotia,
-        "ON": .ontario,
-        "QC": .quebec,
-        "SK": .saskatchewan,
-        "YT": .yukon
-    ]
-    
     func isDocumentSupported(result: MBBlinkIdCombinedRecognizerResult) -> Bool {
         guard let region = result.classInfo?.region, let type = result.classInfo?.type else {
             return false
@@ -48,13 +33,6 @@ class AuthenticityScoreSupport {
         return self.supportedDocuments.contains { entry in
             entry.key == region && entry.value.contains(type)
         }
-    }
-    
-    func isDocumentSupported(_ document: DocumentData) -> Bool {
-        guard let jurisdiction = document["DAJ"], let region = self.jurisdictions[jurisdiction] else {
-            return false
-        }
-        return supportedDocuments.keys.contains(region)
     }
     
     lazy var classifiers: [Classifier] = {

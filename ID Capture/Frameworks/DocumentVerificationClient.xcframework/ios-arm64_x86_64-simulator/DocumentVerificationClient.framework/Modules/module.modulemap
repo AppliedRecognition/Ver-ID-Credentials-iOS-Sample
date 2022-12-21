@@ -1,0 +1,11 @@
+framework module DocumentVerificationClient {
+  umbrella header "DocumentVerificationClient.h"
+
+  export *
+  module * { export * }
+}
+
+module DocumentVerificationClient.Swift {
+  header "DocumentVerificationClient-Swift.h"
+  requires objc
+}
