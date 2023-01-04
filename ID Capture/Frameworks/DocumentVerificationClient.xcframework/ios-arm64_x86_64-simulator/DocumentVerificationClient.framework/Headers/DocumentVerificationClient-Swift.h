@@ -867,6 +867,24 @@ SWIFT_CLASS("_TtC26DocumentVerificationClient21DocumentValidityCheck")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class DocumentVerificationResult;
+
+/// Class representing the result of the document verificaton.
+/// See <code>VerificationResult</code> for more details.
+SWIFT_CLASS("_TtC26DocumentVerificationClient36DocumentVerificationEndpointResponse")
+@interface DocumentVerificationEndpointResponse : NSObject
+/// Provided identifier for logback
+@property (nonatomic, readonly, copy) NSString * _Nullable traceId;
+/// The result containing every data check result for the verified document.
+@property (nonatomic, readonly, strong) DocumentVerificationResult * _Nullable data;
+/// UTC time when verification started
+@property (nonatomic, readonly, copy) NSString * _Nonnull startTime;
+/// UTC time when verification finished
+@property (nonatomic, readonly, copy) NSString * _Nonnull finishTime;
+/// Unique execution identifier of the verification request for logback
+@property (nonatomic, readonly, copy) NSString * _Nonnull executionId;
+@end
+
 @class ImageSource;
 enum MatchLevel : NSInteger;
 
@@ -889,6 +907,8 @@ SWIFT_CLASS("_TtC26DocumentVerificationClient27DocumentVerificationRequest")
 @property (nonatomic) enum MatchLevel screenMatchLevel;
 /// Defines photocopy match level.
 @property (nonatomic) enum MatchLevel photocopyMatchLevel;
+/// Defines custom pattern for logback.
+@property (nonatomic, copy) NSString * _Nullable traceId;
 /// Initializes a new DocumentVerificationRequest with provided document images.
 /// \param frontImage The front image of the document.
 ///
@@ -938,7 +958,19 @@ SWIFT_CLASS("_TtC26DocumentVerificationClient26DocumentVerificationResult")
 SWIFT_CLASS("_TtC26DocumentVerificationClient27DocumentVerificationService")
 @interface DocumentVerificationService : NSObject
 - (nonnull instancetype)initWithSettings:(DocumentVerificationServiceSettings * _Nonnull)settings OBJC_DESIGNATED_INITIALIZER;
-- (void)verifyWithDocumentVerificationRequest:(DocumentVerificationRequest * _Nonnull)documentVerificationRequest completionHandler:(void (^ _Nonnull)(DocumentVerificationResult * _Nullable, NSError * _Nullable))completionHandler;
+/// Verify the document.
+/// \code
+/// - Parameters:
+///    - documentVerificationRequest: Document Verification Request to be processed.
+///
+/// - Returns:
+///    - A ``DocumentVerificationResult``
+///    
+/// - Throws:
+///    - A ``RequestError``
+///
+/// \endcode
+- (void)verifyWithDocumentVerificationRequest:(DocumentVerificationRequest * _Nonnull)documentVerificationRequest completionHandler:(void (^ _Nonnull)(DocumentVerificationEndpointResponse * _Nullable, NSError * _Nullable))completionHandler;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -2484,6 +2516,24 @@ SWIFT_CLASS("_TtC26DocumentVerificationClient21DocumentValidityCheck")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class DocumentVerificationResult;
+
+/// Class representing the result of the document verificaton.
+/// See <code>VerificationResult</code> for more details.
+SWIFT_CLASS("_TtC26DocumentVerificationClient36DocumentVerificationEndpointResponse")
+@interface DocumentVerificationEndpointResponse : NSObject
+/// Provided identifier for logback
+@property (nonatomic, readonly, copy) NSString * _Nullable traceId;
+/// The result containing every data check result for the verified document.
+@property (nonatomic, readonly, strong) DocumentVerificationResult * _Nullable data;
+/// UTC time when verification started
+@property (nonatomic, readonly, copy) NSString * _Nonnull startTime;
+/// UTC time when verification finished
+@property (nonatomic, readonly, copy) NSString * _Nonnull finishTime;
+/// Unique execution identifier of the verification request for logback
+@property (nonatomic, readonly, copy) NSString * _Nonnull executionId;
+@end
+
 @class ImageSource;
 enum MatchLevel : NSInteger;
 
@@ -2506,6 +2556,8 @@ SWIFT_CLASS("_TtC26DocumentVerificationClient27DocumentVerificationRequest")
 @property (nonatomic) enum MatchLevel screenMatchLevel;
 /// Defines photocopy match level.
 @property (nonatomic) enum MatchLevel photocopyMatchLevel;
+/// Defines custom pattern for logback.
+@property (nonatomic, copy) NSString * _Nullable traceId;
 /// Initializes a new DocumentVerificationRequest with provided document images.
 /// \param frontImage The front image of the document.
 ///
@@ -2555,7 +2607,19 @@ SWIFT_CLASS("_TtC26DocumentVerificationClient26DocumentVerificationResult")
 SWIFT_CLASS("_TtC26DocumentVerificationClient27DocumentVerificationService")
 @interface DocumentVerificationService : NSObject
 - (nonnull instancetype)initWithSettings:(DocumentVerificationServiceSettings * _Nonnull)settings OBJC_DESIGNATED_INITIALIZER;
-- (void)verifyWithDocumentVerificationRequest:(DocumentVerificationRequest * _Nonnull)documentVerificationRequest completionHandler:(void (^ _Nonnull)(DocumentVerificationResult * _Nullable, NSError * _Nullable))completionHandler;
+/// Verify the document.
+/// \code
+/// - Parameters:
+///    - documentVerificationRequest: Document Verification Request to be processed.
+///
+/// - Returns:
+///    - A ``DocumentVerificationResult``
+///    
+/// - Throws:
+///    - A ``RequestError``
+///
+/// \endcode
+- (void)verifyWithDocumentVerificationRequest:(DocumentVerificationRequest * _Nonnull)documentVerificationRequest completionHandler:(void (^ _Nonnull)(DocumentVerificationEndpointResponse * _Nullable, NSError * _Nullable))completionHandler;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end

@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/DocumentVerificationClient-Swift.h</key>
 		<data>
-		ZkisZk1l2/WQAKB1+erBVEy/nKs=
+		qy5fVD5jF0ngtErJjPmzfTPbWQ0=
 		</data>
 		<key>Headers/DocumentVerificationClient.h</key>
 		<data>
@@ -14,27 +14,27 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		Ewt0ZfyLJfVgMPWWxqL/TkVcTwU=
+		9eV68kIaPjrozfbLZiqQEWQsMTE=
 		</data>
 		<key>Modules/DocumentVerificationClient.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		I+t+U9nNeuCBaac7V770l7eCEHc=
+		/s07mdd9HRmY9YdT5mwiZOP8E9A=
 		</data>
 		<key>Modules/DocumentVerificationClient.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
-		4H9KPsI6y0osBcDkPAcK6hDpMJw=
+		bIfEWA/hbCiQ5/XfAEV0+8QsHLI=
 		</data>
 		<key>Modules/DocumentVerificationClient.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		s8O6Q0ysm9qq6R5n7S8CMOKdjoY=
+		VtLGuFGzgPaC2Vee2UpZg/HFm+4=
 		</data>
 		<key>Modules/DocumentVerificationClient.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		4H9KPsI6y0osBcDkPAcK6hDpMJw=
+		bIfEWA/hbCiQ5/XfAEV0+8QsHLI=
 		</data>
 		<key>Modules/DocumentVerificationClient.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		hNbJAxQAuIUS3zjxLdrFlGXqARw=
+		0e6pXov5AdhLKaVF/dBYLtVjD/k=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -47,7 +47,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			9t/xjKUEm1YOWJdcAUM05TF8Z8l5ICyw/R0lzk1t9bc=
+			aJpZgrSb6wvJ7xj8e8W/gMjS++tXgTz7npBTfyNBges=
 			</data>
 		</dict>
 		<key>Headers/DocumentVerificationClient.h</key>
@@ -61,35 +61,35 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Rvk3hTlx6xqs/CiAl8rMc71//zqVJRPp1J48KTnNs+U=
+			BiWDmTwxDEWvTPP0olMNmTywQenRgFmhfN6gM+PVmok=
 			</data>
 		</dict>
 		<key>Modules/DocumentVerificationClient.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			3Yp7LxcoNMilRv5zCk9m+b5DGKWMolAxkEfF4FxvUEA=
+			sDUyrdWZ5TTLIRfCRqQsoaKHl0TTC0YYOoOfgtrDRm0=
 			</data>
 		</dict>
 		<key>Modules/DocumentVerificationClient.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			leUQFbegf23Fr3slF1QbqGHHgNYlaMG1wnmrfr5IZ8o=
+			xQXkY6ygS6wxTOnr9VoQNZzA1QrWBo3vmWBfI9DeX3k=
 			</data>
 		</dict>
 		<key>Modules/DocumentVerificationClient.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			3Yp7LxcoNMilRv5zCk9m+b5DGKWMolAxkEfF4FxvUEA=
+			sDUyrdWZ5TTLIRfCRqQsoaKHl0TTC0YYOoOfgtrDRm0=
 			</data>
 		</dict>
 		<key>Modules/DocumentVerificationClient.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			2rV9XkByF8GbwGrPhRdcYGQct5Fl8oE9Gcwv25228yQ=
+			gusON0kE9mK2I5CVkmzd8jgRX/cq+2L6kFnAK7inRgw=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

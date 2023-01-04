@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/DocumentVerificationClient-Swift.h</key>
 		<data>
-		HTlbFrOoQlceJLodZFYhSnMOHDk=
+		vTXjovHSnHaYA24CR5mGdu76v1g=
 		</data>
 		<key>Headers/DocumentVerificationClient.h</key>
 		<data>
@@ -14,47 +14,47 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		VH/sKAuuxaFqt4xXS5+WLvLmuRI=
+		U0cS7CgTqOfJW5SoObUwxCujKLk=
 		</data>
 		<key>Modules/DocumentVerificationClient.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		I+t+U9nNeuCBaac7V770l7eCEHc=
+		/s07mdd9HRmY9YdT5mwiZOP8E9A=
 		</data>
 		<key>Modules/DocumentVerificationClient.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		wj+QH+s9lAvo1QKLZp+ZxJyXIeA=
+		KWUndtYqSns5wu7TiXPc17GjVB8=
 		</data>
 		<key>Modules/DocumentVerificationClient.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		agqrH2h0CsLN+C4zHoS1kyFf5YU=
+		P14jPhuQoCp07X4lSFZu1DF03jg=
 		</data>
 		<key>Modules/DocumentVerificationClient.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		wj+QH+s9lAvo1QKLZp+ZxJyXIeA=
+		KWUndtYqSns5wu7TiXPc17GjVB8=
 		</data>
 		<key>Modules/DocumentVerificationClient.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		m2v568TBiSnaGsSN9Vo1mSZ4gdU=
+		Q/aoZYbCOD7p3MWB55YYSvTcW2U=
 		</data>
 		<key>Modules/DocumentVerificationClient.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		I+t+U9nNeuCBaac7V770l7eCEHc=
+		/s07mdd9HRmY9YdT5mwiZOP8E9A=
 		</data>
 		<key>Modules/DocumentVerificationClient.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		1wDhXjnpaIx1WbjdXY/10duHDCU=
+		74X7R1CqeSMKx76ROOQA7b04vdE=
 		</data>
 		<key>Modules/DocumentVerificationClient.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		qWSku3Y8fC+lI8ul5C742LjyzXE=
+		1LCzw0p8g47tecUIQwMO0o0uvCs=
 		</data>
 		<key>Modules/DocumentVerificationClient.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		1wDhXjnpaIx1WbjdXY/10duHDCU=
+		74X7R1CqeSMKx76ROOQA7b04vdE=
 		</data>
 		<key>Modules/DocumentVerificationClient.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		LL/PEq4DuEth/gquGX1D3q53omE=
+		tJmKJq5vjtbe9BSmL+81QLWMJps=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -67,7 +67,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			/3k4zYSM4U4KdgL5gmOUKXmD4gaeOR+NjVciW6L3kzw=
+			SCw+CG4Q9+OHTKuvMJlNuNSvkVh6b2dvHpDMaaaXO4w=
 			</data>
 		</dict>
 		<key>Headers/DocumentVerificationClient.h</key>
@@ -81,70 +81,70 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Rvk3hTlx6xqs/CiAl8rMc71//zqVJRPp1J48KTnNs+U=
+			BiWDmTwxDEWvTPP0olMNmTywQenRgFmhfN6gM+PVmok=
 			</data>
 		</dict>
 		<key>Modules/DocumentVerificationClient.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ILACQEGnS78OfeL9tVhiWQPml96iCOdLZuvgNORw6ck=
+			EiKjPzAvKynY+CW2uZidmraZcxBlHq1dvfsGvxHyKF8=
 			</data>
 		</dict>
 		<key>Modules/DocumentVerificationClient.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			KowoUeB0HxlfInndLqN3AIvyxS9bshgYmNs9/hL1Ivg=
+			gstTn0AgaZIMI90tsFyeX4Qai6NZlAk2uigu/w7Kiec=
 			</data>
 		</dict>
 		<key>Modules/DocumentVerificationClient.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ILACQEGnS78OfeL9tVhiWQPml96iCOdLZuvgNORw6ck=
+			EiKjPzAvKynY+CW2uZidmraZcxBlHq1dvfsGvxHyKF8=
 			</data>
 		</dict>
 		<key>Modules/DocumentVerificationClient.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			wtt4aTrDukfEd5BDV6cUxfCWFHT8xNv0QiupBEL4oRw=
+			P3m7C889xy/upHi9xV0jrCPuhP2I/3o0pAuNWtRUfyE=
 			</data>
 		</dict>
 		<key>Modules/DocumentVerificationClient.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Rvk3hTlx6xqs/CiAl8rMc71//zqVJRPp1J48KTnNs+U=
+			BiWDmTwxDEWvTPP0olMNmTywQenRgFmhfN6gM+PVmok=
 			</data>
 		</dict>
 		<key>Modules/DocumentVerificationClient.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			7x+sUrnv6PcWcRHcb0c4Ty4sSKblQs6oXJs/th3BAS0=
+			jXwlC1D535K4dTkQ47MQ4CiAzOi1Y0sUHuT3RKTrHNo=
 			</data>
 		</dict>
 		<key>Modules/DocumentVerificationClient.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			VM/gHLVoGvNN+rW46aL4WoqMl48cYnzeL5wsru4tk2I=
+			/t8S0Eb+BbkC9OzyjUNEH/eE/jOxND9YYerTuLaE118=
 			</data>
 		</dict>
 		<key>Modules/DocumentVerificationClient.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			7x+sUrnv6PcWcRHcb0c4Ty4sSKblQs6oXJs/th3BAS0=
+			jXwlC1D535K4dTkQ47MQ4CiAzOi1Y0sUHuT3RKTrHNo=
 			</data>
 		</dict>
 		<key>Modules/DocumentVerificationClient.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			WoAMcSdYmr/zFLpO5FILyvsOGl0Km81/RlvmhkhI86M=
+			qoQxuDKygIfVEhI3G6Mq2EfD+IXd0vFpJDfhYkS0v9w=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

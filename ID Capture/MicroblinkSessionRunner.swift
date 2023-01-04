@@ -98,7 +98,8 @@ class MicroblinkSessionRunner: NSObject, ObservableObject, MBBlinkIdOverlayViewC
                                                                  accessClientId: docVerClientId,
                                                                  accessClientSecret: docVerClientSecret)
         let docVerService = DocumentVerificationService(settings: docVerSettings)
-        return try await docVerService.verify(documentVerificationRequest: docVerRequest)
+        let result = try await docVerService.verify(documentVerificationRequest: docVerRequest)
+        return result?.data
     }
     
     func faceCaptureFromImage(_ image: UIImage, detectAuthenticity: Bool, completion: @escaping (Result<(FaceCapture, Float?),Error>) -> Void) {

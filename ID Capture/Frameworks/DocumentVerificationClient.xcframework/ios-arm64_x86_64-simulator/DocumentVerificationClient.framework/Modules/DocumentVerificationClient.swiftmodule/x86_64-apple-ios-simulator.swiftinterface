@@ -147,6 +147,15 @@ import _StringProcessing
     get
   }
 }
+@objc @objcMembers final public class DocumentVerificationEndpointResponse : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public let traceId: Swift.String?
+  @objc final public let data: DocumentVerificationClient.DocumentVerificationResult?
+  @objc final public let startTime: Swift.String
+  @objc final public let finishTime: Swift.String
+  @objc final public let executionId: Swift.String
+  @objc deinit
+  public init(from decoder: Swift.Decoder) throws
+}
 @objc @objcMembers final public class OverallFraudCheck : ObjectiveC.NSObject, Swift.Decodable {
   @objc final public let result: DocumentVerificationClient.CheckResult
   @objc final public let totalChecks: Swift.Int
@@ -307,6 +316,7 @@ public struct Safe<Base> : Swift.Decodable where Base : Swift.Decodable {
   @objc public var returnSignatureImage: Swift.Bool
   @objc public var screenMatchLevel: DocumentVerificationClient.MatchLevel
   @objc public var photocopyMatchLevel: DocumentVerificationClient.MatchLevel
+  @objc public var traceId: Swift.String?
   @objc public init(imageFront: DocumentVerificationClient.ImageSource, imageBack: DocumentVerificationClient.ImageSource? = nil)
   @objc deinit
 }
@@ -1138,7 +1148,7 @@ public struct Safe<Base> : Swift.Decodable where Base : Swift.Decodable {
 @objc public class DocumentVerificationService : ObjectiveC.NSObject {
   @objc public init(settings: DocumentVerificationClient.DocumentVerificationServiceSettings)
   #if compiler(>=5.3) && $AsyncAwait
-  @objc public func verify(documentVerificationRequest: DocumentVerificationClient.DocumentVerificationRequest) async throws -> DocumentVerificationClient.DocumentVerificationResult?
+  @objc public func verify(documentVerificationRequest: DocumentVerificationClient.DocumentVerificationRequest) async throws -> DocumentVerificationClient.DocumentVerificationEndpointResponse?
   #endif
   @objc deinit
 }

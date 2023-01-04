@@ -3735,6 +3735,399 @@
       },
       {
         "kind": "TypeDecl",
+        "name": "DocumentVerificationEndpointResponse",
+        "printedName": "DocumentVerificationEndpointResponse",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "traceId",
+            "printedName": "traceId",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@DocumentVerificationClient@objc(cs)DocumentVerificationEndpointResponse(py)traceId",
+            "mangledName": "$s26DocumentVerificationClient0aB16EndpointResponseC7traceIdSSSgvp",
+            "moduleName": "DocumentVerificationClient",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DocumentVerificationClient@objc(cs)DocumentVerificationEndpointResponse(im)traceId",
+                "mangledName": "$s26DocumentVerificationClient0aB16EndpointResponseC7traceIdSSSgvg",
+                "moduleName": "DocumentVerificationClient",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "data",
+            "printedName": "data",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "DocumentVerificationClient.DocumentVerificationResult?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DocumentVerificationResult",
+                    "printedName": "DocumentVerificationClient.DocumentVerificationResult",
+                    "usr": "c:@M@DocumentVerificationClient@objc(cs)DocumentVerificationResult"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@DocumentVerificationClient@objc(cs)DocumentVerificationEndpointResponse(py)data",
+            "mangledName": "$s26DocumentVerificationClient0aB16EndpointResponseC4dataAA0aB6ResultCSgvp",
+            "moduleName": "DocumentVerificationClient",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "DocumentVerificationClient.DocumentVerificationResult?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "DocumentVerificationResult",
+                        "printedName": "DocumentVerificationClient.DocumentVerificationResult",
+                        "usr": "c:@M@DocumentVerificationClient@objc(cs)DocumentVerificationResult"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DocumentVerificationClient@objc(cs)DocumentVerificationEndpointResponse(im)data",
+                "mangledName": "$s26DocumentVerificationClient0aB16EndpointResponseC4dataAA0aB6ResultCSgvg",
+                "moduleName": "DocumentVerificationClient",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "startTime",
+            "printedName": "startTime",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@DocumentVerificationClient@objc(cs)DocumentVerificationEndpointResponse(py)startTime",
+            "mangledName": "$s26DocumentVerificationClient0aB16EndpointResponseC9startTimeSSvp",
+            "moduleName": "DocumentVerificationClient",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DocumentVerificationClient@objc(cs)DocumentVerificationEndpointResponse(im)startTime",
+                "mangledName": "$s26DocumentVerificationClient0aB16EndpointResponseC9startTimeSSvg",
+                "moduleName": "DocumentVerificationClient",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "finishTime",
+            "printedName": "finishTime",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@DocumentVerificationClient@objc(cs)DocumentVerificationEndpointResponse(py)finishTime",
+            "mangledName": "$s26DocumentVerificationClient0aB16EndpointResponseC10finishTimeSSvp",
+            "moduleName": "DocumentVerificationClient",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DocumentVerificationClient@objc(cs)DocumentVerificationEndpointResponse(im)finishTime",
+                "mangledName": "$s26DocumentVerificationClient0aB16EndpointResponseC10finishTimeSSvg",
+                "moduleName": "DocumentVerificationClient",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "executionId",
+            "printedName": "executionId",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@DocumentVerificationClient@objc(cs)DocumentVerificationEndpointResponse(py)executionId",
+            "mangledName": "$s26DocumentVerificationClient0aB16EndpointResponseC11executionIdSSvp",
+            "moduleName": "DocumentVerificationClient",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DocumentVerificationClient@objc(cs)DocumentVerificationEndpointResponse(im)executionId",
+                "mangledName": "$s26DocumentVerificationClient0aB16EndpointResponseC11executionIdSSvg",
+                "moduleName": "DocumentVerificationClient",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "DocumentVerificationEndpointResponse",
+                "printedName": "DocumentVerificationClient.DocumentVerificationEndpointResponse",
+                "usr": "c:@M@DocumentVerificationClient@objc(cs)DocumentVerificationEndpointResponse"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Decoder",
+                "printedName": "Swift.Decoder",
+                "usr": "s:s7DecoderP"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:26DocumentVerificationClient0aB16EndpointResponseC4fromACs7Decoder_p_tKcfc",
+            "mangledName": "$s26DocumentVerificationClient0aB16EndpointResponseC4fromACs7Decoder_p_tKcfc",
+            "moduleName": "DocumentVerificationClient",
+            "implicit": true,
+            "throwing": true,
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@DocumentVerificationClient@objc(cs)DocumentVerificationEndpointResponse",
+        "mangledName": "$s26DocumentVerificationClient0aB16EndpointResponseC",
+        "moduleName": "DocumentVerificationClient",
+        "declAttributes": [
+          "Final",
+          "AccessControl",
+          "ObjCMembers",
+          "RawDocComment",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
         "name": "OverallFraudCheck",
         "printedName": "OverallFraudCheck",
         "children": [
@@ -9713,6 +10106,124 @@
                 "declKind": "Accessor",
                 "usr": "s:26DocumentVerificationClient0aB7RequestC19photocopyMatchLevelAA0fG0OvM",
                 "mangledName": "$s26DocumentVerificationClient0aB7RequestC19photocopyMatchLevelAA0fG0OvM",
+                "moduleName": "DocumentVerificationClient",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "traceId",
+            "printedName": "traceId",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@DocumentVerificationClient@objc(cs)DocumentVerificationRequest(py)traceId",
+            "mangledName": "$s26DocumentVerificationClient0aB7RequestC7traceIdSSSgvp",
+            "moduleName": "DocumentVerificationClient",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DocumentVerificationClient@objc(cs)DocumentVerificationRequest(im)traceId",
+                "mangledName": "$s26DocumentVerificationClient0aB7RequestC7traceIdSSSgvg",
+                "moduleName": "DocumentVerificationClient",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DocumentVerificationClient@objc(cs)DocumentVerificationRequest(im)setTraceId:",
+                "mangledName": "$s26DocumentVerificationClient0aB7RequestC7traceIdSSSgvs",
+                "moduleName": "DocumentVerificationClient",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:26DocumentVerificationClient0aB7RequestC7traceIdSSSgvM",
+                "mangledName": "$s26DocumentVerificationClient0aB7RequestC7traceIdSSSgvM",
                 "moduleName": "DocumentVerificationClient",
                 "implicit": true,
                 "accessorKind": "_modify"
@@ -42036,13 +42547,13 @@
               {
                 "kind": "TypeNominal",
                 "name": "Optional",
-                "printedName": "DocumentVerificationClient.DocumentVerificationResult?",
+                "printedName": "DocumentVerificationClient.DocumentVerificationEndpointResponse?",
                 "children": [
                   {
                     "kind": "TypeNominal",
-                    "name": "DocumentVerificationResult",
-                    "printedName": "DocumentVerificationClient.DocumentVerificationResult",
-                    "usr": "c:@M@DocumentVerificationClient@objc(cs)DocumentVerificationResult"
+                    "name": "DocumentVerificationEndpointResponse",
+                    "printedName": "DocumentVerificationClient.DocumentVerificationEndpointResponse",
+                    "usr": "c:@M@DocumentVerificationClient@objc(cs)DocumentVerificationEndpointResponse"
                   }
                 ],
                 "usr": "s:Sq"
@@ -42056,7 +42567,7 @@
             ],
             "declKind": "Func",
             "usr": "c:@M@DocumentVerificationClient@objc(cs)DocumentVerificationService(im)verifyWithDocumentVerificationRequest:completionHandler:",
-            "mangledName": "$s26DocumentVerificationClient0aB7ServiceC6verify08documentB7RequestAA0aB6ResultCSgAA0abG0C_tYaKF",
+            "mangledName": "$s26DocumentVerificationClient0aB7ServiceC6verify08documentB7RequestAA0aB16EndpointResponseCSgAA0abG0C_tYaKF",
             "moduleName": "DocumentVerificationClient",
             "objc_name": "verifyWithDocumentVerificationRequest:completionHandler:",
             "declAttributes": [
@@ -47667,14 +48178,28 @@
     {
       "filePath": "\/Users\/derek\/Desktop\/docver-client-server\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Models\/Results\/CheckResults\/VisualCheckResult.swift",
       "kind": "StringLiteral",
-      "offset": 6856,
+      "offset": 6828,
+      "length": 8,
+      "value": "\"result\""
+    },
+    {
+      "filePath": "\/Users\/derek\/Desktop\/docver-client-server\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Models\/Results\/CheckResults\/VisualCheckResult.swift",
+      "kind": "StringLiteral",
+      "offset": 6867,
       "length": 15,
       "value": "\"heatmapBase64\""
     },
     {
       "filePath": "\/Users\/derek\/Desktop\/docver-client-server\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Models\/Results\/CheckResults\/VisualCheckResult.swift",
       "kind": "StringLiteral",
-      "offset": 6856,
+      "offset": 6828,
+      "length": 8,
+      "value": "\"result\""
+    },
+    {
+      "filePath": "\/Users\/derek\/Desktop\/docver-client-server\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Models\/Results\/CheckResults\/VisualCheckResult.swift",
+      "kind": "StringLiteral",
+      "offset": 6867,
       "length": 15,
       "value": "\"heatmapBase64\""
     },
@@ -47709,7 +48234,7 @@
     {
       "filePath": "\/Users\/derek\/Desktop\/docver-client-server\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Models\/DocumentVerificationRequest.swift",
       "kind": "StringLiteral",
-      "offset": 2074,
+      "offset": 2161,
       "length": 11,
       "value": "\"DocumentVerificationClient.ImageSource\""
     },
@@ -54555,7 +55080,7 @@
     {
       "filePath": "\/Users\/derek\/Desktop\/docver-client-server\/sdk-document-verification-v2-ios\/DocumentVerification\/DocumentVerification\/Network\/Services\/DocumentVerificationService.swift",
       "kind": "StringLiteral",
-      "offset": 3028,
+      "offset": 2421,
       "length": 35,
       "value": "\"DocumentVerificationClient.DocumentVerificationServiceSettings\""
     },
