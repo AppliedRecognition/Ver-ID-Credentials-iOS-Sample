@@ -19,10 +19,10 @@ class AuthenticityScoreSupport {
         .manitoba: [.typeDl, .typeId],
         .newBrunswick: [.typeDl],
         .newfoundlandAndLabrador: [.typeDl],
-        .novaScotia: [.typeDl],
+        .novaScotia: [.typeDl, .typeId],
         .ontario: [.typeDl, .typeId],
         .quebec: [.typeDl],
-        .saskatchewan: [.typeDl],
+        .saskatchewan: [.typeDl, .typeId],
         .yukon: [.typeDl]
     ]
     
@@ -30,9 +30,11 @@ class AuthenticityScoreSupport {
         guard let region = result.classInfo?.region, let type = result.classInfo?.type else {
             return false
         }
+        let jurisdiction = result.barcodeResult?.jurisdiction ?? ""
+        let unsupportedJurisdictions = ["PE", "NT", "NU"]
         return self.supportedDocuments.contains { entry in
             entry.key == region && entry.value.contains(type)
-        }
+        } && !unsupportedJurisdictions.contains(jurisdiction)
     }
     
     lazy var classifiers: [Classifier] = {
