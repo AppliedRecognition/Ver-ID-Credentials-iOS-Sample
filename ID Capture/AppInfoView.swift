@@ -8,6 +8,7 @@
 import SwiftUI
 import VerIDCore
 import Microblink
+import DocumentVerificationClient
 
 struct AppInfoView: View {
     
@@ -59,9 +60,14 @@ struct AppInfoView: View {
                     Text(VerID.libraryVersion)
                 }
                 HStack {
-                    Text("Microblink version")
+                    Text("BlinkID version")
                     Spacer()
                     Text(Bundle(for: MBMicroblinkApp.self).object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "unknown")
+                }
+                HStack {
+                    Text("Microblink doc. verification version")
+                    Spacer()
+                    Text(Bundle(for: DocumentVerificationRequest.self).object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "unknown")
                 }
             }
         }.navigationTitle("Settings")
