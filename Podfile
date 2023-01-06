@@ -5,7 +5,7 @@ target 'ID Capture' do
   use_frameworks!
 
   # Pods for ID Capture
-  pod 'Ver-ID', '>= 2.7.2', '< 3.0.0'
+  pod 'Ver-ID', '~> 2.8'
   pod 'Ver-ID-Serialization', '~> 1.1'
 
   post_install do |installer|
