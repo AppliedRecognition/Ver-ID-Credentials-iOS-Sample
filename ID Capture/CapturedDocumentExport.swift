@@ -50,11 +50,13 @@ extension CapturedDocument: Transferable {
             }
         }
         for section in self.textFields {
+            var i = 1
             for field in section.fields {
                 if let value = field.value {
                     csv.append("\r\n\"\(section.title)\",\"\(field.name)\",\"\(value)\"")
                 } else if let image = field.image?.pngData() {
-                    let imageName = "\(section.title)-\(field.name).png"
+                    let imageName = "\(section.title)-\(field.name)-\(i).png"
+                    i += 1
                     try archive.addEntry(with: imageName, type: .file, uncompressedSize: Int64(image.count)) { position, size in
                         let pos = Int(position)
                         return image[pos..<pos+size]
