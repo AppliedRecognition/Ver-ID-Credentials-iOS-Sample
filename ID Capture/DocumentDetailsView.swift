@@ -53,7 +53,7 @@ struct ListEntry: View {
     var body: some View {
         HStack {
             if let image = field.image {
-                Image(uiImage: image).resizable().aspectRatio(contentMode: .fit)
+                Image(uiImage: image).resizable().aspectRatio(contentMode: .fit).background(Color.white).cornerRadius(8)
                 Spacer()
                 Text(field.name)
             } else {
