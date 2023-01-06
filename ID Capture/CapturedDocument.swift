@@ -30,6 +30,7 @@ struct CapturedDocument {
     var dateOfBirth: Date?
     var dateOfIssue: Date?
     var dateOfExpiry: Date?
+    var frontBackMatchCheck: MBDataMatchDetailedInfo?
     
     init(scanResult: MBBlinkIdCombinedRecognizerResult, faceCapture: FaceCapture, authenticityScore: Float? = nil, documentVerificationResult: DocumentVerificationResult? = nil) {
         self.faceCapture = faceCapture
@@ -50,6 +51,7 @@ struct CapturedDocument {
         self.dateOfBirth = scanResult.dateOfBirth?.date
         self.dateOfIssue = scanResult.dateOfIssue?.date
         self.dateOfExpiry = scanResult.dateOfExpiry?.date
+        self.frontBackMatchCheck = scanResult.dataMatchDetailedInfo
     }
     
     init(faceCapture: FaceCapture) {
@@ -131,6 +133,14 @@ struct CapturedDocument {
         }
         if !holderSection.fields.isEmpty {
             sections.append(holderSection)
+        }
+        if let frontBackMatchCheck = self.frontBackMatchCheck, frontBackMatchCheck.getDataMatchResult() != .notPerformed {
+            var dataMatchSection = DocumentSection(title: "Data match checks", fields: [])
+            dataMatchSection.fields.append(DocumentField(name: "Data match check", dataMatchResult: frontBackMatchCheck.getDataMatchResult()))
+            dataMatchSection.fields.append(DocumentField(name: "Document number check", dataMatchResult: frontBackMatchCheck.getDocumentNumber()))
+            dataMatchSection.fields.append(DocumentField(name: "Date of birth check", dataMatchResult: frontBackMatchCheck.getDateOfBirth()))
+            dataMatchSection.fields.append(DocumentField(name: "Date of expiry check", dataMatchResult: frontBackMatchCheck.getDateOfExpiry()))
+            sections.append(dataMatchSection)
         }
         if let docVerResult: DocumentVerificationResult = self.documentVerificationResult {
             if let fraudCheck: DocumentVerificationClient.OverallFraudCheck = docVerResult.overallFraudCheck, fraudCheck.result != .notPerformed {
@@ -447,6 +457,18 @@ struct DocumentField: Identifiable {
     init(name: String, image: UIImage) {
         self.name = name
         self.image = image
+    }
+    
+    init(name: String, dataMatchResult: MBDataMatchResult) {
+        self.name = name
+        switch dataMatchResult {
+        case .success:
+            self.value = "Passed"
+        case .failed:
+            self.value = "Failed"
+        default:
+            self.value = "N/A"
+        }
     }
     
     static func stringFromCheckResult(_ checkResult: CheckResult) -> String {
