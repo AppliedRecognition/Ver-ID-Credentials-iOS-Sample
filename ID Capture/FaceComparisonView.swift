@@ -21,7 +21,11 @@ struct FaceComparisonView: View {
                     Image(uiImage: comparison.faceCapture.faceImage).resizable().aspectRatio(CGSize(width: 4, height: 5), contentMode: .fit).cornerRadius(20).frame(maxWidth: 150).padding(.leading, 16)
                     Spacer()
                 }.padding(.bottom, 16)
-                Text(String(format: "The face matching score %.02f indicates a likelihood of %.0f%% that the person on the ID card is the same person as the one in the selfie. We recommend a threshold of %.02f for a positive identification when comparing faces from identity cards.", score, comparison.probability ?? 0, comparison.threshold))
+                if score >= comparison.threshold {
+                    Text(String(format: "The face matching score %.02f indicates a likelihood of %.0f%% that the person on the ID card is the same person as the one in the selfie. We recommend a threshold of %.02f for a positive identification when comparing faces from identity cards.", score, comparison.probability ?? 0, comparison.threshold))
+                } else {
+                    Text(String(format: "The face matching score %.02f indicates that the person on the ID card is likely NOT the same person as the one in the selfie. We recommend a threshold of %.02f for a positive identification when comparing faces from identity cards.", score, comparison.threshold))
+                }
                 Spacer()
             }
             .padding()
