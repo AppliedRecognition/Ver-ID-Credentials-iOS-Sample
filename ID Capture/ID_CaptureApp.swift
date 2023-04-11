@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Microblink
 
 @main
 struct ID_CaptureApp: App {
@@ -15,18 +14,7 @@ struct ID_CaptureApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView().onChange(of: scenePhase) { phase in
-                if phase == .active {
-                    loadMicroblink()
-                }
-            }
+            ContentView()
         }
-    }
-    
-    func loadMicroblink() {
-        MBMicroblinkSDK.shared().setLicenseResource("mb-licence", withExtension: "key", inSubdirectory: nil, for: Bundle.main) { error in
-            preconditionFailure("\(error)")
-        }
-        MBMicroblinkSDK.shared().showTrialLicenseWarning = false
     }
 }
