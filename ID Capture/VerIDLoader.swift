@@ -20,8 +20,8 @@ class VerIDLoader: ObservableObject {
         if !classifiers.isEmpty {
             detrecFactory.additionalFaceClassifiers = classifiers
         }
-        detrecFactory.settings.sizeRange = 1.0
         detrecFactory.defaultFaceTemplateVersion = .latest
+        detrecFactory.faceTemplateVersions = [.V24]
         veridFactory.faceDetectionFactory = detrecFactory
         veridFactory.faceRecognitionFactory = detrecFactory
         veridFactory.createVerID { result in

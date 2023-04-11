@@ -8,7 +8,7 @@
 import Foundation
 import VerIDCore
 import DocumentVerificationClient
-import Microblink
+import BlinkID
 
 struct CapturedDocument {
     
@@ -30,19 +30,20 @@ struct CapturedDocument {
     var dateOfBirth: Date?
     var dateOfIssue: Date?
     var dateOfExpiry: Date?
-    var frontBackMatchCheck: MBDataMatchDetailedInfo?
+    var frontBackMatchCheck: MBDataMatchResult?
+    var rawBarcode: String?
     
-    init(scanResult: MBBlinkIdCombinedRecognizerResult, faceCapture: FaceCapture, authenticityScore: Float? = nil, documentVerificationResult: DocumentVerificationResult? = nil) {
+    init(scanResult: MBBlinkIdMultiSideRecognizerResult, faceCapture: FaceCapture, authenticityScore: Float? = nil, documentVerificationResult: DocumentVerificationResult? = nil) {
         self.faceCapture = faceCapture
         self.frontCapture = scanResult.frontCameraFrame?.image
         self.backCapture = scanResult.backCameraFrame?.image
         self.authenticityScore = authenticityScore
         self.documentVerificationResult = documentVerificationResult
-        self.documentNumber = scanResult.documentNumber
-        self.firstName = scanResult.firstName
-        self.lastName = scanResult.lastName
-        self.fullName = scanResult.fullName
-        self.address = scanResult.address
+        self.documentNumber = scanResult.documentNumber?.value
+        self.firstName = scanResult.firstName?.value
+        self.lastName = scanResult.lastName?.value
+        self.fullName = scanResult.fullName?.value
+        self.address = scanResult.address?.value
         self.street = scanResult.barcodeResult?.street
         self.city = scanResult.barcodeResult?.city
         self.jurisdiction = scanResult.barcodeResult?.jurisdiction
@@ -51,7 +52,7 @@ struct CapturedDocument {
         self.dateOfBirth = scanResult.dateOfBirth?.date
         self.dateOfIssue = scanResult.dateOfIssue?.date
         self.dateOfExpiry = scanResult.dateOfExpiry?.date
-        self.frontBackMatchCheck = scanResult.dataMatchDetailedInfo
+        self.frontBackMatchCheck = scanResult.dataMatchResult
     }
     
     init(faceCapture: FaceCapture) {
@@ -134,23 +135,24 @@ struct CapturedDocument {
         if !holderSection.fields.isEmpty {
             sections.append(holderSection)
         }
-        if let frontBackMatchCheck = self.frontBackMatchCheck, frontBackMatchCheck.getDataMatchResult() != .notPerformed {
+        if let frontBackMatchCheck = self.frontBackMatchCheck, frontBackMatchCheck.stateForWholeDocument != .notPerformed {
             var dataMatchSection = DocumentSection(title: "Data match checks", fields: [])
-            dataMatchSection.fields.append(DocumentField(name: "Data match check", dataMatchResult: frontBackMatchCheck.getDataMatchResult()))
-            dataMatchSection.fields.append(DocumentField(name: "Document number check", dataMatchResult: frontBackMatchCheck.getDocumentNumber()))
-            dataMatchSection.fields.append(DocumentField(name: "Date of birth check", dataMatchResult: frontBackMatchCheck.getDateOfBirth()))
-            dataMatchSection.fields.append(DocumentField(name: "Date of expiry check", dataMatchResult: frontBackMatchCheck.getDateOfExpiry()))
+            dataMatchSection.fields.append(DocumentField(name: "Data match check", dataMatchState: frontBackMatchCheck.stateForWholeDocument))
+            for state in frontBackMatchCheck.states {
+                switch state.field {
+                case .documentNumber:
+                    dataMatchSection.fields.append(DocumentField(name: "Document number check", dataMatchState: state.state))
+                case .dateOfBirth:
+                    dataMatchSection.fields.append(DocumentField(name: "Date of birth check", dataMatchState: state.state))
+                case .dateOfExpiry:
+                    dataMatchSection.fields.append(DocumentField(name: "Date of expiry check", dataMatchState: state.state))
+                @unknown default:
+                    break
+                }
+            }
             sections.append(dataMatchSection)
         }
         if let docVerResult: DocumentVerificationResult = self.documentVerificationResult {
-            if let fraudCheck: DocumentVerificationClient.OverallFraudCheck = docVerResult.overallFraudCheck, fraudCheck.result != .notPerformed {
-                var verificationSection = DocumentSection(title: "Fraud checks", fields: [])
-                verificationSection.fields.append(DocumentField(name: "Overall fraud check", checkResult: fraudCheck.result))
-                verificationSection.fields.append(DocumentField(name: "Score", value: String(format: "%.02f", fraudCheck.score)))
-                verificationSection.fields.append(DocumentField(name: "Checks performed", value: String(format: "%d/%d", fraudCheck.performedChecks, fraudCheck.totalChecks)))
-                verificationSection.fields.append(DocumentField(name: "Checks passed", value: String(format: "%d", fraudCheck.passedChecks)))
-                sections.append(verificationSection)
-            }
             if let dataCheck: DataCheck = docVerResult.dataCheck {
                 var dataCheckSection = DocumentSection(title: "Data checks", fields: [])
                 if let overallCheck = dataCheck.overall, overallCheck.result != .notPerformed {
@@ -459,9 +461,9 @@ struct DocumentField: Identifiable {
         self.image = image
     }
     
-    init(name: String, dataMatchResult: MBDataMatchResult) {
+    init(name: String, dataMatchState: MBDataMatchState) {
         self.name = name
-        switch dataMatchResult {
+        switch dataMatchState {
         case .success:
             self.value = "Passed"
         case .failed:

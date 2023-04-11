@@ -7,7 +7,7 @@
 
 import SwiftUI
 import VerIDCore
-import Microblink
+import BlinkID
 import DocumentVerificationClient
 
 struct AppInfoView: View {
@@ -26,6 +26,9 @@ struct AppInfoView: View {
             }
             if let address = Bundle.main.object(forInfoDictionaryKey: "com.appliedrec.supporteddocsurl") as? String, let url = URL(string: address) {
                 Section(header: Text("ID capture")) {
+                    Toggle(isOn: $settings.enableDocumentVerification) {
+                        Text("Enable document verification")
+                    }
                     Link(destination: url) {
                         HStack {
                             Text("Supported documents")
@@ -87,6 +90,7 @@ class Settings: ObservableObject {
     enum Keys: String {
         case useBackCamera = "useBackCamera"
         case enableActiveLivenessDetection = "enableActiveLivenessDetection"
+        case enableDocumentVerification = "enableDocumentVerification"
     }
     
     @Published var useBackCamera: Bool {
@@ -99,13 +103,20 @@ class Settings: ObservableObject {
             UserDefaults.standard.set(self.enableActiveLivenessDetection, forKey: Keys.enableActiveLivenessDetection.rawValue)
         }
     }
+    @Published var enableDocumentVerification: Bool {
+        didSet {
+            UserDefaults.standard.set(self.enableDocumentVerification, forKey: Keys.enableDocumentVerification.rawValue)
+        }
+    }
     
     init() {
         UserDefaults.standard.register(defaults: [
             Keys.useBackCamera.rawValue: false,
-            Keys.enableActiveLivenessDetection.rawValue: false
+            Keys.enableActiveLivenessDetection.rawValue: false,
+            Keys.enableDocumentVerification.rawValue: false
         ])
         self.useBackCamera = UserDefaults.standard.bool(forKey: Keys.useBackCamera.rawValue)
         self.enableActiveLivenessDetection = UserDefaults.standard.bool(forKey: Keys.enableActiveLivenessDetection.rawValue)
+        self.enableDocumentVerification = UserDefaults.standard.bool(forKey: Keys.enableDocumentVerification.rawValue)
     }
 }

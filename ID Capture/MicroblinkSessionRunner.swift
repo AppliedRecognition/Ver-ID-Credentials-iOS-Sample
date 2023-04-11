@@ -7,23 +7,31 @@
 
 import Foundation
 import UIKit
-import Microblink
+import BlinkID
 import DocumentVerificationClient
 import VerIDCore
 import VerIDSerialization
+import Vision
 
 class MicroblinkSessionRunner: NSObject, ObservableObject, MBBlinkIdOverlayViewControllerDelegate, UIAdaptivePresentationControllerDelegate {
     
     @Published var sessionResult: Result<CapturedDocument,Error>?
     @Published var status: DocumentCaptureStatus = .idle
     
-    private var blinkIdRecognizer: MBBlinkIdCombinedRecognizer?
+    private var blinkIdRecognizer: MBBlinkIdMultiSideRecognizer?
+    private var isDocumentVerificationEnabled: Bool {
+        UserDefaults.standard.bool(forKey: Settings.Keys.enableDocumentVerification.rawValue)
+    }
     var verID: VerID?
     
     func captureDocument() {
         self.status = .capturing
-        let recognizer = MBBlinkIdCombinedRecognizer()
-        recognizer.saveCameraFrames = true
+        let recognizer = MBBlinkIdMultiSideRecognizer()
+        if self.isDocumentVerificationEnabled {
+            recognizer.saveCameraFrames = true
+        } else {
+            recognizer.returnFullDocumentImage = true
+        }
         self.blinkIdRecognizer = recognizer
         let settings = MBBlinkIdOverlaySettings()
         settings.autorotateOverlay = true
@@ -55,12 +63,33 @@ class MicroblinkSessionRunner: NSObject, ObservableObject, MBBlinkIdOverlayViewC
                 Task {
                     let captureResult: Result<CapturedDocument,Error>
                     do {
-                        let verificationResult = try await self.verifyDocumentInScanResult(result)
-                        guard let image = verificationResult?.extractionResult?.fullDocumentFrontImage else {
-                            throw DocumentCaptureError.failedToReadImage
+                        var barcodeString: String?
+                        if let classInfo = result.classInfo, !classInfo.empty, classInfo.region == .ontario && classInfo.type == .typeHealthInsuranceCard {
+                            if let barcode = result.barcodeResult?.rawData, !barcode.isEmpty, let payload = String(data: barcode, encoding: .utf8) {
+                                barcodeString = payload
+                            } else if let image = result.barcodeCameraFrame?.image {
+                                barcodeString = try await BarcodeDetector.shared.detectBarcodeInImage(image)
+                            } else if let image = result.fullDocumentBackImage?.image {
+                                barcodeString = try await BarcodeDetector.shared.detectBarcodeInImage(image)
+                            }
+                        }
+                        let image: UIImage
+                        var verificationResult: DocumentVerificationResult? = nil
+                        if self.isDocumentVerificationEnabled {
+                            verificationResult = try await self.verifyDocumentInScanResult(result)
+                            guard let img = verificationResult?.extractionResult?.fullDocumentFrontImage else {
+                                throw DocumentCaptureError.failedToReadImage
+                            }
+                            image = img
+                        } else {
+                            guard let img = result.fullDocumentFrontImage?.image else {
+                                throw DocumentCaptureError.failedToReadImage
+                            }
+                            image = img
                         }
                         let (faceCapture, authScore) = try await self.faceCaptureFromImage(image, detectAuthenticity: AuthenticityScoreSupport.default.isDocumentSupported(result: result))
-                        let document = CapturedDocument(scanResult: result, faceCapture: faceCapture, authenticityScore: authScore, documentVerificationResult: verificationResult)
+                        var document = CapturedDocument(scanResult: result, faceCapture: faceCapture, authenticityScore: authScore, documentVerificationResult: verificationResult)
+                        document.rawBarcode = barcodeString
                         captureResult = .success(document)
                     } catch {
                         captureResult = .failure(error)
@@ -81,7 +110,7 @@ class MicroblinkSessionRunner: NSObject, ObservableObject, MBBlinkIdOverlayViewC
     
     // MARK: -
     
-    func verifyDocumentInScanResult(_ scanResult: MBBlinkIdCombinedRecognizerResult) async throws -> DocumentVerificationResult? {
+    func verifyDocumentInScanResult(_ scanResult: MBBlinkIdMultiSideRecognizerResult) async throws -> DocumentVerificationResult? {
         guard let frontImage = scanResult.frontCameraFrame?.image, let backImage = scanResult.backCameraFrame?.image else {
             throw DescribedError("Failed to read document images")
         }

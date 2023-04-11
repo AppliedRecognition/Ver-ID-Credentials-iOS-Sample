@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Microblink
+import BlinkID
 import VerIDCore
 
 class AuthenticityScoreSupport {
@@ -26,7 +26,7 @@ class AuthenticityScoreSupport {
         .yukon: [.typeDl]
     ]
     
-    func isDocumentSupported(result: MBBlinkIdCombinedRecognizerResult) -> Bool {
+    func isDocumentSupported(result: MBBlinkIdMultiSideRecognizerResult) -> Bool {
         guard let region = result.classInfo?.region, let type = result.classInfo?.type else {
             return false
         }

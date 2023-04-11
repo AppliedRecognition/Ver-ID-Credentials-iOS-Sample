@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Microblink
+import BlinkID
 import VerIDCore
 
 struct IDCardView: View {

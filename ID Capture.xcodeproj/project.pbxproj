@@ -9,9 +9,12 @@
 /* Begin PBXBuildFile section */
 		0E75548CFA2408A83C57F5D4 /* Pods_ID_Capture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F58773423ED36B0E8BAC36C /* Pods_ID_Capture.framework */; };
 		3B0B58372951C74D0004D0AF /* CapturedDocumentExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B58362951C74D0004D0AF /* CapturedDocumentExport.swift */; };
+		3B2C1B9529E5C24F00D8FFEE /* BlinkID in Frameworks */ = {isa = PBXBuildFile; productRef = 3B2C1B9429E5C24F00D8FFEE /* BlinkID */; };
+		3B2C1B9729E5E3BC00D8FFEE /* BarcodeDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2C1B9629E5E3BB00D8FFEE /* BarcodeDetector.swift */; };
+		3B5D3DF229DD8CD8001BEB3F /* MicroblinkKeyLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D3DF129DD8CD8001BEB3F /* MicroblinkKeyLoader.swift */; };
+		3B5D3DF429DDFF3D001BEB3F /* Ver-ID-Models in Resources */ = {isa = PBXBuildFile; fileRef = 3B5D3DF329DDFF3D001BEB3F /* Ver-ID-Models */; };
 		3B86C12E294A12170056FB6D /* AuthenticityScoreSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86C12D294A12170056FB6D /* AuthenticityScoreSupport.swift */; };
 		3B86C130294A15CA0056FB6D /* license01-20210820ay-xiypjic%2200-q08.nv in Resources */ = {isa = PBXBuildFile; fileRef = 3B86C12F294A15CA0056FB6D /* license01-20210820ay-xiypjic%2200-q08.nv */; };
-		3B86C132294A1F250056FB6D /* mb-licence.key in Resources */ = {isa = PBXBuildFile; fileRef = 3B86C131294A1F250056FB6D /* mb-licence.key */; };
 		3B86C13A294B15830056FB6D /* DocumentVerificationClient.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B86C139294B15830056FB6D /* DocumentVerificationClient.xcframework */; };
 		3B86C13B294B15830056FB6D /* DocumentVerificationClient.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B86C139294B15830056FB6D /* DocumentVerificationClient.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3BB1AEE7293FC5A2007A9AE6 /* ID_CaptureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB1AEE6293FC5A2007A9AE6 /* ID_CaptureApp.swift */; };
@@ -23,7 +26,6 @@
 		3BB1AEFD29409F09007A9AE6 /* IDCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB1AEFC29409F09007A9AE6 /* IDCardView.swift */; };
 		3BB1AEFF2940A049007A9AE6 /* MicroblinkSessionRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB1AEFE2940A049007A9AE6 /* MicroblinkSessionRunner.swift */; };
 		3BB1AF012940AB3F007A9AE6 /* CapturedDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB1AF002940AB3F007A9AE6 /* CapturedDocument.swift */; };
-		3BB1AF042940B7E5007A9AE6 /* BlinkID in Frameworks */ = {isa = PBXBuildFile; productRef = 3BB1AF032940B7E5007A9AE6 /* BlinkID */; };
 		3BB1AF082940D732007A9AE6 /* VerIDLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB1AF072940D732007A9AE6 /* VerIDLoader.swift */; };
 		3BB1AF0A2940DDDB007A9AE6 /* DocumentDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB1AF092940DDDB007A9AE6 /* DocumentDetailsView.swift */; };
 		3BB1AF0C29413BDE007A9AE6 /* FaceComparisonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB1AF0B29413BDE007A9AE6 /* FaceComparisonView.swift */; };
@@ -49,9 +51,11 @@
 
 /* Begin PBXFileReference section */
 		3B0B58362951C74D0004D0AF /* CapturedDocumentExport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturedDocumentExport.swift; sourceTree = "<group>"; };
+		3B2C1B9629E5E3BB00D8FFEE /* BarcodeDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeDetector.swift; sourceTree = "<group>"; };
+		3B5D3DF129DD8CD8001BEB3F /* MicroblinkKeyLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroblinkKeyLoader.swift; sourceTree = "<group>"; };
+		3B5D3DF329DDFF3D001BEB3F /* Ver-ID-Models */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Ver-ID-Models"; sourceTree = "<group>"; };
 		3B86C12D294A12170056FB6D /* AuthenticityScoreSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticityScoreSupport.swift; sourceTree = "<group>"; };
 		3B86C12F294A15CA0056FB6D /* license01-20210820ay-xiypjic%2200-q08.nv */ = {isa = PBXFileReference; lastKnownFileType = file; path = "license01-20210820ay-xiypjic%2200-q08.nv"; sourceTree = "<group>"; };
-		3B86C131294A1F250056FB6D /* mb-licence.key */ = {isa = PBXFileReference; lastKnownFileType = file; path = "mb-licence.key"; sourceTree = "<group>"; };
 		3B86C139294B15830056FB6D /* DocumentVerificationClient.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = DocumentVerificationClient.xcframework; path = "ID Capture/Frameworks/DocumentVerificationClient.xcframework"; sourceTree = "<group>"; };
 		3BB1AEE3293FC5A2007A9AE6 /* ID Capture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ID Capture.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BB1AEE6293FC5A2007A9AE6 /* ID_CaptureApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ID_CaptureApp.swift; sourceTree = "<group>"; };
@@ -80,8 +84,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B2C1B9529E5C24F00D8FFEE /* BlinkID in Frameworks */,
 				3BB1AF1529428B68007A9AE6 /* NormalDistribution in Frameworks */,
-				3BB1AF042940B7E5007A9AE6 /* BlinkID in Frameworks */,
 				0E75548CFA2408A83C57F5D4 /* Pods_ID_Capture.framework in Frameworks */,
 				3B86C13A294B15830056FB6D /* DocumentVerificationClient.xcframework in Frameworks */,
 			);
@@ -120,7 +124,7 @@
 		3BB1AEE5293FC5A2007A9AE6 /* ID Capture */ = {
 			isa = PBXGroup;
 			children = (
-				3B86C131294A1F250056FB6D /* mb-licence.key */,
+				3B5D3DF329DDFF3D001BEB3F /* Ver-ID-Models */,
 				3B86C12F294A15CA0056FB6D /* license01-20210820ay-xiypjic%2200-q08.nv */,
 				3BB1AF092940DDDB007A9AE6 /* DocumentDetailsView.swift */,
 				3BB1AEF7293FE64A007A9AE6 /* VerIDSessionRunner.swift */,
@@ -140,6 +144,8 @@
 				3BB1AF1D2943700E007A9AE6 /* AppInfoView.swift */,
 				3B86C12D294A12170056FB6D /* AuthenticityScoreSupport.swift */,
 				3B0B58362951C74D0004D0AF /* CapturedDocumentExport.swift */,
+				3B5D3DF129DD8CD8001BEB3F /* MicroblinkKeyLoader.swift */,
+				3B2C1B9629E5E3BB00D8FFEE /* BarcodeDetector.swift */,
 			);
 			path = "ID Capture";
 			sourceTree = "<group>";
@@ -183,8 +189,8 @@
 			);
 			name = "ID Capture";
 			packageProductDependencies = (
-				3BB1AF032940B7E5007A9AE6 /* BlinkID */,
 				3BB1AF1429428B68007A9AE6 /* NormalDistribution */,
+				3B2C1B9429E5C24F00D8FFEE /* BlinkID */,
 			);
 			productName = "ID Capture";
 			productReference = 3BB1AEE3293FC5A2007A9AE6 /* ID Capture.app */;
@@ -215,8 +221,8 @@
 			);
 			mainGroup = 3BB1AEDA293FC5A2007A9AE6;
 			packageReferences = (
-				3BB1AF022940B7E5007A9AE6 /* XCRemoteSwiftPackageReference "blinkid-swift-package" */,
 				3BB1AF1329428B68007A9AE6 /* XCRemoteSwiftPackageReference "Normal-Distribution-Swift" */,
+				3B2C1B9329E5C24F00D8FFEE /* XCRemoteSwiftPackageReference "blinkid-ios" */,
 			);
 			productRefGroup = 3BB1AEE4293FC5A2007A9AE6 /* Products */;
 			projectDirPath = "";
@@ -232,10 +238,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B86C132294A1F250056FB6D /* mb-licence.key in Resources */,
 				3B86C130294A15CA0056FB6D /* license01-20210820ay-xiypjic%2200-q08.nv in Resources */,
 				3BB1AEEE293FC5A4007A9AE6 /* Preview Assets.xcassets in Resources */,
 				3BB1AEEB293FC5A4007A9AE6 /* Assets.xcassets in Resources */,
+				3B5D3DF429DDFF3D001BEB3F /* Ver-ID-Models in Resources */,
 				3BB1AEF6293FE213007A9AE6 /* Ver-ID identity.p12 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -326,12 +332,14 @@
 				3BB1AF102941EF94007A9AE6 /* DescribedError.swift in Sources */,
 				3B86C12E294A12170056FB6D /* AuthenticityScoreSupport.swift in Sources */,
 				3BB1AF012940AB3F007A9AE6 /* CapturedDocument.swift in Sources */,
+				3B5D3DF229DD8CD8001BEB3F /* MicroblinkKeyLoader.swift in Sources */,
 				3BB1AEE9293FC5A2007A9AE6 /* ContentView.swift in Sources */,
 				3BB1AEFD29409F09007A9AE6 /* IDCardView.swift in Sources */,
 				3BB1AF082940D732007A9AE6 /* VerIDLoader.swift in Sources */,
 				3B0B58372951C74D0004D0AF /* CapturedDocumentExport.swift in Sources */,
 				3BB1AF0A2940DDDB007A9AE6 /* DocumentDetailsView.swift in Sources */,
 				3BB1AF0C29413BDE007A9AE6 /* FaceComparisonView.swift in Sources */,
+				3B2C1B9729E5E3BC00D8FFEE /* BarcodeDetector.swift in Sources */,
 				3BB1AEE7293FC5A2007A9AE6 /* ID_CaptureApp.swift in Sources */,
 				3BB1AEF8293FE64A007A9AE6 /* VerIDSessionRunner.swift in Sources */,
 				3BB1AF1E2943700E007A9AE6 /* AppInfoView.swift in Sources */,
@@ -469,7 +477,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5000004;
+				CURRENT_PROJECT_VERSION = 5001000;
 				DEVELOPMENT_ASSET_PATHS = "\"ID Capture/Preview Content\"";
 				DEVELOPMENT_TEAM = CSD8L9EK66;
 				ENABLE_PREVIEWS = YES;
@@ -485,7 +493,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.0.4;
+				MARKETING_VERSION = 5.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.appliedrec.idcapture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -502,7 +510,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5000004;
+				CURRENT_PROJECT_VERSION = 5001000;
 				DEVELOPMENT_ASSET_PATHS = "\"ID Capture/Preview Content\"";
 				DEVELOPMENT_TEAM = CSD8L9EK66;
 				ENABLE_PREVIEWS = YES;
@@ -518,7 +526,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.0.4;
+				MARKETING_VERSION = 5.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.appliedrec.idcapture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -551,12 +559,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		3BB1AF022940B7E5007A9AE6 /* XCRemoteSwiftPackageReference "blinkid-swift-package" */ = {
+		3B2C1B9329E5C24F00D8FFEE /* XCRemoteSwiftPackageReference "blinkid-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/BlinkID/blinkid-swift-package";
+			repositoryURL = "https://github.com/BlinkID/blinkid-ios";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.20.1;
+				minimumVersion = 6.1.2;
 			};
 		};
 		3BB1AF1329428B68007A9AE6 /* XCRemoteSwiftPackageReference "Normal-Distribution-Swift" */ = {
@@ -570,9 +578,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		3BB1AF032940B7E5007A9AE6 /* BlinkID */ = {
+		3B2C1B9429E5C24F00D8FFEE /* BlinkID */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3BB1AF022940B7E5007A9AE6 /* XCRemoteSwiftPackageReference "blinkid-swift-package" */;
+			package = 3B2C1B9329E5C24F00D8FFEE /* XCRemoteSwiftPackageReference "blinkid-ios" */;
 			productName = BlinkID;
 		};
 		3BB1AF1429428B68007A9AE6 /* NormalDistribution */ = {
