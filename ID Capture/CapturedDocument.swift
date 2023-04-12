@@ -31,9 +31,10 @@ struct CapturedDocument {
     var dateOfIssue: Date?
     var dateOfExpiry: Date?
     var frontBackMatchCheck: MBDataMatchResult?
-    var rawBarcode: String?
+    let rawBarcode: String?
+    let ontarioHealthCardFrontBackMatch: OntarioHealthCardFrontBackMatch?
     
-    init(scanResult: MBBlinkIdMultiSideRecognizerResult, faceCapture: FaceCapture, authenticityScore: Float? = nil, documentVerificationResult: DocumentVerificationResult? = nil) {
+    init(scanResult: MBBlinkIdMultiSideRecognizerResult, faceCapture: FaceCapture, authenticityScore: Float? = nil, documentVerificationResult: DocumentVerificationResult? = nil, rawBarcode: String? = nil) {
         self.faceCapture = faceCapture
         self.frontCapture = scanResult.frontCameraFrame?.image
         self.backCapture = scanResult.backCameraFrame?.image
@@ -53,12 +54,20 @@ struct CapturedDocument {
         self.dateOfIssue = scanResult.dateOfIssue?.date
         self.dateOfExpiry = scanResult.dateOfExpiry?.date
         self.frontBackMatchCheck = scanResult.dataMatchResult
+        self.rawBarcode = rawBarcode
+        if let barcode = rawBarcode, let classInfo = scanResult.classInfo, !classInfo.empty && classInfo.region == .ontario && classInfo.type == .typeHealthInsuranceCard {
+            self.ontarioHealthCardFrontBackMatch = OntarioHealthCardFrontBackMatch(barcode: barcode, name: self.fullName, documentNumber: self.documentNumber, dateOfBirth: self.dateOfBirth, dateOfExpiry: self.dateOfExpiry)
+        } else {
+            self.ontarioHealthCardFrontBackMatch = nil
+        }
     }
     
     init(faceCapture: FaceCapture) {
         self.faceCapture = faceCapture
         self.authenticityScore = nil
         self.documentVerificationResult = nil
+        self.rawBarcode = nil
+        self.ontarioHealthCardFrontBackMatch = nil
     }
     
     static let sample: CapturedDocument? = {
@@ -134,6 +143,15 @@ struct CapturedDocument {
         }
         if !holderSection.fields.isEmpty {
             sections.append(holderSection)
+        }
+        if let ontarioHealthCardFrontBackMatch = self.ontarioHealthCardFrontBackMatch {
+            let healthCardSection = DocumentSection(title: "Data match checks", fields: [
+                DocumentField(name: "Document number check", value: ontarioHealthCardFrontBackMatch.documentNumberMatchesBarcode ? "Passed" : "Failed"),
+                DocumentField(name: "Name check", value: ontarioHealthCardFrontBackMatch.nameMatchesBarcode ? "Passed" : "Failed"),
+                DocumentField(name: "Date of birth check", value: ontarioHealthCardFrontBackMatch.dateOfBirthMatchesBarcode ? "Passed" : "Failed"),
+                DocumentField(name: "Date of expiry check", value: ontarioHealthCardFrontBackMatch.dateOfExpiryMatchesBarcode ? "Passed" : "Failed"),
+            ])
+            sections.append(healthCardSection)
         }
         if let frontBackMatchCheck = self.frontBackMatchCheck, frontBackMatchCheck.stateForWholeDocument != .notPerformed {
             var dataMatchSection = DocumentSection(title: "Data match checks", fields: [])
@@ -511,5 +529,90 @@ extension CertaintyLevel {
         @unknown default:
             return "Unknown"
         }
+    }
+}
+
+class OntarioHealthCardFrontBackMatch {
+    
+    let barcode: String
+    let name: String?
+    let documentNumber: String?
+    let dateOfBirth: Date?
+    let dateOfExpiry: Date?
+    
+    init(barcode: String, name: String?, documentNumber: String?, dateOfBirth: Date?, dateOfExpiry: Date?) {
+        self.barcode = barcode
+        self.name = name
+        self.documentNumber = documentNumber
+        self.dateOfBirth = dateOfBirth
+        self.dateOfExpiry = dateOfExpiry
+    }
+    
+    lazy var isHealthCardBarcode: Bool = {
+        self.barcode.hasPrefix("@ON HC01.")
+    }()
+    
+    lazy var nameMatchesBarcode: Bool = {
+        guard let name = self.name, let barcodeName = self.barcodeName else {
+            return false
+        }
+        return name.lowercased() == barcodeName.lowercased()
+    }()
+    
+    lazy var documentNumberMatchesBarcode: Bool = {
+        guard let documentNumber = self.documentNumber?.replacingOccurrences(of: "\\W", with: "", options: .regularExpression).lowercased(),
+              let barcodeDocumentNumber = self.barcodeDocumentNumber?.replacingOccurrences(of: "\\W", with: "", options: .regularExpression).lowercased() else {
+            return false
+        }
+        return documentNumber.prefix(barcodeDocumentNumber.count) == barcodeDocumentNumber
+    }()
+    
+    lazy var dateOfBirthMatchesBarcode: Bool = {
+        guard let dateOfBirth = self.dateOfBirth, let barcodeDateOfBirth = self.barcodeDateOfBirth else {
+            return false
+        }
+        return abs(dateOfBirth.timeIntervalSince(barcodeDateOfBirth)) < 24 * 60 * 60 * 1000
+    }()
+    
+    lazy var dateOfExpiryMatchesBarcode: Bool = {
+        guard let dateOfExpiry = self.dateOfExpiry, let barcodeDateOfExpiry = self.barcodeDateOfExpiry else {
+            return false
+        }
+        return abs(dateOfExpiry.timeIntervalSince(barcodeDateOfExpiry)) < 24 * 60 * 60 * 1000
+    }()
+    
+    lazy var barcodeName: String? = {
+        guard self.isHealthCardBarcode else {
+            return nil
+        }
+        return String(self.barcode[self.barcode.index(self.barcode.startIndex, offsetBy: 30)..<self.barcode.index(self.barcode.startIndex, offsetBy: 58)].trimmingCharacters(in: .alphanumerics.inverted))
+    }()
+    
+    lazy var barcodeDocumentNumber: String? = {
+        guard self.isHealthCardBarcode else {
+            return nil
+        }
+        return String(self.barcode[self.barcode.index(self.barcode.startIndex, offsetBy: 20)..<self.barcode.index(self.barcode.startIndex, offsetBy: 30)].trimmingCharacters(in: .whitespacesAndNewlines))
+    }()
+    
+    lazy var barcodeDateOfBirth: Date? = {
+        return self.dateFromString(String(self.barcode[self.barcode.index(self.barcode.startIndex, offsetBy: 58)..<self.barcode.index(self.barcode.startIndex, offsetBy: 66)]))
+    }()
+    
+    lazy var barcodeDateOfExpiry: Date? = {
+        return self.dateFromString(String(self.barcode[self.barcode.index(self.barcode.startIndex, offsetBy: 75)..<self.barcode.index(self.barcode.startIndex, offsetBy: 83)]))
+    }()
+    
+    private func dateFromString(_ string: String) -> Date? {
+        guard let year = Int(string[string.startIndex..<string.index(string.startIndex, offsetBy: 4)]) else {
+            return nil
+        }
+        guard let month = Int(string[string.index(string.startIndex, offsetBy: 4)..<string.index(string.startIndex, offsetBy: 6)]) else {
+            return nil
+        }
+        guard let day = Int(string[string.index(string.startIndex, offsetBy: 6)..<string.index(string.startIndex, offsetBy: 8)]) else {
+            return nil
+        }
+        return DateComponents(calendar: .current, timeZone: TimeZone(secondsFromGMT: 0), year: year, month: month, day: day).date
     }
 }

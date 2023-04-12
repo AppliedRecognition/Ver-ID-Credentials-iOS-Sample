@@ -88,8 +88,7 @@ class MicroblinkSessionRunner: NSObject, ObservableObject, MBBlinkIdOverlayViewC
                             image = img
                         }
                         let (faceCapture, authScore) = try await self.faceCaptureFromImage(image, detectAuthenticity: AuthenticityScoreSupport.default.isDocumentSupported(result: result))
-                        var document = CapturedDocument(scanResult: result, faceCapture: faceCapture, authenticityScore: authScore, documentVerificationResult: verificationResult)
-                        document.rawBarcode = barcodeString
+                        var document = CapturedDocument(scanResult: result, faceCapture: faceCapture, authenticityScore: authScore, documentVerificationResult: verificationResult, rawBarcode: barcodeString)
                         captureResult = .success(document)
                     } catch {
                         captureResult = .failure(error)
