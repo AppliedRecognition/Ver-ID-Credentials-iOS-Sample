@@ -20,7 +20,7 @@ class AuthenticityScoreSupport {
         .newBrunswick: [.typeDl],
         .newfoundlandAndLabrador: [.typeDl],
         .novaScotia: [.typeDl, .typeId],
-        .ontario: [.typeDl, .typeId],
+        .ontario: [.typeDl, .typeId, .typeHealthInsuranceCard],
         .quebec: [.typeDl],
         .saskatchewan: [.typeDl, .typeId],
         .yukon: [.typeDl]
