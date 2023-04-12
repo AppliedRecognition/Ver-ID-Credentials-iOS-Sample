@@ -31,10 +31,22 @@ struct CapturedDocument {
     var dateOfIssue: Date?
     var dateOfExpiry: Date?
     var frontBackMatchCheck: MBDataMatchResult?
-    let rawBarcode: String?
-    let ontarioHealthCardFrontBackMatch: OntarioHealthCardFrontBackMatch?
+    var rawBarcode: String? {
+        didSet {
+            if let barcode = self.rawBarcode, self.type == .typeHealthInsuranceCard && self.region == .ontario {
+                self.ontarioHealthCardFrontBackMatch = OntarioHealthCardFrontBackMatch(barcode: barcode, name: self.fullName, documentNumber: self.documentNumber, dateOfBirth: self.dateOfBirth, dateOfExpiry: self.dateOfExpiry)
+            } else {
+                self.ontarioHealthCardFrontBackMatch = nil
+            }
+        }
+    }
+    var ontarioHealthCardFrontBackMatch: OntarioHealthCardFrontBackMatch?
+    let type: MBType
+    let region: MBRegion
     
     init(scanResult: MBBlinkIdMultiSideRecognizerResult, faceCapture: FaceCapture, authenticityScore: Float? = nil, documentVerificationResult: DocumentVerificationResult? = nil, rawBarcode: String? = nil) {
+        self.type = scanResult.classInfo?.type ?? .typeNone
+        self.region = scanResult.classInfo?.region ?? .none
         self.faceCapture = faceCapture
         self.frontCapture = scanResult.frontCameraFrame?.image
         self.backCapture = scanResult.backCameraFrame?.image
@@ -63,6 +75,8 @@ struct CapturedDocument {
     }
     
     init(faceCapture: FaceCapture) {
+        self.type = .typeNone
+        self.region = .none
         self.faceCapture = faceCapture
         self.authenticityScore = nil
         self.documentVerificationResult = nil

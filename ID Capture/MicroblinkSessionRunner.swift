@@ -13,7 +13,7 @@ import VerIDCore
 import VerIDSerialization
 import Vision
 
-class MicroblinkSessionRunner: NSObject, ObservableObject, MBBlinkIdOverlayViewControllerDelegate, UIAdaptivePresentationControllerDelegate {
+class MicroblinkSessionRunner: NSObject, ObservableObject, MBBlinkIdOverlayViewControllerDelegate, UIAdaptivePresentationControllerDelegate, BarcodeScannerViewControllerDelegate {
     
     @Published var sessionResult: Result<CapturedDocument,Error>?
     @Published var status: DocumentCaptureStatus = .idle
@@ -23,6 +23,7 @@ class MicroblinkSessionRunner: NSObject, ObservableObject, MBBlinkIdOverlayViewC
         UserDefaults.standard.bool(forKey: Settings.Keys.enableDocumentVerification.rawValue)
     }
     var verID: VerID?
+    private var capturedDocument: CapturedDocument?
     
     func captureDocument() {
         self.status = .capturing
@@ -49,6 +50,43 @@ class MicroblinkSessionRunner: NSObject, ObservableObject, MBBlinkIdOverlayViewC
         rootViewController.present(recognizerRunnerViewController, animated: true)
     }
     
+    func captureONHealthCardBarcode() {
+        guard let rootViewController = UIApplication.shared.connectedScenes.compactMap({ scene in
+            return (scene as? UIWindowScene)?.keyWindow?.rootViewController
+        }).first else {
+            return
+        }
+        let alert = UIAlertController(title: "Barcode scan failed", message: "We were unable to read the barcode on the back of the card", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Retry", style: .default) { _ in
+            let barcodeScannerViewController = BarcodeScannerViewController(nibName: "BarcodeScannerViewController", bundle: .main)
+            barcodeScannerViewController.delegate = self
+            rootViewController.present(barcodeScannerViewController, animated: true)
+        })
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        rootViewController.present(alert, animated: true)
+    }
+    
+    // MARK: - Barcode scanner delegate
+    
+    func barcodeScannerViewController(_ barcodeScannerViewController: BarcodeScannerViewController, didScanBarcode barcode: String) {
+        guard var document = self.capturedDocument else {
+            return
+        }
+        document.rawBarcode = barcode
+        self.sessionResult = .success(document)
+        self.status = .idle
+    }
+    
+    func barcodeScannerViewController(_ barcodeScannerViewController: BarcodeScannerViewController, didFailWithError error: Error) {
+        self.sessionResult = .failure(error)
+        self.status = .idle
+    }
+    
+    func barcodeScannerViewControllerDidCancelScan(_ barcodeScannerViewController: BarcodeScannerViewController) {
+        self.sessionResult = .failure(BarcodeDetectorError.failedToReadBarcode)
+        self.status = .idle
+    }
+    
     // MARK: - Blink ID
     
     func blinkIdOverlayViewControllerDidFinishScanning(_ blinkIdOverlayViewController: MBBlinkIdOverlayViewController, state: MBRecognizerResultState) {
@@ -65,13 +103,15 @@ class MicroblinkSessionRunner: NSObject, ObservableObject, MBBlinkIdOverlayViewC
                     do {
                         var barcodeString: String?
                         if let classInfo = result.classInfo, !classInfo.empty, classInfo.region == .ontario && classInfo.type == .typeHealthInsuranceCard {
-                            if let barcode = result.barcodeResult?.rawData, !barcode.isEmpty, let payload = String(data: barcode, encoding: .utf8) {
-                                barcodeString = payload
-                            } else if let image = result.barcodeCameraFrame?.image {
-                                barcodeString = try await BarcodeDetector.shared.detectBarcodeInImage(image)
-                            } else if let image = result.fullDocumentBackImage?.image {
-                                barcodeString = try await BarcodeDetector.shared.detectBarcodeInImage(image)
-                            }
+                            do {
+                                if let barcode = result.barcodeResult?.rawData, !barcode.isEmpty, let payload = String(data: barcode, encoding: .utf8) {
+                                    barcodeString = payload
+                                } else if let image = result.barcodeCameraFrame?.image {
+                                    barcodeString = try await BarcodeDetector.shared.detectBarcodeInImage(image)
+                                } else if let image = result.fullDocumentBackImage?.image {
+                                    barcodeString = try await BarcodeDetector.shared.detectBarcodeInImage(image)
+                                }
+                            } catch {}
                         }
                         let image: UIImage
                         var verificationResult: DocumentVerificationResult? = nil
@@ -88,8 +128,16 @@ class MicroblinkSessionRunner: NSObject, ObservableObject, MBBlinkIdOverlayViewC
                             image = img
                         }
                         let (faceCapture, authScore) = try await self.faceCaptureFromImage(image, detectAuthenticity: AuthenticityScoreSupport.default.isDocumentSupported(result: result))
-                        var document = CapturedDocument(scanResult: result, faceCapture: faceCapture, authenticityScore: authScore, documentVerificationResult: verificationResult, rawBarcode: barcodeString)
-                        captureResult = .success(document)
+                        let document = CapturedDocument(scanResult: result, faceCapture: faceCapture, authenticityScore: authScore, documentVerificationResult: verificationResult, rawBarcode: barcodeString)
+                        if document.type == .typeHealthInsuranceCard && document.region == .ontario && barcodeString == nil {
+                            self.capturedDocument = document
+                            await MainActor.run {
+                                self.captureONHealthCardBarcode()
+                            }
+                            return
+                        } else {
+                            captureResult = .success(document)
+                        }
                     } catch {
                         captureResult = .failure(error)
                     }

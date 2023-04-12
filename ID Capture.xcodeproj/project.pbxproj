@@ -11,6 +11,8 @@
 		3B0B58372951C74D0004D0AF /* CapturedDocumentExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B58362951C74D0004D0AF /* CapturedDocumentExport.swift */; };
 		3B2C1B9529E5C24F00D8FFEE /* BlinkID in Frameworks */ = {isa = PBXBuildFile; productRef = 3B2C1B9429E5C24F00D8FFEE /* BlinkID */; };
 		3B2C1B9729E5E3BC00D8FFEE /* BarcodeDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2C1B9629E5E3BB00D8FFEE /* BarcodeDetector.swift */; };
+		3B2C1B9929E7312200D8FFEE /* BarcodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2C1B9829E7312200D8FFEE /* BarcodeScannerViewController.swift */; };
+		3B2C1B9B29E74C1000D8FFEE /* BarcodeScannerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B2C1B9A29E74C1000D8FFEE /* BarcodeScannerViewController.xib */; };
 		3B5D3DF229DD8CD8001BEB3F /* MicroblinkKeyLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D3DF129DD8CD8001BEB3F /* MicroblinkKeyLoader.swift */; };
 		3B5D3DF429DDFF3D001BEB3F /* Ver-ID-Models in Resources */ = {isa = PBXBuildFile; fileRef = 3B5D3DF329DDFF3D001BEB3F /* Ver-ID-Models */; };
 		3B86C12E294A12170056FB6D /* AuthenticityScoreSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86C12D294A12170056FB6D /* AuthenticityScoreSupport.swift */; };
@@ -52,6 +54,8 @@
 /* Begin PBXFileReference section */
 		3B0B58362951C74D0004D0AF /* CapturedDocumentExport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturedDocumentExport.swift; sourceTree = "<group>"; };
 		3B2C1B9629E5E3BB00D8FFEE /* BarcodeDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeDetector.swift; sourceTree = "<group>"; };
+		3B2C1B9829E7312200D8FFEE /* BarcodeScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerViewController.swift; sourceTree = "<group>"; };
+		3B2C1B9A29E74C1000D8FFEE /* BarcodeScannerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BarcodeScannerViewController.xib; sourceTree = "<group>"; };
 		3B5D3DF129DD8CD8001BEB3F /* MicroblinkKeyLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroblinkKeyLoader.swift; sourceTree = "<group>"; };
 		3B5D3DF329DDFF3D001BEB3F /* Ver-ID-Models */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Ver-ID-Models"; sourceTree = "<group>"; };
 		3B86C12D294A12170056FB6D /* AuthenticityScoreSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticityScoreSupport.swift; sourceTree = "<group>"; };
@@ -146,6 +150,8 @@
 				3B0B58362951C74D0004D0AF /* CapturedDocumentExport.swift */,
 				3B5D3DF129DD8CD8001BEB3F /* MicroblinkKeyLoader.swift */,
 				3B2C1B9629E5E3BB00D8FFEE /* BarcodeDetector.swift */,
+				3B2C1B9829E7312200D8FFEE /* BarcodeScannerViewController.swift */,
+				3B2C1B9A29E74C1000D8FFEE /* BarcodeScannerViewController.xib */,
 			);
 			path = "ID Capture";
 			sourceTree = "<group>";
@@ -240,6 +246,7 @@
 			files = (
 				3B86C130294A15CA0056FB6D /* license01-20210820ay-xiypjic%2200-q08.nv in Resources */,
 				3BB1AEEE293FC5A4007A9AE6 /* Preview Assets.xcassets in Resources */,
+				3B2C1B9B29E74C1000D8FFEE /* BarcodeScannerViewController.xib in Resources */,
 				3BB1AEEB293FC5A4007A9AE6 /* Assets.xcassets in Resources */,
 				3B5D3DF429DDFF3D001BEB3F /* Ver-ID-Models in Resources */,
 				3BB1AEF6293FE213007A9AE6 /* Ver-ID identity.p12 in Resources */,
@@ -339,6 +346,7 @@
 				3B0B58372951C74D0004D0AF /* CapturedDocumentExport.swift in Sources */,
 				3BB1AF0A2940DDDB007A9AE6 /* DocumentDetailsView.swift in Sources */,
 				3BB1AF0C29413BDE007A9AE6 /* FaceComparisonView.swift in Sources */,
+				3B2C1B9929E7312200D8FFEE /* BarcodeScannerViewController.swift in Sources */,
 				3B2C1B9729E5E3BC00D8FFEE /* BarcodeDetector.swift in Sources */,
 				3BB1AEE7293FC5A2007A9AE6 /* ID_CaptureApp.swift in Sources */,
 				3BB1AEF8293FE64A007A9AE6 /* VerIDSessionRunner.swift in Sources */,

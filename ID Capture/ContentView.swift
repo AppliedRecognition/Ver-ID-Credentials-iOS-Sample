@@ -61,7 +61,7 @@ struct ContentView: View {
                             }
                             Spacer()
                         }.padding()
-                    } else if case .failure(let error) = verIDResult {
+                    } else if case .failure(_) = verIDResult {
                         VStack {
                             HStack {
                                 Text("Failed to load Ver-ID")

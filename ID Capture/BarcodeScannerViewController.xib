@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BarcodeScannerViewController" customModule="ID_Capture" customModuleProvider="target">
+            <connections>
+                <outlet property="cameraView" destination="i9X-rG-S6X" id="rf5-bJ-amY"/>
+                <outlet property="cancelButton" destination="KtT-zv-3iO" id="Cag-rH-m1G"/>
+                <outlet property="titleBackgroundView" destination="ov5-3b-adR" id="zKM-Wf-eNX"/>
+                <outlet property="view" destination="iN0-l3-epB" id="sG3-Wq-fQk"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i9X-rG-S6X">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KtT-zv-3iO">
+                    <rect key="frame" x="158.33333333333334" y="723" width="76.666666666666657" height="35"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="filled" title="Cancel"/>
+                    <connections>
+                        <action selector="cancel" destination="-1" eventType="touchUpInside" id="3KU-0m-t8s"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ov5-3b-adR">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="160"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="160" id="dhz-Un-H4H"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan barcode" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cog-gN-AMs">
+                    <rect key="frame" x="143.66666666666666" y="79" width="106" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="i9X-rG-S6X" secondAttribute="trailing" id="2Hb-86-TW8"/>
+                <constraint firstItem="ov5-3b-adR" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="9sc-ud-Bji"/>
+                <constraint firstItem="cog-gN-AMs" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Czy-89-kpk"/>
+                <constraint firstAttribute="trailing" secondItem="ov5-3b-adR" secondAttribute="trailing" id="HcV-F0-H3K"/>
+                <constraint firstItem="i9X-rG-S6X" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="RXB-gh-ej9"/>
+                <constraint firstItem="cog-gN-AMs" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="Tox-KY-0QU"/>
+                <constraint firstItem="ov5-3b-adR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Vhw-Vg-k25"/>
+                <constraint firstAttribute="bottom" secondItem="i9X-rG-S6X" secondAttribute="bottom" id="XNu-8N-khe"/>
+                <constraint firstItem="i9X-rG-S6X" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="jyB-Cy-2aA"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="KtT-zv-3iO" secondAttribute="bottom" constant="60" id="ppL-o1-nKs"/>
+                <constraint firstItem="KtT-zv-3iO" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="tTc-6j-Aye"/>
+            </constraints>
+            <point key="canvasLocation" x="136.64122137404578" y="19.718309859154932"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
