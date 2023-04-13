@@ -84,6 +84,11 @@ class BarcodeScannerViewController: UIViewController, AVCaptureMetadataOutputObj
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.previewLayer?.frame = self.cameraView.bounds
+    }
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animateAlongsideTransition(in: self.view, animation: nil) { context in
@@ -115,7 +120,7 @@ class BarcodeScannerViewController: UIViewController, AVCaptureMetadataOutputObj
         self.captureSession.addInput(input)
         self.previewLayer = AVCaptureVideoPreviewLayer(session: self.captureSession)
         self.previewLayer.videoGravity = .resizeAspectFill
-        self.previewLayer.frame = self.view.bounds
+        self.previewLayer.frame = self.cameraView.bounds
         self.cameraView.layer.addSublayer(self.previewLayer)
         let metadataOutput = AVCaptureMetadataOutput()
         guard self.captureSession.canAddOutput(metadataOutput) else {
