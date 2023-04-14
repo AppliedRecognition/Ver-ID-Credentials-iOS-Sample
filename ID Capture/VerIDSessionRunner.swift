@@ -20,7 +20,7 @@ class VerIDSessionRunner: ObservableObject, VerIDSessionDelegate {
     func startSession(verID: VerID) {
         let settings = LivenessDetectionSessionSettings()
         settings.faceCaptureCount = UserDefaults.standard.bool(forKey: Settings.Keys.enableActiveLivenessDetection.rawValue) ? 2 : 1
-        let session = VerIDSession(environment: verID, settings: LivenessDetectionSessionSettings())
+        let session = VerIDSession(environment: verID, settings: settings)
         session.delegate = self
         session.start()
         self.isSessionRunning = true
