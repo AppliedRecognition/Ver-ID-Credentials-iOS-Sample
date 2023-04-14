@@ -1,6 +1,6 @@
 # Ver-ID ID Capture Sample
 
-![](ID%20Capture/Assets.xcassets/woman_with_licence.imageset/iStock-466158408.png)
+![](https://github.com/AppliedRecognition/Ver-ID-Credentials-Android-Sample/raw/master/app/src/main/res/drawable-mdpi/woman_with_id_card.png)
 
 The project contains a sample application that uses Microblink's [BlinkID SDK](https://github.com/BlinkID/blinkid-ios) to scan an ID card. The app uses [Ver-ID SDK](https://github.com/AppliedRecognition/Ver-ID-UI-iOS) to detect a face on the captured ID card and compare it to a live selfie taken with the iOS device's camera.
 
