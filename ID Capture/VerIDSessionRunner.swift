@@ -27,7 +27,7 @@ class VerIDSessionRunner: ObservableObject, VerIDSessionDelegate {
     }
     
     nonisolated func didFinishSession(_ session: VerIDSession, withResult result: VerIDSessionResult) {
-        Task {
+        _Concurrency.Task {
             await MainActor.run {
                 self.sessionResult = result
                 self.isSessionRunning = false
@@ -36,7 +36,7 @@ class VerIDSessionRunner: ObservableObject, VerIDSessionDelegate {
     }
     
     nonisolated func didCancelSession(_ session: VerIDSession) {
-        Task {
+        _Concurrency.Task {
             await MainActor.run {
                 self.isSessionRunning = false
             }

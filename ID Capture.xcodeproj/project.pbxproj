@@ -571,8 +571,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/BlinkID/blinkid-ios";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.1.2;
+				branch = master;
+				kind = branch;
 			};
 		};
 		3BB1AF1329428B68007A9AE6 /* XCRemoteSwiftPackageReference "Normal-Distribution-Swift" */ = {

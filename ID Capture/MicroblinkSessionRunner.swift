@@ -98,7 +98,7 @@ class MicroblinkSessionRunner: NSObject, ObservableObject, MBBlinkIdOverlayViewC
                     return
                 }
                 self.status = .processing
-                Task {
+                _Concurrency.Task {
                     let captureResult: Result<CapturedDocument,Error>
                     do {
                         var barcodeString: String?
