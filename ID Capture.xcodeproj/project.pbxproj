@@ -14,7 +14,6 @@
 		3B2C1B9929E7312200D8FFEE /* BarcodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2C1B9829E7312200D8FFEE /* BarcodeScannerViewController.swift */; };
 		3B2C1B9B29E74C1000D8FFEE /* BarcodeScannerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B2C1B9A29E74C1000D8FFEE /* BarcodeScannerViewController.xib */; };
 		3B5D3DF229DD8CD8001BEB3F /* MicroblinkKeyLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D3DF129DD8CD8001BEB3F /* MicroblinkKeyLoader.swift */; };
-		3B5D3DF429DDFF3D001BEB3F /* Ver-ID-Models in Resources */ = {isa = PBXBuildFile; fileRef = 3B5D3DF329DDFF3D001BEB3F /* Ver-ID-Models */; };
 		3B86C12E294A12170056FB6D /* AuthenticityScoreSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86C12D294A12170056FB6D /* AuthenticityScoreSupport.swift */; };
 		3B86C130294A15CA0056FB6D /* license01-20210820ay-xiypjic%2200-q08.nv in Resources */ = {isa = PBXBuildFile; fileRef = 3B86C12F294A15CA0056FB6D /* license01-20210820ay-xiypjic%2200-q08.nv */; };
 		3B86C13A294B15830056FB6D /* DocumentVerificationClient.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B86C139294B15830056FB6D /* DocumentVerificationClient.xcframework */; };
@@ -57,7 +56,6 @@
 		3B2C1B9829E7312200D8FFEE /* BarcodeScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerViewController.swift; sourceTree = "<group>"; };
 		3B2C1B9A29E74C1000D8FFEE /* BarcodeScannerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BarcodeScannerViewController.xib; sourceTree = "<group>"; };
 		3B5D3DF129DD8CD8001BEB3F /* MicroblinkKeyLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroblinkKeyLoader.swift; sourceTree = "<group>"; };
-		3B5D3DF329DDFF3D001BEB3F /* Ver-ID-Models */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Ver-ID-Models"; sourceTree = "<group>"; };
 		3B86C12D294A12170056FB6D /* AuthenticityScoreSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticityScoreSupport.swift; sourceTree = "<group>"; };
 		3B86C12F294A15CA0056FB6D /* license01-20210820ay-xiypjic%2200-q08.nv */ = {isa = PBXFileReference; lastKnownFileType = file; path = "license01-20210820ay-xiypjic%2200-q08.nv"; sourceTree = "<group>"; };
 		3B86C139294B15830056FB6D /* DocumentVerificationClient.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = DocumentVerificationClient.xcframework; path = "ID Capture/Frameworks/DocumentVerificationClient.xcframework"; sourceTree = "<group>"; };
@@ -128,7 +126,6 @@
 		3BB1AEE5293FC5A2007A9AE6 /* ID Capture */ = {
 			isa = PBXGroup;
 			children = (
-				3B5D3DF329DDFF3D001BEB3F /* Ver-ID-Models */,
 				3B86C12F294A15CA0056FB6D /* license01-20210820ay-xiypjic%2200-q08.nv */,
 				3BB1AF092940DDDB007A9AE6 /* DocumentDetailsView.swift */,
 				3BB1AEF7293FE64A007A9AE6 /* VerIDSessionRunner.swift */,
@@ -248,7 +245,6 @@
 				3BB1AEEE293FC5A4007A9AE6 /* Preview Assets.xcassets in Resources */,
 				3B2C1B9B29E74C1000D8FFEE /* BarcodeScannerViewController.xib in Resources */,
 				3BB1AEEB293FC5A4007A9AE6 /* Assets.xcassets in Resources */,
-				3B5D3DF429DDFF3D001BEB3F /* Ver-ID-Models in Resources */,
 				3BB1AEF6293FE213007A9AE6 /* Ver-ID identity.p12 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -392,7 +388,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 5000000;
+				CURRENT_PROJECT_VERSION = 5001001;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -411,7 +407,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				MARKETING_VERSION = 5.0.0;
+				MARKETING_VERSION = 5.1.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -454,7 +450,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 5000000;
+				CURRENT_PROJECT_VERSION = 5001001;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -467,7 +463,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				MARKETING_VERSION = 5.0.0;
+				MARKETING_VERSION = 5.1.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -485,7 +481,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5001000;
 				DEVELOPMENT_ASSET_PATHS = "\"ID Capture/Preview Content\"";
 				DEVELOPMENT_TEAM = CSD8L9EK66;
 				ENABLE_PREVIEWS = YES;
@@ -501,7 +496,6 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.appliedrec.idcapture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -518,7 +512,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5001000;
 				DEVELOPMENT_ASSET_PATHS = "\"ID Capture/Preview Content\"";
 				DEVELOPMENT_TEAM = CSD8L9EK66;
 				ENABLE_PREVIEWS = YES;
@@ -534,7 +527,6 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.appliedrec.idcapture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
